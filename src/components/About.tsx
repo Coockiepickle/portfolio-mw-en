@@ -1,11 +1,8 @@
-
 import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
-  
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('about');
@@ -17,32 +14,31 @@ const About = () => {
         }
       }
     };
-    
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check on initial load
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
-  const stats = [
-    { icon: <Clock className="w-5 h-5 text-mw-green mr-2" />, value: "5+", label: "Years Experience" },
-    { icon: <Target className="w-5 h-5 text-mw-green mr-2" />, value: "20+", label: "Projects Completed" },
-    { icon: <Shield className="w-5 h-5 text-mw-green mr-2" />, value: "15+", label: "Technologies" },
-  ];
-  
-  return (
-    <section id="about" className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
+  const stats = [{
+    icon: <Clock className="w-5 h-5 text-mw-green mr-2" />,
+    value: "5+",
+    label: "Years Experience"
+  }, {
+    icon: <Target className="w-5 h-5 text-mw-green mr-2" />,
+    value: "20+",
+    label: "Projects Completed"
+  }, {
+    icon: <Shield className="w-5 h-5 text-mw-green mr-2" />,
+    value: "15+",
+    label: "Technologies"
+  }];
+  return <section id="about" className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0 opacity-30"></div>
       
       <div className="mw-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <div 
-              className={cn(
-                "transition-all duration-700 transform",
-                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-              )}
-            >
+            <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
               <span className="mw-badge mb-4">
                 <User className="w-3 h-3 mr-1" />
                 ABOUT ME
@@ -50,12 +46,7 @@ const About = () => {
               <h2 className="mw-section-title text-white">Strategic Profile</h2>
             </div>
             
-            <div 
-              className={cn(
-                "space-y-4 transition-all duration-700 delay-150 transform",
-                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-              )}
-            >
+            <div className={cn("space-y-4 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
               <p>
                 Frontend specialist with a tactical approach to problem-solving. Experienced in 
                 developing applications with military-grade precision and attention to detail.
@@ -71,28 +62,16 @@ const About = () => {
               </p>
             </div>
             
-            <div 
-              className={cn(
-                "mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 transition-all duration-700 delay-300 transform",
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              )}
-            >
-              {stats.map((stat, index) => (
-                <div key={index} className="mw-card p-4 text-center">
+            <div className={cn("mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 transition-all duration-700 delay-300 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
+              {stats.map((stat, index) => <div key={index} className="mw-card p-4 text-center">
                   <div className="flex justify-center mb-2">{stat.icon}</div>
                   <div className="text-2xl font-bold text-white">{stat.value}</div>
                   <div className="text-sm text-mw-lightgray">{stat.label}</div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
           
-          <div 
-            className={cn(
-              "relative transition-all duration-700 delay-450 transform",
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-            )}
-          >
+          <div className={cn("relative transition-all duration-700 delay-450 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8")}>
             <div className="aspect-square max-w-md mx-auto relative">
               <div className="absolute inset-0 border border-mw-green border-opacity-20 p-4">
                 <div className="relative w-full h-full bg-mw-gray bg-opacity-50 overflow-hidden">
@@ -126,8 +105,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
