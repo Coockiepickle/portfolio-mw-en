@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
   const [typedText, setTypedText] = useState('');
-  const fullText = "TACTICAL DEVELOPER";
+  const fullText = "TACTICAL STUDENT";
   const typingSpeed = 100;
   
   useEffect(() => {
