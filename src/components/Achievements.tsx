@@ -1,0 +1,159 @@
+
+import { useEffect, useState } from 'react';
+import { Award, Star, Check, Calendar, Trophy } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const Achievements = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = document.getElementById('achievements');
+      if (element) {
+        const position = element.getBoundingClientRect();
+        if (position.top < window.innerHeight * 0.75) {
+          setIsVisible(true);
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on initial load
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  const achievements = [
+    {
+      icon: <Trophy className="w-6 h-6 text-mw-green" />,
+      year: "2023",
+      title: "Best Web Application Award",
+      description: "Received industry recognition for innovative tactical interface design",
+    },
+    {
+      icon: <Award className="w-6 h-6 text-mw-green" />,
+      year: "2022",
+      title: "Tech Conference Speaker",
+      description: "Presented 'Strategic Frontend Architecture' at DevCon 2022",
+    },
+    {
+      icon: <Star className="w-6 h-6 text-mw-green" />,
+      year: "2021",
+      title: "Open Source Contribution",
+      description: "Major contributions to tactical UI framework with 1000+ GitHub stars",
+    },
+    {
+      icon: <Calendar className="w-6 h-6 text-mw-green" />,
+      year: "2020",
+      title: "Development Team Lead",
+      description: "Led team of 5 developers in mission-critical application development",
+    },
+  ];
+  
+  const certifications = [
+    "Advanced Frontend Architecture",
+    "Cloud Deployment Specialist",
+    "UI/UX Tactical Design",
+    "Server-Side Operations",
+  ];
+  
+  return (
+    <section id="achievements" className="relative py-24 bg-mw-darker">
+      <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
+      
+      <div className="mw-container relative z-10">
+        <div 
+          className={cn(
+            "text-center max-w-3xl mx-auto mb-16 transition-all duration-700 transform",
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
+          )}
+        >
+          <span className="mw-badge mb-4">
+            <Award className="w-3 h-3 mr-1" />
+            RECOGNITION
+          </span>
+          <h2 className="mw-section-title text-white">Mission Accomplishments</h2>
+          <p className="mt-4">
+            Strategic achievements and professional recognition earned throughout my career.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div 
+            className={cn(
+              "lg:col-span-2 transition-all duration-700 ease-out transform",
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+            )}
+          >
+            <div className="space-y-6">
+              {achievements.map((achievement, index) => (
+                <div 
+                  key={index} 
+                  className={cn(
+                    "mw-card flex p-5 transition-all duration-700 ease-out transform",
+                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+                    isVisible && { 'delay-150': index === 0, 'delay-300': index === 1, 'delay-450': index === 2, 'delay-600': index === 3 }
+                  )}
+                >
+                  <div className="p-3 bg-mw-green bg-opacity-10 rounded-sm self-start mr-4">
+                    {achievement.icon}
+                  </div>
+                  <div>
+                    <div className="text-xs text-mw-green font-medium uppercase tracking-wider mb-1">
+                      {achievement.year}
+                    </div>
+                    <h3 className="text-lg font-medium text-white mb-2">{achievement.title}</h3>
+                    <p className="text-sm text-mw-light">{achievement.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div 
+            className={cn(
+              "transition-all duration-700 ease-out transform",
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+            )}
+          >
+            <div className="mw-card p-6">
+              <h3 className="text-lg font-medium text-white mb-6 pb-2 border-b border-mw-green border-opacity-20">
+                Certifications & Training
+              </h3>
+              
+              <ul className="space-y-4">
+                {certifications.map((cert, index) => (
+                  <li 
+                    key={index} 
+                    className={cn(
+                      "flex items-start transition-all duration-700 ease-out transform",
+                      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+                      isVisible && { 'delay-150': index === 0, 'delay-300': index === 1, 'delay-450': index === 2, 'delay-600': index === 3 }
+                    )}
+                  >
+                    <Check className="w-5 h-5 text-mw-green mr-2 shrink-0" />
+                    <span>{cert}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div 
+                className={cn(
+                  "mt-8 pt-6 border-t border-mw-green border-opacity-20 transition-all duration-700 delay-750 ease-out transform",
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                )}
+              >
+                <div className="text-center">
+                  <h4 className="text-white mb-2">Continuous Improvement</h4>
+                  <p className="text-sm">Currently pursuing advanced tactical development methodologies</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Achievements;
