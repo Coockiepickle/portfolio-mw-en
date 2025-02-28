@@ -21,15 +21,15 @@ const About = () => {
   }, []);
   const stats = [{
     icon: <Clock className="w-5 h-5 text-mw-green mr-2" />,
-    value: "5+",
+    value: "4",
     label: "Years Experience"
   }, {
     icon: <Target className="w-5 h-5 text-mw-green mr-2" />,
-    value: "20+",
+    value: "10+",
     label: "Projects Completed"
   }, {
     icon: <Shield className="w-5 h-5 text-mw-green mr-2" />,
-    value: "15+",
+    value: "10+",
     label: "Technologies"
   }];
   return <section id="about" className="relative py-24 overflow-hidden">
@@ -48,16 +48,16 @@ const About = () => {
             
             <div className={cn("space-y-4 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
               <p>
-                Frontend specialist with a tactical approach to problem-solving. Experienced in 
-                developing applications with military-grade precision and attention to detail.
+                Student in networking and cybersecurity. I love every aspect of IT.
+                I'm hard-working and serious in the job I am asked to do.
               </p>
               <p>
-                My mission is to create efficient, reliable, and user-friendly digital experiences
+                My mission is to create efficient, reliable, and secure digital experiences
                 that exceed expectations. I combine technical expertise with strategic thinking
                 to achieve optimal results for every project.
               </p>
               <p>
-                When not in the development theater, I enjoy tactical gaming, physical training,
+                When not in the working theater, I enjoy gaming, physical training,
                 and studying new technologies to expand my arsenal of skills.
               </p>
             </div>
