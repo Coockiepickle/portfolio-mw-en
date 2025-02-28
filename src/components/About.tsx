@@ -21,7 +21,7 @@ const About = () => {
   }, []);
   const stats = [{
     icon: <Clock className="w-5 h-5 text-mw-green mr-2" />,
-    value: "4",
+    value: "4+",
     label: "Years Experience"
   }, {
     icon: <Target className="w-5 h-5 text-mw-green mr-2" />,
