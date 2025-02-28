@@ -63,7 +63,7 @@ const Hero = () => {
           >
             <span className="mw-badge mb-4">
               <Target className="w-3 h-3 mr-1" />
-              MISSION ACTIVATED
+              LEARNING ACTIVATED
             </span>
           </div>
           
@@ -73,7 +73,7 @@ const Hero = () => {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
             )}
           >
-            JOHN DOE
+            DAMIEN REYNAUD
             <div className="h-[2px] w-20 bg-mw-green mx-auto my-4"></div>
             <span className="font-code text-2xl sm:text-3xl font-light text-mw-green opacity-90">
               {typedText}
@@ -87,7 +87,7 @@ const Hero = () => {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
             )}
           >
-            Experienced developer with tactical precision and strategic approach.
+            Experienced network student with tactical precision and strategic approach.
             Specialized in creating sophisticated solutions for complex problems.
           </p>
           
