@@ -67,8 +67,6 @@ const Contact = () => {
   
   return (
     <section id="contact" className="relative py-24">
-      <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
-      
       <div className="mw-container relative z-10">
         <div 
           className={cn(
