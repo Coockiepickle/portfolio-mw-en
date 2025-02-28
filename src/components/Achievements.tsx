@@ -26,35 +26,37 @@ const Achievements = () => {
   const achievements = [
     {
       icon: <Trophy className="w-6 h-6 text-mw-green" />,
-      year: "2023",
-      title: "Best Web Application Award",
-      description: "Received industry recognition for innovative tactical interface design",
+      year: "2024-2025",
+      title: "Bachelor A.I.S.",
+      description: "En attente de résultat..., Institution Beaupeyrat",
     },
     {
       icon: <Award className="w-6 h-6 text-mw-green" />,
-      year: "2022",
-      title: "Tech Conference Speaker",
-      description: "Presented 'Strategic Frontend Architecture' at DevCon 2022",
+      year: "2023-2024",
+      title: "D.E.C. Techniques de l'informatique",
+      description: "Profil Réseau, Moyenne de 80% de réussite, Cégep de La Pocatière, Québec",
     },
     {
       icon: <Star className="w-6 h-6 text-mw-green" />,
-      year: "2021",
-      title: "Open Source Contribution",
-      description: "Major contributions to tactical UI framework with 1000+ GitHub stars",
+      year: "2021-2023",
+      title: "B.T.S. S.I.O.",
+      description: "Option S.I.S.R., 15,88/20, Institution Beaupeyrat",
     },
     {
       icon: <Calendar className="w-6 h-6 text-mw-green" />,
-      year: "2020",
-      title: "Development Team Lead",
-      description: "Led team of 5 developers in mission-critical application development",
+      year: "2019-2021",
+      title: "Bac S.T.I.2.D.",
+      description: "Option S.I.N., Mention 'Assez Bien', 13,66/20, Lycée Raoul Dautry",
     },
   ];
   
   const certifications = [
-    "Advanced Frontend Architecture",
-    "Cloud Deployment Specialist",
-    "UI/UX Tactical Design",
-    "Server-Side Operations",
+    "PIX",
+    "C.N.I.L.",
+    "A.N.S.S.I.",
+    "C.C.N.A 2 & 3",
+    "Cisco IoT Fundamentals",
+    "Cisco Cybersecurity Fundamentals"
   ];
   
   return (
@@ -72,9 +74,9 @@ const Achievements = () => {
             <Award className="w-3 h-3 mr-1" />
             RECOGNITION
           </span>
-          <h2 className="mw-section-title text-white">Mission Accomplishments</h2>
+          <h2 className="mw-section-title text-white">Training Accomplishments</h2>
           <p className="mt-4">
-            Strategic achievements and professional recognition earned throughout my career.
+            Diplomas and skills recognition earned throughout my career.
           </p>
         </div>
         
@@ -118,7 +120,7 @@ const Achievements = () => {
           >
             <div className="mw-card p-6">
               <h3 className="text-lg font-medium text-white mb-6 pb-2 border-b border-mw-green border-opacity-20">
-                Certifications & Training
+                Certifications
               </h3>
               
               <ul className="space-y-4">
@@ -145,7 +147,9 @@ const Achievements = () => {
               >
                 <div className="text-center">
                   <h4 className="text-white mb-2">Continuous Improvement</h4>
-                  <p className="text-sm">Currently pursuing advanced tactical development methodologies</p>
+                  <p className="text-sm">Currently pursuing advanced development methodologies</p>
+                  <p className="text-sm">TypeScript Codecademy & OpenClassroom courses</p>
+                  <p className="text-sm">Tailwind CSS Coursera course</p>
                 </div>
               </div>
             </div>
