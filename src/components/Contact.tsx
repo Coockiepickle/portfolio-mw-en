@@ -115,8 +115,7 @@ const Contact = () => {
                       value={formState.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full p-3 bg-mw-darker border border-mw-green border-opacity-20 rounded-sm 
-                      text-white focus:outline-none focus:border-mw-green focus:ring-1 focus:ring-mw-green"
+                      className="w-full p-3 bg-mw-darker border border-mw-green border-opacity-20 rounded-sm text-white focus:outline-none focus:border-mw-green focus:ring-1 focus:ring-mw-green"
                       placeholder="Your name"
                     />
                   </div>
@@ -132,8 +131,7 @@ const Contact = () => {
                       value={formState.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full p-3 bg-mw-darker border border-mw-green border-opacity-20 rounded-sm 
-                      text-white focus:outline-none focus:border-mw-green focus:ring-1 focus:ring-mw-green"
+                      className="w-full p-3 bg-mw-darker border border-mw-green border-opacity-20 rounded-sm text-white focus:outline-none focus:border-mw-green focus:ring-1 focus:ring-mw-green"
                       placeholder="Your email"
                     />
                   </div>
@@ -149,8 +147,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      className="w-full p-3 bg-mw-darker border border-mw-green border-opacity-20 rounded-sm 
-                      text-white focus:outline-none focus:border-mw-green focus:ring-1 focus:ring-mw-green"
+                      className="w-full p-3 bg-mw-darker border border-mw-green border-opacity-20 rounded-sm text-white focus:outline-none focus:border-mw-green focus:ring-1 focus:ring-mw-green"
                       placeholder="Your message"
                     ></textarea>
                   </div>
@@ -195,7 +192,7 @@ const Contact = () => {
                     className={cn(
                       "flex items-start transition-all duration-700 ease-out transform",
                       isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-                      isVisible && { 'delay-150': index === 0, 'delay-300': index === 1, 'delay-450': index === 2 }
+                      isVisible && { "delay-150": index === 0, "delay-300": index === 1, "delay-450": index === 2 }
                     )}
                   >
                     <div className="p-2 bg-mw-green bg-opacity-10 rounded-sm mr-3">
@@ -220,11 +217,10 @@ const Contact = () => {
                       key={index}
                       href={social.url}
                       className={cn(
-                        "p-3 bg-mw-darker hover:bg-mw-green hover:bg-opacity-20 border border-mw-green border-opacity-20 
-                        rounded-sm text-mw-light hover:text-white transition-all duration-300 transform hover:-translate-y-1",
+                        "p-3 bg-mw-darker hover:bg-mw-green hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-light hover:text-white transition-all duration-300 transform hover:-translate-y-1",
                         "transition-all duration-700 ease-out transform",
                         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-                        isVisible && { 'delay-600': index === 0, 'delay-700': index === 1, 'delay-800': index === 2 }
+                        isVisible && { "delay-600": index === 0, "delay-700": index === 1, "delay-800": index === 2 }
                       )}
                       aria-label={social.label}
                     >
