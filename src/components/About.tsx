@@ -43,7 +43,6 @@ const About = () => {
                 <User className="w-3 h-3 mr-1" />
                 ABOUT ME
               </span>
-              
               <h2 className="mw-section-title text-white">Strategic Profile</h2>
             </div>
             
