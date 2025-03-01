@@ -15,7 +15,7 @@ import emailjs from 'emailjs-com';
 const Index = () => {
   useEffect(() => {
     // Initialize EmailJS with your User ID
-    emailjs.init("YOUR_USER_ID");
+    emailjs.init("GeOubRxyEKZojoxY5");
   }, []);
 
   return (
