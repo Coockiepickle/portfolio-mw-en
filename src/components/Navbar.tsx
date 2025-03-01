@@ -1,10 +1,13 @@
+
 import { useState, useEffect } from 'react';
-import { User, Menu, X, Shield, Target, Briefcase, Award, Send } from 'lucide-react';
+import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -24,6 +27,7 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -34,6 +38,7 @@ const Navbar = () => {
     }
     setIsMenuOpen(false);
   };
+
   const navLinks = [{
     id: 'home',
     label: 'Home',
@@ -55,10 +60,19 @@ const Navbar = () => {
     label: 'Achievements',
     icon: <Award className="mr-2 h-4 w-4" />
   }, {
+    id: 'resume',
+    label: 'CV',
+    icon: <FileText className="mr-2 h-4 w-4" />
+  }, {
+    id: 'experiences',
+    label: 'Experiences',
+    icon: <Clock className="mr-2 h-4 w-4" />
+  }, {
     id: 'contact',
     label: 'Contact',
     icon: <Send className="mr-2 h-4 w-4" />
   }];
+
   return <header className={cn("fixed top-0 left-0 w-full z-50 transition-all duration-300", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
       <div className="mw-container py-4 md:py-5">
         <div className="flex items-center justify-between">
@@ -96,4 +110,5 @@ const Navbar = () => {
       </div>
     </header>;
 };
+
 export default Navbar;
