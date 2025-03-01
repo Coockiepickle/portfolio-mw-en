@@ -96,7 +96,7 @@ const Contact = () => {
               
               {submitSuccess ? (
                 <div className="p-4 border border-mw-green bg-mw-green bg-opacity-10 text-center">
-                  <p className="text-white mb-2">Message sent successfully!</p>
+                  <p className="text-white mb-2">Message sent successfully! Thank you!</p>
                   <p className="text-sm">I'll respond to your transmission as soon as possible.</p>
                 </div>
               ) : (
