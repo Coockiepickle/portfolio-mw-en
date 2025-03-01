@@ -60,13 +60,13 @@ const Navbar = () => {
     label: 'Achievements',
     icon: <Award className="mr-2 h-4 w-4" />
   }, {
-    id: 'resume',
-    label: 'CV',
-    icon: <FileText className="mr-2 h-4 w-4" />
-  }, {
     id: 'experiences',
     label: 'Experiences',
     icon: <Clock className="mr-2 h-4 w-4" />
+  }, {
+    id: 'resume',
+    label: 'CV',
+    icon: <FileText className="mr-2 h-4 w-4" />
   }, {
     id: 'contact',
     label: 'Contact',
