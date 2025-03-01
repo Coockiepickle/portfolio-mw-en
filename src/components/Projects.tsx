@@ -77,7 +77,7 @@ const Projects = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
           )}
         >
-          <span className="mw-badge mb-4">
+          <span className="mw-badge mb-4 block">
             <Briefcase className="w-3 h-3 mr-1" />
             MY WORK
           </span>

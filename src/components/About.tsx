@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -39,7 +40,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-              <span className="mw-badge mb-4">
+              <span className="mw-badge mb-4 block">
                 <User className="w-3 h-3 mr-1" />
                 ABOUT ME
               </span>
