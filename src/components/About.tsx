@@ -3,73 +3,8 @@ import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-interface AboutProps {
-  language: string;
-}
-
-const About = ({ language }: AboutProps) => {
+const About = () => {
   const [isVisible, setIsVisible] = useState(false);
-
-  const translations = {
-    en: {
-      aboutMe: "ABOUT ME",
-      strategicProfile: "Strategic Profile",
-      paragraphs: [
-        "Student in networking and cybersecurity. I love every aspect of IT. I'm hard-working and serious in the job I am asked to do.",
-        "My mission is to create efficient, reliable, and secure digital experiences that exceed expectations. I combine technical expertise with strategic thinking to achieve optimal results for every project.",
-        "When not in the working theater, I enjoy gaming, physical training, and studying new technologies to expand my arsenal of skills."
-      ],
-      stats: [
-        {
-          icon: <Clock className="w-5 h-5 text-mw-green mr-2" />,
-          value: "4+",
-          label: "Years Studied"
-        },
-        {
-          icon: <Target className="w-5 h-5 text-mw-green mr-2" />,
-          value: "10+",
-          label: "Projects Completed"
-        },
-        {
-          icon: <Shield className="w-5 h-5 text-mw-green mr-2" />,
-          value: "10+",
-          label: "Technologies"
-        }
-      ],
-      profileImage: "PROFILE_IMAGE.jpg",
-      tacticalOperator: "TACTICAL OPERATOR"
-    },
-    fr: {
-      aboutMe: "À PROPOS",
-      strategicProfile: "Profil Stratégique",
-      paragraphs: [
-        "Étudiant en réseaux et cybersécurité. J'aime tous les aspects de l'informatique. Je suis travailleur et sérieux dans les tâches qui me sont confiées.",
-        "Ma mission est de créer des expériences numériques efficaces, fiables et sécurisées qui dépassent les attentes. Je combine expertise technique et réflexion stratégique pour obtenir des résultats optimaux pour chaque projet.",
-        "En dehors du cadre professionnel, j'apprécie les jeux vidéo, l'entraînement physique et l'étude de nouvelles technologies pour élargir mon arsenal de compétences."
-      ],
-      stats: [
-        {
-          icon: <Clock className="w-5 h-5 text-mw-green mr-2" />,
-          value: "4+",
-          label: "Années d'Études"
-        },
-        {
-          icon: <Target className="w-5 h-5 text-mw-green mr-2" />,
-          value: "10+",
-          label: "Projets Réalisés"
-        },
-        {
-          icon: <Shield className="w-5 h-5 text-mw-green mr-2" />,
-          value: "10+",
-          label: "Technologies"
-        }
-      ],
-      profileImage: "IMAGE_PROFIL.jpg",
-      tacticalOperator: "OPÉRATEUR TACTIQUE"
-    }
-  };
-
-  const t = translations[language as keyof typeof translations];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,6 +23,20 @@ const About = ({ language }: AboutProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const stats = [{
+    icon: <Clock className="w-5 h-5 text-mw-green mr-2" />,
+    value: "4+",
+    label: "Years Studied"
+  }, {
+    icon: <Target className="w-5 h-5 text-mw-green mr-2" />,
+    value: "10+",
+    label: "Projects Completed"
+  }, {
+    icon: <Shield className="w-5 h-5 text-mw-green mr-2" />,
+    value: "10+",
+    label: "Technologies"
+  }];
+
   return (
     <section id="about" className="relative py-24 overflow-hidden">
       {/* Mirror effect gradient at the top */}
@@ -101,25 +50,33 @@ const About = ({ language }: AboutProps) => {
             <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
               <span className="mw-badge mb-4">
                 <User className="w-3 h-3 mr-1" />
-                {t.aboutMe}
+                ABOUT ME
               </span>
-              <h2 className="mw-section-title text-white">{t.strategicProfile}</h2>
+              <h2 className="mw-section-title text-white">Strategic Profile</h2>
             </div>
             
             <div className={cn("space-y-4 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-              {t.paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              <p>
+                Student in networking and cybersecurity. I love every aspect of IT.
+                I'm hard-working and serious in the job I am asked to do.
+              </p>
+              <p>
+                My mission is to create efficient, reliable, and secure digital experiences
+                that exceed expectations. I combine technical expertise with strategic thinking
+                to achieve optimal results for every project.
+              </p>
+              <p>
+                When not in the working theater, I enjoy gaming, physical training,
+                and studying new technologies to expand my arsenal of skills.
+              </p>
             </div>
             
             <div className={cn("mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 transition-all duration-700 delay-300 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-              {t.stats.map((stat, index) => (
-                <div key={index} className="mw-card p-4 text-center">
+              {stats.map((stat, index) => <div key={index} className="mw-card p-4 text-center">
                   <div className="flex justify-center mb-2">{stat.icon}</div>
                   <div className="text-2xl font-bold text-white">{stat.value}</div>
                   <div className="text-sm text-mw-lightgray">{stat.label}</div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
           
@@ -131,8 +88,8 @@ const About = ({ language }: AboutProps) => {
                   <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-mw-darker bg-opacity-80">
                     <div className="text-center">
                       <User className="w-16 h-16 text-mw-green mx-auto mb-4 opacity-80" />
-                      <div className="text-sm uppercase tracking-wider text-mw-light">{t.profileImage}</div>
-                      <div className="mt-2 text-xs text-mw-lightgray">{t.tacticalOperator}</div>
+                      <div className="text-sm uppercase tracking-wider text-mw-light">PROFILE_IMAGE.jpg</div>
+                      <div className="mt-2 text-xs text-mw-lightgray">TACTICAL OPERATOR</div>
                     </div>
                   </div>
                 </div>
