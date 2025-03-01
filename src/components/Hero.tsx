@@ -3,9 +3,20 @@ import { useEffect, useState } from 'react';
 import { ArrowDown, ExternalLink, Target } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+// Define an interface for radar points
+interface RadarPoint {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  duration: number;
+}
+
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
   const [typedText, setTypedText] = useState('');
+  const [radarPoints, setRadarPoints] = useState<RadarPoint[]>([]);
   const fullText = "TACTICAL STUDENT";
   const typingSpeed = 100;
   
@@ -26,9 +37,53 @@ const Hero = () => {
       }
     }, typingSpeed);
     
+    // Generate random radar points every 1-3 seconds
+    const radarPointsInterval = setInterval(() => {
+      // Random angle and distance from center
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * 0.8; // Only up to 80% of radius to keep within circles
+      
+      // Convert to x,y coordinates (-1 to 1 range)
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance;
+      
+      // Random size and opacity
+      const size = Math.random() * 3 + 1; // 1-4px
+      const opacity = Math.random() * 0.4 + 0.4; // 0.4-0.8 opacity
+      
+      // Random duration for fading out (2-5 seconds)
+      const duration = Math.random() * 3000 + 2000;
+      
+      // Add new point
+      const newPoint: RadarPoint = {
+        id: Date.now(),
+        x,
+        y,
+        size,
+        opacity,
+        duration
+      };
+      
+      setRadarPoints(prevPoints => {
+        // Add new point and remove old ones (max 15 points)
+        const updatedPoints = [...prevPoints, newPoint];
+        if (updatedPoints.length > 15) {
+          return updatedPoints.slice(updatedPoints.length - 15);
+        }
+        return updatedPoints;
+      });
+      
+      // Remove the point after its duration expires
+      setTimeout(() => {
+        setRadarPoints(prevPoints => prevPoints.filter(p => p.id !== newPoint.id));
+      }, duration);
+      
+    }, Math.random() * 2000 + 1000); // Random interval between 1-3 seconds
+    
     return () => {
       clearTimeout(timer);
       clearInterval(typingInterval);
+      clearInterval(radarPointsInterval);
     };
   }, []);
   
@@ -47,11 +102,27 @@ const Hero = () => {
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
       <div className="absolute top-0 right-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-10 right-10 w-48 h-48 md:w-64 md:h-64 rounded-full border border-mw-green border-opacity-40 
-          flex items-center justify-center animate-radar-scan opacity-50">
+        <div className="absolute top-1/3 right-1/3 w-48 h-48 md:w-64 md:h-64 rounded-full border border-mw-green border-opacity-40 
+          flex items-center justify-center animate-radar-scan opacity-60">
           <div className="absolute w-3/4 h-3/4 rounded-full border border-mw-green border-opacity-50"></div>
           <div className="absolute w-1/2 h-1/2 rounded-full border border-mw-green border-opacity-60"></div>
           <div className="h-1/2 w-0.5 bg-mw-green bg-opacity-60 absolute top-0 right-1/2 transform origin-bottom animate-radar-scan"></div>
+          
+          {/* Radar points */}
+          {radarPoints.map(point => (
+            <div
+              key={point.id}
+              className="absolute bg-mw-green rounded-full animate-pulse"
+              style={{
+                width: `${point.size}px`,
+                height: `${point.size}px`,
+                top: `calc(50% + ${point.y * 50}%)`,
+                left: `calc(50% + ${point.x * 50}%)`,
+                opacity: point.opacity,
+                transition: `opacity ${point.duration}ms ease-out`
+              }}
+            />
+          ))}
         </div>
       </div>
       
