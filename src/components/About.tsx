@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -8,7 +9,6 @@ const About = () => {
       const element = document.getElementById('about');
       if (element) {
         const position = element.getBoundingClientRect();
-        // If the element is in the viewport
         if (position.top < window.innerHeight * 0.75) {
           setIsVisible(true);
         }
@@ -32,7 +32,8 @@ const About = () => {
     value: "10+",
     label: "Technologies"
   }];
-  return <section id="about" className="relative py-24 overflow-hidden">
+  return (
+    <section id="about" className="relative py-16 bg-mw-darker">
       <div className="absolute inset-0 opacity-30"></div>
       
       <div className="mw-container relative z-10">
@@ -105,6 +106,8 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default About;
