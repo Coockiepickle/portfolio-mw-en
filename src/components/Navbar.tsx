@@ -65,7 +65,7 @@ const Navbar = () => {
           <div className="flex items-center">
             
             <a href="#" className="flex items-center">
-              <span className="text-xl font-bold text-white tracking-wider">DAMIEN<span className="text-mw-green">·</span>REYNAUD<span className="text-mw-green">·</span>Portfolio</span>
+              <span className="text-xl font-bold text-white tracking-wider">Damien<span className="text-mw-green">·</span>Reynaud<span className="text-mw-green">·</span>Portfolio</span>
             </a>
           </div>
           
