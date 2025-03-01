@@ -34,10 +34,10 @@ const Experiences = () => {
   ];
 
   const recurringExperience = {
-    title: "Seasonal IT Assistant",
-    company: "Tech Support Solutions",
-    periods: ["June - Aug 2021", "Dec 2021 - Jan 2022", "June - Aug 2022", "Dec 2022 - Jan 2023"],
-    description: "Providing technical support during peak seasons. Hardware troubleshooting and software installations. Customer service and training for new users."
+    title: "Seasonal accrobranche operator",
+    company: "Tarz en arbre",
+    periods: ["June - Sept. 2021", "June - Sept. 2022", "July - Aug. 2023", "July - Aug 2024"],
+    description: "Helping and monitoring customers in the activities. Explaining security rules to groups of people. Selling tickets to the activity."
   };
 
   useEffect(() => {
