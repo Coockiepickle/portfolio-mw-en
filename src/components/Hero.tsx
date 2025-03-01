@@ -1,6 +1,11 @@
+
 import { useEffect, useState } from 'react';
 import { ArrowDown, ExternalLink, Target } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+interface HeroProps {
+  language: string;
+}
 
 interface RadarPoint {
   id: number;
@@ -15,12 +20,33 @@ interface SineWavePoint {
   y: number;
 }
 
-const Hero = () => {
+const Hero = ({ language }: HeroProps) => {
   const [loaded, setLoaded] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [radarPoints, setRadarPoints] = useState<RadarPoint[]>([]);
   const [sineWavePoints, setSineWavePoints] = useState<SineWavePoint[]>([]);
-  const fullText = "TACTICAL STUDENT";
+  
+  const translations = {
+    en: {
+      fullText: "TACTICAL STUDENT",
+      activeLearning: "LEARNING ACTIVATED",
+      viewProjects: "VIEW MY PROJECTS",
+      contactMe: "CONTACT ME",
+      scrollDown: "Scroll Down",
+      description: "Experienced network student with tactical precision and strategic approach. Specialized in creating sophisticated solutions for complex problems."
+    },
+    fr: {
+      fullText: "ÉTUDIANT TACTIQUE",
+      activeLearning: "APPRENTISSAGE ACTIVÉ",
+      viewProjects: "VOIR MES PROJETS",
+      contactMe: "ME CONTACTER",
+      scrollDown: "Défiler vers le bas",
+      description: "Étudiant en réseau expérimenté avec précision tactique et approche stratégique. Spécialisé dans la création de solutions sophistiquées pour des problèmes complexes."
+    }
+  };
+  
+  const t = translations[language as keyof typeof translations];
+  const fullText = t.fullText;
   const typingSpeed = 100;
   
   useEffect(() => {
@@ -81,7 +107,7 @@ const Hero = () => {
       clearInterval(typingInterval);
       clearInterval(sineWaveInterval);
     };
-  }, []);
+  }, [fullText]);
   
   const handleScrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -148,7 +174,7 @@ const Hero = () => {
           >
             <span className="mw-badge mb-4">
               <Target className="w-3 h-3 mr-1" />
-              LEARNING ACTIVATED
+              {t.activeLearning}
             </span>
           </div>
           
@@ -172,8 +198,7 @@ const Hero = () => {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
             )}
           >
-            Experienced network student with tactical precision and strategic approach.
-            Specialized in creating sophisticated solutions for complex problems.
+            {t.description}
           </p>
           
           <div 
@@ -186,13 +211,13 @@ const Hero = () => {
               onClick={() => handleScrollToSection('projects')} 
               className="mw-button-primary"
             >
-              VIEW MY PROJECTS
+              {t.viewProjects}
             </button>
             <button 
               onClick={() => handleScrollToSection('contact')} 
               className="mw-button"
             >
-              CONTACT ME
+              {t.contactMe}
             </button>
           </div>
         </div>
@@ -206,7 +231,7 @@ const Hero = () => {
         onClick={() => handleScrollToSection('about')}
       >
         <div className="flex flex-col items-center space-y-2">
-          <span className="text-xs uppercase tracking-wider text-mw-green">Scroll Down</span>
+          <span className="text-xs uppercase tracking-wider text-mw-green">{t.scrollDown}</span>
           <ArrowDown className="w-5 h-5 text-mw-green animate-bounce" />
         </div>
       </div>

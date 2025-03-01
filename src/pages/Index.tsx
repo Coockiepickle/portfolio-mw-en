@@ -13,16 +13,20 @@ import { Toaster } from "@/components/ui/toaster";
 const Index = () => {
   const [language, setLanguage] = useState("en");
 
+  const handleLanguageChange = (newLanguage: string) => {
+    setLanguage(newLanguage);
+  };
+
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar language={language} onLanguageChange={handleLanguageChange} />
       <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Achievements />
-        <Contact />
+        <Hero language={language} />
+        <About language={language} />
+        <Projects language={language} />
+        <Skills language={language} />
+        <Achievements language={language} />
+        <Contact language={language} />
       </main>
       <Footer />
       <Toaster />

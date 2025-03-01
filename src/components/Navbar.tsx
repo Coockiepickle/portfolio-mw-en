@@ -3,11 +3,15 @@ import { useState, useEffect } from 'react';
 import { User, Menu, X, Shield, Target, Briefcase, Award, Send, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const Navbar = () => {
+interface NavbarProps {
+  language: string;
+  onLanguageChange: (language: string) => void;
+}
+
+const Navbar = ({ language, onLanguageChange }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [language, setLanguage] = useState('en'); // 'en' for English, 'fr' for French
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +45,7 @@ const Navbar = () => {
   };
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'fr' : 'en');
+    onLanguageChange(language === 'en' ? 'fr' : 'en');
   };
 
   // Translated labels based on current language
