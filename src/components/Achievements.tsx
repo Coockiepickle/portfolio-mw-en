@@ -155,7 +155,17 @@ const Achievements = () => {
                   <h4 className="text-white mb-2">Continuous Improvement</h4>
                   <ul className="space-y-2">
                     {ongoingEducation.map((item, index) => (
-                      <li key={index} className="text-sm">{item}</li>
+                      <li 
+                        key={index} 
+                        className={cn(
+                          "flex items-start text-sm transition-all duration-700 ease-out transform",
+                          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+                          isVisible && { 'delay-150': index === 0, 'delay-300': index === 1, 'delay-450': index === 2 }
+                        )}
+                      >
+                        <Star className="w-5 h-5 text-mw-green mr-2 shrink-0" />
+                        <span>{item}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
