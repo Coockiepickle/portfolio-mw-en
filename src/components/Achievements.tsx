@@ -129,7 +129,6 @@ const Achievements = () => {
               <h3 className="text-lg font-medium text-white mb-6 pb-2 border-b border-mw-green border-opacity-20">
                 Certifications
               </h3>
-              <p>Currently pursuing advanced development methodologies</p>
               <ul className="space-y-4">
                 {certifications.map((cert, index) => (
                   <li 
@@ -154,6 +153,7 @@ const Achievements = () => {
               >
                 <div className="text-center">
                   <h4 className="text-white mb-2">Continuous Improvement</h4>
+                  <p>Currently pursuing advanced development methodologies</p>
                   <ul className="space-y-2">
                     {ongoingEducation.map((item, index) => (
                       <li 
