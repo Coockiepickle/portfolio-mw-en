@@ -26,7 +26,6 @@ const Projects = () => {
     title: "S.P.P. (Système de Pentesting Portatif)",
     description: "A standalone Raspberry Pi board for auditing and carrying out penetration tests on a network.",
     tags: ["RPi", "Debian", "Lynis", "ZPhisher", "PhishMailer", "VNC"],
-    image: "project1.jpg",
     links: {
       demo: "https://dreynaud.noho.st/grav",
       github: "#"
@@ -35,7 +34,6 @@ const Projects = () => {
     title: "Combat Mission Planner",
     description: "Interactive mission planning tool with real-time collaboration features.",
     tags: ["Node.js", "WebSockets", "Canvas API"],
-    image: "project2.jpg",
     links: {
       demo: "#",
       github: "#"
@@ -44,7 +42,6 @@ const Projects = () => {
     title: "RestoRate",
     description: "A Django website like TripAdvisor but for restaurants that I had to do during my College Studies in Québec.",
     tags: ["Python", "Django", "VS Code", "HTML"],
-    image: "project3.jpg",
     links: {
       demo: "#",
       github: "https://github.com/Coockiepickle/PIW_EXS"
@@ -53,7 +50,6 @@ const Projects = () => {
     title: "SerreConnectée",
     description: "A collection of scripts used to create a connected greenhouse with sensors and an Arduino board..",
     tags: ["C++", "Python", "Arduino"],
-    image: "project4.jpg",
     links: {
       demo: "#",
       github: "https://github.com/Coockiepickle/SerreConnectee"
@@ -90,18 +86,16 @@ const Projects = () => {
                 }
               )}
             >
-              <div className="relative aspect-video overflow-hidden">
-                <div className="absolute inset-0 bg-mw-darker flex items-center justify-center">
-                  <Code className="w-12 h-12 text-mw-green opacity-40 group-hover:opacity-70 transition-opacity duration-300" />
-                  <div className="absolute top-2 right-2 text-xs text-mw-lightgray">{`PROJECT_${index + 1}`}</div>
+              <div className="relative p-6 bg-mw-darker">
+                <div className="flex items-center justify-between mb-4">
+                  <Code className="w-8 h-8 text-mw-green opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="text-xs text-mw-lightgray">{`PROJECT_${index + 1}`}</div>
                 </div>
                 
-                <div className="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-mw-darker via-mw-darker/80 to-transparent">
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-mw-green transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-mw-light line-clamp-2">{project.description}</p>
-                </div>
+                <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-mw-green transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-mw-light mb-4">{project.description}</p>
                 
                 {/* Tactical UI elements */}
                 <div className="absolute top-0 left-0 w-16 h-px bg-mw-green group-hover:w-full transition-all duration-500"></div>
