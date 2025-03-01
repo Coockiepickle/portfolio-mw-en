@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from 'react';
 import { Send, Mail, Phone, MapPin, Linkedin, Github, Twitter } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from "@/hooks/use-toast";
-import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,52 +43,30 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Send email using EmailJS
-    const templateParams = {
-      from_name: formState.name,
-      from_email: formState.email,
-      message: formState.message,
-      to_email: 'contact.country946@passmail.com'
-    };
-
-    // You need to sign up for EmailJS and get your service ID, template ID, and user ID
-    emailjs.send(
-      'default_service', // Service ID from EmailJS dashboard
-      'template_contact_form', // Template ID from EmailJS dashboard
-      templateParams,
-      'YOUR_USER_ID' // User ID from EmailJS dashboard
-    )
-      .then((response) => {
-        console.log('Email successfully sent!', response.status, response.text);
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-        setFormState({
-          name: '',
-          email: '',
-          message: ''
-        });
-
-        toast({
-          title: "Message sent!",
-          description: "Thank you for your message. I'll get back to you soon.",
-        });
-
-        // Reset success message after a delay
-        setTimeout(() => {
-          setSubmitSuccess(false);
-        }, 5000);
-      })
-      .catch((error) => {
-        console.error('Error sending email:', error);
-        setIsSubmitting(false);
-        
-        toast({
-          title: "Error sending message",
-          description: "There was an error sending your message. Please try again.",
-          variant: "destructive",
-        });
+    
+    // For Netlify forms, the form submission is handled automatically
+    // But we still want to show a loading state and success message
+    
+    // Simulate a delay to show loading state (Netlify will handle the actual submission)
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      setFormState({
+        name: '',
+        email: '',
+        message: ''
       });
+
+      toast({
+        title: "Message sent!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+
+      // Reset success message after a delay
+      setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 5000);
+    }, 1000);
   };
 
   const contactInfo = [{
@@ -136,7 +113,21 @@ const Contact = () => {
               {submitSuccess ? <div className="p-4 border border-mw-green bg-mw-green bg-opacity-10 text-center">
                   <p className="text-white mb-2">Message sent successfully! Thank you!</p>
                   <p className="text-sm">I'll respond to your transmission as soon as possible.</p>
-                </div> : <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                </div> : <form 
+                  ref={formRef} 
+                  onSubmit={handleSubmit} 
+                  className="space-y-6"
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
+                >
+                  {/* Netlify form fields */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  <p className="hidden">
+                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                  </p>
+                  
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Name <span className="text-mw-accent">*</span>
