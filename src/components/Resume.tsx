@@ -55,13 +55,13 @@ const Resume = () => {
               <Card className="h-full bg-mw-dark border-mw-green/20">
                 <CardHeader>
                   <CardTitle className="text-white">Mon CV</CardTitle>
-                  <CardDescription className="text-mw-lightgray">Visualisez mon CV en format PDF</CardDescription>
+                  <CardDescription className="text-mw-lightgray">Visualisez mon CV</CardDescription>
                 </CardHeader>
                 <CardContent className="h-[650px]">
                   {/* PDF Embed - Now taller */}
                   <div className="w-full h-full rounded overflow-hidden">
                     <iframe 
-                      src="/sample-resume.pdf#toolbar=0" 
+                      src="/CV_Reynaud_Damien.pdf#toolbar=0" 
                       className="w-full h-full border-0"
                       title="CV PDF"
                     >
