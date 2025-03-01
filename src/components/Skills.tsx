@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Shield, Code, Database, Layout, Server, Globe, Cpu } from 'lucide-react';
+import { Shield, Code, Database, Layout, Server, Globe, Cpu, Terminal, Network, Lock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('skills');
@@ -18,6 +20,7 @@ const Skills = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const skillCategories = [{
     icon: <Server className="w-6 h-6 text-mw-green" />,
     title: "Operating systems",
@@ -35,7 +38,7 @@ const Skills = () => {
       level: 80
     }]
   }, {
-    icon: <Layout className="w-6 h-6 text-mw-green" />,
+    icon: <Network className="w-6 h-6 text-mw-green" />,
     title: "Networking",
     skills: [{
       name: "Cisco",
@@ -51,7 +54,7 @@ const Skills = () => {
       level: 70
     }]
   }, {
-    icon: <Shield className="w-6 h-6 text-mw-green" />,
+    icon: <Lock className="w-6 h-6 text-mw-green" />,
     title: "Cybersecurity",
     skills: [{
       name: "Fire-Wall",
@@ -67,7 +70,7 @@ const Skills = () => {
       level: 60
     }]
   }, {
-    icon: <Cpu className="w-6 h-6 text-mw-green" />,
+    icon: <Code className="w-6 h-6 text-mw-green" />,
     title: "Development",
     skills: [{
       name: "HTML",
@@ -99,6 +102,7 @@ const Skills = () => {
       level: 10
     }]
   }];
+
   return <section id="skills" className="relative py-24">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
@@ -153,4 +157,5 @@ const Skills = () => {
       </div>
     </section>;
 };
+
 export default Skills;
