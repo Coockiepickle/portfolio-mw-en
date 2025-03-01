@@ -35,16 +35,32 @@ const Skills = () => {
       level: 30
     }]
   }, {
+    icon: <Server className="w-6 h-6 text-mw-green" />,
+    title: "Networking",
+    skills: [{
+      name: "Cisco",
+      level: 70
+    }, {
+      name: "Routing and switching",
+      level: 65
+    }, {
+      name: "VLANs",
+      level: 70
+    }, {
+      name: "",
+      level: 30
+    }]
+  }, {
     icon: <Cpu className="w-6 h-6 text-mw-green" />,
     title: "Development",
     skills: [{
       name: "HTML",
       level: 75
     }, {
-      name: "TypeScript - Currently Learning...",
+      name: "TypeScript - Learning in Progress...",
       level: 30
     }, {
-      name: "Tailwind CSS - Currently Learning...",
+      name: "Tailwind CSS - Learning in Progress...",
       level: 25
     }, {
       name: "VS Code",
@@ -60,10 +76,10 @@ const Skills = () => {
       name: "English",
       level: 90
     }, {
-      name: "Japanese - Currently Learning...",
+      name: "Japanese - Learning in Progress...",
       level: 15
     }, {
-      name: "Spanish - Currently Learning...",
+      name: "Spanish - Learning in Progress...",
       level: 10
     }]
   }];
