@@ -19,22 +19,6 @@ const Skills = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const skillCategories = [{
-    icon: <Cpu className="w-6 h-6 text-mw-green" />,
-    title: "Frontend",
-    skills: [{
-      name: "React",
-      level: 90
-    }, {
-      name: "TypeScript",
-      level: 85
-    }, {
-      name: "CSS/SCSS",
-      level: 90
-    }, {
-      name: "Responsive Design",
-      level: 95
-    }]
-  }, {
     icon: <Server className="w-6 h-6 text-mw-green" />,
     title: "Operating systems",
     skills: [{
@@ -51,6 +35,22 @@ const Skills = () => {
       level: 30
     }]
   }, {
+    icon: <Cpu className="w-6 h-6 text-mw-green" />,
+    title: "Development",
+    skills: [{
+      name: "HTML",
+      level: 75
+    }, {
+      name: "TypeScript - Currently Learning...",
+      level: 30
+    }, {
+      name: "Tailwind CSS - Currently Learning...",
+      level: 25
+    }, {
+      name: "VS Code",
+      level: 85
+    }]
+  }, {
     icon: <Globe className="w-6 h-6 text-mw-green" />,
     title: "Languages",
     skills: [{
@@ -60,10 +60,10 @@ const Skills = () => {
       name: "English",
       level: 90
     }, {
-      name: "Japanese",
+      name: "Japanese - Currently Learning...",
       level: 15
     }, {
-      name: "Spanish",
+      name: "Spanish - Currently Learning...",
       level: 10
     }]
   }];
