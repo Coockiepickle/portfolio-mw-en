@@ -1,7 +1,7 @@
-
 import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import profileImage from '../assets/images/profile.jpg';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,14 +11,13 @@ const About = () => {
       const element = document.getElementById('about');
       if (element) {
         const position = element.getBoundingClientRect();
-        // If the element is in the viewport
         if (position.top < window.innerHeight * 0.75) {
           setIsVisible(true);
         }
       }
     };
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check on initial load
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -39,7 +38,6 @@ const About = () => {
 
   return (
     <section id="about" className="relative py-24 overflow-hidden">
-      {/* Mirror effect gradient at the top */}
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       
       <div className="absolute inset-0 opacity-30"></div>
@@ -82,15 +80,14 @@ const About = () => {
           
           <div className={cn("relative transition-all duration-700 delay-450 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8")}>
             <div className="aspect-square max-w-md mx-auto relative hover:shadow-xl hover:shadow-mw-green/20 transition-all duration-500 hover:-translate-y-2">
-              <div className="absolute inset-0 border border-mw-green border-opacity-20 p-4 hover:border-opacity-50 transition-all duration-500">
+              <div className="absolute inset-0 border border-mw-green border-opacity-20 p-4 hover:border-opacity-50 transition-all duration-500 group">
                 <div className="relative w-full h-full bg-mw-gray bg-opacity-50 overflow-hidden">
-                  {/* Profile image */}
                   <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-mw-darker bg-opacity-80">
                     <div className="text-center">
                       <img 
-                        src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e" 
+                        src={profileImage} 
                         alt="Profile Image" 
-                        className="w-24 h-24 object-cover rounded-md mx-auto mb-4 border border-mw-green/30"
+                        className="w-64 h-64 object-cover rounded-md mx-auto mb-4 border border-mw-green/30"
                       />
                       <div className="text-sm uppercase tracking-wider text-mw-light">PROFILE_IMAGE.jpg</div>
                       <div className="mt-2 text-xs text-mw-lightgray">TACTICAL OPERATOR</div>
@@ -99,14 +96,12 @@ const About = () => {
                 </div>
               </div>
               
-              {/* Decorative elements */}
-              <div className="absolute -top-2 -left-2 w-6 h-6 border-t border-l border-mw-green"></div>
-              <div className="absolute -top-2 -right-2 w-6 h-6 border-t border-r border-mw-green"></div>
-              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b border-l border-mw-green"></div>
-              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b border-r border-mw-green"></div>
+              <div className="absolute -top-2 -left-2 w-6 h-6 border-t border-l border-mw-green transition-all duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
+              <div className="absolute -top-2 -right-2 w-6 h-6 border-t border-r border-mw-green transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"></div>
+              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b border-l border-mw-green transition-all duration-300 group-hover:-translate-x-1 group-hover:translate-y-1"></div>
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b border-r border-mw-green transition-all duration-300 group-hover:translate-x-1 group-hover:translate-y-1"></div>
             </div>
             
-            {/* Tactical UI elements */}
             <div className="absolute top-4 right-4 w-8 h-8 border border-mw-green border-opacity-40 
               flex items-center justify-center animate-pulse-light">
               <div className="w-2 h-2 bg-mw-green rounded-full"></div>
