@@ -20,7 +20,7 @@ const Projects = () => {
   }, []);
   const projects = [{
     title: "S.P.P. (Système de Pentesting Portatif)",
-    description: "Une carte Raspberry Pi standalone pour auditer et réaliser des tests de pénétration sur un réseau.",
+    description: "A standalone Raspberry Pi board for auditing and carrying out penetration tests on a network.",
     tags: ["RPi", "Debian", "Lynis", "ZPhisher", "PhishMailer", "VNC"],
     image: "project1.jpg",
     links: {
@@ -47,7 +47,7 @@ const Projects = () => {
     }
   }, {
     title: "SerreConnectée",
-    description: "Une collection de plusieurs scripts utilisés pour créer une serre connectée avec des capteurs et une carte Arduino.",
+    description: "A collection of scripts used to create a connected greenhouse with sensors and an Arduino board..",
     tags: ["C++", "Python", "Arduino"],
     image: "project4.jpg",
     links: {
