@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Shield, Code, Database, Layout, Server, Globe, Cpu, Terminal, Network, Lock } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -121,15 +120,22 @@ const Skills = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, catIndex) => <div key={catIndex} className={cn("mw-card p-6 transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", isVisible && {
-          'delay-150': catIndex === 0,
-          'delay-300': catIndex === 1,
-          'delay-450': catIndex === 2,
-          'delay-600': catIndex === 3,
-          'delay-750': catIndex === 4
-        })}>
+          {skillCategories.map((category, catIndex) => <div 
+              key={catIndex} 
+              className={cn(
+                "mw-card p-6 transition-all duration-500 ease-out transform hover:shadow-lg hover:shadow-mw-green/20 hover:-translate-y-2 hover:border-mw-green/50",
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", 
+                isVisible && {
+                  'delay-150': catIndex === 0,
+                  'delay-300': catIndex === 1,
+                  'delay-450': catIndex === 2,
+                  'delay-600': catIndex === 3,
+                  'delay-750': catIndex === 4
+                }
+              )}
+            >
               <div className="flex items-center mb-6">
-                <div className="p-2 bg-mw-green bg-opacity-10 rounded-sm mr-3">
+                <div className="p-2 bg-mw-green bg-opacity-10 rounded-sm mr-3 group-hover:bg-opacity-30 transition-all duration-300">
                   {category.icon}
                 </div>
                 <h3 className="text-lg font-medium text-white">{category.title}</h3>
@@ -142,9 +148,12 @@ const Skills = () => {
                       <span className="text-xs text-mw-green">{skill.level}%</span>
                     </div>
                     <div className="progress-bar">
-                      <div className="progress-bar-fill transition-all duration-1000 ease-out" style={{
-                  width: isVisible ? `${skill.level}%` : '0%'
-                }}></div>
+                      <div 
+                        className="progress-bar-fill transition-all duration-1000 ease-out" 
+                        style={{
+                          width: isVisible ? `${skill.level}%` : '0%'
+                        }}
+                      ></div>
                     </div>
                   </div>)}
               </div>
