@@ -68,12 +68,6 @@ const Achievements = () => {
   
   return (
     <section id="achievements" className="relative py-24 bg-mw-darker">
-      {/* Mirror effect gradient at the top */}
-      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-dark to-transparent"></div>
-      
-      {/* Mirror effect gradient at the bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-dark to-transparent"></div>
-      
       <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
       
       <div className="mw-container relative z-10">

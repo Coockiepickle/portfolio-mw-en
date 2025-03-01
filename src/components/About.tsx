@@ -42,9 +42,6 @@ const About = () => {
       {/* Mirror effect gradient at the top */}
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       
-      {/* Mirror effect gradient at the bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-darker to-transparent"></div>
-      
       <div className="absolute inset-0 opacity-30"></div>
       
       <div className="mw-container relative z-10">

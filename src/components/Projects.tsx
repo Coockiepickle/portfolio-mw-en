@@ -1,11 +1,8 @@
-
 import { useEffect, useState } from 'react';
 import { Briefcase, Link2, Github, ExternalLink, Code } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('projects');
@@ -21,7 +18,6 @@ const Projects = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const projects = [{
     title: "S.P.P. (Système de Pentesting Portatif)",
     description: "Une carte Raspberry Pi standalone pour auditer et réaliser des tests de pénétration sur un réseau.",
@@ -59,15 +55,7 @@ const Projects = () => {
       github: "https://github.com/Coockiepickle/SerreConnectee"
     }
   }];
-
-  return (
-    <section id="projects" className="relative py-24 bg-mw-darker">
-      {/* Mirror effect gradient at the top */}
-      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-dark to-transparent"></div>
-      
-      {/* Mirror effect gradient at the bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-dark to-transparent"></div>
-      
+  return <section id="projects" className="relative py-24 bg-mw-darker">
       <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
       
       <div className="mw-container relative z-10">
@@ -124,9 +112,9 @@ const Projects = () => {
               </div>
             </div>)}
         </div>
+        
+        
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Projects;

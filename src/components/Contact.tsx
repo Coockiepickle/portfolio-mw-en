@@ -1,8 +1,6 @@
-
 import { useEffect, useState } from 'react';
 import { Send, Mail, Phone, MapPin, Linkedin, Github, Twitter } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [formState, setFormState] = useState({
@@ -12,7 +10,6 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('contact');
@@ -28,7 +25,6 @@ const Contact = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
       name,
@@ -39,7 +35,6 @@ const Contact = () => {
       [name]: value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -60,7 +55,6 @@ const Contact = () => {
       }, 5000);
     }, 1500);
   };
-
   const contactInfo = [{
     icon: <Mail className="w-5 h-5 text-mw-green" />,
     label: "Email",
@@ -72,7 +66,6 @@ const Contact = () => {
     label: "Location",
     value: "Nouvelle-Aquitaine, France"
   }];
-
   const socialLinks = [{
     icon: <Github className="w-5 h-5" />,
     url: "https://github.com/Coockiepickle",
@@ -82,15 +75,7 @@ const Contact = () => {
     url: "https://linkedin.com/in/dreynaud",
     label: "LinkedIn"
   }];
-
-  return (
-    <section id="contact" className="relative py-24">
-      {/* Mirror effect gradient at the top */}
-      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
-      
-      {/* Mirror effect gradient at the bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-darker to-transparent"></div>
-      
+  return <section id="contact" className="relative py-24">
       <div className="mw-container relative z-10">
         <div className={cn("text-center max-w-3xl mx-auto mb-16 transition-all duration-700 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8")}>
           <span className="mw-badge mb-4">
@@ -185,8 +170,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
