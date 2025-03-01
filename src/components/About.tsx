@@ -88,7 +88,7 @@ const About = () => {
                   <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-mw-darker bg-opacity-80">
                     <div className="text-center">
                       <img 
-                        src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e" 
+                        src="src/profile_image.jpg" 
                         alt="Profile Image" 
                         className="w-24 h-24 object-cover rounded-md mx-auto mb-4 border border-mw-green/30"
                       />
