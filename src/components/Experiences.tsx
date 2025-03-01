@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Briefcase, Calendar, Building2 } from 'lucide-react';
+import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Experiences = () => {
@@ -33,6 +33,13 @@ const Experiences = () => {
     }
   ];
 
+  const recurringExperience = {
+    title: "Seasonal IT Assistant",
+    company: "Tech Support Solutions",
+    periods: ["June - Aug 2021", "Dec 2021 - Jan 2022", "June - Aug 2022", "Dec 2022 - Jan 2023"],
+    description: "Providing technical support during peak seasons. Hardware troubleshooting and software installations. Customer service and training for new users."
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('experiences');
@@ -63,33 +70,66 @@ const Experiences = () => {
           <h2 className="mw-section-title text-white">Work experience</h2>
         </div>
         
-        <div className="mt-8">
-          <div className="relative border-l-2 border-mw-green border-opacity-30 pl-8 ml-4">
-            {experiences.map((exp, index) => (
-              <div 
-                key={index}
-                className={cn(
-                  "mb-12 relative transition-all duration-700 transform",
-                  isVisible ? `opacity-100 translate-y-0 delay-[${index * 150}ms]` : "opacity-0 translate-y-8"
-                )}
-              >
-                <div className="absolute -left-[41px] top-0 w-5 h-5 bg-mw-darker border-2 border-mw-green rounded-full"></div>
-                <div className="mw-card p-6 hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-                    <div className="flex items-center text-mw-lightgray text-sm mt-2 md:mt-0">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {exp.period}
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="col-span-1 md:col-span-2">
+            <div className="relative border-l-2 border-mw-green border-opacity-30 pl-8 ml-4">
+              {experiences.map((exp, index) => (
+                <div 
+                  key={index}
+                  className={cn(
+                    "mb-12 relative transition-all duration-700 transform",
+                    isVisible ? `opacity-100 translate-y-0 delay-[${index * 150}ms]` : "opacity-0 translate-y-8"
+                  )}
+                >
+                  <div className="absolute -left-[41px] top-0 w-5 h-5 bg-mw-darker border-2 border-mw-green rounded-full"></div>
+                  <div className="mw-card p-6 hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                      <h3 className="text-xl font-bold text-white">{exp.title}</h3>
+                      <div className="flex items-center text-mw-lightgray text-sm mt-2 md:mt-0">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        {exp.period}
+                      </div>
                     </div>
+                    <div className="flex items-center mb-4 text-mw-green">
+                      <Building2 className="w-4 h-4 mr-2" />
+                      <span>{exp.company}</span>
+                    </div>
+                    <p className="text-mw-light">{exp.description}</p>
                   </div>
-                  <div className="flex items-center mb-4 text-mw-green">
-                    <Building2 className="w-4 h-4 mr-2" />
-                    <span>{exp.company}</span>
-                  </div>
-                  <p className="text-mw-light">{exp.description}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="col-span-1">
+            <div 
+              className={cn(
+                "transition-all duration-700 transform",
+                isVisible ? "opacity-100 translate-x-0 delay-300" : "opacity-0 translate-x-8"
+              )}
+            >
+              <div className="mw-card p-6 border-mw-accent/30 hover:border-mw-accent/50 hover:shadow-mw-accent/30">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold text-white">{recurringExperience.title}</h3>
+                  <div className="bg-mw-accent/20 p-1.5 rounded-full">
+                    <RepeatIcon className="w-5 h-5 text-mw-accent" />
+                  </div>
+                </div>
+                <div className="flex items-center mb-4 text-mw-accent">
+                  <Building2 className="w-4 h-4 mr-2" />
+                  <span>{recurringExperience.company}</span>
+                </div>
+                <div className="mb-4">
+                  {recurringExperience.periods.map((period, idx) => (
+                    <div key={idx} className="flex items-center text-mw-lightgray text-sm mb-1.5">
+                      <Calendar className="w-3.5 h-3.5 mr-1.5 text-mw-accent/70" />
+                      {period}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-mw-light">{recurringExperience.description}</p>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
