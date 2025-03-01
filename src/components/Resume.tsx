@@ -66,7 +66,7 @@ const Resume = () => {
                       title="CV PDF"
                     >
                       Votre navigateur ne supporte pas l'affichage des PDFs. 
-                      <a href="/sample-resume.pdf" target="_blank" rel="noopener noreferrer" className="text-mw-green underline">
+                      <a href="/CV_Reynaud_Damien.pdf" target="_blank" rel="noopener noreferrer" className="text-mw-green underline">
                         Cliquez ici pour voir le CV
                       </a>
                     </iframe>
@@ -79,23 +79,19 @@ const Resume = () => {
             <div className="mw-card p-8 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
               <div className="text-center mb-6">
                 <h3 className="text-xl font-bold text-white mb-2">Télécharger mon CV</h3>
-                <p className="text-mw-lightgray">Téléchargez mon CV complet pour voir l'ensemble de mes compétences et expériences.</p>
+                <p className="text-mw-lightgray">Download my resume to see all my skills and experience.</p>
               </div>
               
               <div className="flex flex-col items-center justify-center h-[400px]">
                 <FileText className="w-24 h-24 text-mw-green/70 mb-6" />
-                <p className="text-mw-lightgray mb-8 text-center">
-                  Préférez-vous avoir une version hors ligne ? <br />
-                  Téléchargez mon CV complet au format PDF.
-                </p>
                 <a 
-                  href="/sample-resume.pdf" 
+                  href="/CV_Reynaud_Damien.pdf" 
                   className="mw-button-primary inline-flex items-center justify-center"
                   onClick={handleDownload}
                   download
                 >
                   <Download className="w-4 h-4 mr-2" />
-                  Télécharger mon CV
+                  Download my resume (.PDF)
                 </a>
               </div>
             </div>
