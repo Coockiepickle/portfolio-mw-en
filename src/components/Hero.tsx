@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { ArrowDown, ExternalLink, Target } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -41,15 +42,18 @@ const Hero = () => {
     
     const staticPoints: RadarPoint[] = [];
     
-    for (let i = 0; i < 15; i++) {
+    // Generate more points for better visibility
+    for (let i = 0; i < 20; i++) {
       const angle = Math.random() * Math.PI * 2;
       const distance = Math.random() * 0.8;
       
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
       
-      const size = Math.random() * 3 + 1;
-      const opacity = Math.random() * 0.4 + 0.4;
+      // Increase size range for better visibility
+      const size = Math.random() * 5 + 2;
+      // Increase base opacity for better visibility
+      const opacity = Math.random() * 0.5 + 0.5;
       
       staticPoints.push({
         id: i,
@@ -134,7 +138,7 @@ const Hero = () => {
       
       <div className="absolute top-0 right-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-1/3 right-[15%] w-48 h-48 md:w-64 md:h-64 rounded-full border border-mw-green border-opacity-40 
-          flex items-center justify-center opacity-60">
+          flex items-center justify-center opacity-80">
           <div className="absolute w-3/4 h-3/4 rounded-full border border-mw-green border-opacity-50"></div>
           <div className="absolute w-1/2 h-1/2 rounded-full border border-mw-green border-opacity-60"></div>
           <div className="h-1/2 w-0.5 bg-mw-green bg-opacity-60 absolute top-0 right-1/2 transform origin-bottom animate-radar-scan"></div>
@@ -142,7 +146,7 @@ const Hero = () => {
           {radarPoints.map(point => (
             <div
               key={point.id}
-              className="absolute bg-mw-green rounded-full transition-opacity duration-500"
+              className="absolute bg-mw-green rounded-full transition-opacity duration-500 shadow-[0_0_8px_#3f9987] animate-pulse-light"
               style={{
                 width: `${point.size}px`,
                 height: `${point.size}px`,
