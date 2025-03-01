@@ -29,8 +29,8 @@ const Resume = () => {
   const handleDownload = (e: React.MouseEvent) => {
     e.preventDefault();
     toast({
-      title: "Téléchargement du CV",
-      description: "Le téléchargement va commencer dans quelques instants",
+      title: "Resume downloading",
+      description: "Download will start in a few moments",
     });
     // Here you would add actual download functionality
   };
@@ -43,9 +43,9 @@ const Resume = () => {
         <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
           <span className="mw-badge mb-4">
             <FileText className="w-3 h-3 mr-1" />
-            CURRICULUM VITAE
+            RESUME
           </span>
-          <h2 className="mw-section-title text-white">Mon CV</h2>
+          <h2 className="mw-section-title text-white">My Curriculum Vitae</h2>
         </div>
         
         <div className={cn("mt-8 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
@@ -53,8 +53,7 @@ const Resume = () => {
             <div className="mw-card p-8 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 lg:col-span-2">
               <Card className="h-full bg-mw-dark border-mw-green/20">
                 <CardHeader>
-                  <CardTitle className="text-white">Mon CV</CardTitle>
-                  <CardDescription className="text-mw-lightgray">Visualisez mon CV</CardDescription>
+                  <CardTitle className="text-white">My resume</CardTitle>
                 </CardHeader>
                 <CardContent className="h-[650px]">
                   <div className="w-full h-full rounded overflow-hidden">
@@ -63,9 +62,9 @@ const Resume = () => {
                       className="w-full h-full border-0"
                       title="CV PDF"
                     >
-                      Votre navigateur ne supporte pas l'affichage des PDFs. 
+                      Your browser does not support PDF display. 
                       <a href="/CV_Reynaud_Damien.pdf" target="_blank" rel="noopener noreferrer" className="text-mw-green underline">
-                        Cliquez ici pour voir le CV
+                        Click here to see the CV
                       </a>
                     </iframe>
                   </div>
@@ -76,7 +75,7 @@ const Resume = () => {
             <div className="mw-card p-4 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 aspect-square flex items-center">
               <div className="w-full">
                 <div className="text-center mb-2">
-                  <h3 className="text-xl font-bold text-white mb-1">Télécharger mon CV</h3>
+                  <h3 className="text-xl font-bold text-white mb-1">Download my resume</h3>
                   <p className="text-mw-lightgray text-sm">Download my resume to see all my skills and experience.</p>
                 </div>
                 
