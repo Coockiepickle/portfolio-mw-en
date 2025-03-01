@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-sm text-mw-light">
-              &copy; {currentYear} Modern Warfare Portfolio. All rights reserved.
+              &copy; {currentYear} | All rights reserved.
             </p>
           </div>
           
