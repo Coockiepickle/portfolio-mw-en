@@ -8,6 +8,7 @@ interface RadarPoint {
   y: number;
   size: number;
   opacity: number;
+  visible: boolean;
 }
 
 interface SineWavePoint {
@@ -55,11 +56,26 @@ const Hero = () => {
         x,
         y,
         size,
-        opacity
+        opacity,
+        visible: true
       });
     }
     
     setRadarPoints(staticPoints);
+    
+    const pointsInterval = setInterval(() => {
+      setRadarPoints(prevPoints => 
+        prevPoints.map(point => {
+          if (Math.random() < 0.2) {
+            return {
+              ...point,
+              visible: !point.visible
+            };
+          }
+          return point;
+        })
+      );
+    }, 800);
     
     const generateSineWave = () => {
       const points: SineWavePoint[] = [];
@@ -79,6 +95,7 @@ const Hero = () => {
     return () => {
       clearTimeout(timer);
       clearInterval(typingInterval);
+      clearInterval(pointsInterval);
       clearInterval(sineWaveInterval);
     };
   }, []);
@@ -125,13 +142,13 @@ const Hero = () => {
           {radarPoints.map(point => (
             <div
               key={point.id}
-              className="absolute bg-mw-green rounded-full"
+              className="absolute bg-mw-green rounded-full transition-opacity duration-500"
               style={{
                 width: `${point.size}px`,
                 height: `${point.size}px`,
                 top: `calc(50% + ${point.y * 50}%)`,
                 left: `calc(50% + ${point.x * 50}%)`,
-                opacity: point.opacity
+                opacity: point.visible ? point.opacity : 0
               }}
             />
           ))}
