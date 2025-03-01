@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { ArrowDown, ExternalLink, Target } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -107,7 +106,7 @@ const Hero = () => {
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
       {/* Sine Wave Signal */}
-      <div className="absolute top-1/3 left-[15%] w-44 h-20 border border-mw-green border-opacity-40 bg-black bg-opacity-30 flex items-center justify-center overflow-hidden">
+      <div className="absolute top-[calc(1/3*100%+25px)] left-[15%] w-56 h-28 border border-mw-green border-opacity-40 bg-black bg-opacity-30 flex items-center justify-center overflow-hidden">
         <svg className="w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none">
           <polyline
             points={sineWavePoints.map(point => `${point.x},${point.y + 20}`).join(' ')}
