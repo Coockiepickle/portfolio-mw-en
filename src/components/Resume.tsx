@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { FileText, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -50,7 +49,6 @@ const Resume = () => {
         
         <div className={cn("mt-8 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* CV Preview Card - Now takes 2/3 of the space */}
             <div className="mw-card p-8 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 lg:col-span-2">
               <Card className="h-full bg-mw-dark border-mw-green/20">
                 <CardHeader>
@@ -58,7 +56,6 @@ const Resume = () => {
                   <CardDescription className="text-mw-lightgray">Visualisez mon CV</CardDescription>
                 </CardHeader>
                 <CardContent className="h-[650px]">
-                  {/* PDF Embed - Now taller */}
                   <div className="w-full h-full rounded overflow-hidden">
                     <iframe 
                       src="/CV_Reynaud_Damien.pdf#toolbar=0" 
@@ -75,15 +72,14 @@ const Resume = () => {
               </Card>
             </div>
             
-            {/* Download Card - Now takes 1/3 of the space */}
-            <div className="mw-card p-8 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
-              <div className="text-center mb-6">
+            <div className="mw-card p-6 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
+              <div className="text-center mb-4">
                 <h3 className="text-xl font-bold text-white mb-2">Télécharger mon CV</h3>
                 <p className="text-mw-lightgray">Download my resume to see all my skills and experience.</p>
               </div>
               
-              <div className="flex flex-col items-center justify-center h-[400px]">
-                <FileText className="w-24 h-24 text-mw-green/70 mb-6" />
+              <div className="flex flex-col items-center justify-center h-[300px]">
+                <FileText className="w-20 h-20 text-mw-green/70 mb-4" />
                 <a 
                   href="/CV_Reynaud_Damien.pdf" 
                   className="mw-button-primary inline-flex items-center justify-center"
