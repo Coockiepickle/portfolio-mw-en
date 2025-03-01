@@ -37,10 +37,10 @@ const Contact = () => {
   };
   
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    // Let Netlify handle the form submission
     setIsSubmitting(true);
     
-    // Simulate form submission
+    // We still want to show success message after submission
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
@@ -50,7 +50,7 @@ const Contact = () => {
       setTimeout(() => {
         setSubmitSuccess(false);
       }, 5000);
-    }, 1500);
+    }, 1000);
   };
   
   const contactInfo = [
@@ -100,7 +100,16 @@ const Contact = () => {
                   <p className="text-sm">I'll respond to your transmission as soon as possible.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form 
+                  name="contact" 
+                  method="POST" 
+                  data-netlify="true"
+                  onSubmit={handleSubmit}
+                  className="space-y-6"
+                >
+                  {/* Required hidden input for Netlify forms */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Name <span className="text-mw-accent">*</span>
