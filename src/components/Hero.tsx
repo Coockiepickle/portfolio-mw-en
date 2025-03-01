@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { ArrowDown, ExternalLink, Target } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -42,7 +41,6 @@ const Hero = () => {
     
     const staticPoints: RadarPoint[] = [];
     
-    // Generate more points for better visibility
     for (let i = 0; i < 20; i++) {
       const angle = Math.random() * Math.PI * 2;
       const distance = Math.random() * 0.8;
@@ -50,9 +48,7 @@ const Hero = () => {
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
       
-      // Increase size range for better visibility
       const size = Math.random() * 5 + 2;
-      // Increase base opacity for better visibility
       const opacity = Math.random() * 0.5 + 0.5;
       
       staticPoints.push({
@@ -118,7 +114,7 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex flex-col justify-center">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
-      <div className="absolute top-[calc(1/3*100%+25px)] left-[15%] w-56 h-28 border border-mw-green border-opacity-40 bg-black bg-opacity-30 flex items-center justify-center overflow-hidden">
+      <div className="absolute top-[calc(1/3*100%+25px)] left-[15%] w-56 h-28 border border-mw-green border-opacity-40 bg-black bg-opacity-30 flex items-center justify-center overflow-hidden hidden md:flex">
         <svg className="w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none">
           <polyline
             points={sineWavePoints.map(point => `${point.x},${point.y + 20}`).join(' ')}
@@ -136,7 +132,7 @@ const Hero = () => {
              }}></div>
       </div>
       
-      <div className="absolute top-0 right-0 w-full h-full overflow-hidden z-0">
+      <div className="absolute top-0 right-0 w-full h-full overflow-hidden z-0 hidden md:block">
         <div className="absolute top-1/3 right-[15%] w-48 h-48 md:w-64 md:h-64 rounded-full border border-mw-green border-opacity-40 
           flex items-center justify-center opacity-80">
           <div className="absolute w-3/4 h-3/4 rounded-full border border-mw-green border-opacity-50"></div>
