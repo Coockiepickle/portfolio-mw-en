@@ -120,8 +120,11 @@ const Hero = () => {
         {/* Horizontal centerline */}
         <div className="absolute w-full h-px bg-mw-green bg-opacity-30"></div>
         {/* Vertical scan line animation */}
-        <div className="absolute h-full w-px bg-mw-green bg-opacity-80 animate-[scan_3s_linear_infinite]" 
-             style={{left: '50%', animation: 'scan 3s linear infinite'}}></div>
+        <div className="absolute h-full w-px bg-mw-green bg-opacity-80" 
+             style={{
+               left: '50%',
+               animation: 'scan 3s linear infinite'
+             }}></div>
       </div>
       
       <div className="absolute top-0 right-0 w-full h-full overflow-hidden z-0">
@@ -223,12 +226,14 @@ const Hero = () => {
       
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-darker to-transparent"></div>
       
-      <style jsx>{`
-        @keyframes scan {
-          0% { transform: translateX(-50px); }
-          100% { transform: translateX(50px); }
-        }
-      `}</style>
+      <style>
+        {`
+          @keyframes scan {
+            0% { transform: translateX(-50px); }
+            100% { transform: translateX(50px); }
+          }
+        `}
+      </style>
     </section>
   );
 };
