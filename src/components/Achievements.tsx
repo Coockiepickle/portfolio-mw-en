@@ -153,7 +153,6 @@ const Achievements = () => {
               >
                 <div className="text-center">
                   <h4 className="text-white mb-2">Continuous Improvement</h4>
-                  <p>Currently pursuing advanced development methodologies</p>
                   <ul className="space-y-2">
                     {ongoingEducation.map((item, index) => (
                       <li 
