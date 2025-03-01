@@ -53,7 +53,7 @@ const Contact = () => {
           </span>
           <h2 className="mw-section-title text-white">Communication</h2>
           <p className="mt-4">
-            Have a project in mind? Contact me to discuss how we can work together
+            Have a project in mind? Want me to be a part of your company? Contact me to discuss how we can work together
             to achieve your objectives.
           </p>
         </div>
