@@ -32,11 +32,11 @@ const Hero = () => {
     };
   }, []);
   
-  const handleScrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
+  const handleScrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
       window.scrollTo({
-        top: aboutSection.offsetTop - 80,
+        top: section.offsetTop - 80,
         behavior: 'smooth'
       });
     }
@@ -49,7 +49,6 @@ const Hero = () => {
       <div className="absolute top-0 right-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-10 right-10 w-48 h-48 md:w-64 md:h-64 rounded-full border border-mw-green border-opacity-20 
           flex items-center justify-center animate-radar-scan opacity-20">
-          {/* Inner element with border-t and border-r removed */}
         </div>
       </div>
       
@@ -97,12 +96,18 @@ const Hero = () => {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
             )}
           >
-            <a href="#projects" className="mw-button-primary">
+            <button 
+              onClick={() => handleScrollToSection('projects')} 
+              className="mw-button-primary"
+            >
               VIEW MY PROJECTS
-            </a>
-            <a href="#contact" className="mw-button">
+            </button>
+            <button 
+              onClick={() => handleScrollToSection('contact')} 
+              className="mw-button"
+            >
               CONTACT ME
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -112,7 +117,7 @@ const Hero = () => {
           "absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer transition-all duration-700 delay-600 ease-out",
           loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         )}
-        onClick={handleScrollToAbout}
+        onClick={() => handleScrollToSection('about')}
       >
         <div className="flex flex-col items-center space-y-2">
           <span className="text-xs uppercase tracking-wider text-mw-green">Scroll Down</span>
