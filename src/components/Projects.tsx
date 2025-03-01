@@ -102,9 +102,7 @@ const Projects = () => {
                 </div>
                 
                 <div className="flex justify-end space-x-3">
-                  <a href={project.links.demo} className="p-2 text-mw-light hover:text-mw-green transition-colors" aria-label="View demo">
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
+                  
                   <a href={project.links.github} className="p-2 text-mw-light hover:text-mw-green transition-colors" aria-label="View code">
                     <Github className="w-5 h-5" />
                   </a>
