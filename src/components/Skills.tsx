@@ -66,7 +66,6 @@ const Skills = () => {
       name: "Spanish",
       level: 10
     }]
-  }]
   }];
   return <section id="skills" className="relative py-24">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
