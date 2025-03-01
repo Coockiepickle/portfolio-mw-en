@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { ArrowDown, ExternalLink, Target } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -11,10 +12,17 @@ interface RadarPoint {
   opacity: number;
 }
 
+// Define an interface for sine wave points
+interface SineWavePoint {
+  x: number;
+  y: number;
+}
+
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [radarPoints, setRadarPoints] = useState<RadarPoint[]>([]);
+  const [sineWavePoints, setSineWavePoints] = useState<SineWavePoint[]>([]);
   const fullText = "TACTICAL STUDENT";
   const typingSpeed = 100;
   
@@ -60,9 +68,27 @@ const Hero = () => {
     
     setRadarPoints(staticPoints);
     
+    // Generate sine wave points
+    const generateSineWave = () => {
+      const points: SineWavePoint[] = [];
+      const totalPoints = 50;
+      
+      for (let i = 0; i < totalPoints; i++) {
+        const x = i * (100 / totalPoints); // x position (0-100%)
+        const y = Math.sin((Date.now() / 500) + (i / 5)) * 10; // Sine wave calculation
+        points.push({ x, y });
+      }
+      
+      setSineWavePoints(points);
+    };
+    
+    // Start sine wave animation
+    const sineWaveInterval = setInterval(generateSineWave, 50); // Update every 50ms for smooth animation
+    
     return () => {
       clearTimeout(timer);
       clearInterval(typingInterval);
+      clearInterval(sineWaveInterval);
     };
   }, []);
   
@@ -79,6 +105,24 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
+      
+      {/* Sine Wave Signal */}
+      <div className="absolute top-1/3 left-[15%] w-44 h-20 border border-mw-green border-opacity-40 bg-black bg-opacity-30 flex items-center justify-center overflow-hidden">
+        <svg className="w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none">
+          <polyline
+            points={sineWavePoints.map(point => `${point.x},${point.y + 20}`).join(' ')}
+            fill="none"
+            stroke="#3f9987"
+            strokeWidth="1.5"
+            strokeOpacity="0.8"
+          />
+        </svg>
+        {/* Horizontal centerline */}
+        <div className="absolute w-full h-px bg-mw-green bg-opacity-30"></div>
+        {/* Vertical scan line animation */}
+        <div className="absolute h-full w-px bg-mw-green bg-opacity-80 animate-[scan_3s_linear_infinite]" 
+             style={{left: '50%', animation: 'scan 3s linear infinite'}}></div>
+      </div>
       
       <div className="absolute top-0 right-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-1/3 right-[15%] w-48 h-48 md:w-64 md:h-64 rounded-full border border-mw-green border-opacity-40 
@@ -178,6 +222,13 @@ const Hero = () => {
       </div>
       
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-darker to-transparent"></div>
+      
+      <style jsx>{`
+        @keyframes scan {
+          0% { transform: translateX(-50px); }
+          100% { transform: translateX(50px); }
+        }
+      `}</style>
     </section>
   );
 };
