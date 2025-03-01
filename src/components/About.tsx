@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import profileImage from '../assets/images/profile.jpg';
+import profileImage from '../assets/images/profile_image.webp';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
