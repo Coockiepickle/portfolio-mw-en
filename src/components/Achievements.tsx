@@ -99,12 +99,12 @@ const Achievements = () => {
                 <div 
                   key={index} 
                   className={cn(
-                    "mw-card flex p-5 transition-all duration-700 ease-out transform",
+                    "mw-card flex p-5 transition-all duration-500 ease-out transform hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50",
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
                     isVisible && { 'delay-150': index === 0, 'delay-300': index === 1, 'delay-450': index === 2, 'delay-600': index === 3 }
                   )}
                 >
-                  <div className="p-3 bg-mw-green bg-opacity-10 rounded-sm self-start mr-4">
+                  <div className="p-3 bg-mw-green bg-opacity-10 rounded-sm self-start mr-4 group-hover:bg-opacity-30 transition-all duration-300">
                     {achievement.icon}
                   </div>
                   <div>
@@ -125,7 +125,7 @@ const Achievements = () => {
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
             )}
           >
-            <div className="mw-card p-6">
+            <div className="mw-card p-6 hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
               <h3 className="text-lg font-medium text-white mb-6 pb-2 border-b border-mw-green border-opacity-20">
                 Certifications
               </h3>
@@ -134,7 +134,7 @@ const Achievements = () => {
                   <li 
                     key={index} 
                     className={cn(
-                      "flex items-start transition-all duration-700 ease-out transform",
+                      "flex items-start transition-all duration-700 ease-out transform hover:translate-x-1",
                       isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
                       isVisible && { 'delay-150': index === 0, 'delay-300': index === 1, 'delay-450': index === 2, 'delay-600': index === 3 }
                     )}
@@ -158,7 +158,7 @@ const Achievements = () => {
                       <li 
                         key={index} 
                         className={cn(
-                          "flex items-start text-sm transition-all duration-700 ease-out transform",
+                          "flex items-start text-sm transition-all duration-700 ease-out transform hover:translate-x-1",
                           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
                           isVisible && { 'delay-150': index === 0, 'delay-300': index === 1, 'delay-450': index === 2 }
                         )}

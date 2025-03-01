@@ -72,7 +72,7 @@ const About = () => {
             </div>
             
             <div className={cn("mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 transition-all duration-700 delay-300 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-              {stats.map((stat, index) => <div key={index} className="mw-card p-4 text-center">
+              {stats.map((stat, index) => <div key={index} className="mw-card p-4 text-center hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
                   <div className="flex justify-center mb-2">{stat.icon}</div>
                   <div className="text-2xl font-bold text-white">{stat.value}</div>
                   <div className="text-sm text-mw-lightgray">{stat.label}</div>
@@ -81,8 +81,8 @@ const About = () => {
           </div>
           
           <div className={cn("relative transition-all duration-700 delay-450 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8")}>
-            <div className="aspect-square max-w-md mx-auto relative">
-              <div className="absolute inset-0 border border-mw-green border-opacity-20 p-4">
+            <div className="aspect-square max-w-md mx-auto relative hover:shadow-xl hover:shadow-mw-green/20 transition-all duration-500 hover:-translate-y-2">
+              <div className="absolute inset-0 border border-mw-green border-opacity-20 p-4 hover:border-opacity-50 transition-all duration-500">
                 <div className="relative w-full h-full bg-mw-gray bg-opacity-50 overflow-hidden">
                   {/* Profile illustration/image placeholder */}
                   <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-mw-darker bg-opacity-80">

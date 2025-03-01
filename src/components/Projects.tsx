@@ -1,8 +1,11 @@
+
 import { useEffect, useState } from 'react';
 import { Briefcase, Link2, Github, ExternalLink, Code } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('projects');
@@ -18,6 +21,7 @@ const Projects = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const projects = [{
     title: "S.P.P. (Système de Pentesting Portatif)",
     description: "A standalone Raspberry Pi board for auditing and carrying out penetration tests on a network.",
@@ -55,7 +59,9 @@ const Projects = () => {
       github: "https://github.com/Coockiepickle/SerreConnectee"
     }
   }];
-  return <section id="projects" className="relative py-24 bg-mw-darker">
+
+  return (
+    <section id="projects" className="relative py-24 bg-mw-darker">
       <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
       
       <div className="mw-container relative z-10">
@@ -72,13 +78,21 @@ const Projects = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => <div key={index} className={cn("mw-card group transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", isVisible && {
-          'delay-150': index === 0 || index === 1,
-          'delay-300': index === 2 || index === 3
-        })}>
+          {projects.map((project, index) => (
+            <div 
+              key={index} 
+              className={cn(
+                "mw-card group transition-all duration-700 ease-out transform hover:scale-105 hover:shadow-xl hover:shadow-mw-green/30 hover:border-mw-green/50", 
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", 
+                isVisible && {
+                  'delay-150': index === 0 || index === 1,
+                  'delay-300': index === 2 || index === 3
+                }
+              )}
+            >
               <div className="relative aspect-video overflow-hidden">
                 <div className="absolute inset-0 bg-mw-darker flex items-center justify-center">
-                  <Code className="w-12 h-12 text-mw-green opacity-40" />
+                  <Code className="w-12 h-12 text-mw-green opacity-40 group-hover:opacity-70 transition-opacity duration-300" />
                   <div className="absolute top-2 right-2 text-xs text-mw-lightgray">{`PROJECT_${index + 1}`}</div>
                 </div>
                 
@@ -90,31 +104,45 @@ const Projects = () => {
                 </div>
                 
                 {/* Tactical UI elements */}
-                <div className="absolute top-0 left-0 w-16 h-px bg-mw-green"></div>
-                <div className="absolute top-0 left-0 w-px h-16 bg-mw-green"></div>
+                <div className="absolute top-0 left-0 w-16 h-px bg-mw-green group-hover:w-full transition-all duration-500"></div>
+                <div className="absolute top-0 left-0 w-px h-16 bg-mw-green group-hover:h-full transition-all duration-500"></div>
               </div>
               
               <div className="p-4 border-t border-mw-green border-opacity-20">
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => <span key={tagIndex} className="px-2 py-1 bg-mw-green bg-opacity-10 text-mw-green text-xs rounded-sm">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span 
+                      key={tagIndex} 
+                      className="px-2 py-1 bg-mw-green bg-opacity-10 text-mw-green text-xs rounded-sm transition-all duration-300 hover:bg-opacity-30 hover:shadow-sm hover:shadow-mw-green group-hover:border border-mw-green/50"
+                    >
                       {tag}
-                    </span>)}
+                    </span>
+                  ))}
                 </div>
                 
                 <div className="flex justify-end space-x-3">
-                  <a href={project.links.demo} className="p-2 text-mw-light hover:text-mw-green transition-colors" aria-label="View demo">
+                  <a 
+                    href={project.links.demo} 
+                    className="p-2 text-mw-light hover:text-mw-green transition-colors hover:scale-110 transform duration-300" 
+                    aria-label="View demo"
+                  >
                     <ExternalLink className="w-5 h-5" />
                   </a>
-                  <a href={project.links.github} className="p-2 text-mw-light hover:text-mw-green transition-colors" aria-label="View code">
+                  <a 
+                    href={project.links.github} 
+                    className="p-2 text-mw-light hover:text-mw-green transition-colors hover:scale-110 transform duration-300" 
+                    aria-label="View code"
+                  >
                     <Github className="w-5 h-5" />
                   </a>
                 </div>
               </div>
-            </div>)}
+            </div>
+          ))}
         </div>
-        
-        
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Projects;
