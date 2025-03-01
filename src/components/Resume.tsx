@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { FileText, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -54,57 +53,22 @@ const Resume = () => {
             <div className="mw-card p-8 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
               <Card className="h-full bg-mw-dark border-mw-green/20">
                 <CardHeader>
-                  <CardTitle className="text-white">Prévisualisation du CV</CardTitle>
-                  <CardDescription className="text-mw-lightgray">Consultez mon CV directement ici</CardDescription>
+                  <CardTitle className="text-white">Mon CV</CardTitle>
+                  <CardDescription className="text-mw-lightgray">Visualisez mon CV en format PDF</CardDescription>
                 </CardHeader>
-                <CardContent className="h-[500px] overflow-auto">
-                  <div className="space-y-6 text-mw-lightgray">
-                    {/* Formation */}
-                    <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Formation</h3>
-                      <div className="pl-4 border-l-2 border-mw-green/30 space-y-4">
-                        <div>
-                          <p className="text-white">Master en Informatique</p>
-                          <p className="text-sm">Université XYZ • 2018-2020</p>
-                          <p className="text-sm mt-1">Spécialisation en développement web et technologies modernes</p>
-                        </div>
-                        <div>
-                          <p className="text-white">Licence en Informatique</p>
-                          <p className="text-sm">Université ABC • 2015-2018</p>
-                          <p className="text-sm mt-1">Fondamentaux en programmation et théorie informatique</p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Expérience */}
-                    <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Expérience Professionnelle</h3>
-                      <div className="pl-4 border-l-2 border-mw-green/30 space-y-4">
-                        <div>
-                          <p className="text-white">Développeur Web Senior</p>
-                          <p className="text-sm">Entreprise Tech • 2020-Présent</p>
-                          <p className="text-sm mt-1">Développement d'applications web avec React, Node.js et technologies modernes</p>
-                        </div>
-                        <div>
-                          <p className="text-white">Développeur Frontend</p>
-                          <p className="text-sm">Startup Innovante • 2018-2020</p>
-                          <p className="text-sm mt-1">Création d'interfaces utilisateur réactives et accessibles</p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Compétences */}
-                    <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Compétences Techniques</h3>
-                      <div className="grid grid-cols-2 gap-2">
-                        <div className="bg-mw-darker p-2 rounded text-center">React</div>
-                        <div className="bg-mw-darker p-2 rounded text-center">TypeScript</div>
-                        <div className="bg-mw-darker p-2 rounded text-center">Node.js</div>
-                        <div className="bg-mw-darker p-2 rounded text-center">Tailwind CSS</div>
-                        <div className="bg-mw-darker p-2 rounded text-center">Git</div>
-                        <div className="bg-mw-darker p-2 rounded text-center">UI/UX Design</div>
-                      </div>
-                    </div>
+                <CardContent className="h-[500px]">
+                  {/* PDF Embed */}
+                  <div className="w-full h-full rounded overflow-hidden">
+                    <iframe 
+                      src="/sample-resume.pdf#toolbar=0" 
+                      className="w-full h-full border-0"
+                      title="CV PDF"
+                    >
+                      Votre navigateur ne supporte pas l'affichage des PDFs. 
+                      <a href="/sample-resume.pdf" target="_blank" rel="noopener noreferrer" className="text-mw-green underline">
+                        Cliquez ici pour voir le CV
+                      </a>
+                    </iframe>
                   </div>
                 </CardContent>
               </Card>
@@ -124,9 +88,10 @@ const Resume = () => {
                   Téléchargez mon CV complet au format PDF.
                 </p>
                 <a 
-                  href="#" 
+                  href="/sample-resume.pdf" 
                   className="mw-button-primary inline-flex items-center justify-center"
                   onClick={handleDownload}
+                  download
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Télécharger mon CV
