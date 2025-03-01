@@ -35,7 +35,7 @@ const Skills = () => {
       level: 80
     }]
   }, {
-    icon: <Server className="w-6 h-6 text-mw-green" />,
+    icon: <Switch className="w-6 h-6 text-mw-green" />,
     title: "Networking",
     skills: [{
       name: "Cisco",
