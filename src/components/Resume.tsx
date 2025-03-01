@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { FileText, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -48,16 +49,16 @@ const Resume = () => {
         </div>
         
         <div className={cn("mt-8 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* CV Preview Card */}
-            <div className="mw-card p-8 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* CV Preview Card - Now takes 2/3 of the space */}
+            <div className="mw-card p-8 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 lg:col-span-2">
               <Card className="h-full bg-mw-dark border-mw-green/20">
                 <CardHeader>
                   <CardTitle className="text-white">Mon CV</CardTitle>
                   <CardDescription className="text-mw-lightgray">Visualisez mon CV en format PDF</CardDescription>
                 </CardHeader>
-                <CardContent className="h-[500px]">
-                  {/* PDF Embed */}
+                <CardContent className="h-[650px]">
+                  {/* PDF Embed - Now taller */}
                   <div className="w-full h-full rounded overflow-hidden">
                     <iframe 
                       src="/sample-resume.pdf#toolbar=0" 
@@ -74,7 +75,7 @@ const Resume = () => {
               </Card>
             </div>
             
-            {/* Download Card */}
+            {/* Download Card - Now takes 1/3 of the space */}
             <div className="mw-card p-8 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
               <div className="text-center mb-6">
                 <h3 className="text-xl font-bold text-white mb-2">Télécharger mon CV</h3>
