@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
@@ -10,6 +11,8 @@ import Footer from "../components/Footer";
 import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
+  const [language, setLanguage] = useState("en");
+
   return (
     <div className="min-h-screen">
       <Navbar />
