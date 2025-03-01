@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { User, Menu, X, Shield, Target, Briefcase, Award, Send } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -70,7 +71,10 @@ const Navbar = () => {
     }
   ];
 
-  return <header className={cn("fixed top-0 left-0 w-full z-50 transition-all duration-300", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
+  return <header className={cn(
+    "fixed top-0 left-0 w-full z-50 transition-all duration-300", 
+    isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent"
+  )}>
       <div className="mw-container py-4 md:py-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -95,8 +99,7 @@ const Navbar = () => {
       
       <div className={cn(
         "md:hidden fixed inset-0 z-40 bg-mw-darker bg-opacity-95 backdrop-blur-md transition-all duration-300 ease-in-out transform",
-        isMenuOpen ? "translate-x-0" : "translate-x-full",
-        isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        isMenuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
       )}>
         <div className="flex flex-col h-full pt-20 px-6 space-y-6">
           {navLinks.map(link => <button key={link.id} onClick={() => scrollToSection(link.id)} className="flex items-center p-3 text-lg text-mw-light hover:text-white border-b border-mw-green border-opacity-20">
