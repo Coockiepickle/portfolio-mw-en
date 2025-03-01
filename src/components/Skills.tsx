@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { Shield, Code, Database, Layout, Server, Globe, Cpu, Terminal, Network, Lock } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -54,7 +55,7 @@ const Skills = () => {
       level: 70
     }]
   }, {
-    icon: <Lock className="w-6 h-6 text-mw-green" />,
+    icon: <Shield className="w-6 h-6 text-mw-green" />,
     title: "Cybersecurity",
     skills: [{
       name: "Fire-Wall",
