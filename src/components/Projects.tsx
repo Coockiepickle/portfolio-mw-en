@@ -19,12 +19,12 @@ const Projects = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const projects = [{
-    title: "Tactical UI Framework",
-    description: "A modern UI kit inspired by military interfaces, built with React and TypeScript.",
-    tags: ["React", "TypeScript", "SCSS"],
+    title: "S.P.P. (Système de Pentesting Portatif)",
+    description: "Une carte Raspberry Pi standalone pour auditer et réaliser des tests de pénétration sur un réseau.",
+    tags: ["RPi", "Debian", "Lynis", "ZPhisher", "PhishMailer", "VNC"],
     image: "project1.jpg",
     links: {
-      demo: "#",
+      demo: "https://dreynaud.noho.st/grav",
       github: "#"
     }
   }, {
@@ -37,22 +37,22 @@ const Projects = () => {
       github: "#"
     }
   }, {
-    title: "Arsenal Inventory System",
-    description: "Secure inventory management system with role-based access control.",
-    tags: ["MongoDB", "Express", "JWT"],
+    title: "RestoRate",
+    description: "A Django website like TripAdvisor but for restaurants that I had to do during my College Studies in Québec.",
+    tags: ["Python", "Django", "VS Code", "HTML"],
     image: "project3.jpg",
     links: {
       demo: "#",
-      github: "#"
+      github: "https://github.com/Coockiepickle/PIW_EXS"
     }
   }, {
-    title: "Target Acquisition App",
-    description: "Mobile application for precise measurement and data collection.",
-    tags: ["React Native", "Firebase", "Maps API"],
+    title: "SerreConnectée",
+    description: "Une collection de plusieurs scripts utilisés pour créer une serre connectée avec des capteurs et une carte Arduino.",
+    tags: ["C++", "Python", "Arduino"],
     image: "project4.jpg",
     links: {
       demo: "#",
-      github: "#"
+      github: "https://github.com/Coockiepickle/SerreConnectee"
     }
   }];
   return <section id="projects" className="relative py-24 bg-mw-darker">
@@ -66,7 +66,7 @@ const Projects = () => {
           </span>
           <h2 className="mw-section-title text-white">Mission Portfolio</h2>
           <p className="mt-4">
-            A collection of strategic projects that demonstrate my technical capabilities
+            A collection of projects that demonstrate my capabilities
             and problem-solving approach.
           </p>
         </div>
