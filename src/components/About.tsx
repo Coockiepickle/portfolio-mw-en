@@ -100,7 +100,7 @@ const About = () => {
                         <img 
                           src="src/profile_image.jpg" 
                           alt="Profile Image" 
-                          className="w-40 h-40 object-cover rounded-md border-2 border-mw-green/30 z-10 relative"
+                          className="w-64 h-64 object-cover rounded-md border-2 border-mw-green/30 z-10 relative hover:border-mw-green/70 transition-all duration-300"
                         />
                       </div>
                       <div className="text-sm uppercase tracking-wider text-mw-light mt-4">PROFILE_IMAGE.jpg</div>
