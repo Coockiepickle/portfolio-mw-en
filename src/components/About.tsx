@@ -1,8 +1,11 @@
+
 import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('about');
@@ -19,6 +22,7 @@ const About = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const stats = [{
     icon: <Clock className="w-5 h-5 text-mw-green mr-2" />,
     value: "4+",
@@ -32,7 +36,12 @@ const About = () => {
     value: "10+",
     label: "Technologies"
   }];
-  return <section id="about" className="relative py-24 overflow-hidden">
+
+  return (
+    <section id="about" className="relative py-24 overflow-hidden">
+      {/* Mirror effect gradient at the top */}
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
+      
       <div className="absolute inset-0 opacity-30"></div>
       
       <div className="mw-container relative z-10">
@@ -105,6 +114,8 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default About;

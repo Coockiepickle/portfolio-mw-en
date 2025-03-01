@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { ArrowDown, ExternalLink, Target } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// Define an interface for radar points
 interface RadarPoint {
   id: number;
   x: number;
@@ -11,7 +10,6 @@ interface RadarPoint {
   opacity: number;
 }
 
-// Define an interface for sine wave points
 interface SineWavePoint {
   x: number;
   y: number;
@@ -26,12 +24,10 @@ const Hero = () => {
   const typingSpeed = 100;
   
   useEffect(() => {
-    // Simulate loading for smoother animation
     const timer = setTimeout(() => {
       setLoaded(true);
     }, 500);
     
-    // Type effect
     let currentIndex = 0;
     const typingInterval = setInterval(() => {
       if (currentIndex < fullText.length) {
@@ -42,10 +38,8 @@ const Hero = () => {
       }
     }, typingSpeed);
     
-    // Generate static radar points
     const staticPoints: RadarPoint[] = [];
     
-    // Create 15 static points at random positions
     for (let i = 0; i < 15; i++) {
       const angle = Math.random() * Math.PI * 2;
       const distance = Math.random() * 0.8;
@@ -53,8 +47,8 @@ const Hero = () => {
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
       
-      const size = Math.random() * 3 + 1; // 1-4px
-      const opacity = Math.random() * 0.4 + 0.4; // 0.4-0.8 opacity
+      const size = Math.random() * 3 + 1;
+      const opacity = Math.random() * 0.4 + 0.4;
       
       staticPoints.push({
         id: i,
@@ -67,22 +61,20 @@ const Hero = () => {
     
     setRadarPoints(staticPoints);
     
-    // Generate sine wave points
     const generateSineWave = () => {
       const points: SineWavePoint[] = [];
       const totalPoints = 50;
       
       for (let i = 0; i < totalPoints; i++) {
-        const x = i * (100 / totalPoints); // x position (0-100%)
-        const y = Math.sin((Date.now() / 500) + (i / 5)) * 10; // Sine wave calculation
+        const x = i * (100 / totalPoints);
+        const y = Math.sin((Date.now() / 500) + (i / 5)) * 10;
         points.push({ x, y });
       }
       
       setSineWavePoints(points);
     };
     
-    // Start sine wave animation
-    const sineWaveInterval = setInterval(generateSineWave, 50); // Update every 50ms for smooth animation
+    const sineWaveInterval = setInterval(generateSineWave, 50);
     
     return () => {
       clearTimeout(timer);
@@ -105,7 +97,6 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex flex-col justify-center">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
-      {/* Sine Wave Signal */}
       <div className="absolute top-[calc(1/3*100%+25px)] left-[15%] w-56 h-28 border border-mw-green border-opacity-40 bg-black bg-opacity-30 flex items-center justify-center overflow-hidden">
         <svg className="w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none">
           <polyline
@@ -116,9 +107,7 @@ const Hero = () => {
             strokeOpacity="0.8"
           />
         </svg>
-        {/* Horizontal centerline */}
         <div className="absolute w-full h-px bg-mw-green bg-opacity-30"></div>
-        {/* Vertical scan line animation */}
         <div className="absolute h-full w-px bg-mw-green bg-opacity-80" 
              style={{
                left: '50%',
@@ -133,7 +122,6 @@ const Hero = () => {
           <div className="absolute w-1/2 h-1/2 rounded-full border border-mw-green border-opacity-60"></div>
           <div className="h-1/2 w-0.5 bg-mw-green bg-opacity-60 absolute top-0 right-1/2 transform origin-bottom animate-radar-scan"></div>
           
-          {/* Static Radar points */}
           {radarPoints.map(point => (
             <div
               key={point.id}
