@@ -1,7 +1,7 @@
 
 # Presentation
 
-This is a portfolio I did using lovable, it shows who I am, what are the courses I have taken, my personal and professional projects, a contact form and links to my social medias.
+This is a portfolio I did using lovable, it's heavily inspired by the UI of Modern Warfare games, it shows who I am, what are the courses I have taken, my personal and professional projects, a contact form and links to my social medias.
 
 
 ## Tech Stack
@@ -21,16 +21,22 @@ This is a portfolio I did using lovable, it shows who I am, what are the courses
 
 ## Acknowledgements
 
- - [The portfolio](https://dreynaud-mw.netlify.app)
+ - [The portfolio](https://dreynaud.netlify.app)
  - [Lovable Project](https://lovable.dev/projects/b5e03ae7-dd68-44ee-80f0-70d2630d6ba8)
- - [Netlify Overview page](https://app.netlify.com/sites/dreynaud-mw/overview)
+ - [Netlify Overview page](https://app.netlify.com/sites/dreynaud/overview)
  - [Typescript OpenClassroom Course](https://openclassrooms.com/fr/courses/8039116-decouvrez-typescript)
  - [Typescript Codecademy Course](https://www.codecademy.com/learn/learn-typescript)
 
 
 ## Roadmap
 
+- Put the badges above the titles
 
+- Get rid of the background under the scroll line
+
+- Put photos
+
+- Connect the form to netlify or other
 
 
 ## Deployment
