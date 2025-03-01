@@ -31,8 +31,8 @@ const Skills = () => {
       name: "Linux",
       level: 60
     }, {
-      name: "Apple",
-      level: 30
+      name: "Virtual Machine",
+      level: 80
     }]
   }, {
     icon: <Server className="w-6 h-6 text-mw-green" />,
@@ -41,14 +41,30 @@ const Skills = () => {
       name: "Cisco",
       level: 70
     }, {
-      name: "Routing and switching",
+      name: "Routing",
       level: 65
     }, {
-      name: "VLANs",
+      name: "Switching",
       level: 70
     }, {
-      name: "",
-      level: 30
+      name: "VLAN",
+      level: 70
+    }]
+  }, {
+    icon: <Shield className="w-6 h-6 text-mw-green" />,
+    title: "Cybersecurity",
+    skills: [{
+      name: "Fire-Wall",
+      level: 60
+    }, {
+      name: "VPN",
+      level: 50
+    }, {
+      name: "Security Audit - Learning in Progress...",
+      level: 55
+    }, {
+      name: "IDS/IPS - Learning in Progress...",
+      level: 60
     }]
   }, {
     icon: <Cpu className="w-6 h-6 text-mw-green" />,
