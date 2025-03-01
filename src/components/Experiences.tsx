@@ -8,22 +8,28 @@ const Experiences = () => {
   
   const experiences = [
     {
-      title: "Ingénieur Réseau",
-      company: "Entreprise ABC",
-      period: "2021 - Présent",
-      description: "Gestion et maintenance de l'infrastructure réseau. Mise en place de solutions de sécurité. Support technique N3."
+      title: "Systems and network administration trainee",
+      company: "MH Industries",
+      period: "Sept. - Present",
+      description: "Helping to improve and maintain the information system. Upgrading the network infrastructure. User technical support"
     },
     {
-      title: "Technicien Cybersécurité",
-      company: "Entreprise XYZ",
-      period: "2019 - 2021",
-      description: "Implémentation de mesures de sécurité. Analyse de vulnérabilités. Veille technologique et sécuritaire."
+      title: "Power Automate application development",
+      company: "Cégep de La Pocatière",
+      period: "March - May 2024",
+      description: "Implementation of an application to automate the completion of work placement agreements. Working as part of a team in project mode."
     },
     {
-      title: "Stage en Administration Systèmes",
-      company: "Entreprise DEF",
-      period: "2018 - 2019",
-      description: "Configuration de serveurs Windows et Linux. Gestion des sauvegardes. Maintenance du parc informatique."
+      title: "Trainee Network and Telecommunications Administrator",
+      company: "D.S.I. C.H.U. de Limoges",
+      period: "16 May - 24 June 2022, 2 Jan. - 10 Feb. 2023",
+      description: "Helping to improve and maintain the C.H.U.'s information system. Discover the new tools (software and hardware) needed to run a computer network."
+    },
+    {
+      title: "Observation internship",
+      company: "La Clinique Informatique",
+      period: "June - July 2019",
+      description: "Diagnose faulty computers and replace components components according to problems encountered. Contact with customers."
     }
   ];
 
@@ -52,9 +58,9 @@ const Experiences = () => {
         <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
           <span className="mw-badge mb-4">
             <Briefcase className="w-3 h-3 mr-1" />
-            PARCOURS
+            CAREER PATH
           </span>
-          <h2 className="mw-section-title text-white">Expériences Professionnelles</h2>
+          <h2 className="mw-section-title text-white">Work experience</h2>
         </div>
         
         <div className="mt-8">
