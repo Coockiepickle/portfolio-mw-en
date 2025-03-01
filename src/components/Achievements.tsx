@@ -59,6 +59,12 @@ const Achievements = () => {
     "Cisco Cybersecurity Fundamentals"
   ];
   
+  const ongoingEducation = [
+    "Currently pursuing advanced development methodologies",
+    "TypeScript Codecademy & OpenClassroom courses",
+    "Tailwind CSS Coursera course"
+  ];
+  
   return (
     <section id="achievements" className="relative py-24 bg-mw-darker">
       <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
@@ -147,9 +153,11 @@ const Achievements = () => {
               >
                 <div className="text-center">
                   <h4 className="text-white mb-2">Continuous Improvement</h4>
-                  <p className="text-sm">Currently pursuing advanced development methodologies</p>
-                  <p className="text-sm">TypeScript Codecademy & OpenClassroom courses</p>
-                  <p className="text-sm">Tailwind CSS Coursera course</p>
+                  <ul className="space-y-2">
+                    {ongoingEducation.map((item, index) => (
+                      <li key={index} className="text-sm">{item}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
