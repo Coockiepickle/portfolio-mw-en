@@ -1,6 +1,10 @@
-import { useEffect, useState } from 'react';
+
+import { useEffect, useState, useRef } from 'react';
 import { Send, Mail, Phone, MapPin, Linkedin, Github, Twitter } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useToast } from "@/hooks/use-toast";
+import emailjs from 'emailjs-com';
+
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [formState, setFormState] = useState({
@@ -10,6 +14,9 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const { toast } = useToast();
+
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('contact');
@@ -25,36 +32,66 @@ const Contact = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+    const { name, value } = e.target;
     setFormState(prev => ({
       ...prev,
       [name]: value
     }));
   };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormState({
-        name: '',
-        email: '',
-        message: ''
-      });
+    // Send email using EmailJS
+    const templateParams = {
+      from_name: formState.name,
+      from_email: formState.email,
+      message: formState.message,
+      to_email: 'contact.country946@passmail.com'
+    };
 
-      // Reset success message after a delay
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    }, 1500);
+    // You need to sign up for EmailJS and get your service ID, template ID, and user ID
+    emailjs.send(
+      'default_service', // Service ID from EmailJS dashboard
+      'template_contact_form', // Template ID from EmailJS dashboard
+      templateParams,
+      'YOUR_USER_ID' // User ID from EmailJS dashboard
+    )
+      .then((response) => {
+        console.log('Email successfully sent!', response.status, response.text);
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+        setFormState({
+          name: '',
+          email: '',
+          message: ''
+        });
+
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+
+        // Reset success message after a delay
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 5000);
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+        setIsSubmitting(false);
+        
+        toast({
+          title: "Error sending message",
+          description: "There was an error sending your message. Please try again.",
+          variant: "destructive",
+        });
+      });
   };
+
   const contactInfo = [{
     icon: <Mail className="w-5 h-5 text-mw-green" />,
     label: "Email",
@@ -66,6 +103,7 @@ const Contact = () => {
     label: "Location",
     value: "Nouvelle-Aquitaine, France"
   }];
+  
   const socialLinks = [{
     icon: <Github className="w-5 h-5" />,
     url: "https://github.com/Coockiepickle",
@@ -75,6 +113,7 @@ const Contact = () => {
     url: "https://linkedin.com/in/dreynaud",
     label: "LinkedIn"
   }];
+
   return <section id="contact" className="relative py-24">
       <div className="mw-container relative z-10">
         <div className={cn("text-center max-w-3xl mx-auto mb-16 transition-all duration-700 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8")}>
@@ -97,7 +136,7 @@ const Contact = () => {
               {submitSuccess ? <div className="p-4 border border-mw-green bg-mw-green bg-opacity-10 text-center">
                   <p className="text-white mb-2">Message sent successfully! Thank you!</p>
                   <p className="text-sm">I'll respond to your transmission as soon as possible.</p>
-                </div> : <form onSubmit={handleSubmit} className="space-y-6">
+                </div> : <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Name <span className="text-mw-accent">*</span>
@@ -172,4 +211,5 @@ const Contact = () => {
       </div>
     </section>;
 };
+
 export default Contact;

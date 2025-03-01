@@ -8,7 +8,16 @@ import Achievements from "../components/Achievements";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
+// Initialize EmailJS in the index component
+import { useEffect } from "react";
+import emailjs from 'emailjs-com';
+
 const Index = () => {
+  useEffect(() => {
+    // Initialize EmailJS with your User ID
+    emailjs.init("YOUR_USER_ID");
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navbar />
