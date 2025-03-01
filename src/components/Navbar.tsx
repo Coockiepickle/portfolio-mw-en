@@ -97,9 +97,10 @@ const Navbar = () => {
         </div>
       </div>
       
+      {/* Fixed position mobile menu that stays visible regardless of scroll position */}
       <div className={cn(
-        "md:hidden fixed inset-0 z-40 bg-mw-darker bg-opacity-95 backdrop-blur-md transition-all duration-300 ease-in-out transform",
-        isMenuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
+        "md:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out transform",
+        isMenuOpen ? "translate-x-0 opacity-100 visible bg-mw-darker bg-opacity-95 backdrop-blur-md" : "translate-x-full opacity-0 invisible"
       )}>
         <div className="flex flex-col h-full pt-20 px-6 space-y-6">
           {navLinks.map(link => <button key={link.id} onClick={() => scrollToSection(link.id)} className="flex items-center p-3 text-lg text-mw-light hover:text-white border-b border-mw-green border-opacity-20">
