@@ -19,7 +19,7 @@ const Skills = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const skillCategories = [{
-    icon: <Layout className="w-6 h-6 text-mw-green" />,
+    icon: <cpu className="w-6 h-6 text-mw-green" />,
     title: "Frontend",
     skills: [{
       name: "React",
@@ -36,68 +36,37 @@ const Skills = () => {
     }]
   }, {
     icon: <Server className="w-6 h-6 text-mw-green" />,
-    title: "Backend",
+    title: "Operating systems",
     skills: [{
-      name: "Node.js",
-      level: 80
-    }, {
-      name: "Express",
+      name: "Windows",
       level: 85
     }, {
-      name: "RESTful APIs",
-      level: 90
-    }, {
-      name: "GraphQL",
+      name: "Windows Server",
       level: 75
-    }]
-  }, {
-    icon: <Database className="w-6 h-6 text-mw-green" />,
-    title: "Database",
-    skills: [{
-      name: "MongoDB",
-      level: 85
     }, {
-      name: "PostgreSQL",
-      level: 80
+      name: "Linux",
+      level: 60
     }, {
-      name: "Firebase",
-      level: 85
-    }, {
-      name: "Redis",
-      level: 70
+      name: "Apple",
+      level: 30
     }]
   }, {
     icon: <Globe className="w-6 h-6 text-mw-green" />,
-    title: "DevOps",
+    title: "Languages",
     skills: [{
-      name: "Docker",
-      level: 75
+      name: "French",
+      level: 100
     }, {
-      name: "CI/CD",
-      level: 80
+      name: "English",
+      level: 90
     }, {
-      name: "AWS",
-      level: 70
+      name: "Japanese",
+      level: 15
     }, {
-      name: "Git/GitHub",
-      level: 95
+      name: "Spanish",
+      level: 10
     }]
-  }, {
-    icon: <Cpu className="w-6 h-6 text-mw-green" />,
-    title: "Tools",
-    skills: [{
-      name: "VS Code",
-      level: 95
-    }, {
-      name: "Figma",
-      level: 80
-    }, {
-      name: "Jest",
-      level: 85
-    }, {
-      name: "Webpack",
-      level: 75
-    }]
+  }]
   }];
   return <section id="skills" className="relative py-24">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
@@ -110,7 +79,7 @@ const Skills = () => {
           </span>
           <h2 className="mw-section-title text-white">Skills Loadout</h2>
           <p className="mt-4">
-            My arsenal of technical skills and tools, honed through years of strategic development
+            My arsenal of skills, honed through years of personal and professional development
             and tactical problem-solving.
           </p>
         </div>
