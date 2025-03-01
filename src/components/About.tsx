@@ -87,15 +87,15 @@ const About = () => {
                   {/* Profile image */}
                   <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-mw-darker bg-opacity-80">
                     <div className="text-center relative">
-                      <div className="relative inline-block">
-                        {/* Animated border effect */}
-                        <div className="absolute inset-0 border-2 border-mw-green/50 rounded-md animate-pulse-light"></div>
+                      <div className="relative inline-block group">
+                        {/* Static border effect instead of animated pulse */}
+                        <div className="absolute inset-0 border-2 border-mw-green/50 rounded-md"></div>
                         
-                        {/* Rotating border corners */}
-                        <div className="absolute -top-1 -left-1 w-5 h-5 border-t-2 border-l-2 border-mw-green rounded-tl-sm animate-[radar-scan_4s_linear_infinite]"></div>
-                        <div className="absolute -top-1 -right-1 w-5 h-5 border-t-2 border-r-2 border-mw-green rounded-tr-sm animate-[radar-scan_4s_linear_infinite_1s]"></div>
-                        <div className="absolute -bottom-1 -left-1 w-5 h-5 border-b-2 border-l-2 border-mw-green rounded-bl-sm animate-[radar-scan_4s_linear_infinite_2s]"></div>
-                        <div className="absolute -bottom-1 -right-1 w-5 h-5 border-b-2 border-r-2 border-mw-green rounded-br-sm animate-[radar-scan_4s_linear_infinite_3s]"></div>
+                        {/* Corner elements that move outward on hover */}
+                        <div className="absolute -top-1 -left-1 w-5 h-5 border-t-2 border-l-2 border-mw-green rounded-tl-sm transition-all duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
+                        <div className="absolute -top-1 -right-1 w-5 h-5 border-t-2 border-r-2 border-mw-green rounded-tr-sm transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"></div>
+                        <div className="absolute -bottom-1 -left-1 w-5 h-5 border-b-2 border-l-2 border-mw-green rounded-bl-sm transition-all duration-300 group-hover:-translate-x-1 group-hover:translate-y-1"></div>
+                        <div className="absolute -bottom-1 -right-1 w-5 h-5 border-b-2 border-r-2 border-mw-green rounded-br-sm transition-all duration-300 group-hover:translate-x-1 group-hover:translate-y-1"></div>
                         
                         <img 
                           src="src/profile_image.jpg" 
