@@ -100,7 +100,7 @@ const Contact = () => {
                   <p className="text-sm">I'll respond to your transmission as soon as possible.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6" netlify>
+                <form onSubmit={handleSubmit} className="space-y-6" data-netlify="true">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Name <span className="text-mw-accent">*</span>
