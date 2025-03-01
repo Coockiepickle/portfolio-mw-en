@@ -7,6 +7,7 @@ import Skills from "../components/Skills";
 import Achievements from "../components/Achievements";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   return (
@@ -21,6 +22,14 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
+      <Toaster />
+      
+      {/* Hidden form for Netlify to detect at build time */}
+      <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+      </form>
     </div>
   );
 };

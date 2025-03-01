@@ -44,29 +44,47 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // For Netlify forms, the form submission is handled automatically
-    // But we still want to show a loading state and success message
+    // With Netlify forms, we need to submit the form data via a fetch request 
+    // because we're using React and want to have a custom handling
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
     
-    // Simulate a delay to show loading state (Netlify will handle the actual submission)
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormState({
-        name: '',
-        email: '',
-        message: ''
-      });
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData as any).toString()
+    })
+      .then(() => {
+        // Handle success
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+        setFormState({
+          name: '',
+          email: '',
+          message: ''
+        });
 
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
 
-      // Reset success message after a delay
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    }, 1000);
+        // Reset success message after a delay
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 5000);
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("Form submission error:", error);
+        setIsSubmitting(false);
+        
+        toast({
+          title: "Error sending message",
+          description: "There was an error sending your message. Please try again.",
+          variant: "destructive",
+        });
+      });
   };
 
   const contactInfo = [{
@@ -121,6 +139,7 @@ const Contact = () => {
                   method="POST"
                   data-netlify="true"
                   netlify-honeypot="bot-field"
+                  action="/"
                 >
                   {/* Netlify form fields */}
                   <input type="hidden" name="form-name" value="contact" />
