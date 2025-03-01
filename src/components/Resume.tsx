@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { FileText, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -72,14 +73,14 @@ const Resume = () => {
               </Card>
             </div>
             
-            <div className="mw-card p-6 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
-              <div className="text-center mb-4">
-                <h3 className="text-xl font-bold text-white mb-2">Télécharger mon CV</h3>
-                <p className="text-mw-lightgray">Download my resume to see all my skills and experience.</p>
+            <div className="mw-card p-4 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 aspect-square">
+              <div className="text-center mb-2">
+                <h3 className="text-xl font-bold text-white mb-1">Télécharger mon CV</h3>
+                <p className="text-mw-lightgray text-sm">Download my resume to see all my skills and experience.</p>
               </div>
               
-              <div className="flex flex-col items-center justify-center h-[300px]">
-                <FileText className="w-20 h-20 text-mw-green/70 mb-4" />
+              <div className="flex flex-col items-center justify-center h-[calc(100%-5rem)]">
+                <FileText className="w-16 h-16 text-mw-green/70 mb-3" />
                 <a 
                   href="/CV_Reynaud_Damien.pdf" 
                   className="mw-button-primary inline-flex items-center justify-center"
