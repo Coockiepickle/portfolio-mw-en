@@ -60,9 +60,10 @@ const Achievements = () => {
   ];
   
   const ongoingEducation = [
-    "Currently pursuing advanced development methodologies",
-    "TypeScript Codecademy & OpenClassroom courses",
-    "Tailwind CSS Coursera course"
+    "TypeScript Codecademy course",
+    "TypeScript OpenClassroom course",
+    "Tailwind CSS Coursera course",
+    "T.O.E.I.C."
   ];
   
   return (
@@ -128,7 +129,7 @@ const Achievements = () => {
               <h3 className="text-lg font-medium text-white mb-6 pb-2 border-b border-mw-green border-opacity-20">
                 Certifications
               </h3>
-              
+              <p>Currently pursuing advanced development methodologies</p>
               <ul className="space-y-4">
                 {certifications.map((cert, index) => (
                   <li 
