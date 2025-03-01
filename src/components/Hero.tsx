@@ -47,11 +47,11 @@ const Hero = () => {
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
       <div className="absolute top-0 right-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-10 right-10 w-48 h-48 md:w-64 md:h-64 rounded-full border border-mw-green border-opacity-20 
-          flex items-center justify-center animate-radar-scan opacity-20">
-          <div className="absolute w-3/4 h-3/4 rounded-full border border-mw-green border-opacity-30"></div>
-          <div className="absolute w-1/2 h-1/2 rounded-full border border-mw-green border-opacity-40"></div>
-          <div className="h-full w-1 bg-mw-green bg-opacity-30 absolute top-0 transform origin-bottom animate-radar-scan"></div>
+        <div className="absolute top-10 right-10 w-48 h-48 md:w-64 md:h-64 rounded-full border border-mw-green border-opacity-40 
+          flex items-center justify-center animate-radar-scan opacity-50">
+          <div className="absolute w-3/4 h-3/4 rounded-full border border-mw-green border-opacity-50"></div>
+          <div className="absolute w-1/2 h-1/2 rounded-full border border-mw-green border-opacity-60"></div>
+          <div className="h-1/2 w-0.5 bg-mw-green bg-opacity-60 absolute top-0 right-1/2 transform origin-bottom animate-radar-scan"></div>
         </div>
       </div>
       
