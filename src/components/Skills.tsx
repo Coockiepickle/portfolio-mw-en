@@ -19,7 +19,7 @@ const Skills = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const skillCategories = [{
-    icon: <cpu className="w-6 h-6 text-mw-green" />,
+    icon: <Cpu className="w-6 h-6 text-mw-green" />,
     title: "Frontend",
     skills: [{
       name: "React",
