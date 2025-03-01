@@ -28,13 +28,13 @@ const Achievements = () => {
       icon: <Trophy className="w-6 h-6 text-mw-green" />,
       year: "2024-2025",
       title: "Bachelor A.I.S.",
-      description: "En attente de résultat..., Institution Beaupeyrat",
+      description: "Awaiting results..., Institution Beaupeyrat",
     },
     {
       icon: <Award className="w-6 h-6 text-mw-green" />,
       year: "2023-2024",
       title: "D.E.C. Techniques de l'informatique",
-      description: "Profil Réseau, Moyenne de 80% de réussite, Cégep de La Pocatière, Québec",
+      description: "Network channel, 80% success rate, Cégep of La Pocatière, Québec",
     },
     {
       icon: <Star className="w-6 h-6 text-mw-green" />,
