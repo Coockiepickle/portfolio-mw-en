@@ -86,13 +86,24 @@ const About = () => {
                 <div className="relative w-full h-full bg-mw-gray bg-opacity-50 overflow-hidden">
                   {/* Profile image */}
                   <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-mw-darker bg-opacity-80">
-                    <div className="text-center">
-                      <img 
-                        src="src/profile_image.jpg" 
-                        alt="Profile Image" 
-                        className="w-24 h-24 object-cover rounded-md mx-auto mb-4 border border-mw-green/30"
-                      />
-                      <div className="text-sm uppercase tracking-wider text-mw-light">PROFILE_IMAGE.jpg</div>
+                    <div className="text-center relative">
+                      <div className="relative inline-block">
+                        {/* Animated border effect */}
+                        <div className="absolute inset-0 border-2 border-mw-green/50 rounded-md animate-pulse-light"></div>
+                        
+                        {/* Rotating border corners */}
+                        <div className="absolute -top-1 -left-1 w-5 h-5 border-t-2 border-l-2 border-mw-green rounded-tl-sm animate-[radar-scan_4s_linear_infinite]"></div>
+                        <div className="absolute -top-1 -right-1 w-5 h-5 border-t-2 border-r-2 border-mw-green rounded-tr-sm animate-[radar-scan_4s_linear_infinite_1s]"></div>
+                        <div className="absolute -bottom-1 -left-1 w-5 h-5 border-b-2 border-l-2 border-mw-green rounded-bl-sm animate-[radar-scan_4s_linear_infinite_2s]"></div>
+                        <div className="absolute -bottom-1 -right-1 w-5 h-5 border-b-2 border-r-2 border-mw-green rounded-br-sm animate-[radar-scan_4s_linear_infinite_3s]"></div>
+                        
+                        <img 
+                          src="src/profile_image.jpg" 
+                          alt="Profile Image" 
+                          className="w-40 h-40 object-cover rounded-md border-2 border-mw-green/30 z-10 relative"
+                        />
+                      </div>
+                      <div className="text-sm uppercase tracking-wider text-mw-light mt-4">PROFILE_IMAGE.jpg</div>
                       <div className="mt-2 text-xs text-mw-lightgray">TACTICAL OPERATOR</div>
                     </div>
                   </div>
