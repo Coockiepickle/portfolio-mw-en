@@ -54,15 +54,14 @@ const Contact = () => {
   };
   
   const contactInfo = [
-    { icon: <Mail className="w-5 h-5 text-mw-green" />, label: "Email", value: "contact@modernwarrior.dev" },
-    { icon: <Phone className="w-5 h-5 text-mw-green" />, label: "Phone", value: "+1 (555) 123-4567" },
-    { icon: <MapPin className="w-5 h-5 text-mw-green" />, label: "Location", value: "San Francisco, CA" },
+    { icon: <Mail className="w-5 h-5 text-mw-green" />, label: "Email", value: "contact.country946@passmail.com" },
+    // { icon: <Phone className="w-5 h-5 text-mw-green" />, label: "Phone", value: "+1 (555) 123-4567" },
+    { icon: <MapPin className="w-5 h-5 text-mw-green" />, label: "Location", value: "Nouvelle-Aquitaine, France" },
   ];
   
   const socialLinks = [
-    { icon: <Github className="w-5 h-5" />, url: "#", label: "GitHub" },
-    { icon: <Linkedin className="w-5 h-5" />, url: "#", label: "LinkedIn" },
-    { icon: <Twitter className="w-5 h-5" />, url: "#", label: "Twitter" },
+    { icon: <Github className="w-5 h-5" />, url: "https://github.com/Coockiepickle", label: "GitHub" },
+    { icon: <Linkedin className="w-5 h-5" />, url: "https://linkedin.com/in/dreynaud", label: "LinkedIn" },
   ];
   
   return (
@@ -80,7 +79,7 @@ const Contact = () => {
           </span>
           <h2 className="mw-section-title text-white">Mission Communication</h2>
           <p className="mt-4">
-            Have a mission or project in mind? Contact me to discuss how we can work together
+            Have a project in mind? Contact me to discuss how we can work together
             to achieve your objectives.
           </p>
         </div>
