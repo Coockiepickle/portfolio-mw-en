@@ -2,13 +2,14 @@
 import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
 import CodeCracker from '../ui/CodeCracker';
-import { MapPin, Calendar } from 'lucide-react';
+import { MapPin, Calendar, Building } from 'lucide-react';
 
 interface AchievementItemProps {
   icon: ReactNode;
   year: string;
   title: string;
   description: string;
+  institution: string;
   code: string;
   location: string;
   isVisible: boolean;
@@ -23,6 +24,7 @@ const AchievementItem = ({
   year,
   title,
   description,
+  institution,
   code,
   location,
   isVisible,
@@ -92,7 +94,7 @@ const AchievementItem = ({
             />
           ) : title}
         </h3>
-        <p className="text-sm text-mw-light">
+        <div className="text-sm text-mw-light mb-1">
           {/* Apply CodeCracker to the description text */}
           {isHovering ? (
             <CodeCracker 
@@ -100,7 +102,16 @@ const AchievementItem = ({
               isDecoding={true}
             />
           ) : description}
-        </p>
+        </div>
+        <div className="flex items-center gap-1 text-sm text-mw-light">
+          <Building className="w-3 h-3 text-mw-green" />
+          {isHovering ? (
+            <CodeCracker 
+              text={institution}
+              isDecoding={true}
+            />
+          ) : institution}
+        </div>
       </div>
       
       {/* Radar ping effect on hover */}

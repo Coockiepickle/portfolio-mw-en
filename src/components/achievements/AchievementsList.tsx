@@ -27,6 +27,7 @@ const AchievementsList = ({ achievements, isVisible }: AchievementsListProps) =>
             year={achievement.year}
             title={achievement.title}
             description={achievement.description}
+            institution={achievement.institution}
             code={achievement.code}
             location={achievement.location}
             isVisible={isVisible}
