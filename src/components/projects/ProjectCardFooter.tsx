@@ -11,10 +11,10 @@ interface ProjectCardFooterProps {
 }
 
 const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
-  // Format the date from "2023-09" to "2023 - 09"
+  // Format the date from "2023-09" to "2023 / 09"
   const formatDate = (date: string) => {
     const [year, month] = date.split('-');
-    return `${year} - ${month}`;
+    return `${year} / ${month}`;
   };
 
   return (
