@@ -24,7 +24,7 @@ export const achievements: Achievement[] = [
     icon: <Award className="w-6 h-6 text-mw-green" />,
     year: "2023-2024",
     title: "D.E.C. Techniques de l'informatique",
-    description: "Network channel, 80% success rate, Cégep of La Pocatière, Québec",
+    description: "Network channel, 80% success rate, Cégep of La Pocatière",
     code: "INTEL_LEVEL: ADVANCED",
     location: "La Pocatière, Québec"
   },
