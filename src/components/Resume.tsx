@@ -37,7 +37,9 @@ const Resume = () => {
 
   return (
     <section id="resume" className="relative py-24 bg-mw-dark">
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-darker to-transparent"></div>
       
       <div className="mw-container relative z-10">
         <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
