@@ -1,14 +1,13 @@
-
 import { useState, useEffect } from 'react';
 import { FileText, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-
 const Resume = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('resume');
@@ -19,29 +18,22 @@ const Resume = () => {
         }
       }
     };
-    
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const handleDownload = (e: React.MouseEvent) => {
     e.preventDefault();
     toast({
       title: "Resume downloading",
-      description: "Download will start in a few moments",
+      description: "Download will start in a few moments"
     });
     // Here you would add actual download functionality
   };
-
-  return (
-    <section id="resume" className="relative py-24 bg-mw-dark">
-      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
+  return <section id="resume" className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-darker to-transparent"></div>
       
-      <div className="mw-container relative z-10">
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent">
         <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
           <span className="mw-badge mb-4">
             <FileText className="w-3 h-3 mr-1" />
@@ -59,11 +51,7 @@ const Resume = () => {
                 </CardHeader>
                 <CardContent className="h-[650px]">
                   <div className="w-full h-full rounded overflow-hidden">
-                    <iframe 
-                      src="/CV_Reynaud_Damien.pdf#toolbar=0" 
-                      className="w-full h-full border-0"
-                      title="CV PDF"
-                    >
+                    <iframe src="/CV_Reynaud_Damien.pdf#toolbar=0" className="w-full h-full border-0" title="CV PDF">
                       Your browser does not support PDF display. 
                       <a href="/CV_Reynaud_Damien.pdf" target="_blank" rel="noopener noreferrer" className="text-mw-green underline">
                         Click here to see the CV
@@ -83,12 +71,7 @@ const Resume = () => {
                 
                 <div className="flex flex-col items-center justify-center h-[calc(100%-5rem)]">
                   <FileText className="w-16 h-16 text-mw-green/70 mb-3" />
-                  <a 
-                    href="/CV_Reynaud_Damien.pdf" 
-                    className="mw-button-primary inline-flex items-center justify-center"
-                    onClick={handleDownload}
-                    download
-                  >
+                  <a href="/CV_Reynaud_Damien.pdf" className="mw-button-primary inline-flex items-center justify-center" onClick={handleDownload} download>
                     <Download className="w-4 h-4 mr-2" />
                     Download my resume (.PDF)
                   </a>
@@ -98,8 +81,6 @@ const Resume = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Resume;
