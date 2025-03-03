@@ -35,6 +35,7 @@ const AchievementsList = ({ achievements, isVisible }: AchievementsListProps) =>
             isHovering={hoveringCardIndex === index}
             onMouseEnter={() => setHoveringCardIndex(index)}
             onMouseLeave={() => setHoveringCardIndex(null)}
+            isLastCard={index === achievements.length - 1}
           />
         ))}
       </div>

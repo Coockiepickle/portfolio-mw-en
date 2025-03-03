@@ -2,7 +2,7 @@
 import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
 import CodeCracker from '../ui/CodeCracker';
-import { MapPin, Calendar, Building } from 'lucide-react';
+import { MapPin, Calendar, Building, Book } from 'lucide-react';
 
 interface AchievementItemProps {
   icon: ReactNode;
@@ -17,6 +17,7 @@ interface AchievementItemProps {
   isHovering: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  isLastCard?: boolean;
 }
 
 const AchievementItem = ({
@@ -31,7 +32,8 @@ const AchievementItem = ({
   index,
   isHovering,
   onMouseEnter,
-  onMouseLeave
+  onMouseLeave,
+  isLastCard = false
 }: AchievementItemProps) => {
   return (
     <div 
@@ -43,6 +45,12 @@ const AchievementItem = ({
         isVisible && { 'delay-150': index === 0, 'delay-300': index === 1, 'delay-450': index === 2, 'delay-600': index === 3 }
       )}
     >
+      {/* Tactical corners that move outward on hover */}
+      <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-mw-green/50 transition-all duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
+      <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-mw-green/50 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"></div>
+      <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-mw-green/50 transition-all duration-300 group-hover:-translate-x-1 group-hover:translate-y-1"></div>
+      <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-mw-green/50 transition-all duration-300 group-hover:translate-x-1 group-hover:translate-y-1"></div>
+      
       {/* Background scanlines effect on hover */}
       <div className="absolute inset-0 bg-repeat opacity-0 group-hover:opacity-10 transition-opacity duration-300"
         style={{
@@ -72,7 +80,11 @@ const AchievementItem = ({
       <div className="relative z-10">
         <div className="flex items-center gap-3 text-xs text-mw-green font-medium uppercase tracking-wider mb-1">
           <div className="flex items-center gap-1">
-            <Calendar className="w-3 h-3 text-mw-green" />
+            {isLastCard ? (
+              <Book className="w-3 h-3 text-mw-green" />
+            ) : (
+              <Calendar className="w-3 h-3 text-mw-green" />
+            )}
             <CodeCracker 
               text={year}
               isDecoding={isHovering}
