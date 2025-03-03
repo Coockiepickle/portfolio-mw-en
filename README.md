@@ -1,4 +1,4 @@
-c
+
 # Presentation
 
 This is a portfolio I did using lovable, it's heavily inspired by the UI of recent Modern Warfare games, it shows who I am, what are the courses I have taken, my personal and professional projects, my skills and links to my social medias.
@@ -37,6 +37,8 @@ This is a portfolio I did using lovable, it's heavily inspired by the UI of rece
 - [ ] Fix the menu background on mobile
 
 - [ ] Clone the entire portfolio to make a french version
+
+- [ ] Tarz en arbre card scroll triggers too early
 
 
 ## Deployment
