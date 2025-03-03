@@ -59,14 +59,6 @@ const Contact = () => {
             <div>
               <p className="text-mw-lightgray mb-6">I'm always open to discussing new projects, opportunities, or how we can work together.</p>
               
-              <a 
-                href="mailto:contact.country946@passmail.com" 
-                className="flex items-center p-3 bg-mw-darker rounded-sm border border-mw-green border-opacity-10 mb-4 hover:bg-mw-green/10 hover:border-mw-green/30 transition-all duration-300 group"
-              >
-                <Send className="w-4 h-4 text-mw-green mr-2 group-hover:scale-110 transition-transform" />
-                <p className="text-white group-hover:text-mw-green transition-colors">Send an email to initiate a conversation</p>
-              </a>
-              
               <div className="p-4 border border-dashed border-mw-green border-opacity-30 rounded-sm bg-mw-darker bg-opacity-50 text-center mb-6">
                 <a 
                   href="mailto:contact.country946@passmail.com" 
