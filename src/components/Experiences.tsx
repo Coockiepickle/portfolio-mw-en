@@ -63,7 +63,7 @@ const Experiences = () => {
       
       <div className="mw-container relative z-10">
         <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-center">
             <span className="mw-badge mb-4">
               <Briefcase className="w-3 h-3 mr-1" />
               CAREER PATH
