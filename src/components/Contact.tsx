@@ -54,7 +54,7 @@ const Contact = () => {
                 <a href="mailto:contact.country946@passmail.com" className="text-mw-green font-medium hover:underline transition-all">
                   contact.country946@passmail.com
                 </a>
-                <p className="text-mw-lightgray text-sm mt-2">Responses typically within 24-48 hours</p>
+                <p className="text-mw-lightgray text-sm mt-2">This e-mail address is a redirection to my real e-mail address, and I'll send it to you once I'm sure of your identity.</p>
               </div>
             </div>
             
