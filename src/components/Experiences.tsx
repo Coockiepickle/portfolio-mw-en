@@ -85,11 +85,13 @@ const Experiences = () => {
                 >
                   <div className="absolute -left-[41px] top-0 w-5 h-5 bg-mw-darker border-2 border-mw-green rounded-full"></div>
                   <div className="mw-card p-6 hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                    <div className="flex flex-col md:flex-row md:items-start justify-between mb-4">
                       <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-                      <div className="flex items-center text-mw-lightgray text-sm mt-2 md:mt-0">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {exp.period}
+                      <div className="flex flex-col text-mw-lightgray text-sm mt-2 md:mt-0">
+                        <div className="flex items-center mb-1">
+                          <Calendar className="w-4 h-4 mr-1" />
+                          {exp.period}
+                        </div>
                       </div>
                     </div>
                     <div className="flex items-center mb-4 text-mw-green">
