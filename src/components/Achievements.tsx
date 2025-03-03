@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Award, Star, Check, Calendar, Trophy } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -129,7 +128,14 @@ const Achievements = () => {
                   </div>
                   
                   <div className="p-3 bg-mw-green bg-opacity-10 rounded-sm self-start mr-4 group-hover:bg-opacity-30 transition-all duration-300 relative z-10">
-                    {achievement.icon}
+                    {/* Apply CodeCracker to the icon element */}
+                    {hoveringCardIndex === index ? (
+                      <div className="animate-tactical-blink">
+                        {achievement.icon}
+                      </div>
+                    ) : (
+                      achievement.icon
+                    )}
                   </div>
                   <div className="relative z-10">
                     <div className="text-xs text-mw-green font-medium uppercase tracking-wider mb-1">
@@ -146,7 +152,15 @@ const Achievements = () => {
                         />
                       ) : achievement.title}
                     </h3>
-                    <p className="text-sm text-mw-light">{achievement.description}</p>
+                    <p className="text-sm text-mw-light">
+                      {/* Apply CodeCracker to the description text */}
+                      {hoveringCardIndex === index ? (
+                        <CodeCracker 
+                          text={achievement.description}
+                          isDecoding={true}
+                        />
+                      ) : achievement.description}
+                    </p>
                   </div>
                   
                   {/* Radar ping effect on hover */}
