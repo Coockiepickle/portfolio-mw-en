@@ -1,11 +1,8 @@
-
 import { useEffect, useState } from 'react';
 import { Mail, MapPin, Linkedin, Github, Send } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('contact');
@@ -21,9 +18,7 @@ const Contact = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  return (
-    <section id="contact" className="relative py-24">
+  return <section id="contact" className="relative py-24">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
       <div className="mw-container relative z-10">
@@ -42,11 +37,7 @@ const Contact = () => {
         </div>
         
         {/* Skills-style contact card */}
-        <div className={cn(
-          "mw-card p-6 transition-all duration-500 ease-out transform hover:shadow-lg hover:shadow-mw-green/20 hover:-translate-y-2 hover:border-mw-green/50",
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", 
-          isVisible && 'delay-150'
-        )}>
+        <div className={cn("mw-card p-6 transition-all duration-500 ease-out transform hover:shadow-lg hover:shadow-mw-green/20 hover:-translate-y-2 hover:border-mw-green/50", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", isVisible && 'delay-150')}>
           <div className="flex items-center mb-6">
             <div className="p-2 bg-mw-green bg-opacity-10 rounded-sm mr-3 group-hover:bg-opacity-30 transition-all duration-300">
               <Send className="w-6 h-6 text-mw-green" />
@@ -58,10 +49,7 @@ const Contact = () => {
             {/* Contact Message */}
             <div>
               <p className="text-mw-lightgray mb-6">I'm always open to discussing new projects, opportunities, or how we can work together.</p>
-              <div className="flex items-center p-3 bg-mw-darker rounded-sm border border-mw-green border-opacity-10 mb-4">
-                <Send className="w-4 h-4 text-mw-green mr-2" />
-                <p className="text-white">Send an email to initiate a conversation</p>
-              </div>
+              
               <div className="p-4 border border-dashed border-mw-green border-opacity-30 rounded-sm bg-mw-darker bg-opacity-50 text-center mb-6">
                 <p className="text-mw-green font-medium">contact.country946@passmail.com</p>
                 <p className="text-mw-lightgray text-sm mt-2">Responses typically within 24-48 hours</p>
@@ -76,17 +64,11 @@ const Contact = () => {
                 <div className="h-0.5 bg-mw-green bg-opacity-10 w-1/3"></div>
               </div>
               <div className="flex justify-center space-x-4">
-                <a 
-                  href="https://github.com/Coockiepickle" 
-                  className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30"
-                >
+                <a href="https://github.com/Coockiepickle" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30">
                   <Github className="w-4 h-4 mr-2" />
                   GitHub
                 </a>
-                <a 
-                  href="https://linkedin.com/in/dreynaud" 
-                  className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30"
-                >
+                <a href="https://linkedin.com/in/dreynaud" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30">
                   <Linkedin className="w-4 h-4 mr-2" />
                   LinkedIn
                 </a>
@@ -104,8 +86,6 @@ const Contact = () => {
           <div className="absolute top-0 left-0 w-px h-16 group-hover:h-full transition-all duration-500 bg-mw-green"></div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
