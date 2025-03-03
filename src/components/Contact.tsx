@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import { Mail, MapPin, Linkedin, Github, Send, Copy, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const {
     toast
   } = useToast();
+
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('contact');
@@ -23,6 +25,7 @@ const Contact = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const copyToClipboard = () => {
     const email = 'contact-dreynaud.circular585@passmail.com';
     navigator.clipboard.writeText(email).then(() => {
@@ -41,6 +44,7 @@ const Contact = () => {
       console.error('Failed to copy: ', err);
     });
   };
+
   return <section id="contact" className="relative py-24">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
@@ -94,11 +98,11 @@ const Contact = () => {
                 <div className="h-0.5 bg-mw-green bg-opacity-10 w-1/3"></div>
               </div>
               <div className="flex justify-center space-x-4">
-                <a href="https://github.com/Coockiepickle" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30">
+                <a href="https://github.com/Coockiepickle" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30 font-tactical font-semibold tracking-wide">
                   <Github className="w-4 h-4 mr-2" />
                   GitHub
                 </a>
-                <a href="https://linkedin.com/in/dreynaud" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30">
+                <a href="https://linkedin.com/in/dreynaud" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30 font-tactical font-semibold tracking-wide">
                   <Linkedin className="w-4 h-4 mr-2" />
                   LinkedIn
                 </a>
@@ -118,4 +122,5 @@ const Contact = () => {
       </div>
     </section>;
 };
+
 export default Contact;
