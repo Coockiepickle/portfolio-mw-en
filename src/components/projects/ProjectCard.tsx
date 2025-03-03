@@ -11,7 +11,6 @@ export interface ProjectData {
   description: string;
   tags: string[];
   type: "professional" | "personal";
-  date: string; // Added date property
   links: {
     demo: string;
     github: string;
@@ -66,8 +65,7 @@ const ProjectCard = ({ project, index, isVisible, isDecoding }: ProjectCardProps
       <ProjectCardBody 
         project={project} 
         styles={styles} 
-        isDecoding={isDecoding}
-        index={index} // Pass index to ProjectCardBody
+        isDecoding={isDecoding} 
       />
       
       <ProjectCardFooter 

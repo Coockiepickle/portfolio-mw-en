@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -10,10 +11,9 @@ interface CodeCrackerProps {
   text: string;
   className?: string;
   isDecoding: boolean;
-  charDelay?: number; // Added optional charDelay prop
 }
 
-const CodeCracker = ({ text, className, isDecoding, charDelay }: CodeCrackerProps) => {
+const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
   const [displayText, setDisplayText] = useState(text);
   
   useEffect(() => {
@@ -28,7 +28,7 @@ const CodeCracker = ({ text, className, isDecoding, charDelay }: CodeCrackerProp
     // Fixed animation duration of 1.5 seconds (1500ms)
     const animationDuration = 1500;
     // Number of steps depends on the animation duration and interval delay
-    const intervalDelay = charDelay || 30; // Use provided charDelay or default to 30ms
+    const intervalDelay = 30; // 30ms between each step
     const totalIterations = animationDuration / intervalDelay;
     
     const interval = setInterval(() => {
@@ -54,7 +54,7 @@ const CodeCracker = ({ text, className, isDecoding, charDelay }: CodeCrackerProp
     }, intervalDelay);
     
     return () => clearInterval(interval);
-  }, [isDecoding, text, charDelay]);
+  }, [isDecoding, text]);
   
   return (
     <div className={cn("font-mono", className)}>
