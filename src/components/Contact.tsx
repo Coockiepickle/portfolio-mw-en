@@ -26,7 +26,7 @@ const Contact = () => {
   }, []);
 
   const copyToClipboard = () => {
-    const email = 'contact.country946@passmail.com';
+    const email = 'contact-dreynaud.circular585@passmail.com';
     navigator.clipboard.writeText(email)
       .then(() => {
         setIsCopied(true);
@@ -79,9 +79,9 @@ const Contact = () => {
               <p className="text-mw-lightgray mb-6">Have a project in mind? Want me to be a part of your company? Just send me an e-mail and I'll answer as fast as possible.</p>
               
               <div className="p-4 border border-dashed border-mw-green border-opacity-30 rounded-sm bg-mw-darker bg-opacity-50 mb-6">
-                <div className="flex items-center justify-between">
-                  <a href="mailto:contact.country946@passmail.com" className="text-mw-green font-medium hover:underline transition-all">
-                    contact.country946@passmail.com
+                <div className="flex items-center justify-center">
+                  <a href="mailto:contact-dreynaud.circular585@passmail.com" className="text-mw-green font-medium hover:underline transition-all">
+                    contact-dreynaud.circular585@passmail.com
                   </a>
                   <button 
                     onClick={copyToClipboard}
