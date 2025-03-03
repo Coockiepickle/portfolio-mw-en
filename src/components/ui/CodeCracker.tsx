@@ -24,7 +24,12 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
     
     let iteration = 0;
     const originalText = text;
-    const totalIterations = text.length * 3; // Multiplie par 3 pour plus d'effet
+    
+    // Fixed animation duration of 1.5 seconds (1500ms)
+    const animationDuration = 1500;
+    // Number of steps depends on the animation duration and interval delay
+    const intervalDelay = 30; // 30ms between each step
+    const totalIterations = animationDuration / intervalDelay;
     
     const interval = setInterval(() => {
       setDisplayText(prevText => {
@@ -46,7 +51,7 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
         clearInterval(interval);
         setDisplayText(originalText);
       }
-    }, 30);
+    }, intervalDelay);
     
     return () => clearInterval(interval);
   }, [isDecoding, text]);
