@@ -2,7 +2,7 @@
 import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
 import CodeCracker from '../ui/CodeCracker';
-import { MapPin } from 'lucide-react';
+import { MapPin, Calendar } from 'lucide-react';
 
 interface AchievementItemProps {
   icon: ReactNode;
@@ -69,10 +69,13 @@ const AchievementItem = ({
       </div>
       <div className="relative z-10">
         <div className="flex items-center gap-3 text-xs text-mw-green font-medium uppercase tracking-wider mb-1">
-          <CodeCracker 
-            text={year}
-            isDecoding={isHovering}
-          />
+          <div className="flex items-center gap-1">
+            <Calendar className="w-3 h-3 text-mw-green" />
+            <CodeCracker 
+              text={year}
+              isDecoding={isHovering}
+            />
+          </div>
           <div className="flex items-center gap-1">
             <MapPin className="w-3 h-3 text-mw-green" />
             <CodeCracker 
