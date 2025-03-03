@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { Briefcase, Link2, Github, ExternalLink, Code } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -7,12 +8,14 @@ const getRandomChar = () => {
   return chars.charAt(Math.floor(Math.random() * chars.length));
 };
 
-const CodeCracker = ({ text, className }: { text: string, className?: string }) => {
+const CodeCracker = ({ text, className, isDecoding }: { text: string, className?: string, isDecoding: boolean }) => {
   const [displayText, setDisplayText] = useState(text);
-  const [isDecoding, setIsDecoding] = useState(false);
   
   useEffect(() => {
-    if (!isDecoding) return;
+    if (!isDecoding) {
+      setDisplayText(text);
+      return;
+    }
     
     let iteration = 0;
     const originalText = text;
@@ -44,14 +47,7 @@ const CodeCracker = ({ text, className }: { text: string, className?: string }) 
   }, [isDecoding, text]);
   
   return (
-    <div 
-      className={cn("font-mono", className)}
-      onMouseEnter={() => setIsDecoding(true)}
-      onMouseLeave={() => {
-        setIsDecoding(false);
-        setDisplayText(text);
-      }}
-    >
+    <div className={cn("font-mono", className)}>
       {displayText}
     </div>
   );
@@ -59,6 +55,7 @@ const CodeCracker = ({ text, className }: { text: string, className?: string }) 
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [decodingCardIndex, setDecodingCardIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -139,6 +136,8 @@ const Projects = () => {
                   'delay-300': index === 2 || index === 3
                 }
               )}
+              onMouseEnter={() => setDecodingCardIndex(index)}
+              onMouseLeave={() => setDecodingCardIndex(null)}
             >
               <div className="relative p-6 bg-mw-darker">
                 <div className="flex items-center justify-between mb-4">
@@ -146,14 +145,21 @@ const Projects = () => {
                   <CodeCracker 
                     text={`PROJECT_${index + 1}`} 
                     className="text-xs text-mw-lightgray"
+                    isDecoding={decodingCardIndex === index}
                   />
                 </div>
                 
                 <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-mw-green transition-colors">
-                  <CodeCracker text={project.title} />
+                  <CodeCracker 
+                    text={project.title}
+                    isDecoding={decodingCardIndex === index}
+                  />
                 </h3>
                 <p className="text-sm text-mw-light mb-4">
-                  <CodeCracker text={project.description} />
+                  <CodeCracker 
+                    text={project.description}
+                    isDecoding={decodingCardIndex === index}
+                  />
                 </p>
                 
                 {/* Tactical UI elements */}
@@ -168,7 +174,10 @@ const Projects = () => {
                       key={tagIndex} 
                       className="px-2 py-1 bg-mw-green bg-opacity-10 text-mw-green text-xs rounded-sm transition-all duration-300 hover:bg-opacity-30 hover:shadow-sm hover:shadow-mw-green group-hover:border border-mw-green/50"
                     >
-                      <CodeCracker text={tag} />
+                      <CodeCracker 
+                        text={tag}
+                        isDecoding={decodingCardIndex === index}
+                      />
                     </span>
                   ))}
                 </div>
