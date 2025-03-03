@@ -40,14 +40,17 @@ const Skills = () => {
       
       // Start animation interval
       const startTime = Date.now();
-      const animationDuration = 1000; // 1 second
+      const animationDuration = 1000; // 1 second total duration
+      // Reduce number of updates by using a longer interval (200ms instead of 50ms)
+      const updateInterval = 200; // Less frequent updates to make it easier on the eyes
+      const totalUpdates = Math.floor(animationDuration / updateInterval);
+      let currentUpdate = 0;
       
       const animationInterval = setInterval(() => {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / animationDuration, 1);
+        currentUpdate++;
         
-        if (progress < 1) {
-          // During animation, update with random values
+        if (currentUpdate < totalUpdates) {
+          // During animation, update with random values less frequently
           const newRandomValues: {[key: string]: number} = {};
           skillCategories[catIndex].skills.forEach((skill, skillIndex) => {
             const skillKey = `${catIndex}-${skillIndex}`;
@@ -59,7 +62,7 @@ const Skills = () => {
           clearInterval(animationInterval);
           setAnimationComplete(true);
         }
-      }, 50); // Update every 50ms for smoother animation
+      }, updateInterval);
       
       return () => clearInterval(animationInterval);
     }
