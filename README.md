@@ -36,7 +36,7 @@ This is a portfolio I did using lovable, it's heavily inspired by the UI of rece
 | ------------- | ------------- | ------------- | ------------- |
 | Put the badges above the titles | Je veux que tous les badges gardent leur taille actuelle mais soient situés au dessus des titres | #139 | Done |
 | Fix the background menu on mobile | On mobile, the menu only has a background if I'm at the home section, anywhere else, the background is trensparent, fix it | ### | To do |
-| Clone the entire portfolio to make a french version | N/A | N/A | To do |
+| Clone the entire portfolio to make a french version | I want a button that stays at the right bottom of the screen saying "FR" with a globe icon next to it, I want it to redirect to "https://dreynaud-fr.netlify.app" | ### | To do |
 | Tarz en arbre card scroll triggers too early | The card scroll triggers too soon | ### | To do |
 | Add a glitching "No github/link for this project" effect on click for projects | For projects where the links say "No Link", display a message with a glitching effect saying "No github/demo for this project" depending on the button | ### | To do |
 | Add a button to show more projects | Add a button under the cards to display more projects, I also want the button to say "Hide projects" and hide the last projects after it's clicked again | ### | To do |
