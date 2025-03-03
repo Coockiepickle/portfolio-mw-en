@@ -1,5 +1,5 @@
 
-import { ProjectData } from '../components/ProjectCard';
+import { ProjectData } from '../components/projects/ProjectCard';
 
 export const projectsData: ProjectData[] = [{
   title: "S.P.P. (Système de Pentesting Portatif)",
