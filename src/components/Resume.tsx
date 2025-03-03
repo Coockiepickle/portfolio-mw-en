@@ -36,7 +36,7 @@ const Resume = () => {
   };
 
   return (
-    <section id="resume" className="relative py-24 overflow-hidden">
+    <section id="resume" className="relative py-24 bg-mw-dark">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
       <div className="mw-container relative z-10">
