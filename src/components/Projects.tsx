@@ -1,13 +1,12 @@
 
 import { useEffect, useState } from 'react';
-import { Briefcase } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import ProjectCard from './ProjectCard';
 import { projectsData } from '../data/projects';
+import ProjectsHeader from './projects/ProjectsHeader';
+import ProjectGrid from './projects/ProjectGrid';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [decodingCardIndex, setDecodingCardIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,46 +29,8 @@ const Projects = () => {
       <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
       
       <div className="mw-container relative z-10">
-        <div className={cn("text-center max-w-3xl mx-auto mb-16 transition-all duration-700 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8")}>
-          <span className="mw-badge mb-4">
-            <Briefcase className="w-3 h-3 mr-1" />
-            MY WORK
-          </span>
-          <h2 className="mw-section-title text-white">Mission Portfolio</h2>
-          <p className="mt-4">
-            A collection of projects that demonstrate my capabilities
-            and problem-solving approach.
-          </p>
-          
-          <div className="flex justify-center items-center mt-6 gap-6">
-            <div className="flex items-center">
-              <div className="w-3 h-3 rounded-full bg-[#9b87f5] mr-2"></div>
-              <span className="text-sm text-mw-light">Professional</span>
-            </div>
-            <div className="flex items-center">
-              <div className="w-3 h-3 rounded-full bg-mw-green mr-2"></div>
-              <span className="text-sm text-mw-light">Personal</span>
-            </div>
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projectsData.map((project, index) => (
-            <div 
-              key={index}
-              onMouseEnter={() => setDecodingCardIndex(index)}
-              onMouseLeave={() => setDecodingCardIndex(null)}
-              className="h-full"
-            >
-              <ProjectCard 
-                project={project}
-                index={index}
-                isVisible={isVisible}
-                isDecoding={decodingCardIndex === index}
-              />
-            </div>
-          ))}
-        </div>
+        <ProjectsHeader isVisible={isVisible} />
+        <ProjectGrid projects={projectsData} isVisible={isVisible} />
       </div>
     </section>
   );
