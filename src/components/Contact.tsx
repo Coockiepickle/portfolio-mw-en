@@ -61,20 +61,22 @@ const Contact = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Contact Information Card */}
-          <div className={cn("transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-            <Card className="bg-mw-gray border border-mw-green border-opacity-20 hover:shadow-xl hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 h-full">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-white text-xl">Contact Information</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
+        {/* Single Unified Contact Card */}
+        <div className={cn("transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-y-8")}>
+          <Card className="bg-mw-gray border border-mw-green border-opacity-20 hover:shadow-xl hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-white text-xl">Get in Touch</CardTitle>
+            </CardHeader>
+            <CardContent className="grid md:grid-cols-2 gap-8">
+              {/* Left Section (Contact Information) */}
+              <div className="space-y-6">
+                <div className={cn("transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")}>
+                  <h3 className="text-white text-lg mb-4 pb-2 border-b border-mw-green border-opacity-20">Contact Information</h3>
                   {contactInfo.map((item, index) => (
                     <div 
                       key={index} 
                       className={cn(
-                        "flex items-start transition-all duration-700 ease-out transform hover:translate-x-1", 
+                        "flex items-start transition-all duration-700 ease-out transform hover:translate-x-1 mb-6", 
                         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4", 
                         isVisible && {
                           "delay-150": index === 0,
@@ -92,43 +94,38 @@ const Contact = () => {
                     </div>
                   ))}
                 </div>
-              </CardContent>
-              <CardFooter className="pt-4 flex-col items-start">
-                <h4 className="text-sm font-medium uppercase tracking-wider mb-4 pb-2 border-b border-mw-green border-opacity-20 w-full">
-                  Connect With Me
-                </h4>
                 
-                <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => (
-                    <a 
-                      key={index} 
-                      href={social.url} 
-                      className={cn(
-                        "p-3 bg-mw-darker hover:bg-mw-green hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-light hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30", 
-                        "transition-all duration-700 ease-out transform", 
-                        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4", 
-                        isVisible && {
-                          "delay-600": index === 0,
-                          "delay-700": index === 1
-                        }
-                      )} 
-                      aria-label={social.label}
-                    >
-                      {social.icon}
-                    </a>
-                  ))}
+                <div className={cn("transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4", "delay-400")}>
+                  <h4 className="text-sm font-medium uppercase tracking-wider mb-4 pb-2 border-b border-mw-green border-opacity-20 w-full">
+                    Connect With Me
+                  </h4>
+                  
+                  <div className="flex space-x-4">
+                    {socialLinks.map((social, index) => (
+                      <a 
+                        key={index} 
+                        href={social.url} 
+                        className={cn(
+                          "p-3 bg-mw-darker hover:bg-mw-green hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-light hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30", 
+                          "transition-all duration-700 ease-out transform", 
+                          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4", 
+                          isVisible && {
+                            "delay-600": index === 0,
+                            "delay-700": index === 1
+                          }
+                        )} 
+                        aria-label={social.label}
+                      >
+                        {social.icon}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </CardFooter>
-            </Card>
-          </div>
-
-          {/* Get in Touch Card */}
-          <div className={cn("transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8")}>
-            <Card className="bg-mw-gray border border-mw-green border-opacity-20 hover:shadow-xl hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 h-full">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-white text-xl">Send a Message</CardTitle>
-              </CardHeader>
-              <CardContent>
+              </div>
+              
+              {/* Right Section (Send A Message) */}
+              <div className={cn("space-y-6 transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4", "delay-300")}>
+                <h3 className="text-white text-lg mb-4 pb-2 border-b border-mw-green border-opacity-20">Send a Message</h3>
                 <p className="text-mw-lightgray mb-6">I'm always open to discussing new projects, opportunities, or how we can work together.</p>
                 <div className="space-y-4">
                   <div className="flex items-center p-3 bg-mw-darker rounded-sm border border-mw-green border-opacity-10">
@@ -139,28 +136,31 @@ const Contact = () => {
                     <p className="text-mw-green font-medium">contact.country946@passmail.com</p>
                     <p className="text-mw-lightgray text-sm mt-2">Responses typically within 24-48 hours</p>
                   </div>
-                </div>
-              </CardContent>
-              <CardFooter className="pt-4 flex-col items-start">
-                <div className="w-full">
-                  <div className="flex items-center justify-between">
-                    <div className="h-0.5 bg-mw-green bg-opacity-10 w-1/3"></div>
-                    <p className="text-mw-lightgray px-4 text-sm">OR</p>
-                    <div className="h-0.5 bg-mw-green bg-opacity-10 w-1/3"></div>
-                  </div>
-                  <div className="mt-4 text-center">
-                    <a 
-                      href="https://linkedin.com/in/dreynaud" 
-                      className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30"
-                    >
-                      <Linkedin className="w-4 h-4 mr-2" />
-                      Connect on LinkedIn
-                    </a>
+                  <div className="mt-8">
+                    <div className="flex items-center justify-between">
+                      <div className="h-0.5 bg-mw-green bg-opacity-10 w-1/3"></div>
+                      <p className="text-mw-lightgray px-4 text-sm">OR</p>
+                      <div className="h-0.5 bg-mw-green bg-opacity-10 w-1/3"></div>
+                    </div>
+                    <div className="mt-4 text-center">
+                      <a 
+                        href="https://linkedin.com/in/dreynaud" 
+                        className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30"
+                      >
+                        <Linkedin className="w-4 h-4 mr-2" />
+                        Connect on LinkedIn
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </CardFooter>
-            </Card>
-          </div>
+              </div>
+            </CardContent>
+            <CardFooter className="pt-4 flex-col items-start">
+              <div className="w-full text-center mt-2">
+                <p className="text-sm text-mw-lightgray italic">Looking forward to connecting with you!</p>
+              </div>
+            </CardFooter>
+          </Card>
         </div>
       </div>
     </section>
