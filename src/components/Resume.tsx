@@ -43,11 +43,13 @@ const Resume = () => {
       
       <div className="mw-container relative z-10">
         <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-          <span className="mw-badge mb-4">
-            <FileText className="w-3 h-3 mr-1" />
-            RESUME
-          </span>
-          <h2 className="mw-section-title text-white">My Curriculum Vitae</h2>
+          <div className="flex flex-col items-start">
+            <span className="mw-badge mb-4">
+              <FileText className="w-3 h-3 mr-1" />
+              RESUME
+            </span>
+            <h2 className="mw-section-title text-white">My Curriculum Vitae</h2>
+          </div>
         </div>
         
         <div className={cn("mt-8 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
