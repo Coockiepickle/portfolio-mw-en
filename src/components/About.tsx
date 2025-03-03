@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -79,16 +80,23 @@ const About = () => {
           </div>
           
           <div className={cn("relative transition-all duration-700 delay-450 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8")}>
-            <div className="aspect-square max-w-md mx-auto relative hover:shadow-xl hover:shadow-mw-green/20 transition-all duration-500 hover:-translate-y-2">
-              <div className="absolute inset-0 border border-mw-green border-opacity-20 p-4 hover:border-opacity-50 transition-all duration-500 group">
+            <div className="aspect-square max-w-md mx-auto relative hover:shadow-xl hover:shadow-mw-green/20 transition-all duration-500 hover:-translate-y-2 group">
+              <div className="absolute inset-0 border border-mw-green border-opacity-20 p-4 hover:border-opacity-50 transition-all duration-500">
                 <div className="relative w-full h-full bg-mw-gray bg-opacity-50 overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-mw-darker bg-opacity-80">
-                    <div className="text-center">
-                      <img 
-                        src={profileImage} 
-                        alt="Profile Image" 
-                        className="w-64 h-64 object-cover rounded-md mx-auto mb-4 border border-mw-green/30"
-                      />
+                    <div className="text-center relative">
+                      <div className="relative">
+                        <img 
+                          src={profileImage} 
+                          alt="Profile Image" 
+                          className="w-64 h-64 object-cover rounded-md mx-auto mb-4 border border-mw-green/30 z-10 relative"
+                        />
+                        {/* Corner decorations that move on hover */}
+                        <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-mw-green transition-all duration-300 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
+                        <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-mw-green transition-all duration-300 group-hover:translate-x-2 group-hover:-translate-y-2"></div>
+                        <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-mw-green transition-all duration-300 group-hover:-translate-x-2 group-hover:translate-y-2"></div>
+                        <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-mw-green transition-all duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                      </div>
                       <div className="text-sm uppercase tracking-wider text-mw-light">PROFILE_IMAGE.jpg</div>
                       <div className="mt-2 text-xs text-mw-lightgray">TACTICAL OPERATOR</div>
                     </div>
