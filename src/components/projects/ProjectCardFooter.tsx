@@ -11,6 +11,12 @@ interface ProjectCardFooterProps {
 }
 
 const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
+  // Format the date from "2023-09" to "2023 - 09"
+  const formatDate = (date: string) => {
+    const [year, month] = date.split('-');
+    return `${year} - ${month}`;
+  };
+
   return (
     <div className={cn("p-4 border-t border-opacity-20", project.type === "professional" ? "border-[#9b87f5]" : "border-mw-green")}>
       <ProjectTags tags={project.tags} projectType={project.type} isDecoding={isDecoding} />
@@ -21,9 +27,9 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
           <span className="text-sm text-mw-light">
             {isDecoding ? (
               <CodeCracker 
-                text={project.date}
+                text={formatDate(project.date)}
                 isDecoding={isDecoding}
-                className="text-sm"
+                className="text-sm text-red-500"
               />
             ) : (
               <span className="text-red-500">REDACTED</span>
