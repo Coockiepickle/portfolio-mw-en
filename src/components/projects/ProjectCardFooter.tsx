@@ -18,7 +18,17 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
       <div className="flex justify-between items-center mt-4">
         <div className="flex items-center">
           <Calendar className="w-5 h-5 mr-2 opacity-70" />
-          <span className="text-sm text-mw-light">{project.date}</span>
+          <span className="text-sm text-mw-light">
+            {isDecoding ? (
+              <CodeCracker 
+                text={project.date}
+                isDecoding={isDecoding}
+                className="text-sm"
+              />
+            ) : (
+              <span className="text-red-500">REDACTED</span>
+            )}
+          </span>
         </div>
         
         <div className="flex space-x-3">
