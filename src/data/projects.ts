@@ -6,7 +6,7 @@ export const projectsData: ProjectData[] = [{
   description: "A standalone Raspberry Pi board for auditing and carrying out penetration tests on a network including a battery and a screen.",
   tags: ["RPi", "Debian", "Lynis", "ZPhisher", "PhishMailer", "VNC"],
   type: "professional",
-  date: "2023-09",
+  date: "2024-05",
   links: {
     demo: "https://dreynaud.noho.st/grav/Cegep/ESP",
     github: "#"
@@ -15,8 +15,8 @@ export const projectsData: ProjectData[] = [{
   title: "Self-hosted Services",
   description: "Self-hosted NAS, VPN, Web Server, Knowledge Base and other Web Apps accessible through the Internet",
   tags: ["YunoHost", "CasaOS", "Firefly", "Grav", "No-IP"],
-  type: "professional",
-  date: "2023-03",
+  type: "personal",
+  date: "ONGOING",
   links: {
     demo: "dreynaud.noho.st",
     github: "https://github.com/YunoHost"
@@ -25,8 +25,8 @@ export const projectsData: ProjectData[] = [{
   title: "RestoRate",
   description: "A Django website like TripAdvisor but for restaurants that I had to do during my College Studies in Québec.",
   tags: ["Python", "Django", "VS Code", "HTML"],
-  type: "personal",
-  date: "2022-11",
+  type: "professional",
+  date: "2024-02",
   links: {
     demo: "#",
     github: "https://github.com/Coockiepickle/PIW_EXS"
@@ -36,7 +36,7 @@ export const projectsData: ProjectData[] = [{
   description: "A collection of scripts used to create a connected greenhouse with sensors and an Arduino board..",
   tags: ["C++", "Python", "Arduino"],
   type: "professional",
-  date: "2022-07",
+  date: "2023-11",
   links: {
     demo: "#",
     github: "https://github.com/Coockiepickle/SerreConnectee"
