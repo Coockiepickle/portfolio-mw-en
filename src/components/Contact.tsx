@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Mail, MapPin, Linkedin, Github } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -47,11 +46,13 @@ const Contact = () => {
     <section id="contact" className="relative py-24">
       <div className="mw-container relative z-10">
         <div className={cn("text-center max-w-3xl mx-auto mb-16 transition-all duration-700 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8")}>
-          <span className="mw-badge mb-4">
-            <Mail className="w-3 h-3 mr-1" />
-            GET IN TOUCH
-          </span>
-          <h2 className="mw-section-title text-white">Communication</h2>
+          <div className="flex flex-col items-center">
+            <span className="mw-badge mb-4">
+              <Mail className="w-3 h-3 mr-1" />
+              GET IN TOUCH
+            </span>
+            <h2 className="mw-section-title text-white">Communication</h2>
+          </div>
           <p className="mt-4">
             Have a project in mind? Want me to be a part of your company? Contact me to discuss how we can work together
             to achieve your objectives.
