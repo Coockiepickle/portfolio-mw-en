@@ -13,9 +13,16 @@ export interface SkillCategory {
   skills: Skill[];
 }
 
+// Create icon factory functions to avoid using JSX in .ts files
+const createServerIcon = () => <Server className="w-6 h-6 text-mw-green" />;
+const createNetworkIcon = () => <Network className="w-6 h-6 text-mw-green" />;
+const createShieldIcon = () => <Shield className="w-6 h-6 text-mw-green" />;
+const createCodeIcon = () => <Code className="w-6 h-6 text-mw-green" />;
+const createGlobeIcon = () => <Globe className="w-6 h-6 text-mw-green" />;
+
 export const getSkillCategories = (): SkillCategory[] => [
   {
-    icon: <Server className="w-6 h-6 text-mw-green" />,
+    icon: createServerIcon(),
     title: "Operating systems",
     skills: [{
       name: "Windows",
@@ -31,7 +38,7 @@ export const getSkillCategories = (): SkillCategory[] => [
       level: 80
     }]
   }, {
-    icon: <Network className="w-6 h-6 text-mw-green" />,
+    icon: createNetworkIcon(),
     title: "Networking",
     skills: [{
       name: "Cisco",
@@ -47,7 +54,7 @@ export const getSkillCategories = (): SkillCategory[] => [
       level: 70
     }]
   }, {
-    icon: <Shield className="w-6 h-6 text-mw-green" />,
+    icon: createShieldIcon(),
     title: "Cybersecurity",
     skills: [{
       name: "Fire-Wall",
@@ -63,7 +70,7 @@ export const getSkillCategories = (): SkillCategory[] => [
       level: 60
     }]
   }, {
-    icon: <Code className="w-6 h-6 text-mw-green" />,
+    icon: createCodeIcon(),
     title: "Development",
     skills: [{
       name: "HTML",
@@ -79,7 +86,7 @@ export const getSkillCategories = (): SkillCategory[] => [
       level: 85
     }]
   }, {
-    icon: <Globe className="w-6 h-6 text-mw-green" />,
+    icon: createGlobeIcon(),
     title: "Languages",
     skills: [{
       name: "French",

@@ -1,9 +1,8 @@
-
 import { useEffect, useState } from 'react';
 import { Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import SkillCategory from './skills/SkillCategory';
-import { getSkillCategories } from './skills/skillsData';
+import { getSkillCategories } from './skills/skillsData.tsx';
 import useSkillAnimation from './skills/useSkillAnimation';
 
 const Skills = () => {
