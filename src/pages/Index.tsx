@@ -13,9 +13,9 @@ import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen space-y-6">
       <Navbar />
-      <main>
+      <main className="space-y-6">
         <Hero />
         <About />
         <Projects />
