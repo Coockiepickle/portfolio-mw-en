@@ -1,7 +1,61 @@
-
 import { useEffect, useState } from 'react';
 import { Briefcase, Link2, Github, ExternalLink, Code } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+const getRandomChar = () => {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,./<>?";
+  return chars.charAt(Math.floor(Math.random() * chars.length));
+};
+
+const CodeCracker = ({ text, className }: { text: string, className?: string }) => {
+  const [displayText, setDisplayText] = useState(text);
+  const [isDecoding, setIsDecoding] = useState(false);
+  
+  useEffect(() => {
+    if (!isDecoding) return;
+    
+    let iteration = 0;
+    const originalText = text;
+    const totalIterations = text.length * 3; // Multiplie par 3 pour plus d'effet
+    
+    const interval = setInterval(() => {
+      setDisplayText(prevText => {
+        const progress = Math.min(iteration / totalIterations, 1);
+        const completeChars = Math.floor(progress * originalText.length);
+        
+        return originalText
+          .split('')
+          .map((char, index) => {
+            if (index < completeChars) return char;
+            return char === ' ' ? ' ' : getRandomChar();
+          })
+          .join('');
+      });
+      
+      iteration++;
+      
+      if (iteration > totalIterations) {
+        clearInterval(interval);
+        setDisplayText(originalText);
+      }
+    }, 30);
+    
+    return () => clearInterval(interval);
+  }, [isDecoding, text]);
+  
+  return (
+    <div 
+      className={cn("font-mono", className)}
+      onMouseEnter={() => setIsDecoding(true)}
+      onMouseLeave={() => {
+        setIsDecoding(false);
+        setDisplayText(text);
+      }}
+    >
+      {displayText}
+    </div>
+  );
+};
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -89,13 +143,18 @@ const Projects = () => {
               <div className="relative p-6 bg-mw-darker">
                 <div className="flex items-center justify-between mb-4">
                   <Code className="w-8 h-8 text-mw-green opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="text-xs text-mw-lightgray">{`PROJECT_${index + 1}`}</div>
+                  <CodeCracker 
+                    text={`PROJECT_${index + 1}`} 
+                    className="text-xs text-mw-lightgray"
+                  />
                 </div>
                 
                 <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-mw-green transition-colors">
-                  {project.title}
+                  <CodeCracker text={project.title} />
                 </h3>
-                <p className="text-sm text-mw-light mb-4">{project.description}</p>
+                <p className="text-sm text-mw-light mb-4">
+                  <CodeCracker text={project.description} />
+                </p>
                 
                 {/* Tactical UI elements */}
                 <div className="absolute top-0 left-0 w-16 h-px bg-mw-green group-hover:w-full transition-all duration-500"></div>
@@ -109,7 +168,7 @@ const Projects = () => {
                       key={tagIndex} 
                       className="px-2 py-1 bg-mw-green bg-opacity-10 text-mw-green text-xs rounded-sm transition-all duration-300 hover:bg-opacity-30 hover:shadow-sm hover:shadow-mw-green group-hover:border border-mw-green/50"
                     >
-                      {tag}
+                      <CodeCracker text={tag} />
                     </span>
                   ))}
                 </div>
