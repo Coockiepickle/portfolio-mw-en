@@ -32,11 +32,11 @@ This is a portfolio I did using lovable, it's heavily inspired by the UI of rece
 
 ## Roadmap
 
-[X] Put the badges above the titles
+- [X] Put the badges above the titles
 
-[] Fix the menu background on mobile
+- [ ] Fix the menu background on mobile
 
-[] Clone the entire portfolio to make a french version
+- [ ] Clone the entire portfolio to make a french version
 
 
 ## Deployment
