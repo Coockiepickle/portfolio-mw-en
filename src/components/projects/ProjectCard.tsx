@@ -66,6 +66,7 @@ const ProjectCard = ({ project, index, isVisible, isDecoding }: ProjectCardProps
         project={project} 
         styles={styles} 
         isDecoding={isDecoding} 
+        index={index}
       />
       
       <ProjectCardFooter 

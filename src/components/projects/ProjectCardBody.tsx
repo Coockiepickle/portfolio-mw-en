@@ -13,12 +13,13 @@ interface ProjectCardBodyProps {
     borderElement: string;
   };
   isDecoding: boolean;
+  index: number; // Add index prop
 }
 
-const ProjectCardBody = ({ project, styles, isDecoding }: ProjectCardBodyProps) => {
+const ProjectCardBody = ({ project, styles, isDecoding, index }: ProjectCardBodyProps) => {
   return (
     <div className="relative p-6 bg-mw-darker flex-grow">
-      <ProjectCardHeader project={project} styles={styles} isDecoding={isDecoding} />
+      <ProjectCardHeader project={project} styles={styles} isDecoding={isDecoding} index={index} />
       
       <h3 className={cn("text-xl font-semibold text-white mb-3 transition-colors", styles.hoverText)}>
         <CodeCracker 

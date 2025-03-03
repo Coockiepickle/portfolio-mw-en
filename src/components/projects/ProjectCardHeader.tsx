@@ -10,9 +10,10 @@ interface ProjectCardHeaderProps {
     iconColor: string;
   };
   isDecoding: boolean;
+  index: number; // Add index prop
 }
 
-const ProjectCardHeader = ({ project, styles, isDecoding }: ProjectCardHeaderProps) => {
+const ProjectCardHeader = ({ project, styles, isDecoding, index }: ProjectCardHeaderProps) => {
   return (
     <div className="flex items-center justify-between mb-4">
       <Code className={cn("w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-300", styles.iconColor)} />
@@ -22,7 +23,7 @@ const ProjectCardHeader = ({ project, styles, isDecoding }: ProjectCardHeaderPro
           {project.type === "professional" ? "PRO" : "PERSO"}
         </span>
         <CodeCracker 
-          text={`PROJECT_INDEX`} 
+          text={`PROJECT_${index + 1}`} 
           className="text-xs text-mw-lightgray"
           isDecoding={isDecoding}
         />
