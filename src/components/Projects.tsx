@@ -59,6 +59,7 @@ const Projects = () => {
               key={index}
               onMouseEnter={() => setDecodingCardIndex(index)}
               onMouseLeave={() => setDecodingCardIndex(null)}
+              className="h-full"
             >
               <ProjectCard 
                 project={project}

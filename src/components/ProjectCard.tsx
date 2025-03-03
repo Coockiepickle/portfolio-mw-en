@@ -50,7 +50,7 @@ const ProjectCard = ({ project, index, isVisible, isDecoding }: ProjectCardProps
   return (
     <div 
       className={cn(
-        "mw-card group transition-all duration-700 ease-out transform hover:scale-105 hover:shadow-xl hover:shadow-mw-green/30", 
+        "mw-card group transition-all duration-700 ease-out transform hover:scale-105 hover:shadow-xl hover:shadow-mw-green/30 h-full flex flex-col", 
         styles.borderColor,
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", 
         isVisible && {
@@ -59,7 +59,7 @@ const ProjectCard = ({ project, index, isVisible, isDecoding }: ProjectCardProps
         }
       )}
     >
-      <div className="relative p-6 bg-mw-darker">
+      <div className="relative p-6 bg-mw-darker flex-grow">
         <div className="flex items-center justify-between mb-4">
           <Code className={cn("w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-300", styles.iconColor)} />
           <div className="flex items-center">
