@@ -28,6 +28,7 @@ const AchievementsList = ({ achievements, isVisible }: AchievementsListProps) =>
             title={achievement.title}
             description={achievement.description}
             code={achievement.code}
+            location={achievement.location}
             isVisible={isVisible}
             index={index}
             isHovering={hoveringCardIndex === index}

@@ -2,6 +2,7 @@
 import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
 import CodeCracker from '../ui/CodeCracker';
+import { MapPin } from 'lucide-react';
 
 interface AchievementItemProps {
   icon: ReactNode;
@@ -9,6 +10,7 @@ interface AchievementItemProps {
   title: string;
   description: string;
   code: string;
+  location: string;
   isVisible: boolean;
   index: number;
   isHovering: boolean;
@@ -22,6 +24,7 @@ const AchievementItem = ({
   title,
   description,
   code,
+  location,
   isVisible,
   index,
   isHovering,
@@ -65,11 +68,18 @@ const AchievementItem = ({
         )}
       </div>
       <div className="relative z-10">
-        <div className="text-xs text-mw-green font-medium uppercase tracking-wider mb-1">
+        <div className="flex items-center gap-3 text-xs text-mw-green font-medium uppercase tracking-wider mb-1">
           <CodeCracker 
             text={year}
             isDecoding={isHovering}
           />
+          <div className="flex items-center gap-1">
+            <MapPin className="w-3 h-3 text-mw-green" />
+            <CodeCracker 
+              text={location}
+              isDecoding={isHovering}
+            />
+          </div>
         </div>
         <h3 className="text-lg font-tactical font-medium text-white mb-2">
           {isHovering ? (
