@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { Mail, MapPin, Linkedin, Github, Send, Copy, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
-
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-  const { toast } = useToast();
-  
+  const {
+    toast
+  } = useToast();
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('contact');
@@ -23,28 +23,24 @@ const Contact = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const copyToClipboard = () => {
     const email = 'contact-dreynaud.circular585@passmail.com';
-    navigator.clipboard.writeText(email)
-      .then(() => {
-        setIsCopied(true);
-        toast({
-          title: "Copied!",
-          description: "Email address copied to clipboard",
-        });
-        setTimeout(() => setIsCopied(false), 2000);
-      })
-      .catch((err) => {
-        toast({
-          title: "Failed to copy",
-          description: "Please try again or copy manually",
-          variant: "destructive",
-        });
-        console.error('Failed to copy: ', err);
+    navigator.clipboard.writeText(email).then(() => {
+      setIsCopied(true);
+      toast({
+        title: "Copied!",
+        description: "Email address copied to clipboard"
       });
+      setTimeout(() => setIsCopied(false), 2000);
+    }).catch(err => {
+      toast({
+        title: "Failed to copy",
+        description: "Please try again or copy manually",
+        variant: "destructive"
+      });
+      console.error('Failed to copy: ', err);
+    });
   };
-  
   return <section id="contact" className="relative py-24">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
@@ -57,10 +53,7 @@ const Contact = () => {
             </span>
             <h2 className="mw-section-title text-white">Communication</h2>
           </div>
-          <p className="mt-4">
-            Have a project in mind? Want me to be a part of your company? Contact me to discuss how we can work together
-            to achieve your objectives.
-          </p>
+          
         </div>
         
         {/* Skills-style contact card */}
@@ -82,11 +75,7 @@ const Contact = () => {
                   <a href="mailto:contact-dreynaud.circular585@passmail.com" className="text-mw-green font-medium hover:underline transition-all">
                     contact-dreynaud.circular585@passmail.com
                   </a>
-                  <button 
-                    onClick={copyToClipboard}
-                    className="ml-2 p-1.5 bg-mw-green bg-opacity-10 hover:bg-opacity-20 rounded-sm transition-all duration-300 text-mw-green"
-                    aria-label="Copy email to clipboard"
-                  >
+                  <button onClick={copyToClipboard} className="ml-2 p-1.5 bg-mw-green bg-opacity-10 hover:bg-opacity-20 rounded-sm transition-all duration-300 text-mw-green" aria-label="Copy email to clipboard">
                     {isCopied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
