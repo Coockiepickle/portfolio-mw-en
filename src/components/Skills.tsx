@@ -38,23 +38,28 @@ const Skills = () => {
       });
       setAnimatingSkills(initialRandomValues);
       
-      // Start animation interval
+      // Use CSS animations and fewer state updates for smoother animation
       const startTime = Date.now();
       const animationDuration = 1000; // 1 second total duration
-      // Reduce number of updates by using a longer interval (200ms instead of 50ms)
-      const updateInterval = 200; // Less frequent updates to make it easier on the eyes
-      const totalUpdates = Math.floor(animationDuration / updateInterval);
+      const updateInterval = 250; // Even less frequent updates for smoother feel
       let currentUpdate = 0;
       
       const animationInterval = setInterval(() => {
         currentUpdate++;
+        const elapsedTime = Date.now() - startTime;
+        const progress = Math.min(elapsedTime / animationDuration, 1);
         
-        if (currentUpdate < totalUpdates) {
-          // During animation, update with random values less frequently
+        if (progress < 1) {
+          // Generate smooth transitions between random values
           const newRandomValues: {[key: string]: number} = {};
           skillCategories[catIndex].skills.forEach((skill, skillIndex) => {
             const skillKey = `${catIndex}-${skillIndex}`;
-            newRandomValues[skillKey] = Math.floor(Math.random() * 100);
+            // Use a gradually stabilizing random factor as animation progresses
+            const randomFactor = 1 - progress;
+            const targetValue = skill.level;
+            const randomVariation = Math.floor(Math.random() * 50 * randomFactor);
+            const smoothedValue = targetValue * progress + randomVariation;
+            newRandomValues[skillKey] = Math.min(Math.max(Math.floor(smoothedValue), 0), 100);
           });
           setAnimatingSkills(newRandomValues);
         } else {
@@ -212,14 +217,14 @@ const Skills = () => {
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => <div key={skillIndex}>
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-sm">{skill.name}</span>
-                      <span className="text-xs text-mw-green">
+                      <span className="text-sm font-tactical font-medium">{skill.name}</span>
+                      <span className="text-xs text-mw-green font-tactical font-medium">
                         {getSkillLevel(catIndex, skillIndex, skill)}%
                       </span>
                     </div>
                     <div className="progress-bar">
                       <div 
-                        className="progress-bar-fill transition-all duration-300 ease-out" 
+                        className="progress-bar-fill transition-all duration-700 ease-out" 
                         style={{
                           width: isVisible 
                             ? `${getSkillLevel(catIndex, skillIndex, skill)}%` 
