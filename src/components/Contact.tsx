@@ -67,63 +67,8 @@ const Contact = () => {
             <CardHeader className="pb-4">
               <CardTitle className="text-white text-xl">Get in Touch</CardTitle>
             </CardHeader>
-            <CardContent className="grid md:grid-cols-2 gap-8">
-              {/* Left Section (Contact Information) */}
-              <div className="space-y-6">
-                <div className={cn("transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")}>
-                  <h3 className="text-white text-lg mb-4 pb-2 border-b border-mw-green border-opacity-20">Contact Information</h3>
-                  {contactInfo.map((item, index) => (
-                    <div 
-                      key={index} 
-                      className={cn(
-                        "flex items-start transition-all duration-700 ease-out transform hover:translate-x-1 mb-6", 
-                        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4", 
-                        isVisible && {
-                          "delay-150": index === 0,
-                          "delay-300": index === 1
-                        }
-                      )}
-                    >
-                      <div className="p-2 bg-mw-green bg-opacity-10 rounded-sm mr-3 hover:bg-opacity-30 transition-all duration-300">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <p className="text-sm text-mw-lightgray">{item.label}</p>
-                        <p className="text-white">{item.value}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className={cn("transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4", "delay-400")}>
-                  <h4 className="text-sm font-medium uppercase tracking-wider mb-4 pb-2 border-b border-mw-green border-opacity-20 w-full">
-                    Connect With Me
-                  </h4>
-                  
-                  <div className="flex space-x-4">
-                    {socialLinks.map((social, index) => (
-                      <a 
-                        key={index} 
-                        href={social.url} 
-                        className={cn(
-                          "p-3 bg-mw-darker hover:bg-mw-green hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-light hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30", 
-                          "transition-all duration-700 ease-out transform", 
-                          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4", 
-                          isVisible && {
-                            "delay-600": index === 0,
-                            "delay-700": index === 1
-                          }
-                        )} 
-                        aria-label={social.label}
-                      >
-                        {social.icon}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              
-              {/* Right Section (Send A Message) */}
+            <CardContent className="space-y-6">
+              {/* Send A Message Section */}
               <div className={cn("space-y-6 transition-all duration-700 ease-out transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4", "delay-300")}>
                 <h3 className="text-white text-lg mb-4 pb-2 border-b border-mw-green border-opacity-20">Send a Message</h3>
                 <p className="text-mw-lightgray mb-6">I'm always open to discussing new projects, opportunities, or how we can work together.</p>
@@ -143,13 +88,22 @@ const Contact = () => {
                       <div className="h-0.5 bg-mw-green bg-opacity-10 w-1/3"></div>
                     </div>
                     <div className="mt-4 text-center">
-                      <a 
-                        href="https://linkedin.com/in/dreynaud" 
-                        className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30"
-                      >
-                        <Linkedin className="w-4 h-4 mr-2" />
-                        Connect on LinkedIn
-                      </a>
+                      <div className="flex justify-center space-x-4">
+                        <a 
+                          href="https://github.com/Coockiepickle" 
+                          className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30"
+                        >
+                          <Github className="w-4 h-4 mr-2" />
+                          GitHub
+                        </a>
+                        <a 
+                          href="https://linkedin.com/in/dreynaud" 
+                          className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30"
+                        >
+                          <Linkedin className="w-4 h-4 mr-2" />
+                          LinkedIn
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
