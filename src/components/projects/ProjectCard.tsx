@@ -11,6 +11,7 @@ export interface ProjectData {
   description: string;
   tags: string[];
   type: "professional" | "personal";
+  date: string; // Added date property
   links: {
     demo: string;
     github: string;
