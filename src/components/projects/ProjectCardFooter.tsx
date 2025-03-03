@@ -11,9 +11,17 @@ interface ProjectCardFooterProps {
 }
 
 const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
+  // Create the appropriate styles object based on project type
+  const tagStyles = {
+    iconColor: project.type === "professional" ? "#9b87f5" : "text-mw-green",
+    hoverText: project.type === "professional" ? "hover:text-[#9b87f5]" : "hover:text-mw-green",
+    tagBg: project.type === "professional" ? "bg-[#9b87f5]/10 hover:bg-[#9b87f5]/30" : "bg-mw-green/10 hover:bg-mw-green/30",
+    tagText: project.type === "professional" ? "text-[#9b87f5] hover:shadow-[#9b87f5]" : "text-mw-green hover:shadow-mw-green"
+  };
+
   return (
     <div className={cn("p-4 border-t border-opacity-20", project.type === "professional" ? "border-[#9b87f5]" : "border-mw-green")}>
-      <ProjectTags tags={project.tags} projectType={project.type} isDecoding={isDecoding} />
+      <ProjectTags tags={project.tags} styles={tagStyles} isDecoding={isDecoding} />
       
       <div className="flex justify-end space-x-3">
         <a 
