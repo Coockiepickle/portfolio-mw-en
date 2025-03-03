@@ -1,9 +1,13 @@
+
 import { useEffect, useState } from 'react';
 import { Shield, Code, Database, Layout, Server, Globe, Cpu, Terminal, Network, Lock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
+  const [animatingSkills, setAnimatingSkills] = useState<{[key: string]: number}>({});
+  const [animationComplete, setAnimationComplete] = useState<boolean>(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +24,60 @@ const Skills = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleCategoryMouseEnter = (catIndex: number) => {
+    if (animationComplete) {
+      setHoveredCategory(catIndex);
+      setAnimationComplete(false);
+      
+      // Initialize animation with random values
+      const initialRandomValues: {[key: string]: number} = {};
+      skillCategories[catIndex].skills.forEach((skill, skillIndex) => {
+        const skillKey = `${catIndex}-${skillIndex}`;
+        initialRandomValues[skillKey] = Math.floor(Math.random() * 100);
+      });
+      setAnimatingSkills(initialRandomValues);
+      
+      // Start animation interval
+      const startTime = Date.now();
+      const animationDuration = 1000; // 1 second
+      
+      const animationInterval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / animationDuration, 1);
+        
+        if (progress < 1) {
+          // During animation, update with random values
+          const newRandomValues: {[key: string]: number} = {};
+          skillCategories[catIndex].skills.forEach((skill, skillIndex) => {
+            const skillKey = `${catIndex}-${skillIndex}`;
+            newRandomValues[skillKey] = Math.floor(Math.random() * 100);
+          });
+          setAnimatingSkills(newRandomValues);
+        } else {
+          // Animation complete, set to actual values
+          clearInterval(animationInterval);
+          setAnimationComplete(true);
+        }
+      }, 50); // Update every 50ms for smoother animation
+      
+      return () => clearInterval(animationInterval);
+    }
+  };
+
+  const handleCategoryMouseLeave = () => {
+    setHoveredCategory(null);
+  };
+  
+  const getSkillLevel = (catIndex: number, skillIndex: number, skill: { name: string, level: number }) => {
+    const skillKey = `${catIndex}-${skillIndex}`;
+    
+    if (hoveredCategory === catIndex && !animationComplete) {
+      return animatingSkills[skillKey] || 0;
+    }
+    
+    return skill.level;
+  };
 
   const skillCategories = [
     {
@@ -138,6 +196,8 @@ const Skills = () => {
                   'delay-750': catIndex === 4
                 }
               )}
+              onMouseEnter={() => handleCategoryMouseEnter(catIndex)}
+              onMouseLeave={handleCategoryMouseLeave}
             >
               <div className="flex items-center mb-6">
                 <div className="p-2 bg-mw-green bg-opacity-10 rounded-sm mr-3 group-hover:bg-opacity-30 transition-all duration-300">
@@ -150,13 +210,17 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => <div key={skillIndex}>
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-sm">{skill.name}</span>
-                      <span className="text-xs text-mw-green">{skill.level}%</span>
+                      <span className="text-xs text-mw-green">
+                        {getSkillLevel(catIndex, skillIndex, skill)}%
+                      </span>
                     </div>
                     <div className="progress-bar">
                       <div 
-                        className="progress-bar-fill transition-all duration-1000 ease-out" 
+                        className="progress-bar-fill transition-all duration-300 ease-out" 
                         style={{
-                          width: isVisible ? `${skill.level}%` : '0%'
+                          width: isVisible 
+                            ? `${getSkillLevel(catIndex, skillIndex, skill)}%` 
+                            : '0%'
                         }}
                       ></div>
                     </div>
