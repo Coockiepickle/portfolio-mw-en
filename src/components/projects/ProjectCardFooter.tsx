@@ -29,13 +29,14 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
               "bg-mw-accent/80 text-white hover:bg-mw-accent hover:shadow-mw-accent group-hover:border border-mw-accent"
             )}
           >
-            <div className="absolute inset-0 mw-grid-pattern opacity-30 transform rotate-30"></div>
+            <div className="absolute inset-0 mw-grid-pattern opacity-30 transform rotate-30 bg-gray-pattern"></div>
             <Calendar className="w-3 h-3 mr-1 opacity-70 relative z-10" />
-            <span className="relative z-10">
+            <span className="relative z-10 font-tactical font-semibold tracking-wider">
               {isDecoding ? (
                 <CodeCracker 
                   text={formatDate(project.date)}
                   isDecoding={isDecoding}
+                  className="font-tactical font-semibold tracking-wider"
                 />
               ) : (
                 <span>REDACTED</span>
