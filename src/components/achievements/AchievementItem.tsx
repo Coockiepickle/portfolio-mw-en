@@ -85,6 +85,13 @@ const AchievementItem = ({
               isDecoding={isHovering}
             />
           </div>
+          <div className="flex items-center gap-1">
+            <Building className="w-3 h-3 text-mw-green" />
+            <CodeCracker 
+              text={institution}
+              isDecoding={isHovering}
+            />
+          </div>
         </div>
         <h3 className="text-lg font-tactical font-medium text-white mb-2">
           {isHovering ? (
@@ -102,15 +109,6 @@ const AchievementItem = ({
               isDecoding={true}
             />
           ) : description}
-        </div>
-        <div className="flex items-center gap-1 text-sm text-mw-light">
-          <Building className="w-3 h-3 text-mw-green" />
-          {isHovering ? (
-            <CodeCracker 
-              text={institution}
-              isDecoding={true}
-            />
-          ) : institution}
         </div>
       </div>
       
