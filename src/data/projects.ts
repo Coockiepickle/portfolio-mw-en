@@ -18,7 +18,7 @@ export const projectsData: ProjectData[] = [{
   type: "personal",
   date: "ONGOING",
   links: {
-    demo: "dreynaud.noho.st",
+    demo: "https://dreynaud.noho.st",
     github: "https://github.com/YunoHost"
   }
 }, {
