@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Mail, MapPin, Linkedin, Github } from 'lucide-react';
 import { cn } from '@/lib/utils';
