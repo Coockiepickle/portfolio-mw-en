@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Mail, MapPin, Linkedin, Github, Send, Copy, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -91,7 +90,10 @@ const Contact = () => {
                     {isCopied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
-                <p className="text-mw-lightgray text-sm mt-2">This e-mail address is a redirection to my real e-mail address, and I'll send it to you once I'm sure of your identity.</p>
+                <p className="text-mw-lightgray text-sm mt-2 text-center">
+                  This e-mail address is a redirection to my real e-mail address,<br />
+                  and I'll send it to you once I'm sure of your identity.
+                </p>
               </div>
             </div>
             
