@@ -1,10 +1,12 @@
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Experiences = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [followingCardStyle, setFollowingCardStyle] = useState({});
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   
   const experiences = [
     {
@@ -49,6 +51,35 @@ const Experiences = () => {
           setIsVisible(true);
         }
       }
+
+      if (sectionRef.current && cardRef.current) {
+        const section = sectionRef.current;
+        const sectionRect = section.getBoundingClientRect();
+        
+        if (sectionRect.top < window.innerHeight && sectionRect.bottom > 0) {
+          const sectionTop = sectionRect.top;
+          const sectionBottom = sectionRect.bottom;
+          const cardHeight = cardRef.current.offsetHeight;
+          const viewportHeight = window.innerHeight;
+          
+          if (sectionTop < 0 && sectionBottom > cardHeight) {
+            const maxTop = Math.min(
+              Math.abs(sectionTop),
+              sectionRect.height - cardHeight
+            );
+            
+            setFollowingCardStyle({
+              transform: `translateY(${maxTop}px)`,
+              transition: 'transform 0.3s ease-out'
+            });
+          } else if (sectionTop > 0) {
+            setFollowingCardStyle({
+              transform: 'translateY(0px)',
+              transition: 'transform 0.3s ease-out'
+            });
+          }
+        }
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -58,7 +89,7 @@ const Experiences = () => {
   }, []);
 
   return (
-    <section id="experiences" className="relative py-24 overflow-hidden bg-black">
+    <section ref={sectionRef} id="experiences" className="relative py-24 overflow-hidden bg-black">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       
       <div className="mw-container relative z-10">
@@ -107,6 +138,8 @@ const Experiences = () => {
           
           <div className="col-span-1">
             <div 
+              ref={cardRef}
+              style={followingCardStyle}
               className={cn(
                 "transition-all duration-700 transform",
                 isVisible ? "opacity-100 translate-x-0 delay-300" : "opacity-0 translate-x-8"
