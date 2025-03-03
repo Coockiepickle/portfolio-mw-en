@@ -81,7 +81,7 @@ const AchievementItem = ({
         <div className="flex items-center gap-3 text-xs text-mw-green font-medium uppercase tracking-wider mb-1">
           <div className="flex items-center gap-1">
             {isLastCard ? (
-              <Book className="w-3 h-3 text-mw-green" />
+              <Calendar className="w-3 h-3 text-mw-green" />
             ) : (
               <Calendar className="w-3 h-3 text-mw-green" />
             )}
