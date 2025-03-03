@@ -1,6 +1,6 @@
 
 import { ReactNode } from 'react';
-import { Award, Star, Calendar, Trophy, MapPin, Building } from 'lucide-react';
+import { Award, Star, Book, Trophy, MapPin, Building } from 'lucide-react';
 
 export interface Achievement {
   icon: ReactNode;
@@ -41,7 +41,7 @@ export const achievements: Achievement[] = [
     location: "Limoges, France"
   },
   {
-    icon: <Calendar className="w-6 h-6 text-mw-green" />,
+    icon: <Book className="w-6 h-6 text-mw-green" />,
     year: "2019-2021",
     title: "Bac S.T.I.2.D.",
     description: "Option S.I.N., Mention 'Assez Bien', 13,66/20",
