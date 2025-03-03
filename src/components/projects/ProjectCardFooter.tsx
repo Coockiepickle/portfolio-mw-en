@@ -23,13 +23,19 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
       
       <div className="flex justify-between items-center mt-4">
         <div className="flex items-center">
-          <Calendar className="w-5 h-5 mr-2 opacity-70" />
-          <span className="text-sm text-mw-light">
+          <span 
+            className={cn(
+              "inline-flex items-center px-2 py-1 text-xs rounded-sm transition-all duration-300 hover:shadow-sm",
+              project.type === "professional" 
+                ? "bg-[#9b87f5]/10 text-[#9b87f5] hover:bg-[#9b87f5]/30 hover:shadow-[#9b87f5] group-hover:border border-[#9b87f5]/50"
+                : "bg-mw-green/10 text-mw-green hover:bg-mw-green/30 hover:shadow-mw-green group-hover:border border-mw-green/50"
+            )}
+          >
+            <Calendar className="w-3 h-3 mr-1 opacity-70" />
             {isDecoding ? (
               <CodeCracker 
                 text={formatDate(project.date)}
                 isDecoding={isDecoding}
-                className="text-sm text-red-500"
               />
             ) : (
               <span className="text-red-500">REDACTED</span>
