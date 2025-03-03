@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { Mail, MapPin, Linkedin, Github, Send, Copy, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -84,8 +85,8 @@ const Contact = () => {
                   </button>
                 </div>
                 <p className="text-mw-lightgray text-sm mt-2 text-center">
-                  This e-mail address is a redirection to my real e-mail address,<br />
-                  and I'll send it to you once I'm sure of your identity.
+                  This is a forward to my real e-mail address,<br />
+                  I'll send it to you once I'm sure of your identity.
                 </p>
               </div>
             </div>
