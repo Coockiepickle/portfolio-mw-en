@@ -103,7 +103,8 @@ const Skills = () => {
     }]
   }];
 
-  return <section id="skills" className="relative py-24">
+  return (
+    <section id="skills" className="relative py-24">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
       <div className="mw-container relative z-10">
@@ -158,14 +159,14 @@ const Skills = () => {
                   </div>)}
               </div>
               
-              {/* Tactical UI elements */}
               <div className="absolute top-0 right-0 w-8 h-8 overflow-hidden">
                 <div className="absolute top-0 right-0 w-16 h-16 bg-mw-green bg-opacity-10 transform rotate-45 translate-x-8 -translate-y-8"></div>
               </div>
             </div>)}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 
 export default Skills;
