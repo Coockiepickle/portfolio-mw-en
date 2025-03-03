@@ -34,11 +34,13 @@ This is a portfolio I did using lovable, it's heavily inspired by the UI of rece
 
 - [X] Put the badges above the titles
 
-- [ ] Fix the menu background on mobile
+- [ ] Fix the background menu on mobile
 
 - [ ] Clone the entire portfolio to make a french version
 
 - [ ] Tarz en arbre card scroll triggers too early
+
+- [ ] Add a glitching "No github/link for this project" effect on click for projects
 
 
 ## Deployment
