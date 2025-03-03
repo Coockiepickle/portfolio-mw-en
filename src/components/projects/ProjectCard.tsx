@@ -1,5 +1,5 @@
 
-import { Code, ExternalLink, Github } from 'lucide-react';
+import { Code } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import CodeCracker from '../ui/CodeCracker';
 import ProjectCardHeader from './ProjectCardHeader';
@@ -11,6 +11,7 @@ export interface ProjectData {
   description: string;
   tags: string[];
   type: "professional" | "personal";
+  date: string; // Add date field
   links: {
     demo: string;
     github: string;
