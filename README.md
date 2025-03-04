@@ -1,3 +1,5 @@
+![Logo]([https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png](https://github.com/Coockiepickle/portfolio-mw-en/blob/main/src/assets/images/Capture-d_%C3%A9cran-2025-03-04-093453.webp))
+
 
 # Presentation
 
@@ -20,15 +22,21 @@ This is a portfolio I did using lovable, it's heavily inspired by the UI of rece
 - Hacking and decrypting effects
 
 
-## Acknowledgements
+## 🔗 Links
 
- - [The portfolio](https://dreynaud-en.netlify.app)
- - [Lovable Project](https://lovable.dev/projects/b5e03ae7-dd68-44ee-80f0-70d2630d6ba8)
- - [Netlify Overview page](https://app.netlify.com/sites/dreynaud-en/overview)
- - [Typescript OpenClassroom Course](https://openclassrooms.com/fr/courses/8039116-decouvrez-typescript)
- - [Typescript Codecademy Course](https://www.codecademy.com/learn/learn-typescript)
- - [Tailwind CSS Coursera Course](https://www.coursera.org/learn/learn-tailwind-css)
- - [Tailwind CSS Official Course](https://www.tailwindcss.com/course)
+- [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)]([https://katherineoelsner.com/](https://dreynaud-en.netlify.app))
+
+- [Lovable Project](https://lovable.dev/projects/b5e03ae7-dd68-44ee-80f0-70d2630d6ba8)
+   
+- [Netlify Overview page](https://app.netlify.com/sites/dreynaud-en/overview)
+   
+- [Typescript OpenClassroom Course](https://openclassrooms.com/fr/courses/8039116-decouvrez-typescript)
+   
+- [Typescript Codecademy Course](https://www.codecademy.com/learn/learn-typescript)
+   
+- [Tailwind CSS Coursera Course](https://www.coursera.org/learn/learn-tailwind-css)
+   
+- [Tailwind CSS Official Course](https://www.tailwindcss.com/course)
 
 ## Deployment
 
