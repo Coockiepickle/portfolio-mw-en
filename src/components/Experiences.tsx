@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -60,27 +59,18 @@ const Experiences = () => {
         const cardHeight = card.offsetHeight;
         const viewportHeight = window.innerHeight;
         
-        // Only start following after the card is fully visible in the viewport
-        const cardFullyVisible = sectionRect.top + 200 < 0;
+        const cardFullyVisible = sectionRect.top + 100 < 0;
         
         if (cardFullyVisible && sectionRect.bottom > cardHeight + 100) {
-          // Calculate how far we've scrolled into the section
-          const scrollProgress = Math.abs(sectionRect.top);
+          const scrollProgress = Math.abs(sectionRect.top) - 50;
+          const maxScroll = sectionRect.height - cardHeight - 150;
+          const translateY = Math.min(Math.max(0, scrollProgress), maxScroll);
           
-          // Calculate max scroll distance (section height minus card height with some padding)
-          const maxScroll = sectionRect.height - cardHeight - 100;
-          
-          // Limit the translation to the available space
-          const translateY = Math.min(scrollProgress, maxScroll);
-          
-          if (translateY > 0) {
-            setFollowingCardStyle({
-              transform: `translateY(${translateY}px)`,
-              transition: 'transform 0.15s ease-out'
-            });
-          }
+          setFollowingCardStyle({
+            transform: `translateY(${translateY}px)`,
+            transition: 'transform 0.15s ease-out'
+          });
         } else if (!cardFullyVisible) {
-          // Reset position when card is not fully visible yet
           setFollowingCardStyle({
             transform: 'translateY(0px)',
             transition: 'transform 0.15s ease-out'
