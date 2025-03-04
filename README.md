@@ -1,4 +1,4 @@
-![Logo]((https://github.com/Coockiepickle/portfolio-mw-en/blob/main/src/assets/images/Capture-d_%C3%A9cran-2025-03-04-093453.webp))
+![Logo](https://github.com/Coockiepickle/portfolio-mw-en/blob/main/src/assets/images/Capture-d_%C3%A9cran-2025-03-04-093453.webp)
 
 
 # Presentation
