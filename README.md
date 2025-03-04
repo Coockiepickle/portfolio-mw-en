@@ -13,10 +13,11 @@ This is a portfolio I did using lovable, it's heavily inspired by the UI of rece
 
 ## Features
 
-- Light/dark mode toggle
 - Language switch from FR to EN
 - Responsive design
 - Smooth animations
+- Modern Warfare theme
+- Hacking and decrypting effects
 
 
 ## Acknowledgements
