@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -55,29 +56,35 @@ const Experiences = () => {
       if (sectionRef.current && cardRef.current) {
         const section = sectionRef.current;
         const sectionRect = section.getBoundingClientRect();
+        const card = cardRef.current;
+        const cardHeight = card.offsetHeight;
+        const viewportHeight = window.innerHeight;
         
-        if (sectionRect.top < window.innerHeight && sectionRect.bottom > 0) {
-          const sectionTop = sectionRect.top;
-          const sectionBottom = sectionRect.bottom;
-          const cardHeight = cardRef.current.offsetHeight;
-          const viewportHeight = window.innerHeight;
+        // Only start following after the card is fully visible in the viewport
+        const cardFullyVisible = sectionRect.top + 200 < 0;
+        
+        if (cardFullyVisible && sectionRect.bottom > cardHeight + 100) {
+          // Calculate how far we've scrolled into the section
+          const scrollProgress = Math.abs(sectionRect.top);
           
-          if (sectionTop < 0 && sectionBottom > cardHeight) {
-            const maxTop = Math.min(
-              Math.abs(sectionTop),
-              sectionRect.height - cardHeight
-            );
-            
+          // Calculate max scroll distance (section height minus card height with some padding)
+          const maxScroll = sectionRect.height - cardHeight - 100;
+          
+          // Limit the translation to the available space
+          const translateY = Math.min(scrollProgress, maxScroll);
+          
+          if (translateY > 0) {
             setFollowingCardStyle({
-              transform: `translateY(${maxTop}px)`,
-              transition: 'transform 0.3s ease-out'
-            });
-          } else if (sectionTop > 0) {
-            setFollowingCardStyle({
-              transform: 'translateY(0px)',
-              transition: 'transform 0.3s ease-out'
+              transform: `translateY(${translateY}px)`,
+              transition: 'transform 0.15s ease-out'
             });
           }
+        } else if (!cardFullyVisible) {
+          // Reset position when card is not fully visible yet
+          setFollowingCardStyle({
+            transform: 'translateY(0px)',
+            transition: 'transform 0.15s ease-out'
+          });
         }
       }
     };
