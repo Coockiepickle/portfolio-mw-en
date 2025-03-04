@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import CodeCracker from '../ui/CodeCracker';
 import { ProjectData } from './ProjectCard';
 import ProjectTags from './ProjectTags';
+import { useState } from 'react';
 
 interface ProjectCardFooterProps {
   project: ProjectData;
@@ -11,10 +12,29 @@ interface ProjectCardFooterProps {
 }
 
 const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
+  const [showGithubMessage, setShowGithubMessage] = useState(false);
+  const [showDemoMessage, setShowDemoMessage] = useState(false);
+  
   // Format the date from "2023-09" to "2023 / 09"
   const formatDate = (date: string) => {
     const [year, month] = date.split('-');
     return `${year} / ${month}`;
+  };
+
+  const handleGithubClick = (e: React.MouseEvent) => {
+    if (project.links.github === "##") {
+      e.preventDefault();
+      setShowGithubMessage(true);
+      setTimeout(() => setShowGithubMessage(false), 3000);
+    }
+  };
+
+  const handleDemoClick = (e: React.MouseEvent) => {
+    if (project.links.demo === "##") {
+      e.preventDefault();
+      setShowDemoMessage(true);
+      setTimeout(() => setShowDemoMessage(false), 3000);
+    }
   };
 
   return (
@@ -45,23 +65,44 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
           </span>
         </div>
         
-        <div className="flex space-x-3">
-          <a 
-            href={project.links.demo} 
-            className={cn("p-2 text-mw-light transition-colors hover:scale-110 transform duration-300", 
-              project.type === "professional" ? "hover:text-[#9b87f5]" : "hover:text-mw-green")} 
-            aria-label="View demo"
-          >
-            <ExternalLink className="w-5 h-5" />
-          </a>
-          <a 
-            href={project.links.github} 
-            className={cn("p-2 text-mw-light transition-colors hover:scale-110 transform duration-300", 
-              project.type === "professional" ? "hover:text-[#9b87f5]" : "hover:text-mw-green")} 
-            aria-label="View code"
-          >
-            <Github className="w-5 h-5" />
-          </a>
+        <div className="flex space-x-3 relative">
+          {/* Demo link with glitch message */}
+          <div className="relative">
+            <a 
+              href={project.links.demo} 
+              className={cn("p-2 text-mw-light transition-colors hover:scale-110 transform duration-300", 
+                project.type === "professional" ? "hover:text-[#9b87f5]" : "hover:text-mw-green")} 
+              aria-label="View demo"
+              onClick={handleDemoClick}
+            >
+              <ExternalLink className="w-5 h-5" />
+            </a>
+            {showDemoMessage && (
+              <div className="absolute -top-10 right-0 bg-mw-dark border border-mw-accent px-3 py-1 rounded-sm text-xs text-white whitespace-nowrap animate-glitch shadow-lg z-20">
+                <div className="absolute inset-0 mw-grid-pattern opacity-40"></div>
+                <span className="relative z-10">No demo for this project</span>
+              </div>
+            )}
+          </div>
+          
+          {/* Github link with glitch message */}
+          <div className="relative">
+            <a 
+              href={project.links.github} 
+              className={cn("p-2 text-mw-light transition-colors hover:scale-110 transform duration-300", 
+                project.type === "professional" ? "hover:text-[#9b87f5]" : "hover:text-mw-green")} 
+              aria-label="View code"
+              onClick={handleGithubClick}
+            >
+              <Github className="w-5 h-5" />
+            </a>
+            {showGithubMessage && (
+              <div className="absolute -top-10 right-0 bg-mw-dark border border-mw-accent px-3 py-1 rounded-sm text-xs text-white whitespace-nowrap animate-glitch shadow-lg z-20">
+                <div className="absolute inset-0 mw-grid-pattern opacity-40"></div>
+                <span className="relative z-10">No github for this project</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
