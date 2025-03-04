@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -62,7 +63,8 @@ const Experiences = () => {
         const cardFullyVisible = sectionRect.top + 100 < 0;
         
         if (cardFullyVisible && sectionRect.bottom > cardHeight + 100) {
-          const scrollProgress = Math.abs(sectionRect.top) - 50;
+          // Reduced the offset to move the card higher up (-150 instead of -50)
+          const scrollProgress = Math.abs(sectionRect.top) - 150;
           const maxScroll = sectionRect.height - cardHeight - 150;
           const translateY = Math.min(Math.max(0, scrollProgress), maxScroll);
           
