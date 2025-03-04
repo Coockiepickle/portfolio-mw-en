@@ -9,7 +9,7 @@ export const projectsData: ProjectData[] = [{
   date: "2024-05",
   links: {
     demo: "https://dreynaud.noho.st/grav/Cegep/ESP",
-    github: "#"
+    github: "##"
   }
 }, {
   title: "Self-hosted Services",
@@ -28,7 +28,7 @@ export const projectsData: ProjectData[] = [{
   type: "professional",
   date: "2024-02",
   links: {
-    demo: "#",
+    demo: "##",
     github: "https://github.com/Coockiepickle/PIW_EXS"
   }
 }, {
@@ -38,7 +38,7 @@ export const projectsData: ProjectData[] = [{
   type: "professional",
   date: "2023-11",
   links: {
-    demo: "#",
+    demo: "##",
     github: "https://github.com/Coockiepickle/SerreConnectee"
   }
 }];
