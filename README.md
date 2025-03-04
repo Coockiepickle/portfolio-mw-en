@@ -35,7 +35,7 @@ This is a portfolio I did using lovable, it's heavily inspired by the UI of rece
 
 | Feature | Prompt | Status |
 | ------------- | ------------- | ------------- |
-| Put the badges above the titles | Je veux que tous les badges gardent leur taille actuelle mais soient situés au dessus des titres | Done |
+| Put the badges above the titles | Je veux que tous les badges gardent leur taille actuelle mais soient situés au dessus des titres | Done, "About" section to fix |
 | Fix the background menu on mobile | On mobile, the menu only has a background if I'm at the home section, anywhere else, the background is trensparent, fix it | To do |
 | Clone the entire portfolio to make a french version | I want a button that stays at the right bottom of the screen saying "FR" with a globe icon next to it, I want it to redirect to "https://dreynaud-fr.netlify.app" | In progress |
 | Tarz en arbre card scroll triggers too early | The card scroll triggers too soon | Done, to adjust |
