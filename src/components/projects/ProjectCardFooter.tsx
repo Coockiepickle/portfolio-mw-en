@@ -66,7 +66,7 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
         </div>
         
         <div className="flex space-x-3 relative">
-          {/* Demo link with glitch message */}
+          {/* Demo link with message */}
           <div className="relative">
             <a 
               href={project.links.demo} 
@@ -78,14 +78,20 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
               <ExternalLink className="w-5 h-5" />
             </a>
             {showDemoMessage && (
-              <div className="absolute -top-10 right-0 bg-mw-dark border border-mw-accent px-3 py-1 rounded-sm text-xs text-white whitespace-nowrap animate-glitch shadow-lg z-20">
+              <div className="absolute -top-10 right-0 bg-mw-dark border border-mw-accent px-3 py-1 rounded-sm text-xs text-white whitespace-nowrap shadow-lg z-20">
                 <div className="absolute inset-0 mw-grid-pattern opacity-40"></div>
-                <span className="relative z-10">No demo for this project</span>
+                <span className="relative z-10">
+                  <CodeCracker 
+                    text="No Link Available :("
+                    isDecoding={true}
+                    className="font-mono"
+                  />
+                </span>
               </div>
             )}
           </div>
           
-          {/* Github link with glitch message */}
+          {/* Github link with message */}
           <div className="relative">
             <a 
               href={project.links.github} 
@@ -97,9 +103,15 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
               <Github className="w-5 h-5" />
             </a>
             {showGithubMessage && (
-              <div className="absolute -top-10 right-0 bg-mw-dark border border-mw-accent px-3 py-1 rounded-sm text-xs text-white whitespace-nowrap animate-glitch shadow-lg z-20">
+              <div className="absolute -top-10 right-0 bg-mw-dark border border-mw-accent px-3 py-1 rounded-sm text-xs text-white whitespace-nowrap shadow-lg z-20">
                 <div className="absolute inset-0 mw-grid-pattern opacity-40"></div>
-                <span className="relative z-10">No github for this project</span>
+                <span className="relative z-10">
+                  <CodeCracker 
+                    text="No Link Available :("
+                    isDecoding={true}
+                    className="font-mono"
+                  />
+                </span>
               </div>
             )}
           </div>
