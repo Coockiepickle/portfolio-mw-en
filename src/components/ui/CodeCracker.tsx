@@ -25,16 +25,34 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
     let iteration = 0;
     const originalText = text;
     
-    // Animation plus fluide avec plus d'itérations mais sans mouvement du texte
-    const animationDuration = 2000; // 2 secondes
-    const intervalDelay = 20; // 20ms entre chaque étape - plus rapide pour plus de fluidité
+    // Animation avec une pause de stabilité entre les phases de glitch
+    const animationDuration = 2000; // 2 secondes au total
+    const intervalDelay = 20; // 20ms entre chaque étape 
     const totalIterations = animationDuration / intervalDelay;
+    
+    // Durée de stabilité (1.3s) avant la reprise du glitching
+    const stabilityDuration = 1300; // en millisecondes
+    const stabilityIterations = stabilityDuration / intervalDelay;
+    let isInStabilityPhase = false;
+    let stabilityCounter = 0;
     
     const interval = setInterval(() => {
       setDisplayText(prevText => {
         const progress = Math.min(iteration / totalIterations, 1);
         const completeChars = Math.floor(progress * originalText.length);
         
+        // Si on est en phase de stabilité, afficher le texte original
+        if (isInStabilityPhase) {
+          stabilityCounter++;
+          // Fin de la phase de stabilité
+          if (stabilityCounter >= stabilityIterations) {
+            isInStabilityPhase = false;
+            stabilityCounter = 0;
+          }
+          return originalText;
+        }
+        
+        // Phase de glitch
         return originalText
           .split('')
           .map((char, index) => {
@@ -48,7 +66,12 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
       
       iteration++;
       
-      if (iteration > totalIterations) {
+      // Basculer en phase de stabilité quand on atteint un certain stade
+      if (iteration % (totalIterations / 3) === 0 && !isInStabilityPhase) {
+        isInStabilityPhase = true;
+      }
+      
+      if (iteration > totalIterations * 3) { // Triple la durée pour voir les cycles
         clearInterval(interval);
         setDisplayText(originalText);
       }
