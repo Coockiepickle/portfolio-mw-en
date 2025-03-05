@@ -39,7 +39,8 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
         return originalText
           .split('')
           .map((char, index) => {
-            if (index < completeChars) return char;
+            // Add randomness - occasionally glitch even completed characters
+            if (index < completeChars && Math.random() > 0.05) return char;
             return char === ' ' ? ' ' : getRandomChar();
           })
           .join('');
