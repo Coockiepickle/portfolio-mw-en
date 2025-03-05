@@ -1,4 +1,3 @@
-
 import { ExternalLink, Github, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import CodeCracker from '../ui/CodeCracker';
@@ -17,7 +16,6 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
   const [isGithubGlitching, setIsGithubGlitching] = useState(false);
   const [isDemoGlitching, setIsDemoGlitching] = useState(false);
   
-  // Format the date from "2023-09" to "2023 / 09"
   const formatDate = (date: string) => {
     const [year, month] = date.split('-');
     return `${year} / ${month}`;
@@ -30,7 +28,6 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
     if (showGithubMessage) {
       setIsGithubGlitching(true);
       
-      // Create a random glitching effect by toggling the glitch class
       githubGlitchInterval = setInterval(() => {
         setIsGithubGlitching(prev => !prev);
       }, Math.random() * 200 + 50);
@@ -39,7 +36,6 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
     if (showDemoMessage) {
       setIsDemoGlitching(true);
       
-      // Create a random glitching effect by toggling the glitch class
       demoGlitchInterval = setInterval(() => {
         setIsDemoGlitching(prev => !prev);
       }, Math.random() * 200 + 50);
@@ -102,7 +98,6 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
         </div>
         
         <div className="flex space-x-3 relative">
-          {/* Demo link with glitch message */}
           <div className="relative">
             <a 
               href={project.links.demo} 
@@ -122,19 +117,17 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
                 <div className="absolute inset-0 mw-grid-pattern opacity-40"></div>
                 <span className="relative z-10 font-code font-medium tracking-tight">
                   <CodeCracker 
-                    text="NO DEMO AVAILABLE"
+                    text="No Link Available :("
                     isDecoding={isDemoGlitching}
                     className="font-code text-mw-accent"
                   />
                 </span>
-                {/* Animated glitch lines */}
                 <span className="absolute top-0 right-[10%] w-[1px] h-full bg-mw-accent/50 animate-pulse-light"></span>
                 <span className="absolute top-0 left-[30%] w-[1px] h-full bg-mw-accent/40 animate-pulse-light"></span>
               </div>
             )}
           </div>
           
-          {/* Github link with glitch message */}
           <div className="relative">
             <a 
               href={project.links.github} 
@@ -154,12 +147,11 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
                 <div className="absolute inset-0 mw-grid-pattern opacity-40"></div>
                 <span className="relative z-10 font-code font-medium tracking-tight">
                   <CodeCracker 
-                    text="ACCESS DENIED"
+                    text="No Link Available :("
                     isDecoding={isGithubGlitching}
                     className="font-code text-mw-accent"
                   />
                 </span>
-                {/* Animated glitch lines */}
                 <span className="absolute top-0 right-[10%] w-[1px] h-full bg-mw-accent/50 animate-pulse-light"></span>
                 <span className="absolute top-0 left-[30%] w-[1px] h-full bg-mw-accent/40 animate-pulse-light"></span>
               </div>

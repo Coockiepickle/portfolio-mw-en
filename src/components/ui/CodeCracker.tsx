@@ -25,10 +25,9 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
     let iteration = 0;
     const originalText = text;
     
-    // Fixed animation duration of 1.5 seconds (1500ms)
-    const animationDuration = 1500;
-    // Number of steps depends on the animation duration and interval delay
-    const intervalDelay = 30; // 30ms between each step
+    // Animation plus fluide avec plus d'itérations
+    const animationDuration = 2000; // 2 secondes
+    const intervalDelay = 20; // 20ms entre chaque étape - plus rapide pour plus de fluidité
     const totalIterations = animationDuration / intervalDelay;
     
     const interval = setInterval(() => {
@@ -39,8 +38,9 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
         return originalText
           .split('')
           .map((char, index) => {
-            // Add randomness - occasionally glitch even completed characters
-            if (index < completeChars && Math.random() > 0.05) return char;
+            // Ajout d'aléatoire - glitch occasionnel même sur les caractères complétés
+            // Réduisons la probabilité pour un mouvement plus fluide
+            if (index < completeChars && Math.random() > 0.03) return char;
             return char === ' ' ? ' ' : getRandomChar();
           })
           .join('');
@@ -58,9 +58,9 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
   }, [isDecoding, text]);
   
   return (
-    <div className={cn("font-mono", className)}>
+    <span className={cn("font-mono", className)}>
       {displayText}
-    </div>
+    </span>
   );
 };
 
