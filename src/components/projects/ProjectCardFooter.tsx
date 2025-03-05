@@ -112,7 +112,7 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
               <div className={cn(
                 "absolute -top-10 right-0 bg-mw-dark border border-mw-accent/70 px-3 py-1 rounded-sm text-xs text-white whitespace-nowrap shadow-lg z-20",
                 "before:content-[''] before:absolute before:-inset-0.5 before:bg-mw-accent/20 before:rounded-sm before:z-[-1]",
-                isDemoGlitching ? "animate-glitch after:animate-tactical-blink" : ""
+                isDemoGlitching ? "after:animate-tactical-blink" : ""
               )}>
                 <div className="absolute inset-0 mw-grid-pattern opacity-40"></div>
                 <span className="relative z-10 font-code font-medium tracking-tight">
@@ -142,7 +142,7 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
               <div className={cn(
                 "absolute -top-10 right-0 bg-mw-dark border border-mw-accent/70 px-3 py-1 rounded-sm text-xs text-white whitespace-nowrap shadow-lg z-20",
                 "before:content-[''] before:absolute before:-inset-0.5 before:bg-mw-accent/20 before:rounded-sm before:z-[-1]",
-                isGithubGlitching ? "animate-glitch after:animate-tactical-blink" : ""
+                isGithubGlitching ? "after:animate-tactical-blink" : ""
               )}>
                 <div className="absolute inset-0 mw-grid-pattern opacity-40"></div>
                 <span className="relative z-10 font-code font-medium tracking-tight">

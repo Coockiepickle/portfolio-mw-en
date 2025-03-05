@@ -25,7 +25,7 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
     let iteration = 0;
     const originalText = text;
     
-    // Animation plus fluide avec plus d'itérations
+    // Animation plus fluide avec plus d'itérations mais sans mouvement du texte
     const animationDuration = 2000; // 2 secondes
     const intervalDelay = 20; // 20ms entre chaque étape - plus rapide pour plus de fluidité
     const totalIterations = animationDuration / intervalDelay;
