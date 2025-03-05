@@ -25,40 +25,21 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
     let iteration = 0;
     const originalText = text;
     
-    // Animation avec une pause de stabilité entre les phases de glitch
-    const animationDuration = 2000; // 2 secondes au total
-    const intervalDelay = 20; // 20ms entre chaque étape 
+    // Fixed animation duration of 1.5 seconds (1500ms)
+    const animationDuration = 1500;
+    // Number of steps depends on the animation duration and interval delay
+    const intervalDelay = 30; // 30ms between each step
     const totalIterations = animationDuration / intervalDelay;
-    
-    // Durée de stabilité (1.3s) avant la reprise du glitching
-    const stabilityDuration = 1300; // en millisecondes
-    const stabilityIterations = stabilityDuration / intervalDelay;
-    let isInStabilityPhase = false;
-    let stabilityCounter = 0;
     
     const interval = setInterval(() => {
       setDisplayText(prevText => {
         const progress = Math.min(iteration / totalIterations, 1);
         const completeChars = Math.floor(progress * originalText.length);
         
-        // Si on est en phase de stabilité, afficher le texte original
-        if (isInStabilityPhase) {
-          stabilityCounter++;
-          // Fin de la phase de stabilité
-          if (stabilityCounter >= stabilityIterations) {
-            isInStabilityPhase = false;
-            stabilityCounter = 0;
-          }
-          return originalText;
-        }
-        
-        // Phase de glitch
         return originalText
           .split('')
           .map((char, index) => {
-            // Ajout d'aléatoire - glitch occasionnel même sur les caractères complétés
-            // Réduisons la probabilité pour un mouvement plus fluide
-            if (index < completeChars && Math.random() > 0.03) return char;
+            if (index < completeChars) return char;
             return char === ' ' ? ' ' : getRandomChar();
           })
           .join('');
@@ -66,12 +47,7 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
       
       iteration++;
       
-      // Basculer en phase de stabilité quand on atteint un certain stade
-      if (iteration % (totalIterations / 3) === 0 && !isInStabilityPhase) {
-        isInStabilityPhase = true;
-      }
-      
-      if (iteration > totalIterations * 3) { // Triple la durée pour voir les cycles
+      if (iteration > totalIterations) {
         clearInterval(interval);
         setDisplayText(originalText);
       }
@@ -81,9 +57,9 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
   }, [isDecoding, text]);
   
   return (
-    <span className={cn("font-mono", className)}>
+    <div className={cn("font-mono", className)}>
       {displayText}
-    </span>
+    </div>
   );
 };
 
