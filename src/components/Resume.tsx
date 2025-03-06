@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FileText, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,6 +6,9 @@ import { useToast } from '@/hooks/use-toast';
 
 const Resume = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [followingCardStyle, setFollowingCardStyle] = useState({});
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -16,6 +18,31 @@ const Resume = () => {
         const position = element.getBoundingClientRect();
         if (position.top < window.innerHeight * 0.75) {
           setIsVisible(true);
+        }
+      }
+
+      if (sectionRef.current && cardRef.current) {
+        const section = sectionRef.current;
+        const sectionRect = section.getBoundingClientRect();
+        const card = cardRef.current;
+        const cardHeight = card.offsetHeight;
+        
+        const cardFullyVisible = sectionRect.top + 100 < 0;
+        
+        if (cardFullyVisible && sectionRect.bottom > cardHeight + 100) {
+          const scrollProgress = Math.abs(sectionRect.top) - 150;
+          const maxScroll = sectionRect.height - cardHeight - 150;
+          const translateY = Math.min(Math.max(0, scrollProgress), maxScroll);
+          
+          setFollowingCardStyle({
+            transform: `translateY(${translateY}px)`,
+            transition: 'transform 0.15s ease-out'
+          });
+        } else if (!cardFullyVisible) {
+          setFollowingCardStyle({
+            transform: 'translateY(0px)',
+            transition: 'transform 0.15s ease-out'
+          });
         }
       }
     };
@@ -36,7 +63,7 @@ const Resume = () => {
   };
 
   return (
-    <section id="resume" className="relative py-24 bg-mw-dark">
+    <section ref={sectionRef} id="resume" className="relative py-24 bg-mw-dark">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-darker to-transparent"></div>
@@ -76,7 +103,11 @@ const Resume = () => {
               </Card>
             </div>
             
-            <div className="mw-card p-4 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 aspect-square flex items-center">
+            <div 
+              ref={cardRef}
+              style={followingCardStyle}
+              className="mw-card p-4 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 aspect-square flex items-center"
+            >
               <div className="w-full">
                 <div className="text-center mb-2">
                   <h3 className="text-xl font-bold text-white mb-1">Download my resume</h3>
