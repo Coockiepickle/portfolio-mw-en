@@ -34,7 +34,7 @@ const Resume = () => {
         // This ensures the card doesn't scroll past the bottom of the content area
         if (cardFullyVisible && sectionRect.bottom > cardHeight + 100) {
           const scrollProgress = Math.abs(sectionRect.top) - 150;
-          const maxScroll = sectionRect.height - cardHeight - 250; // Increased this value to stop earlier
+          const maxScroll = sectionRect.height - cardHeight - 350; // Increased this value to stop even earlier
           const translateY = Math.min(Math.max(0, scrollProgress), maxScroll);
           
           setFollowingCardStyle({
