@@ -46,7 +46,7 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
           <span 
             className={cn(
               "inline-flex items-center px-2 py-1 text-xs rounded-sm transition-all duration-300 hover:shadow-sm relative overflow-hidden",
-              "bg-mw-accent/80 text-white hover:bg-mw-accent hover:shadow-mw-accent group-hover:border border-mw-accent"
+              "bg-[#403E43] text-[#ea384c] hover:bg-[#403E43]/90 hover:shadow-mw-accent group-hover:border border-mw-accent"
             )}
           >
             <div className="absolute inset-0 mw-grid-pattern opacity-30 transform rotate-30 bg-gray-pattern"></div>
