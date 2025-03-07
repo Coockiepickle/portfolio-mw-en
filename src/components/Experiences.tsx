@@ -65,7 +65,8 @@ const Experiences = () => {
         if (cardFullyVisible && sectionRect.bottom > cardHeight + 100) {
           // Reduced the offset to move the card higher up (-150 instead of -50)
           const scrollProgress = Math.abs(sectionRect.top) - 150;
-          const maxScroll = sectionRect.height - cardHeight - 150;
+          // Increased the offset from 150 to 350 to make card stop earlier
+          const maxScroll = sectionRect.height - cardHeight - 350;
           const translateY = Math.min(Math.max(0, scrollProgress), maxScroll);
           
           setFollowingCardStyle({
