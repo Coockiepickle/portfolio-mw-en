@@ -84,28 +84,7 @@ const Resume = () => {
         
         <div className={cn("mt-8 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="mw-card p-8 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 lg:col-span-2">
-              <Card className="h-full bg-mw-dark border-mw-green/20">
-                <CardHeader>
-                  <CardTitle className="text-white">My resume</CardTitle>
-                </CardHeader>
-                <CardContent className="h-[650px]">
-                  <div className="w-full h-full rounded overflow-hidden">
-                    <iframe 
-                      src="/CV_Reynaud_Damien.pdf#toolbar=0" 
-                      className="w-full h-full border-0"
-                      title="CV PDF"
-                    >
-                      Your browser does not support PDF display. 
-                      <a href="/CV_Reynaud_Damien.pdf" target="_blank" rel="noopener noreferrer" className="text-mw-green underline">
-                        Click here to see the CV
-                      </a>
-                    </iframe>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-            
+            {/* INVERTED ORDER - Download card first */}
             <div 
               ref={cardRef}
               style={followingCardStyle}
@@ -130,6 +109,29 @@ const Resume = () => {
                   </a>
                 </div>
               </div>
+            </div>
+            
+            {/* Resume preview card second */}
+            <div className="mw-card p-8 w-full hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500 lg:col-span-2">
+              <Card className="h-full bg-mw-dark border-mw-green/20">
+                <CardHeader>
+                  <CardTitle className="text-white">My resume</CardTitle>
+                </CardHeader>
+                <CardContent className="h-[650px]">
+                  <div className="w-full h-full rounded overflow-hidden">
+                    <iframe 
+                      src="/CV_Reynaud_Damien.pdf#toolbar=0" 
+                      className="w-full h-full border-0"
+                      title="CV PDF"
+                    >
+                      Your browser does not support PDF display. 
+                      <a href="/CV_Reynaud_Damien.pdf" target="_blank" rel="noopener noreferrer" className="text-mw-green underline">
+                        Click here to see the CV
+                      </a>
+                    </iframe>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
