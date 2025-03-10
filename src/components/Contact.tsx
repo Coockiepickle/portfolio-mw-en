@@ -86,7 +86,7 @@ const Contact = () => {
                 </div>
                 <p className="text-mw-lightgray text-sm mt-2 text-center">
                   This is a forward to my real e-mail address,<br />
-                  I'll send the real one to you afterwards.
+                  I'll send you the real one afterwards.
                 </p>
               </div>
             </div>
