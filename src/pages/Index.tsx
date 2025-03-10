@@ -22,10 +22,22 @@ const Index = () => {
         
         <Hero />
         <About />
+        
+        {/* Fade transition between About and Projects */}
+        <div className="relative h-24 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-12 -mb-12 z-10"></div>
+        
         <Projects />
         <Skills />
+        
+        {/* Fade transition between Skills and Achievements */}
+        <div className="relative h-24 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-12 -mb-12 z-10"></div>
+        
         <Achievements />
         <Experiences />
+        
+        {/* Fade transition between Experiences and Resume */}
+        <div className="relative h-24 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-12 -mb-12 z-10"></div>
+        
         <Resume />
         <Contact />
       </main>
