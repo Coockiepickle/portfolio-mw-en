@@ -15,7 +15,11 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main>
+      <main className="relative overflow-hidden">
+        {/* Tactical vertical lines for section transitions */}
+        <div className="absolute left-1/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-mw-green/20 to-transparent opacity-30 z-0"></div>
+        <div className="absolute right-1/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-mw-green/20 to-transparent opacity-30 z-0"></div>
+        
         <Hero />
         <About />
         <Projects />

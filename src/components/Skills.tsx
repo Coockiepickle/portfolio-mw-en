@@ -34,7 +34,11 @@ const Skills = () => {
 
   return (
     <section id="skills" className="relative py-24">
-      {/* Background grid pattern removed */}
+      {/* Top fade gradient transition */}
+      <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-mw-darker to-transparent opacity-80"></div>
+      
+      {/* Bottom fade gradient transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-mw-darker to-transparent opacity-80"></div>
       
       <div className="mw-container relative z-10">
         <div className={cn("text-center max-w-3xl mx-auto mb-16 transition-all duration-700 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8")}>
