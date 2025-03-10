@@ -41,7 +41,7 @@ const About = () => {
     <section id="about" className="relative py-24 overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       
-      <div className="absolute inset-0 opacity-30"></div>
+      {/* Removed the background div that was here */}
       
       <div className="mw-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
