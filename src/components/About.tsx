@@ -29,7 +29,7 @@ const About = () => {
   }, {
     icon: <Shield className="w-5 h-5 text-mw-green mr-2" />,
     value: "10+",
-    label: "Technologies"
+    label: "Technologies with good knowledge"
   }];
   return <section id="about" className="relative py-24 overflow-hidden bg-black">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
