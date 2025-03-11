@@ -4,6 +4,9 @@ import { cn } from '@/lib/utils';
 import profileImage from '../assets/images/profile_image.webp';
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [counts, setCounts] = useState([0, 0, 0]);
+
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('about');
@@ -18,23 +21,50 @@ const About = () => {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (hoveredIndex !== null) {
+      const targetValue = parseInt(stats[hoveredIndex].value);
+      let current = 0;
+      const step = targetValue / 20; // Divide animation into 20 steps
+      const interval = setInterval(() => {
+        current += step;
+        if (current >= targetValue) {
+          setCounts(prev => {
+            const newCounts = [...prev];
+            newCounts[hoveredIndex] = targetValue;
+            return newCounts;
+          });
+          clearInterval(interval);
+        } else {
+          setCounts(prev => {
+            const newCounts = [...prev];
+            newCounts[hoveredIndex] = Math.floor(current);
+            return newCounts;
+          });
+        }
+      }, 50); // Complete animation in ~1 second
+
+      return () => clearInterval(interval);
+    }
+  }, [hoveredIndex]);
+
   const stats = [{
     icon: <Clock className="w-5 h-5 text-mw-green mr-2" />,
-    value: "4+",
+    value: "4",
     label: "Years Studied"
   }, {
     icon: <Target className="w-5 h-5 text-mw-green mr-2" />,
-    value: "10+",
+    value: "10",
     label: "Projects Completed"
   }, {
     icon: <Shield className="w-5 h-5 text-mw-green mr-2" />,
-    value: "10+",
-    label: "Technologies"
+    value: "10",
+    label: "Technologies mastered to at least intermediate level"
   }];
+
   return <section id="about" className="relative py-24 overflow-hidden bg-black">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
-      
-      {/* Removed the background div that was here */}
       
       <div className="mw-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -64,11 +94,20 @@ const About = () => {
             </div>
             
             <div className={cn("mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 transition-all duration-700 delay-300 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-              {stats.map((stat, index) => <div key={index} className="mw-card p-4 text-center hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
+              {stats.map((stat, index) => (
+                <div 
+                  key={index} 
+                  className="mw-card p-4 text-center hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
                   <div className="flex justify-center mb-2">{stat.icon}</div>
-                  <div className="text-2xl font-bold text-white">{stat.value}</div>
+                  <div className="text-2xl font-bold text-white">
+                    {hoveredIndex === index ? counts[index] : (hoveredIndex === null ? stat.value : counts[index])}+
+                  </div>
                   <div className="text-sm text-mw-lightgray">{stat.label}</div>
-                </div>)}
+                </div>
+              ))}
             </div>
           </div>
           
@@ -112,4 +151,5 @@ const About = () => {
       </div>
     </section>;
 };
+
 export default About;
