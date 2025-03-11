@@ -1,9 +1,12 @@
+
 import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import profileImage from '../assets/images/profile_image.webp';
+
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+  
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('about');
@@ -18,6 +21,7 @@ const About = () => {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
   const stats = [{
     icon: <Clock className="w-5 h-5 text-mw-green mr-2" />,
     value: "4+",
@@ -31,20 +35,21 @@ const About = () => {
     value: "15+",
     label: "Technologies comfortable with"
   }];
+  
   return <section id="about" className="relative py-24 overflow-hidden bg-black">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
-      
-      {/* Removed the background div that was here */}
       
       <div className="mw-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-              <span className="mw-badge mb-4">
-                <User className="w-3 h-3 mr-1" />
-                ABOUT ME
-              </span>
-              <h2 className="mw-section-title text-white">Strategic Profile</h2>
+              <div className="flex flex-col items-start mb-4">
+                <span className="mw-badge mb-2">
+                  <User className="w-3 h-3 mr-1" />
+                  ABOUT ME
+                </span>
+                <h2 className="mw-section-title text-white mt-2">Strategic Profile</h2>
+              </div>
             </div>
             
             <div className={cn("space-y-4 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
@@ -112,4 +117,5 @@ const About = () => {
       </div>
     </section>;
 };
+
 export default About;
