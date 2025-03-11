@@ -1,6 +1,5 @@
-
 import { useEffect, useState } from 'react';
-import { Mail, MapPin, Linkedin, Github, Send, Copy, Check } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Github, Send, Copy, Check, Instagram } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
@@ -61,7 +60,6 @@ const Contact = () => {
           
         </div>
         
-        {/* Skills-style contact card */}
         <div className={cn("mw-card p-6 transition-all duration-500 ease-out transform hover:shadow-lg hover:shadow-mw-green/20 hover:-translate-y-2 hover:border-mw-green/50", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", isVisible && 'delay-150')}>
           <div className="flex items-center mb-6">
             <div className="p-2 bg-mw-green bg-opacity-10 rounded-sm mr-3 group-hover:bg-opacity-30 transition-all duration-300">
@@ -71,7 +69,6 @@ const Contact = () => {
           </div>
           
           <div className="space-y-4">
-            {/* Contact Message */}
             <div>
               <p className="text-mw-lightgray mb-6">Have a project in mind? Want me to be a part of your company? Just send me an e-mail and I'll answer as fast as possible.</p>
               
@@ -87,7 +84,6 @@ const Contact = () => {
               </div>
             </div>
             
-            {/* Social Links */}
             <div>
               <div className="flex items-center justify-between mb-3">
                 <div className="h-0.5 bg-mw-green bg-opacity-10 w-1/3"></div>
@@ -103,16 +99,18 @@ const Contact = () => {
                   <Linkedin className="w-4 h-4 mr-2" />
                   LinkedIn
                 </a>
+                <a href="https://instagram.com/damienreynaud" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30 font-tactical font-semibold tracking-wide">
+                  <Instagram className="w-4 h-4 mr-2" />
+                  Instagram
+                </a>
               </div>
             </div>
           </div>
           
-          {/* Skill card corner style */}
           <div className="absolute top-0 right-0 w-8 h-8 overflow-hidden">
             <div className="absolute top-0 right-0 w-16 h-16 bg-mw-green bg-opacity-10 transform rotate-45 translate-x-8 -translate-y-8"></div>
           </div>
           
-          {/* Skill card border animation */}
           <div className="absolute top-0 left-0 w-16 h-px group-hover:w-full transition-all duration-500 bg-mw-green"></div>
           <div className="absolute top-0 left-0 w-px h-16 group-hover:h-full transition-all duration-500 bg-mw-green"></div>
         </div>
