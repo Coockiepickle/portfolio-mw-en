@@ -25,16 +25,16 @@ export const getSkillCategories = (): SkillCategory[] => [
     icon: createServerIcon(),
     title: "Operating systems",
     skills: [{
-      name: "Windows",
-      level: 85
+      name: "Docker",
+      level: 65
     }, {
-      name: "Windows Server",
-      level: 75
+      name: "Windows / Windows Server",
+      level: 80
     }, {
       name: "Linux",
       level: 60
     }, {
-      name: "Virtual Machine",
+      name: "Virtualization",
       level: 80
     }]
   }, {
@@ -44,11 +44,11 @@ export const getSkillCategories = (): SkillCategory[] => [
       name: "Cisco",
       level: 70
     }, {
-      name: "Routing",
+      name: "Routing and Switching",
       level: 65
     }, {
-      name: "Switching",
-      level: 70
+      name: "VoIP",
+      level: 40
     }, {
       name: "VLAN",
       level: 70
@@ -58,32 +58,32 @@ export const getSkillCategories = (): SkillCategory[] => [
     title: "Cybersecurity",
     skills: [{
       name: "Fire-Wall",
-      level: 60
+      level: 70
     }, {
       name: "VPN",
       level: 50
     }, {
-      name: "Security Audit - Learning in Progress...",
-      level: 55
+      name: "Network Security - Learning in Progress...",
+      level: 60
     }, {
       name: "IDS/IPS - Learning in Progress...",
-      level: 60
+      level: 50
     }]
   }, {
     icon: createCodeIcon(),
     title: "Development",
     skills: [{
-      name: "HTML",
-      level: 75
+      name: "HTML / Tailwind CSS - Learning in Progress...",
+      level: 60
     }, {
       name: "TypeScript - Learning in Progress...",
       level: 30
     }, {
-      name: "Tailwind CSS - Learning in Progress...",
-      level: 25
+      name: "Python",
+      level: 70
     }, {
-      name: "VS Code",
-      level: 85
+      name: "PowerShell",
+      level: 75
     }]
   }, {
     icon: createGlobeIcon(),
