@@ -77,17 +77,13 @@ const Contact = () => {
               
               <div className="p-4 border border-dashed border-mw-green border-opacity-30 rounded-sm bg-mw-darker bg-opacity-50 mb-6">
                 <div className="flex items-center justify-center">
-                  <a href="mailto:contact-dreynaud.circular585@passmail.com" className="text-mw-green font-medium hover:underline transition-all">
-                    contact-dreynaud.circular585@passmail.com
+                  <a href="mailto:dreynaud13@protonmail.com" className="text-mw-green font-medium hover:underline transition-all">
+                    dreynaud13@protonmail.com
                   </a>
                   <button onClick={copyToClipboard} className="ml-2 p-1.5 bg-mw-green bg-opacity-10 hover:bg-opacity-20 rounded-sm transition-all duration-300 text-mw-green" aria-label="Copy email to clipboard">
                     {isCopied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
-                <p className="text-mw-lightgray text-sm mt-2 text-center">
-                  This is a forward to my real e-mail address,<br />
-                  I'll send you the real one afterwards.
-                </p>
               </div>
             </div>
             
