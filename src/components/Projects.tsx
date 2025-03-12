@@ -25,7 +25,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" className="relative py-24 bg-mw-darker">
+    <section id="projects" className="relative py-16 bg-mw-darker">
       <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
       
       <div className="mw-container relative z-10">

@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { Mail, MapPin, Linkedin, Github, Send, Copy, Check, Instagram } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -45,7 +46,7 @@ const Contact = () => {
     });
   };
 
-  return <section id="contact" className="relative py-24">
+  return <section id="contact" className="relative py-16">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
       <div className="mw-container relative z-10">

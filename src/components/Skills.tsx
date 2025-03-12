@@ -1,9 +1,11 @@
+
 import { useEffect, useState } from 'react';
 import { Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import SkillCategory from './skills/SkillCategory';
 import { getSkillCategories } from './skills/skillsData.tsx';
 import useSkillAnimation from './skills/useSkillAnimation';
+
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
   const skillCategories = getSkillCategories();
@@ -13,6 +15,7 @@ const Skills = () => {
     handleCategoryMouseLeave,
     getSkillLevel
   } = useSkillAnimation();
+  
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('skills');
@@ -28,7 +31,8 @@ const Skills = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  return <section id="skills" className="relative py-24 bg-black">
+  
+  return <section id="skills" className="relative py-16 bg-black">
       {/* Top fade gradient transition */}
       <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-mw-darker to-transparent opacity-80"></div>
       
@@ -56,4 +60,5 @@ const Skills = () => {
       </div>
     </section>;
 };
+
 export default Skills;

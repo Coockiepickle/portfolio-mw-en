@@ -66,7 +66,7 @@ const Resume = () => {
   };
 
   return (
-    <section ref={sectionRef} id="resume" className="relative py-24 bg-mw-dark">
+    <section ref={sectionRef} id="resume" className="relative py-16 bg-mw-dark">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-darker to-transparent"></div>

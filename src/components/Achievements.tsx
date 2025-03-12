@@ -27,7 +27,7 @@ const Achievements = () => {
   }, []);
   
   return (
-    <section id="achievements" className="relative py-24 bg-mw-darker">
+    <section id="achievements" className="relative py-16 bg-mw-darker">
       <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
       
       <div className="mw-container relative z-10">

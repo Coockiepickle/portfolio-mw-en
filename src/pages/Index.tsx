@@ -23,33 +23,33 @@ const Index = () => {
         <Hero />
         <About />
         
-        {/* Fade transition between sections */}
-        <div className="relative h-24 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-12 -mb-12 z-10"></div>
+        {/* Reduced fade transition height between sections */}
+        <div className="relative h-16 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-8 -mb-8 z-10"></div>
         
         <Projects />
         
-        {/* Fade transition between sections */}
-        <div className="relative h-24 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-12 -mb-12 z-10"></div>
+        {/* Reduced fade transition height between sections */}
+        <div className="relative h-16 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-8 -mb-8 z-10"></div>
         
         <Skills />
         
-        {/* Fade transition between sections */}
-        <div className="relative h-24 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-12 -mb-12 z-10"></div>
+        {/* Reduced fade transition height between sections */}
+        <div className="relative h-16 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-8 -mb-8 z-10"></div>
         
         <Achievements />
         
-        {/* Fade transition between sections */}
-        <div className="relative h-24 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-12 -mb-12 z-10"></div>
+        {/* Reduced fade transition height between sections */}
+        <div className="relative h-16 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-8 -mb-8 z-10"></div>
         
         <Experiences />
         
-        {/* Fade transition between sections */}
-        <div className="relative h-24 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-12 -mb-12 z-10"></div>
+        {/* Reduced fade transition height between sections */}
+        <div className="relative h-16 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-8 -mb-8 z-10"></div>
         
         <Resume />
         
-        {/* Fade transition between sections */}
-        <div className="relative h-24 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-12 -mb-12 z-10"></div>
+        {/* Reduced fade transition height between sections */}
+        <div className="relative h-16 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-8 -mb-8 z-10"></div>
         
         <Contact />
       </main>

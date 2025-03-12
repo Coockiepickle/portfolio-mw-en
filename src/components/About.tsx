@@ -36,7 +36,7 @@ const About = () => {
     label: "Technologies comfortable with"
   }];
   
-  return <section id="about" className="relative py-24 overflow-hidden bg-black">
+  return <section id="about" className="relative py-16 overflow-hidden bg-black">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       
       <div className="mw-container relative z-10">
