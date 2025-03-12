@@ -73,14 +73,16 @@ const Contact = () => {
             <div>
               <p className="text-mw-lightgray mb-6">Have a project in mind? Want me to be a part of your company? Just send me an e-mail and I'll answer as fast as possible.</p>
               
-              <div className="inline-block px-3 py-2 border border-dashed border-mw-green border-opacity-30 rounded-sm bg-mw-darker bg-opacity-50 mb-6 mx-auto">
-                <div className="flex items-center">
-                  <a href="mailto:dreynaud13@protonmail.com" className="text-mw-green font-medium hover:underline transition-all">
-                    dreynaud13@protonmail.com
-                  </a>
-                  <button onClick={copyToClipboard} className="ml-2 p-1.5 bg-mw-green bg-opacity-10 hover:bg-opacity-20 rounded-sm transition-all duration-300 text-mw-green" aria-label="Copy email to clipboard">
-                    {isCopied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                  </button>
+              <div className="flex justify-center mb-6">
+                <div className="inline-block px-3 py-2 border border-dashed border-mw-green border-opacity-30 rounded-sm bg-mw-darker bg-opacity-50">
+                  <div className="flex items-center">
+                    <a href="mailto:dreynaud13@protonmail.com" className="text-mw-green font-medium hover:underline transition-all">
+                      dreynaud13@protonmail.com
+                    </a>
+                    <button onClick={copyToClipboard} className="ml-2 p-1.5 bg-mw-green bg-opacity-10 hover:bg-opacity-20 rounded-sm transition-all duration-300 text-mw-green" aria-label="Copy email to clipboard">
+                      {isCopied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
