@@ -18,7 +18,7 @@ const ScrollIndicator = ({ loaded, handleScrollToSection }: ScrollIndicatorProps
     >
       <div className="flex flex-col items-center space-y-2">
         <span className="text-xs uppercase tracking-wider text-mw-green">Scroll Down</span>
-        <ArrowDown className="w-5 h-5 text-mw-green animate-bounce" />
+        <ArrowDown className="w-5 h-5 text-mw-green animate-pulse" />
       </div>
     </div>
   );
