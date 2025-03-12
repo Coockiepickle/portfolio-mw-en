@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import SineWaveVisualization from './hero/SineWaveVisualization';
 import RadarVisualization from './hero/RadarVisualization';
 import HeroContent from './hero/HeroContent';
@@ -32,7 +32,7 @@ const Hero = () => {
     };
   }, []);
   
-  const handleScrollToSection = (sectionId: string) => {
+  const handleScrollToSection = useCallback((sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
       window.scrollTo({
@@ -40,7 +40,7 @@ const Hero = () => {
         behavior: 'smooth'
       });
     }
-  };
+  }, []);
   
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center">

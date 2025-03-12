@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Mail, MapPin, Linkedin, Github, Send, Copy, Check, Instagram } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
@@ -7,12 +7,11 @@ import { useToast } from '@/hooks/use-toast';
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
 
-  useEffect(() => {
-    const handleScroll = () => {
+  const handleScroll = useCallback(() => {
+    // Use requestAnimationFrame for smoother scrolling
+    requestAnimationFrame(() => {
       const element = document.getElementById('contact');
       if (element) {
         const position = element.getBoundingClientRect();
@@ -20,15 +19,19 @@ const Contact = () => {
           setIsVisible(true);
         }
       }
-    };
-    window.addEventListener('scroll', handleScroll);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Use passive event listener for better scroll performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Check on initial load
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
-  const copyToClipboard = () => {
-    const email = 'contact-dreynaud.circular585@passmail.com';
+  const copyToClipboard = useCallback(() => {
+    const email = 'dreynaud13@protonmail.com';
     navigator.clipboard.writeText(email).then(() => {
       setIsCopied(true);
       toast({
@@ -44,7 +47,7 @@ const Contact = () => {
       });
       console.error('Failed to copy: ', err);
     });
-  };
+  }, [toast]);
 
   return <section id="contact" className="relative py-16">
       <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
@@ -71,7 +74,7 @@ const Contact = () => {
           
           <div className="space-y-4">
             <div>
-              <p className="text-mw-lightgray mb-6">Have a project in mind? Want me to be a part of your company? <br>
+              <p className="text-mw-lightgray mb-6">Have a project in mind? Want me to be a part of your company? <br />
                 Just send me an e-mail and I'll answer as fast as possible.</p>
               
               <div className="flex justify-center mb-6">

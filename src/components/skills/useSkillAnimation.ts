@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import { useState, useCallback } from 'react';
 import { Skill } from './skillsData';
 
 const useSkillAnimation = () => {
@@ -6,12 +7,12 @@ const useSkillAnimation = () => {
   const [animatingSkills, setAnimatingSkills] = useState<{[key: string]: number}>({});
   const [animationComplete, setAnimationComplete] = useState<boolean>(true);
 
-  const handleCategoryMouseEnter = (catIndex: number, skills: Skill[]) => {
+  const handleCategoryMouseEnter = useCallback((catIndex: number, skills: Skill[]) => {
     if (animationComplete) {
       setHoveredCategory(catIndex);
       setAnimationComplete(false);
       
-      // Initialize animation with random values
+      // Use fewer initial random values for better performance
       const initialRandomValues: {[key: string]: number} = {};
       skills.forEach((skill, skillIndex) => {
         const skillKey = `${catIndex}-${skillIndex}`;
@@ -19,14 +20,13 @@ const useSkillAnimation = () => {
       });
       setAnimatingSkills(initialRandomValues);
       
-      // Use CSS animations and fewer state updates for smoother animation
+      // Use requestAnimationFrame for smoother animation
       const startTime = Date.now();
-      const animationDuration = 1000; // 1 second total duration
-      const updateInterval = 250; // Even less frequent updates for smoother feel
-      let currentUpdate = 0;
+      const animationDuration = 800; // Slightly shorter for better responsiveness
+      const updateInterval = 100; // More frequent updates for smoother animation
       
-      const animationInterval = setInterval(() => {
-        currentUpdate++;
+      let rafId: number;
+      const animate = () => {
         const elapsedTime = Date.now() - startTime;
         const progress = Math.min(elapsedTime / animationDuration, 1);
         
@@ -36,29 +36,40 @@ const useSkillAnimation = () => {
           skills.forEach((skill, skillIndex) => {
             const skillKey = `${catIndex}-${skillIndex}`;
             // Use a gradually stabilizing random factor as animation progresses
-            const randomFactor = 1 - progress;
+            const randomFactor = (1 - progress) * 0.5; // Reduced random factor for smoother animation
             const targetValue = skill.level;
-            const randomVariation = Math.floor(Math.random() * 50 * randomFactor);
+            const randomVariation = Math.floor(Math.random() * 30 * randomFactor);
             const smoothedValue = targetValue * progress + randomVariation;
             newRandomValues[skillKey] = Math.min(Math.max(Math.floor(smoothedValue), 0), 100);
           });
           setAnimatingSkills(newRandomValues);
+          rafId = requestAnimationFrame(animate);
         } else {
           // Animation complete, set to actual values
-          clearInterval(animationInterval);
+          const finalValues: {[key: string]: number} = {};
+          skills.forEach((skill, skillIndex) => {
+            const skillKey = `${catIndex}-${skillIndex}`;
+            finalValues[skillKey] = skill.level;
+          });
+          setAnimatingSkills(finalValues);
           setAnimationComplete(true);
         }
-      }, updateInterval);
+      };
       
-      return () => clearInterval(animationInterval);
+      rafId = requestAnimationFrame(animate);
+      
+      return () => {
+        cancelAnimationFrame(rafId);
+        setAnimationComplete(true);
+      };
     }
-  };
+  }, [animationComplete]);
 
-  const handleCategoryMouseLeave = () => {
+  const handleCategoryMouseLeave = useCallback(() => {
     setHoveredCategory(null);
-  };
+  }, []);
   
-  const getSkillLevel = (catIndex: number, skillIndex: number, skill: Skill) => {
+  const getSkillLevel = useCallback((catIndex: number, skillIndex: number, skill: Skill) => {
     const skillKey = `${catIndex}-${skillIndex}`;
     
     if (hoveredCategory === catIndex && !animationComplete) {
@@ -66,7 +77,7 @@ const useSkillAnimation = () => {
     }
     
     return skill.level;
-  };
+  }, [hoveredCategory, animationComplete, animatingSkills]);
 
   return {
     hoveredCategory,

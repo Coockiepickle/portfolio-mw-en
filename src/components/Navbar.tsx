@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -8,27 +7,29 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
+  const handleScroll = useCallback(() => {
+    requestAnimationFrame(() => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 10);
 
-      // Update active section based on scroll position
       const sections = document.querySelectorAll('section[id]');
       sections.forEach(section => {
         const sectionTop = (section as HTMLElement).offsetTop - 100;
         const sectionHeight = (section as HTMLElement).offsetHeight;
         const sectionId = section.getAttribute('id') || '';
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          setActiveSection(sectionId);
+          setActiveSection(prev => prev !== sectionId ? sectionId : prev);
         }
       });
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    });
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  const scrollToSection = useCallback((sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
       window.scrollTo({
@@ -37,7 +38,7 @@ const Navbar = () => {
       });
     }
     setIsMenuOpen(false);
-  };
+  }, []);
 
   const navLinks = [{
     id: 'home',
@@ -83,7 +84,6 @@ const Navbar = () => {
             </a>
           </div>
           
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-1">
             {navLinks.map(link => <button key={link.id} onClick={() => scrollToSection(link.id)} className={cn("mw-nav-link", activeSection === link.id && "active")}>
                 <span className="flex items-center">
@@ -92,14 +92,12 @@ const Navbar = () => {
               </button>)}
           </nav>
           
-          {/* Mobile Navigation Toggle */}
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 text-mw-light hover:text-white focus:outline-none">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
       
-      {/* Mobile Navigation Menu */}
       <div className={cn("md:hidden fixed inset-0 z-40 bg-mw-darker bg-opacity-95 backdrop-blur-md transition-all duration-300 ease-in-out transform", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
         <div className="flex flex-col h-full pt-20 px-6 space-y-6">
           {navLinks.map(link => <button key={link.id} onClick={() => scrollToSection(link.id)} className="flex items-center p-3 text-lg text-mw-light hover:text-white border-b border-mw-green border-opacity-20">
