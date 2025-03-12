@@ -71,7 +71,8 @@ const Contact = () => {
           
           <div className="space-y-4">
             <div>
-              <p className="text-mw-lightgray mb-6">Have a project in mind? Want me to be a part of your company? Just send me an e-mail and I'll answer as fast as possible.</p>
+              <p className="text-mw-lightgray mb-6">Have a project in mind? Want me to be a part of your company? <br>
+                Just send me an e-mail and I'll answer as fast as possible.</p>
               
               <div className="flex justify-center mb-6">
                 <div className="inline-block px-3 py-2 border border-dashed border-mw-green border-opacity-30 rounded-sm bg-mw-darker bg-opacity-50">
@@ -102,7 +103,7 @@ const Contact = () => {
                   <Linkedin className="w-4 h-4 mr-2" />
                   LinkedIn
                 </a>
-                <a href="https://instagram.com/damienreynaud" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30 font-tactical font-semibold tracking-wide">
+                <a href="https://instagram.com/dreynaud" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30 font-tactical font-semibold tracking-wide">
                   <Instagram className="w-4 h-4 mr-2" />
                   Instagram
                 </a>
