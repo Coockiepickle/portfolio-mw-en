@@ -14,7 +14,7 @@ const ProjectsHeader = ({ isVisible }: { isVisible: boolean }) => {
       </div>
       <p className="mt-4">
         A collection of my most significant projects, showcasing my technical expertise
-        and problem-solving abilities. Each project represents a unique challenge I've overcome.
+        and problem-solving abilities.
       </p>
     </div>
   );
