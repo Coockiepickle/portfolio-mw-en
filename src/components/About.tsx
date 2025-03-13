@@ -58,13 +58,12 @@ const About = () => {
                 I'm hard-working and serious in the job I am asked to do.
               </p>
               <p>
-                My mission is to create efficient, reliable, and secure digital experiences
-                that exceed expectations. I combine technical expertise with strategic thinking
-                to achieve optimal results for every project.
+                I strive to craft digital experiences that are not only efficient, reliable, and secure but also delightful and inspiring.
+                Blending deep technical know-how with thoughtful strategy, I work to make every project a standout success.
               </p>
               <p>
-                When not in the working theater, I enjoy gaming, physical training,
-                and studying new technologies to expand my arsenal of skills.
+                When I'm away from the desk, you'll often find me immersed in gaming, pushing my limits at the gym, or exploring the latest tech trends.
+                It's all about keeping my skills sharp and my curiosity alive.
               </p>
             </div>
             
