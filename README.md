@@ -15,7 +15,6 @@ This is a portfolio I did using lovable, it's heavily inspired by the UI of rece
 
 ## Features
 
-- Language switch from FR to EN
 - Responsive design
 - Smooth animations
 - Modern Warfare theme
@@ -77,7 +76,7 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+git clone https://github.com/Coockiepickle/portfolio-mw-en
 
 # Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
