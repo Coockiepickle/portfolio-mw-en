@@ -49,8 +49,7 @@ const Skills = () => {
             <h2 className="mw-section-title text-white">Skills Loadout</h2>
           </div>
           <p className="mt-4">
-            My arsenal of skills, honed through years of personal, professional development
-            and problem-solving.
+            My wide range of skills that I have developed over many years of personal and professional development
           </p>
         </div>
         
