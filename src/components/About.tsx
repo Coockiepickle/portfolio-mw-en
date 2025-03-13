@@ -54,15 +54,15 @@ const About = () => {
             
             <div className={cn("space-y-4 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
               <p>
-                Student in networking and cybersecurity. I love every aspect of IT.
-                I'm hard-working and serious in the job I am asked to do.
+                Networking and Cybersecurity student. I love every aspect of IT.
+                I'm hardworking and serious about what I do.
               </p>
               <p>
-                I intend to provide various digital experiences filled with efficiency, reliability, and security that exceed any expectations.
-                I stand in the gap between deep technological know-how and well-thought-out planning, ensuring the highest output possible for any given assignment.
+                I aim to deliver diverse digital experiences with efficiency, reliability and security that exceed all expectations.
+                I bridge the gap between deep technical knowledge and thoughtful planning to ensure the highest possible output for any given task.
               </p>
               <p>
-                When I'm away from the desk, you'll often find me immersed in gaming, pushing my limits through sport, or exploring the latest tech trends.
+                When I'm away from my desk, you'll often find me immersed in gaming, pushing my limits through sport or exploring the latest tech trends.
                 It's all about keeping my skills sharp and my curiosity alive.
               </p>
             </div>
