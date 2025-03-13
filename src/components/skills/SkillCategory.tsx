@@ -1,4 +1,3 @@
-
 import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
 import SkillBar from './SkillBar';
@@ -75,7 +74,7 @@ const SkillCategory = ({
       <div className="flex items-center mb-6 relative z-10">
         <div className={cn(
           "p-2 bg-mw-green bg-opacity-10 rounded-sm mr-3 transition-all duration-300",
-          isHovering ? "bg-opacity-30 animate-pulse-light" : ""
+          isHovering ? "bg-opacity-30 animate-pulse-slow" : ""
         )}>
           {icon}
         </div>
@@ -93,7 +92,6 @@ const SkillCategory = ({
         ))}
       </div>
       
-      {/* Tactical corner elements */}
       <div className="absolute top-0 right-0 w-8 h-8 overflow-hidden">
         <div className={cn(
           "absolute top-0 right-0 w-16 h-16 bg-mw-green bg-opacity-10 transform rotate-45 translate-x-8 -translate-y-8",
@@ -101,7 +99,6 @@ const SkillCategory = ({
         )}></div>
       </div>
       
-      {/* Tactical corners that appear on hover */}
       <div className={cn(
         "absolute top-0 left-0 w-3 h-3 border-t border-l border-mw-green/0 transition-all duration-300",
         isHovering ? "border-mw-green/50 -translate-x-0.5 -translate-y-0.5" : ""

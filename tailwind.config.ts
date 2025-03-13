@@ -120,6 +120,10 @@ export default {
 					'0%, 100%': { opacity: '0.6' },
 					'50%': { opacity: '0.8' }
 				},
+				'pulse-slow': {  // Add new keyframe for slower pulse
+					'0%, 100%': { opacity: '0.6' },
+					'50%': { opacity: '0.8' }
+				},
 				'tactical-blink': {
 					'0%, 100%': { opacity: '0.7' },
 					'50%': { opacity: '0.9' }
@@ -135,6 +139,7 @@ export default {
 				'glitch': 'glitch 0.5s ease infinite',
 				'radar-scan': 'radar-scan 3s linear infinite',
 				'pulse-light': 'pulse-light 4s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 8s ease-in-out infinite',  // Add new slower animation
 				'tactical-blink': 'tactical-blink 2s ease-in-out infinite'
 			},
 			fontFamily: {
