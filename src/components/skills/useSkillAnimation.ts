@@ -7,64 +7,88 @@ const useSkillAnimation = () => {
   const [animatingSkills, setAnimatingSkills] = useState<{[key: string]: number}>({});
   const [animationComplete, setAnimationComplete] = useState<boolean>(true);
   const animationRef = useRef<number | null>(null);
+  const previousValuesRef = useRef<{[key: string]: number}>({});
+  const velocitiesRef = useRef<{[key: string]: number}>({});
 
   const handleCategoryMouseEnter = useCallback((catIndex: number, skills: Skill[]) => {
     if (animationComplete) {
       setHoveredCategory(catIndex);
       setAnimationComplete(false);
       
-      // Initial values - start with more realistic base points
-      const initialRandomValues: {[key: string]: number} = {};
-      const previousValues: {[key: string]: number} = {};
+      // Initialize previous values and velocities
+      const initialValues: {[key: string]: number} = {};
       
       skills.forEach((skill, skillIndex) => {
         const skillKey = `${catIndex}-${skillIndex}`;
-        // Start with a value between 20% and 60% of the final value for more realism
-        const initialValue = Math.floor(skill.level * (0.2 + Math.random() * 0.4));
-        initialRandomValues[skillKey] = initialValue;
-        previousValues[skillKey] = initialValue;
+        // Start with a value between 25% and 55% of the final value for more realism
+        const initialValue = Math.floor(skill.level * (0.25 + Math.random() * 0.3));
+        initialValues[skillKey] = initialValue;
+        previousValuesRef.current[skillKey] = initialValue;
+        velocitiesRef.current[skillKey] = 0; // Initial velocity is 0
       });
       
-      setAnimatingSkills(initialRandomValues);
+      setAnimatingSkills(initialValues);
       
       // Use requestAnimationFrame for smooth animation
       const startTime = performance.now();
-      const animationDuration = 1000; // 1 second for a smoother feel
+      const animationDuration = 1200; // 1.2 seconds for smoother feel
       
       const animate = (timestamp: number) => {
         const elapsedTime = timestamp - startTime;
         const progress = Math.min(elapsedTime / animationDuration, 1);
         
-        // Create easing functions for more realistic motion
-        // Using cubic ease-out for natural deceleration
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        // Using quintic ease-out for more natural deceleration
+        const easedProgress = 1 - Math.pow(1 - progress, 5);
         
         if (progress < 1) {
           // Generate smooth transitions with physics-inspired behavior
-          const newRandomValues: {[key: string]: number} = {};
+          const newValues: {[key: string]: number} = {};
           
           skills.forEach((skill, skillIndex) => {
             const skillKey = `${catIndex}-${skillIndex}`;
             const targetValue = skill.level;
-            const currentValue = previousValues[skillKey] || 0;
+            const currentValue = previousValuesRef.current[skillKey] || 0;
+            const currentVelocity = velocitiesRef.current[skillKey] || 0;
             
-            // Add slight noise that decreases over time
-            const noise = Math.random() * Math.max(0, 15 * (1 - easedProgress));
+            // Spring physics for smoother movement
+            const spring = 0.3; // Spring constant (affects stiffness)
+            const damping = 0.75; // Damping factor (affects how quickly oscillations die down)
             
-            // Calculate new value with easing
-            let newValue = currentValue + (targetValue - currentValue) * (0.1 + easedProgress * 0.2);
+            // Simulate physics with spring-damping system
+            // Calculate force based on distance from target
+            const distanceToTarget = targetValue - currentValue;
             
-            // Add some randomness early in the animation, less as we progress
-            newValue += (Math.random() - 0.5) * noise;
+            // Apply progressive force based on progress to avoid too much overshoot
+            const force = distanceToTarget * spring * (0.2 + easedProgress * 0.8);
+            
+            // Calculate new velocity with damping
+            let newVelocity = currentVelocity + force;
+            newVelocity *= damping;
+            
+            // Calculate new value based on velocity
+            let newValue = currentValue + newVelocity;
+            
+            // Add subtle randomness early in the animation
+            if (progress < 0.7) {
+              const noise = Math.max(0, 5 * (1 - progress));
+              newValue += (Math.random() - 0.5) * noise;
+            }
             
             // Ensure values stay within bounds
-            newValue = Math.min(Math.max(Math.round(newValue), 0), 100);
+            newValue = Math.min(Math.max(Math.round(newValue), 0), skill.level);
             
-            newRandomValues[skillKey] = newValue;
-            previousValues[skillKey] = newValue;
+            // As we approach the end, get closer to the actual value
+            if (progress > 0.8) {
+              const blend = (progress - 0.8) / 0.2; // 0 to 1 in last 20%
+              newValue = Math.round(newValue * (1 - blend) + targetValue * blend);
+            }
+            
+            newValues[skillKey] = newValue;
+            previousValuesRef.current[skillKey] = newValue;
+            velocitiesRef.current[skillKey] = newVelocity;
           });
           
-          setAnimatingSkills(newRandomValues);
+          setAnimatingSkills(newValues);
           animationRef.current = requestAnimationFrame(animate);
         } else {
           // Animation complete, set to actual values
@@ -76,6 +100,8 @@ const useSkillAnimation = () => {
           setAnimatingSkills(finalValues);
           setAnimationComplete(true);
           animationRef.current = null;
+          // Reset velocity
+          velocitiesRef.current = {};
         }
       };
       

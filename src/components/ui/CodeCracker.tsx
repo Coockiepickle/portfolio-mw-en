@@ -26,35 +26,42 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
     const originalText = text;
     
     // Fixed animation duration of 1.5 seconds (1500ms)
-    const animationDuration = 1500;
+    const animationDuration = 1800;
     
     const animate = (timestamp: number) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
       const elapsed = timestamp - startTimeRef.current;
       const progress = Math.min(elapsed / animationDuration, 1);
       
-      // Ease-out function for smoother completion
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
-      const completeChars = Math.floor(easedProgress * originalText.length);
+      // Improved ease-out cubic function for smoother deceleration
+      const easedProgress = 1 - Math.pow(1 - progress, 4);
       
-      // Implement probabilistic character settling
-      // As we get closer to the end, characters have higher chance to settle
+      // Character settling with more realistic algorithm
       setDisplayText(originalText
         .split('')
         .map((char, index) => {
           // Already completed characters
-          if (index < completeChars) return char;
+          if (index < Math.floor(easedProgress * originalText.length * 0.6)) return char;
           
           // For remaining characters, calculate probability of showing original vs random
           // Characters closer to the "completion front" have higher chance of settling
-          const distanceFromFront = index - completeChars;
-          const settlingProbability = Math.max(0, 1 - (distanceFromFront * 0.2));
+          const distanceFromFront = index - Math.floor(easedProgress * originalText.length * 0.6);
+          const settlingProbability = Math.max(0, 1 - (distanceFromFront * 0.1));
           
-          // Random settling based on probability
-          if (Math.random() < settlingProbability * 0.1) return char;
+          // Random settling based on probability and progress
+          if (Math.random() < settlingProbability * (progress * 0.8)) return char;
           
-          // Otherwise, show random character or space
-          return char === ' ' ? ' ' : getRandomChar();
+          // Handle spaces
+          if (char === ' ') return ' ';
+          
+          // For characters that haven't settled yet, we'll have some occasionally flicker between
+          // the correct character and random ones for a more realistic "cracking" effect
+          if (progress > 0.7 && Math.random() < (progress - 0.7) * 0.8) {
+            return Math.random() < 0.7 ? char : getRandomChar();
+          }
+          
+          // Otherwise, show random character
+          return getRandomChar();
         })
         .join(''));
       

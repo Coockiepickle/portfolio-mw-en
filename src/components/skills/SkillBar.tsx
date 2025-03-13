@@ -39,17 +39,18 @@ const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
       <div className="progress-bar relative overflow-hidden">
         <div 
           ref={barRef}
-          className="progress-bar-fill transition-all duration-700 ease-out relative" 
+          className="progress-bar-fill scanning-light-container transition-all duration-700 ease-out relative" 
           style={{
             width: visible ? `${level}%` : '0%'
           }}
         >
           {/* Add a scanning light effect along the bar */}
-          <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 scanning-light"></div>
+          <div className="scanning-light absolute top-0 right-0 w-8 h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0"></div>
         </div>
       </div>
       
-      <style jsx>{`
+      <style>
+        {`
         @keyframes pulse-once {
           0% { box-shadow: 0 0 0 0 rgba(63, 153, 135, 0.5); }
           70% { box-shadow: 0 0 0 4px rgba(63, 153, 135, 0); }
@@ -69,7 +70,8 @@ const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
         .scanning-light {
           animation: scanning 2s ease-in-out infinite;
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };
