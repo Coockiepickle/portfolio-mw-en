@@ -1,49 +1,71 @@
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Skill } from './skillsData';
 
 const useSkillAnimation = () => {
   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
   const [animatingSkills, setAnimatingSkills] = useState<{[key: string]: number}>({});
   const [animationComplete, setAnimationComplete] = useState<boolean>(true);
+  const animationRef = useRef<number | null>(null);
 
   const handleCategoryMouseEnter = useCallback((catIndex: number, skills: Skill[]) => {
     if (animationComplete) {
       setHoveredCategory(catIndex);
       setAnimationComplete(false);
       
-      // Use fewer initial random values for better performance
+      // Initial values - start with more realistic base points
       const initialRandomValues: {[key: string]: number} = {};
+      const previousValues: {[key: string]: number} = {};
+      
       skills.forEach((skill, skillIndex) => {
         const skillKey = `${catIndex}-${skillIndex}`;
-        initialRandomValues[skillKey] = Math.floor(Math.random() * 100);
+        // Start with a value between 20% and 60% of the final value for more realism
+        const initialValue = Math.floor(skill.level * (0.2 + Math.random() * 0.4));
+        initialRandomValues[skillKey] = initialValue;
+        previousValues[skillKey] = initialValue;
       });
+      
       setAnimatingSkills(initialRandomValues);
       
-      // Use requestAnimationFrame for smoother animation
-      const startTime = Date.now();
-      const animationDuration = 800; // Slightly shorter for better responsiveness
-      const updateInterval = 100; // More frequent updates for smoother animation
+      // Use requestAnimationFrame for smooth animation
+      const startTime = performance.now();
+      const animationDuration = 1000; // 1 second for a smoother feel
       
-      let rafId: number;
-      const animate = () => {
-        const elapsedTime = Date.now() - startTime;
+      const animate = (timestamp: number) => {
+        const elapsedTime = timestamp - startTime;
         const progress = Math.min(elapsedTime / animationDuration, 1);
         
+        // Create easing functions for more realistic motion
+        // Using cubic ease-out for natural deceleration
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        
         if (progress < 1) {
-          // Generate smooth transitions between random values
+          // Generate smooth transitions with physics-inspired behavior
           const newRandomValues: {[key: string]: number} = {};
+          
           skills.forEach((skill, skillIndex) => {
             const skillKey = `${catIndex}-${skillIndex}`;
-            // Use a gradually stabilizing random factor as animation progresses
-            const randomFactor = (1 - progress) * 0.5; // Reduced random factor for smoother animation
             const targetValue = skill.level;
-            const randomVariation = Math.floor(Math.random() * 30 * randomFactor);
-            const smoothedValue = targetValue * progress + randomVariation;
-            newRandomValues[skillKey] = Math.min(Math.max(Math.floor(smoothedValue), 0), 100);
+            const currentValue = previousValues[skillKey] || 0;
+            
+            // Add slight noise that decreases over time
+            const noise = Math.random() * Math.max(0, 15 * (1 - easedProgress));
+            
+            // Calculate new value with easing
+            let newValue = currentValue + (targetValue - currentValue) * (0.1 + easedProgress * 0.2);
+            
+            // Add some randomness early in the animation, less as we progress
+            newValue += (Math.random() - 0.5) * noise;
+            
+            // Ensure values stay within bounds
+            newValue = Math.min(Math.max(Math.round(newValue), 0), 100);
+            
+            newRandomValues[skillKey] = newValue;
+            previousValues[skillKey] = newValue;
           });
+          
           setAnimatingSkills(newRandomValues);
-          rafId = requestAnimationFrame(animate);
+          animationRef.current = requestAnimationFrame(animate);
         } else {
           // Animation complete, set to actual values
           const finalValues: {[key: string]: number} = {};
@@ -53,13 +75,17 @@ const useSkillAnimation = () => {
           });
           setAnimatingSkills(finalValues);
           setAnimationComplete(true);
+          animationRef.current = null;
         }
       };
       
-      rafId = requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate);
       
       return () => {
-        cancelAnimationFrame(rafId);
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+          animationRef.current = null;
+        }
         setAnimationComplete(true);
       };
     }
