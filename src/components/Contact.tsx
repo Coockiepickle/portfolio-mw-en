@@ -64,7 +64,7 @@ const Contact = () => {
           
         </div>
         
-        <div className={cn("mw-card p-6 transition-all duration-500 ease-out transform hover:shadow-lg hover:shadow-mw-green/20 hover:-translate-y-2 hover:border-mw-green/50", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", isVisible && 'delay-150')}>
+        <div className={cn("mw-card p-6 max-w-2xl mx-auto transition-all duration-500 ease-out transform hover:shadow-lg hover:shadow-mw-green/20 hover:-translate-y-2 hover:border-mw-green/50", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", isVisible && 'delay-150')}>
           <div className="flex items-center mb-6">
             <div className="p-2 bg-mw-green bg-opacity-10 rounded-sm mr-3 group-hover:bg-opacity-30 transition-all duration-300">
               <Send className="w-6 h-6 text-mw-green" />
