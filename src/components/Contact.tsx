@@ -74,8 +74,10 @@ const Contact = () => {
           
           <div className="space-y-4">
             <div>
-              <p className="text-mw-lightgray mb-6">Have a project in mind? Want me to be a part of your company? <br />
-                Just send me an e-mail and I'll answer as fast as possible.</p>
+              <p className="text-mw-lightgray mb-6 text-center">
+                Have a project in mind? Want me to be a part of your company? <br />
+                Just send me an e-mail and I'll answer as fast as possible.
+              </p>
               
               <div className="flex justify-center mb-6">
                 <div className="inline-block px-3 py-2 border border-dashed border-mw-green border-opacity-30 rounded-sm bg-mw-darker bg-opacity-50">
