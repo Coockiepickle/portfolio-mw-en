@@ -44,8 +44,9 @@ const HeroContent = ({ loaded, typedText, handleScrollToSection }: HeroContentPr
             loaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
           )}
         >
-          Experienced network student with tactical precision and strategic approach.
-          Specialized in creating sophisticated solutions for complex problems.
+          Experienced network student with both precision and strategic approach.
+          Curious and attentive person with an ability to adapt and a strong intellectual curiosity.
+          Dynamic and enthusiastic collaborator, always ready to take on challenges and contribute to stimulating projects.
         </p>
         
         <div 
