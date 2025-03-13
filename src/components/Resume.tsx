@@ -58,11 +58,19 @@ const Resume = () => {
 
   const handleDownload = (e: React.MouseEvent) => {
     e.preventDefault();
+    
     toast({
       title: "Resume downloading",
       description: "Download will start in a few moments",
     });
-    // Here you would add actual download functionality
+    
+    // Create a link element and trigger the download
+    const link = document.createElement('a');
+    link.href = '/CV_Reynaud_Damien.pdf';
+    link.download = 'CV_Reynaud_Damien.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -102,7 +110,6 @@ const Resume = () => {
                     href="/CV_Reynaud_Damien.pdf" 
                     className="mw-button-primary inline-flex items-center justify-center"
                     onClick={handleDownload}
-                    download
                   >
                     <Download className="w-4 h-4 mr-2" />
                     Download my resume (.PDF)
