@@ -58,11 +58,11 @@ const About = () => {
                 I'm hard-working and serious in the job I am asked to do.
               </p>
               <p>
-                I strive to craft digital experiences that are not only efficient, reliable, and secure but also delightful and inspiring.
-                Blending deep technical know-how with thoughtful strategy, I work to make every project a standout success.
+                I intend to provide various digital experiences filled with efficiency, reliability, and security that exceed any expectations.
+                I stand in the gap between deep technological know-how and well-thought-out planning, ensuring the highest output possible for any given assignment.
               </p>
               <p>
-                When I'm away from the desk, you'll often find me immersed in gaming, pushing my limits at the gym, or exploring the latest tech trends.
+                When I'm away from the desk, you'll often find me immersed in gaming, pushing my limits through sport, or exploring the latest tech trends.
                 It's all about keeping my skills sharp and my curiosity alive.
               </p>
             </div>
