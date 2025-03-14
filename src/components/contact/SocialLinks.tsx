@@ -18,7 +18,7 @@ const SocialLinks = () => {
           <Linkedin className="w-4 h-4 mr-2" />
           LinkedIn
         </a>
-        <a href="https://instagram.com/dreynaud" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30 font-tactical font-semibold tracking-wide">
+        <a href="https://instagram.com/dreynaud13" className="inline-flex items-center justify-center px-4 py-2 bg-mw-green bg-opacity-10 hover:bg-opacity-20 border border-mw-green border-opacity-20 rounded-sm text-mw-green transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-mw-green/30 font-tactical font-semibold tracking-wide">
           <Instagram className="w-4 h-4 mr-2" />
           Instagram
         </a>
