@@ -14,20 +14,6 @@ interface SkillBarProps {
 const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
   const barRef = useRef<HTMLDivElement>(null);
   
-  useEffect(() => {
-    if (visible && barRef.current) {
-      // Add a subtle pulse animation when the value changes
-      barRef.current.classList.add('pulse-once');
-      const timer = setTimeout(() => {
-        if (barRef.current) {
-          barRef.current.classList.remove('pulse-once');
-        }
-      }, 750);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [level, visible]);
-  
   return (
     <div>
       <div className="flex justify-between items-center mb-1">
@@ -51,16 +37,6 @@ const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
       
       <style>
         {`
-        @keyframes pulse-once {
-          0% { box-shadow: 0 0 0 0 rgba(63, 153, 135, 0.5); }
-          70% { box-shadow: 0 0 0 4px rgba(63, 153, 135, 0); }
-          100% { box-shadow: 0 0 0 0 rgba(63, 153, 135, 0); }
-        }
-        
-        .pulse-once {
-          animation: pulse-once 0.75s ease-out;
-        }
-        
         @keyframes scanning {
           0% { opacity: 0; transform: translateX(-100%); }
           50% { opacity: 0.3; }
