@@ -34,19 +34,17 @@ const useSkillAnimation = () => {
       
       // Use requestAnimationFrame for smooth animation
       const startTime = performance.now();
-      const animationDuration = 1500; // 1.5 seconds for smoother animation
+      const animationDuration = 1200; // 1.2 seconds for smooth animation
       
       const animate = (timestamp: number) => {
         const elapsedTime = timestamp - startTime;
         const progress = Math.min(elapsedTime / animationDuration, 1);
         
-        // Using custom bezier easing for more natural, smoother animation
-        // This creates a slow start, faster middle, smooth end
-        const easeOutQuint = (x: number) => 1 - Math.pow(1 - x, 5);
-        const easedProgress = easeOutQuint(progress);
+        // Using cubic ease-out for natural deceleration
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
         
         if (progress < 1) {
-          // Generate smooth transitions
+          // Generate smooth transitions with simple easing
           const newValues: {[key: string]: number} = {};
           
           skills.forEach((skill, skillIndex) => {
@@ -89,7 +87,7 @@ const useSkillAnimation = () => {
       return animatingSkills[skillKey] || 0;
     }
     
-    return hoveredCategory === catIndex ? skill.level : 0;
+    return skill.level;
   }, [hoveredCategory, animationComplete, animatingSkills]);
 
   return {

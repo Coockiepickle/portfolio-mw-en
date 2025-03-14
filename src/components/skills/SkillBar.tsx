@@ -1,6 +1,6 @@
 
 import { cn } from '@/lib/utils';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface SkillBarProps {
   skill: {
@@ -18,33 +18,33 @@ const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
     <div>
       <div className="flex justify-between items-center mb-1">
         <span className="text-sm font-tactical font-medium">{skill.name}</span>
-        <span className="text-xs text-mw-green font-tactical font-medium transition-all duration-700">
+        <span className="text-xs text-mw-green font-tactical font-medium transition-all duration-300">
           {level}%
         </span>
       </div>
-      <div className="progress-bar relative h-2 bg-mw-darker rounded-sm overflow-hidden">
+      <div className="progress-bar relative overflow-hidden">
         <div 
           ref={barRef}
-          className="progress-bar-fill h-full bg-gradient-to-r from-mw-green/70 to-mw-green transition-all duration-1000 ease-out relative rounded-sm" 
+          className="progress-bar-fill scanning-light-container transition-all duration-700 ease-out relative" 
           style={{
             width: visible ? `${level}%` : '0%'
           }}
         >
-          {/* Subtle glow effect */}
-          <div className="absolute inset-0 bg-mw-green/20 animate-pulse-subtle"></div>
+          {/* Add a scanning light effect along the bar */}
+          <div className="scanning-light absolute top-0 right-0 w-8 h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0"></div>
         </div>
       </div>
       
       <style>
         {`
-        @keyframes pulse-subtle {
-          0% { opacity: 0.5; }
-          50% { opacity: 0.7; }
-          100% { opacity: 0.5; }
+        @keyframes scanning {
+          0% { opacity: 0; transform: translateX(-100%); }
+          50% { opacity: 0.3; }
+          100% { opacity: 0; transform: translateX(100%); }
         }
         
-        .animate-pulse-subtle {
-          animation: pulse-subtle 3s ease-in-out infinite;
+        .scanning-light {
+          animation: scanning 2s ease-in-out infinite;
         }
         `}
       </style>
