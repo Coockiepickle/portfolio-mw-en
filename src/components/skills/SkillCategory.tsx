@@ -74,7 +74,7 @@ const SkillCategory = ({
       <div className="flex items-center mb-6 relative z-10">
         <div className={cn(
           "p-2 bg-mw-green bg-opacity-10 rounded-sm mr-3 transition-all duration-300",
-          isHovering ? "bg-opacity-30 animate-pulse-slow" : ""
+          isHovering ? "bg-opacity-30" : ""
         )}>
           {icon}
         </div>
@@ -87,7 +87,7 @@ const SkillCategory = ({
             key={skillIndex}
             skill={skill}
             visible={visible}
-            level={getSkillLevel(index, skillIndex, skill)}
+            level={isHovering ? getSkillLevel(index, skillIndex, skill) : 0}
           />
         ))}
       </div>
