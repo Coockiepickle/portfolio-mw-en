@@ -1,5 +1,4 @@
 
-import { Code } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import CodeCracker from '../ui/CodeCracker';
 import { ProjectData } from './ProjectCard';
@@ -13,7 +12,7 @@ interface ProjectCardBodyProps {
     borderElement: string;
   };
   isDecoding: boolean;
-  index: number; // Add index prop
+  index: number;
 }
 
 const ProjectCardBody = ({ project, styles, isDecoding, index }: ProjectCardBodyProps) => {

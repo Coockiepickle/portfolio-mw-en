@@ -1,5 +1,5 @@
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { Skill } from './skillsData';
 
 const useSkillAnimation = () => {
@@ -9,6 +9,15 @@ const useSkillAnimation = () => {
   const animationRef = useRef<number | null>(null);
   const previousValuesRef = useRef<{[key: string]: number}>({});
   const velocitiesRef = useRef<{[key: string]: number}>({});
+  
+  // Cleanup animation frame on unmount
+  useEffect(() => {
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
 
   const handleCategoryMouseEnter = useCallback((catIndex: number, skills: Skill[]) => {
     if (animationComplete) {
@@ -54,7 +63,6 @@ const useSkillAnimation = () => {
             const spring = 0.3; // Spring constant (affects stiffness)
             const damping = 0.75; // Damping factor (affects how quickly oscillations die down)
             
-            // Simulate physics with spring-damping system
             // Calculate force based on distance from target
             const distanceToTarget = targetValue - currentValue;
             
@@ -106,14 +114,6 @@ const useSkillAnimation = () => {
       };
       
       animationRef.current = requestAnimationFrame(animate);
-      
-      return () => {
-        if (animationRef.current) {
-          cancelAnimationFrame(animationRef.current);
-          animationRef.current = null;
-        }
-        setAnimationComplete(true);
-      };
     }
   }, [animationComplete]);
 

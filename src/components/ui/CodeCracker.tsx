@@ -1,4 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
+
+import { useEffect, useState, useRef, memo } from 'react';
 import { cn } from '@/lib/utils';
 
 const getRandomChar = () => {
@@ -12,7 +13,8 @@ interface CodeCrackerProps {
   isDecoding: boolean;
 }
 
-const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
+// Use memo to prevent unnecessary re-renders
+const CodeCracker = memo(({ text, className, isDecoding }: CodeCrackerProps) => {
   const [displayText, setDisplayText] = useState(text);
   const animationRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
@@ -20,12 +22,15 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
   useEffect(() => {
     if (!isDecoding) {
       setDisplayText(text);
-      return;
+      return () => {
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+          startTimeRef.current = null;
+        }
+      };
     }
     
     const originalText = text;
-    
-    // Fixed animation duration of 1.5 seconds (1500ms)
     const animationDuration = 1800;
     
     const animate = (timestamp: number) => {
@@ -89,6 +94,8 @@ const CodeCracker = ({ text, className, isDecoding }: CodeCrackerProps) => {
       {displayText}
     </div>
   );
-};
+});
+
+CodeCracker.displayName = 'CodeCracker';
 
 export default CodeCracker;
