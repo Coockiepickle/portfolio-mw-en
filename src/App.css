@@ -1,3 +1,5 @@
+
+/* Remove unused styles and add custom cursor styles */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,38 +7,17 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Blinking cursor effect for text inputs */
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="password"]:focus, 
+textarea:focus {
+  caret-color: #3f9987;
+  caret-shape: block;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* Input fields custom styling */
+input, textarea, select {
+  cursor: text !important;
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAhGVYSWZNTQAqAAAACAAGAQYAAwAAAAEAAgAAARIAAwAAAAEAAQAAARoABQAAAAEAAABWARsABQAAAAEAAABeASgAAwAAAAEAAgAAh2kABAAAAAEAAABmAAAAAAAAAEgAAAABAAAASAAAAAEAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAjNibTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB1klEQVQ4EYVTy23CQBCdXdtAHJAQBdABogJDB1RAB4QKElcUkEQiuQPS5J4iHVBCOiAdkA7Cgbj4zaz3YwcfRrJ3Z96892Zn1qSU+m+apsnkslqtSil1z7GsD86eMqiqisw5hxcvl8sHqfTD2fq+r7bbrbrd7tR1XRNpGmmaRnme62KxUJvN5lf4lCGRXnY4HNkOB97jA/f7/QMOEOEEWoHUeZ7r4/H4KfxAhCfEmXa3211st9sdE5bLpR6Px5/CJ5fBIOi6Lnv59D3Pa4TfotOGAO/J79+2bb+LjHzrQ8YJIiJpmqr9fv9Fb/qQdV33onFw4RxQkgHdGMuJrJgFa7Qf1qJBIKsBIQsMIBLjRDh5IFI4BXzCHw6HjxpdHzKO97lbGhg43P1+/8xtx3G0MA5h+Ij61CTXpM8yJmNigFEURZyY5I+iONS3+NL2iM2c22DHcdR4QdjRVEGQWJZF5qE24FnuR2LmGDnZ90z9rIpCEARnxcL40TCE6H6TyfBnwVoikoW7rnvm3BgVaRxsLJimecU+GiGO1AuTkAlj0rZtVJJyAH9RFPlxHDNuIQxDDgv8GxVFURiG4dXgkXiHDI8TJEu4O1BI07QS//7vav0B9AGfyO5epXUAAAAASUVORK5CYII=") 0 0, text;
 }
