@@ -10,22 +10,8 @@ import Experiences from "../components/Experiences";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { Toaster } from "@/components/ui/toaster";
-import { useEffect } from "react";
 
 const Index = () => {
-  useEffect(() => {
-    // Add Devicons CDN
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css';
-    document.head.appendChild(link);
-    
-    return () => {
-      // Clean up when component unmounts
-      document.head.removeChild(link);
-    };
-  }, []);
-
   return (
     <div className="min-h-screen">
       <Navbar />

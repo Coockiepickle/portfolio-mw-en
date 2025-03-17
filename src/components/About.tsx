@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import profileImage from '../assets/images/profile_image.webp';
-import TechCarousel from './about/TechCarousel';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -105,7 +104,7 @@ const About = () => {
             </div>
             
             <div className="absolute top-4 right-4 w-8 h-8 border border-mw-green border-opacity-40 
-              flex items-center justify-center">
+              flex items-center justify-center animate-pulse-light">
               <div className="w-2 h-2 bg-mw-green rounded-full"></div>
             </div>
             
@@ -113,11 +112,6 @@ const About = () => {
               <div className="h-full w-3/4 bg-mw-green animate-tactical-blink"></div>
             </div>
           </div>
-        </div>
-        
-        {/* Technology Carousel */}
-        <div className={cn("transition-all duration-700 delay-600 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-          <TechCarousel />
         </div>
       </div>
     </section>;
