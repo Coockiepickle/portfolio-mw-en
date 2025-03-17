@@ -13,7 +13,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   return (
-    <div className="min-h-screen cursor-default">
+    <div className="min-h-screen">
       <Navbar />
       <main className="relative overflow-hidden">
         {/* Tactical vertical lines for section transitions */}
