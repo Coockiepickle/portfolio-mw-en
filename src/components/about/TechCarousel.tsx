@@ -18,10 +18,6 @@ const TechCarousel = () => {
       icon: <i className="devicon-github-plain text-white w-full h-full"></i>
     },
     {
-      name: "Packet Tracer",
-      icon: <i className="devicon-cisco-plain text-white w-full h-full"></i>
-    },
-    {
       name: "VSCode",
       icon: <i className="devicon-vscode-plain text-white w-full h-full"></i>
     },
@@ -46,7 +42,7 @@ const TechCarousel = () => {
       icon: <i className="devicon-docker-plain text-white w-full h-full"></i>
     },
     {
-      name: "Powershell",
+      name: "Bash",
       icon: <i className="devicon-bash-plain text-white w-full h-full"></i>
     },
     {
@@ -54,8 +50,8 @@ const TechCarousel = () => {
       icon: <i className="devicon-python-plain text-white w-full h-full"></i>
     },
     {
-      name: "Raspberry PI",
-      icon: <i className="devicon-raspberrypi-plain text-white w-full h-full"></i>
+      name: "NodeJS",
+      icon: <i className="devicon-nodejs-plain text-white w-full h-full"></i>
     },
     {
       name: "Arduino",
@@ -71,8 +67,8 @@ const TechCarousel = () => {
       if (!startTime) startTime = timestamp;
       
       if (!isHovering && carouselRef.current) {
-        // Slowed down animation by increasing the divisor from 15000 to 30000
-        const progress = (timestamp - startTime) / 30000;
+        // Make animation even slower by increasing the divisor to 50000
+        const progress = (timestamp - startTime) / 50000;
         
         // Scroll position cycles between 0 and max scroll width
         const scrollPos = (progress * carouselRef.current.scrollWidth) % carouselRef.current.scrollWidth;
@@ -111,28 +107,28 @@ const TechCarousel = () => {
         
         <div 
           ref={carouselRef}
-          className="flex overflow-x-auto scrollbar-hide gap-12 py-8 px-16"
+          className="flex overflow-x-auto scrollbar-hide py-8 px-16 justify-center items-center"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {techIcons.map((tech, index) => (
             <div 
               key={index} 
-              className="flex flex-col items-center flex-shrink-0 transition-all duration-300 hover:scale-110"
+              className="flex flex-col items-center flex-shrink-0 transition-all duration-300 hover:scale-110 mx-12"
             >
-              <div className="w-12 h-12 mb-3 text-white">
+              <div className="w-20 h-20 mb-3 text-white flex items-center justify-center">
                 {tech.icon}
               </div>
               <span className="text-xs text-mw-lightgray font-tactical tracking-wider">{tech.name}</span>
             </div>
           ))}
           
-          {/* Duplicate icons for infinite scroll effect */}
+          {/* Duplicate icons for infinite loop effect */}
           {techIcons.map((tech, index) => (
             <div 
               key={`duplicate-${index}`} 
-              className="flex flex-col items-center flex-shrink-0 transition-all duration-300 hover:scale-110"
+              className="flex flex-col items-center flex-shrink-0 transition-all duration-300 hover:scale-110 mx-12"
             >
-              <div className="w-12 h-12 mb-3 text-white">
+              <div className="w-20 h-20 mb-3 text-white flex items-center justify-center">
                 {tech.icon}
               </div>
               <span className="text-xs text-mw-lightgray font-tactical tracking-wider">{tech.name}</span>
