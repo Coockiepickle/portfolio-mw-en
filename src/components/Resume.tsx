@@ -76,7 +76,38 @@ const Resume = () => {
   return (
     <section ref={sectionRef} id="resume" className="relative py-16 bg-mw-dark">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
-      <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
+      
+      {/* Enhanced military-style background */}
+      <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
+      
+      {/* Tactical scan lines */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"8\" height=\"8\" viewBox=\"0 0 8 8\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h8v1H0zm0 2h8v1H0zm0 2h8v1H0zm0 2h8v1H0z\" fill=\"%233f9987\" fill-opacity=\".1\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')] opacity-20"></div>
+      
+      {/* Tactical corner accents */}
+      <div className="absolute top-12 left-12 w-16 h-16">
+        <div className="absolute top-0 left-0 w-full h-0.5 bg-mw-green/30"></div>
+        <div className="absolute top-0 left-0 h-full w-0.5 bg-mw-green/30"></div>
+      </div>
+      <div className="absolute top-12 right-12 w-16 h-16">
+        <div className="absolute top-0 right-0 w-full h-0.5 bg-mw-green/30"></div>
+        <div className="absolute top-0 right-0 h-full w-0.5 bg-mw-green/30"></div>
+      </div>
+      <div className="absolute bottom-12 left-12 w-16 h-16">
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-mw-green/30"></div>
+        <div className="absolute bottom-0 left-0 h-full w-0.5 bg-mw-green/30"></div>
+      </div>
+      <div className="absolute bottom-12 right-12 w-16 h-16">
+        <div className="absolute bottom-0 right-0 w-full h-0.5 bg-mw-green/30"></div>
+        <div className="absolute bottom-0 right-0 h-full w-0.5 bg-mw-green/30"></div>
+      </div>
+      
+      {/* Animated data indicator */}
+      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-1">
+        <div className="w-2 h-2 bg-mw-green/50 animate-pulse" style={{ animationDelay: '0s' }}></div>
+        <div className="w-2 h-2 bg-mw-green/50 animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+        <div className="w-2 h-2 bg-mw-green/50 animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+      </div>
+      
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-mw-darker to-transparent"></div>
       
       <div className="mw-container relative z-10">

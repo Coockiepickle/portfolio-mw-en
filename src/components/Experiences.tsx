@@ -92,6 +92,21 @@ const Experiences = () => {
     <section ref={sectionRef} id="experiences" className="relative py-24 overflow-hidden bg-black">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       
+      {/* Enhanced tactical grid background */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg stroke=\"%233f9987\" stroke-width=\"0.5\"%3E%3Cpath d=\"M30 0v60M0 30h60\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-10"></div>
+      
+      {/* Diagonal tactical elements */}
+      <div className="absolute left-0 top-0 w-40 h-40 border-l border-t border-mw-green/20"></div>
+      <div className="absolute right-0 bottom-0 w-40 h-40 border-r border-b border-mw-green/20"></div>
+      
+      {/* Tactical data visualizer elements */}
+      <div className="absolute right-5 top-20 w-1 h-24 bg-mw-green/10">
+        <div className="absolute top-0 left-0 w-full h-1/3 bg-mw-green/40 animate-tactical-blink"></div>
+      </div>
+      <div className="absolute left-5 bottom-20 w-1 h-24 bg-mw-green/10">
+        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-mw-green/40 animate-tactical-blink" style={{ animationDelay: '1s' }}></div>
+      </div>
+      
       <div className="mw-container relative z-10">
         <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
           <div className="flex flex-col items-center">
