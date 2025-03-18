@@ -1,78 +1,47 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Card, CardContent } from '@/components/ui/card';
-import { CalendarDays, MapPin, Building, Award } from 'lucide-react';
-
-type Experience = {
-  id: number;
-  title: string;
-  company: string;
-  location: string;
-  period: string;
-  description: string[];
-  technologies: string[];
-  achievements?: string[];
-};
-
-const experiencesData: Experience[] = [
-  {
-    id: 1,
-    title: "Lead Software Engineer",
-    company: "Thales",
-    location: "Toulouse, France",
-    period: "Jan 2021 - Present",
-    description: [
-      "Designed and implemented the next-generation air traffic management system using modern web technologies",
-      "Led a team of 5 engineers, directing architectural decisions and code quality initiatives",
-      "Established CI/CD pipelines and testing practices that reduced deployment time by 70%"
-    ],
-    technologies: ["React", "TypeScript", "Node.js", "Jest", "Docker", "AWS", "GraphQL"],
-    achievements: [
-      "Successfully delivered a critical navigation component used by 15+ European control centers",
-      "Introduced performance optimizations that improved system response time by 40%",
-      "Created training materials and mentored junior developers on modern JavaScript practices"
-    ]
-  },
-  {
-    id: 2,
-    title: "Senior Frontend Developer",
-    company: "Airbus",
-    location: "Toulouse, France",
-    period: "Jun 2018 - Dec 2020",
-    description: [
-      "Developed interactive cockpit simulation tools for pilot training programs",
-      "Built responsive web interfaces for aircraft maintenance system using React and Redux",
-      "Collaborated with UX designers to implement intuitive interfaces for complex technical systems"
-    ],
-    technologies: ["React", "Redux", "JavaScript", "SASS", "D3.js", "Three.js", "WebGL"],
-    achievements: [
-      "Received innovation award for developing a WebGL-based cockpit visualization tool",
-      "Implemented accessibility improvements that became company standard"
-    ]
-  },
-  {
-    id: 3,
-    title: "Frontend Developer",
-    company: "Capgemini",
-    location: "Paris, France",
-    period: "Sep 2015 - May 2018",
-    description: [
-      "Built web applications for various clients in banking and insurance sectors",
-      "Migrated legacy applications to modern JavaScript frameworks",
-      "Participated in agile development teams using Scrum methodology"
-    ],
-    technologies: ["Angular", "JavaScript", "TypeScript", "Bootstrap", "LESS", "RESTful APIs"],
-    achievements: [
-      "Successfully delivered 8+ major client projects on time and within budget",
-      "Recognized for excellent client communication and requirements gathering"
-    ]
-  }
-];
 
 const Experiences = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [visibleItems, setVisibleItems] = useState<number[]>([]);
+  const [followingCardStyle, setFollowingCardStyle] = useState({});
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  
+  const experiences = [
+    {
+      title: "Systems and network administration trainee",
+      company: "MH Industries",
+      period: "Sept. - Present",
+      description: "Helping to improve and maintain the information system. Upgrading the network infrastructure. User technical support"
+    },
+    {
+      title: "Power Automate application development",
+      company: "Cégep de La Pocatière",
+      period: "March - May 2024",
+      description: "Implementation of an application to automate the completion of work placement agreements. Working as part of a team in project mode."
+    },
+    {
+      title: "Trainee Network and Telecommunications Administrator",
+      company: "D.S.I. C.H.U. de Limoges",
+      period: "16 May - 24 June 2022, 2 Jan. - 10 Feb. 2023",
+      description: "Helping to improve and maintain the C.H.U.'s information system. Discover the new tools (software and hardware) needed to run a computer network."
+    },
+    {
+      title: "Observation internship",
+      company: "La Clinique Informatique",
+      period: "June - July 2019",
+      description: "Diagnose faulty computers and replace components components according to problems encountered. Contact with customers."
+    }
+  ];
+
+  const recurringExperience = {
+    title: "Seasonal accrobranche operator",
+    company: "Tarz en arbre",
+    periods: ["June - Sept. 2021", "June - Sept. 2022", "July - Aug. 2023", "July - Aug 2024"],
+    description: "Helping and monitoring customers in the activities. Explaining security rules to groups of people. Selling tickets to the activity."
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,6 +52,34 @@ const Experiences = () => {
           setIsVisible(true);
         }
       }
+
+      if (sectionRef.current && cardRef.current) {
+        const section = sectionRef.current;
+        const sectionRect = section.getBoundingClientRect();
+        const card = cardRef.current;
+        const cardHeight = card.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        
+        const cardFullyVisible = sectionRect.top + 100 < 0;
+        
+        if (cardFullyVisible && sectionRect.bottom > cardHeight + 100) {
+          // Reduced the offset to move the card higher up (-150 instead of -50)
+          const scrollProgress = Math.abs(sectionRect.top) - 150;
+          // Increased the offset from 150 to 350 to make card stop earlier
+          const maxScroll = sectionRect.height - cardHeight - 350;
+          const translateY = Math.min(Math.max(0, scrollProgress), maxScroll);
+          
+          setFollowingCardStyle({
+            transform: `translateY(${translateY}px)`,
+            transition: 'transform 0.15s ease-out'
+          });
+        } else if (!cardFullyVisible) {
+          setFollowingCardStyle({
+            transform: 'translateY(0px)',
+            transition: 'transform 0.15s ease-out'
+          });
+        }
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -91,122 +88,86 @@ const Experiences = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => {
-        setVisibleItems([1]);
-      }, 300);
-      
-      const timer2 = setTimeout(() => {
-        setVisibleItems([1, 2]);
-      }, 600);
-      
-      const timer3 = setTimeout(() => {
-        setVisibleItems([1, 2, 3]);
-      }, 900);
-      
-      return () => {
-        clearTimeout(timer);
-        clearTimeout(timer2);
-        clearTimeout(timer3);
-      };
-    }
-  }, [isVisible]);
-
   return (
-    <section id="experiences" className="relative py-16 bg-mw-dark">
-      <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
+    <section ref={sectionRef} id="experiences" className="relative py-24 overflow-hidden bg-black">
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       
       <div className="mw-container relative z-10">
-        <div className={cn("transition-all duration-700 transform", 
-          isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
+        <div className={cn("transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
           <div className="flex flex-col items-center">
             <span className="mw-badge mb-4">
-              <CalendarDays className="w-3 h-3 mr-1" />
-              WORK HISTORY
+              <Briefcase className="w-3 h-3 mr-1" />
+              CAREER PATH
             </span>
-            <h2 className="mw-section-title text-white mb-0">Professional Experience</h2>
-            <p className="text-mw-lightgray text-center max-w-2xl mx-auto mt-4">
-              My professional journey in software development has equipped me with a diverse range of skills and experiences.
-            </p>
+            <h2 className="mw-section-title text-white">Work experience</h2>
           </div>
         </div>
         
-        <div className="mt-12 space-y-10 max-w-4xl mx-auto">
-          {experiencesData.map((experience) => (
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="col-span-1 md:col-span-2">
+            <div className="relative border-l-2 border-mw-green border-opacity-30 pl-8 ml-4">
+              {experiences.map((exp, index) => (
+                <div 
+                  key={index}
+                  className={cn(
+                    "mb-12 relative transition-all duration-700 transform",
+                    isVisible ? `opacity-100 translate-y-0 delay-[${index * 150}ms]` : "opacity-0 translate-y-8"
+                  )}
+                >
+                  <div className="absolute -left-[41px] top-0 w-5 h-5 bg-mw-darker border-2 border-mw-green rounded-full"></div>
+                  <div className="mw-card p-6 hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
+                    <div className="flex flex-col md:flex-row md:items-start justify-between mb-4">
+                      <h3 className="text-xl font-bold text-white">{exp.title}</h3>
+                      <div className="flex flex-col text-mw-lightgray text-sm mt-2 md:mt-0">
+                        <div className="flex items-center mb-1">
+                          <Calendar className="w-4 h-4 mr-1" />
+                          {exp.period}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center mb-4 text-mw-green">
+                      <Building2 className="w-4 h-4 mr-2" />
+                      <span>{exp.company}</span>
+                    </div>
+                    <p className="text-mw-light">{exp.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="col-span-1">
             <div 
-              key={experience.id}
+              ref={cardRef}
+              style={followingCardStyle}
               className={cn(
                 "transition-all duration-700 transform",
-                visibleItems.includes(experience.id) 
-                  ? "opacity-100 translate-y-0" 
-                  : "opacity-0 translate-y-16"
+                isVisible ? "opacity-100 translate-x-0 delay-300" : "opacity-0 translate-x-8"
               )}
             >
-              <Card className="mw-card p-0 bg-mw-darker/60 backdrop-blur-sm border border-mw-green/20 overflow-hidden">
-                <div className="absolute top-0 left-0 w-2 h-full bg-mw-green/40"></div>
-                <CardContent className="pt-6 px-6 pb-6">
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-1">{experience.title}</h3>
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4">
-                        <div className="flex items-center text-mw-lightgray">
-                          <Building className="w-4 h-4 mr-1" />
-                          <span>{experience.company}</span>
-                        </div>
-                        <div className="flex items-center text-mw-lightgray">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          <span>{experience.location}</span>
-                        </div>
-                        <div className="flex items-center text-mw-lightgray">
-                          <CalendarDays className="w-4 h-4 mr-1" />
-                          <span>{experience.period}</span>
-                        </div>
-                      </div>
-                    </div>
+              <div className="mw-card p-6 border-mw-accent/30 hover:border-mw-accent/50 hover:shadow-mw-accent/30">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold text-white">{recurringExperience.title}</h3>
+                  <div className="bg-mw-accent/20 p-1.5 rounded-full">
+                    <RepeatIcon className="w-5 h-5 text-mw-accent" />
                   </div>
-                  
-                  <div className="mt-4">
-                    <ul className="space-y-2 mb-4">
-                      {experience.description.map((item, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="text-mw-green mr-2">›</span>
-                          <span className="text-mw-light">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    {experience.achievements && (
-                      <div className="mt-4 pt-4 border-t border-mw-green/20">
-                        <div className="flex items-center mb-2">
-                          <Award className="w-4 h-4 text-mw-green mr-2" />
-                          <span className="text-white font-semibold">Key Achievements</span>
-                        </div>
-                        <ul className="space-y-2">
-                          {experience.achievements.map((item, idx) => (
-                            <li key={idx} className="flex items-start">
-                              <span className="text-mw-accent mr-2">›</span>
-                              <span className="text-mw-light">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    
-                    <div className="mt-4 pt-4 border-t border-mw-green/20">
-                      <div className="flex flex-wrap gap-2">
-                        {experience.technologies.map((tech, idx) => (
-                          <span key={idx} className="px-2 py-1 bg-mw-green/10 text-mw-green text-xs rounded-sm border border-mw-green/20">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                </div>
+                <div className="flex items-center mb-4 text-mw-accent">
+                  <Building2 className="w-4 h-4 mr-2" />
+                  <span>{recurringExperience.company}</span>
+                </div>
+                <div className="mb-4">
+                  {recurringExperience.periods.map((period, idx) => (
+                    <div key={idx} className="flex items-center text-mw-lightgray text-sm mb-1.5">
+                      <Calendar className="w-3.5 h-3.5 mr-1.5 text-mw-accent/70" />
+                      {period}
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  ))}
+                </div>
+                <p className="text-mw-light">{recurringExperience.description}</p>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

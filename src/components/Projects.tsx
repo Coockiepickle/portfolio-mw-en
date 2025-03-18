@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 import { projectsData } from '../data/projects';
 import ProjectsHeader from './projects/ProjectsHeader';
 import ProjectGrid from './projects/ProjectGrid';
