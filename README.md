@@ -3,14 +3,14 @@
 
 # Presentation
 
-This is a portfolio I did using lovable, it's heavily inspired by the UI of recent Modern Warfare games, it shows who I am, what are the courses I have taken, my personal and professional projects, my skills and links to my social medias.
+This is a portfolio I did using lovable, it's heavily inspired by the UI of recent Modern Warfare games, it shows who I am, what are the courses I've taken, my personal and professional projects, my skills and links to my social medias.
 
 
 ## Tech Stack
 
-**Client:** TypeScript, Tailwind CSS, Vite, React, shadcn-ui
+**Dev:** TypeScript, Tailwind CSS, Vite, React, shadcn-ui
 
-**Server:** Netlify, Github, Lovable
+**Hosting:** Netlify, Github, Lovable
 
 
 ## Features
