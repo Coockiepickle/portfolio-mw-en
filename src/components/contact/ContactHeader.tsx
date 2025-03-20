@@ -15,7 +15,7 @@ const ContactHeader = ({ isVisible }: ContactHeaderProps) => {
       <div className="flex flex-col items-center">
         <span className="mw-badge mb-4">
           <Mail className="w-3 h-3 mr-1" />
-          GET IN TOUCH
+          GETTING IN TOUCH
         </span>
         <h2 className="mw-section-title text-white">Communication</h2>
       </div>
