@@ -16,7 +16,7 @@ const HeroBadge = ({ loaded }: HeroBadgeProps) => {
     >
       <span className="mw-badge mb-4">
         <Target className="w-3 h-3 mr-1" />
-        LEARNING ACTIVATED
+        PRESENTATION PROCESS ACTIVATED
       </span>
     </div>
   );
