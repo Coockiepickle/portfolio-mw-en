@@ -32,7 +32,7 @@ const Experiences = () => {
       title: "Observation internship",
       company: "La Clinique Informatique",
       period: "June - July 2019",
-      description: "Diagnose faulty computers and replace components components according to problems encountered. Contact with customers."
+      description: "Diagnose faulty computers and replace components according to problems encountered. Contact with customers."
     }
   ];
 
