@@ -50,7 +50,7 @@ const About = () => {
             <div className={cn("space-y-4 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
               <p>Networking and Cybersecurity student. I love every aspect of IT. I'm hardworking and serious about everything I do.</p>
               <p>I aim to providing diverse digital solutions with efficiency, reliability and security that exceed all expectations.</p>
-              <p>When I'm away from my desk, you'll often find me immersed in gaming, pushing my limits through sport or exploring the latest tech trends. My goak is to keep my skills sharp and my curiosity alive.</p>
+              <p>When I'm away from my desk, you'll often find me immersed in gaming, pushing my limits through sport or exploring the latest tech trends. My goal is to keep my skills sharp and my curiosity alive.</p>
             </div>
             
             <div className={cn("mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 transition-all duration-700 delay-300 transform", isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
