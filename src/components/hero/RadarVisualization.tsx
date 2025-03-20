@@ -58,7 +58,7 @@ const RadarVisualization = () => {
   }, []);
 
   return (
-    <div className="absolute top-1/3 right-[15%] w-48 h-48 md:w-64 md:h-64 rounded-full border border-mw-green border-opacity-40 
+    <div className="absolute top-1/4 right-[10%] w-48 h-48 md:w-64 md:h-64 rounded-full border border-mw-green border-opacity-40 
       flex items-center justify-center opacity-80">
       <div className="absolute w-3/4 h-3/4 rounded-full border border-mw-green border-opacity-50"></div>
       <div className="absolute w-1/2 h-1/2 rounded-full border border-mw-green border-opacity-60"></div>
