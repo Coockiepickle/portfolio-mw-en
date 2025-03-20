@@ -1,12 +1,9 @@
-
 import { useEffect, useState } from 'react';
 import { User, Shield, Target, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import profileImage from '../assets/images/profile_image.webp';
-
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
-  
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('about');
@@ -21,7 +18,6 @@ const About = () => {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
   const stats = [{
     icon: <Clock className="w-5 h-5 text-mw-green mr-2" />,
     value: "4+",
@@ -35,7 +31,6 @@ const About = () => {
     value: "15+",
     label: "Technologies comfortable with"
   }];
-  
   return <section id="about" className="relative py-16 overflow-hidden bg-black">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
       
@@ -53,14 +48,8 @@ const About = () => {
             </div>
             
             <div className={cn("space-y-4 transition-all duration-700 delay-150 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-              <p>
-                Networking and Cybersecurity student. I love every aspect of IT.
-                I'm hardworking and serious about what I do.
-              </p>
-              <p>
-                I aim to deliver diverse digital experiences with efficiency, reliability and security that exceed all expectations.
-                I bridge the gap between deep technical knowledge and thoughtful planning to ensure the highest possible output for any given task.
-              </p>
+              <p>Networking and Cybersecurity student. I love every aspect of IT. I'm hardworking and serious about everything I do.</p>
+              <p>I aim to providing diverse digital solutions with efficiency, reliability and security that exceed all expectations.</p>
               <p>
                 When I'm away from my desk, you'll often find me immersed in gaming, pushing my limits through sport or exploring the latest tech trends.
                 It's all about keeping my skills sharp and my curiosity alive.
@@ -116,5 +105,4 @@ const About = () => {
       </div>
     </section>;
 };
-
 export default About;

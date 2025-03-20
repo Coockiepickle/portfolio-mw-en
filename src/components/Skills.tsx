@@ -1,11 +1,9 @@
-
 import { useEffect, useState } from 'react';
 import { Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import SkillCategory from './skills/SkillCategory';
 import { getSkillCategories } from './skills/skillsData.tsx';
 import useSkillAnimation from './skills/useSkillAnimation';
-
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
   const skillCategories = getSkillCategories();
@@ -15,7 +13,6 @@ const Skills = () => {
     handleCategoryMouseLeave,
     getSkillLevel
   } = useSkillAnimation();
-  
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('skills');
@@ -31,7 +28,6 @@ const Skills = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
   return <section id="skills" className="relative py-16 bg-black">
       {/* Top fade gradient transition */}
       <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-mw-darker to-transparent opacity-80"></div>
@@ -48,9 +44,7 @@ const Skills = () => {
             </span>
             <h2 className="mw-section-title text-white">Skills Loadout</h2>
           </div>
-          <p className="mt-4">
-            My wide range of skills that I have developed over many years of personal and professional development
-          </p>
+          <p className="mt-4">The wide range of skills that I have developed over many years of personal and professional projects</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -59,5 +53,4 @@ const Skills = () => {
       </div>
     </section>;
 };
-
 export default Skills;
