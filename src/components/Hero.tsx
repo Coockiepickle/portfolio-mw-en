@@ -8,7 +8,7 @@ import ScrollIndicator from './hero/ScrollIndicator';
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
   const [typedText, setTypedText] = useState('');
-  const fullText = "TACTICAL STUDENT";
+  const fullText = "I AM A TACTICAL STUDENT...";
   const typingSpeed = 100;
   
   useEffect(() => {
