@@ -99,7 +99,7 @@ export const getSkillCategories = (): SkillCategory[] => [
       level: 15
     }, {
       name: "Spanish - Learning in Progress...",
-      level: 10
+      level: 20
     }]
   }
 ];
