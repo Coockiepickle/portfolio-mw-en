@@ -9,7 +9,7 @@ const ProjectsHeader = ({
       <div className="flex flex-col items-center">
         <span className="mw-badge mb-4">
           <Code className="w-3 h-3 mr-1" />
-          MY WORK
+          WORK
         </span>
         <h2 className="mw-section-title text-white">Project Showcase</h2>
       </div>
