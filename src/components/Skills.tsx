@@ -40,7 +40,7 @@ const Skills = () => {
           <div className="flex flex-col items-center">
             <span className="mw-badge mb-4">
               <Shield className="w-3 h-3 mr-1" />
-              CAPABILITIES
+              ABILITIES
             </span>
             <h2 className="mw-section-title text-white">Skills Loadout</h2>
           </div>
