@@ -9,7 +9,7 @@ const Hero = () => {
   const [loaded, setLoaded] = useState(false);
   const [typedText, setTypedText] = useState('');
   const fullText = "I AM A TACTICAL STUDENT...";
-  const typingSpeed = 100;
+  const typingSpeed = 90;
   
   useEffect(() => {
     const timer = setTimeout(() => {
