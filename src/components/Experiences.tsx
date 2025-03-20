@@ -37,7 +37,7 @@ const Experiences = () => {
   ];
 
   const recurringExperience = {
-    title: "Seasonal accrobranche operator",
+    title: "Seasonal tree climbing park operator",
     company: "Tarz en arbre",
     periods: ["June - Sept. 2021", "June - Sept. 2022", "July - Aug. 2023", "July - Aug 2024"],
     description: "Helping and monitoring customers in the activities. Explaining security rules to groups of people. Selling tickets to the activity."
