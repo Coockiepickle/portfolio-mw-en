@@ -29,7 +29,7 @@ const EmailSection = () => {
   return (
     <div>
       <p className="text-mw-lightgray mb-6 text-center">
-        Got a project in mind? Want me to be a part of your company? <br />
+        Have you got a project in mind? Do you want me to be a part of your company? <br />
         Send me an e-mail and I'll answer as fast as possible.
       </p>
       
