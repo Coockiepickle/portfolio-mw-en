@@ -13,7 +13,7 @@ export const projectsData: ProjectData[] = [{
   }
 }, {
   title: "Self-hosted Services",
-  description: "Self-hosted NAS, VPN, Web Server, Knowledge Base and other Web Apps accessible through the Internet",
+  description: "Self-hosted NAS, VPN, Web Server, Knowledge Base and other Web Apps accessible through the Internet.",
   tags: ["YunoHost", "CasaOS", "Firefly", "Grav", "No-IP"],
   type: "personal",
   date: "ONGOING",
@@ -33,7 +33,7 @@ export const projectsData: ProjectData[] = [{
   }
 }, {
   title: "Smart Greenhouse",
-  description: "A collection of scripts used to create a connected greenhouse with sensors and an Arduino board..",
+  description: "A collection of scripts used to create a connected greenhouse with sensors and an Arduino board.",
   tags: ["C++", "Python", "Arduino"],
   type: "professional",
   date: "2023-11",
