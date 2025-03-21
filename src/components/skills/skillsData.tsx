@@ -87,22 +87,6 @@ export const getSkillCategories = (): SkillCategory[] => [
       level: 75
     }]
   }, {
-    icon: createGlobeIcon(),
-    title: "Languages",
-    skills: [{
-      name: "French",
-      level: 100
-    }, {
-      name: "English",
-      level: 90
-    }, {
-      name: "Japanese - Learning in Progress...",
-      level: 15
-    }, {
-      name: "Spanish - Learning in Progress...",
-      level: 20
-    }]
-  }, {
     icon: createBrainIcon(),
     title: "Soft Skills",
     skills: [{
@@ -117,6 +101,22 @@ export const getSkillCategories = (): SkillCategory[] => [
     }, {
       name: "Adaptability",
       level: 95
+    }]
+  }, {
+    icon: createGlobeIcon(),
+    title: "Languages",
+    skills: [{
+      name: "French",
+      level: 100
+    }, {
+      name: "English",
+      level: 90
+    }, {
+      name: "Japanese - Learning in Progress...",
+      level: 15
+    }, {
+      name: "Spanish - Learning in Progress...",
+      level: 20
     }]
   }
 ];
