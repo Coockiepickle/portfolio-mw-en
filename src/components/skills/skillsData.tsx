@@ -109,14 +109,14 @@ export const getSkillCategories = (): SkillCategory[] => [
       name: "Team Collaboration",
       level: 85
     }, {
-      name: "Problem Solving",
-      level: 80
+      name: "Punctuality",
+      level: 90
     }, {
       name: "Communication",
-      level: 75
+      level: 85
     }, {
       name: "Adaptability",
-      level: 85
+      level: 95
     }]
   }
 ];
