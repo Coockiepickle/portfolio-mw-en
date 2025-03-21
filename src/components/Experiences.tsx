@@ -14,25 +14,25 @@ const Experiences = () => {
       title: "Systems and network administration trainee",
       company: "MH Industries",
       period: "Sept. - Present",
-      description: "Helping to improve and maintain the information system. Upgrading the network infrastructure. User technical support"
+      description: "I helped improve and maintain the information system. I also upgraded the network infrastructure and participated in user technical support."
     },
     {
       title: "Power Automate application development",
       company: "Cégep de La Pocatière",
       period: "March - May 2024",
-      description: "Implementation of an application to automate the completion of work placement agreements. Working as part of a team in project mode."
+      description: "I took part in the implementation of an application to automate the completion of work placement agreements. I worked as part of a team in project mode."
     },
     {
       title: "Trainee Network and Telecommunications Administrator",
       company: "D.S.I. C.H.U. de Limoges",
-      period: "16 May - 24 June 2022, 2 Jan. - 10 Feb. 2023",
-      description: "Helping to improve and maintain the C.H.U.'s information system. Discover the new tools (software and hardware) needed to run a computer network."
+      period: "16 May - 24 June 2022, 2 Jan. - 10 Feb. 2023 / 6 weeks each",
+      description: "During these two internhips, I helped improving and maintain the hopital's information system. I also discovered new tools (software and hardware) needed to run and manage a computer network."
     },
     {
       title: "Observation internship",
       company: "La Clinique Informatique",
       period: "June - July 2019",
-      description: "Diagnose faulty computers and replace components according to problems encountered. Contact with customers."
+      description: "I diagnosed faulty computers and replaced components according to problems encountered. This internship allowed me to practice customer contact."
     }
   ];
 
@@ -40,7 +40,7 @@ const Experiences = () => {
     title: "Seasonal tree climbing park operator",
     company: "Tarz en arbre",
     periods: ["June - Sept. 2021", "June - Sept. 2022", "July - Aug. 2023", "July - Aug 2024"],
-    description: "Helping and monitoring customers in the activities. Explaining security rules to groups of people. Selling tickets to the activity."
+    description: "I was helping and monitoring customers in the activities. I was also explaining security rules to groups of people and selling tickets to the activity."
   };
 
   useEffect(() => {
