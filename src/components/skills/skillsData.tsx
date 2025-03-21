@@ -48,7 +48,7 @@ export const getSkillCategories = (): SkillCategory[] => [
       name: "Routing and Switching",
       level: 65
     }, {
-      name: "VoIP",
+      name: "VoIP - Learning in Progress...",
       level: 40
     }, {
       name: "VLAN",
