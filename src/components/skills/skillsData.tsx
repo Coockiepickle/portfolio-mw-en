@@ -1,6 +1,6 @@
 
 import { ReactNode } from 'react';
-import { Shield, Code, Database, Layout, Server, Globe, Cpu, Terminal, Network, Lock } from 'lucide-react';
+import { Shield, Code, Database, Layout, Server, Globe, Users, Cpu, Terminal, Network, Lock, Brain, MessageSquare, Lightbulb } from 'lucide-react';
 
 export interface Skill {
   name: string;
@@ -19,6 +19,7 @@ const createNetworkIcon = () => <Network className="w-6 h-6 text-mw-green" />;
 const createShieldIcon = () => <Shield className="w-6 h-6 text-mw-green" />;
 const createCodeIcon = () => <Code className="w-6 h-6 text-mw-green" />;
 const createGlobeIcon = () => <Globe className="w-6 h-6 text-mw-green" />;
+const createBrainIcon = () => <Brain className="w-6 h-6 text-mw-green" />;
 
 export const getSkillCategories = (): SkillCategory[] => [
   {
@@ -100,6 +101,22 @@ export const getSkillCategories = (): SkillCategory[] => [
     }, {
       name: "Spanish - Learning in Progress...",
       level: 20
+    }]
+  }, {
+    icon: createBrainIcon(),
+    title: "Soft Skills",
+    skills: [{
+      name: "Team Collaboration",
+      level: 85
+    }, {
+      name: "Problem Solving",
+      level: 80
+    }, {
+      name: "Communication",
+      level: 75
+    }, {
+      name: "Adaptability",
+      level: 85
     }]
   }
 ];
