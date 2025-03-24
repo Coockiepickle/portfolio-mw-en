@@ -26,6 +26,14 @@ const HeroButtons = ({ loaded, handleScrollToSection }: HeroButtonsProps) => {
       >
         CONTACT ME
       </button>
+      <a 
+        href="https://dreynaud-fr.netlify.app" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="mw-button bg-transparent border border-mw-green text-mw-green hover:bg-mw-green hover:bg-opacity-10"
+      >
+        VERSION FRANÇAISE
+      </a>
     </div>
   );
 };
