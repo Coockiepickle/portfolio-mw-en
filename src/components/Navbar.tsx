@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
-import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download } from 'lucide-react';
+import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   DropdownMenu,
@@ -49,6 +49,7 @@ const Navbar = () => {
 
   const handleDownload = (e: React.MouseEvent) => {
     e.preventDefault();
+    e.stopPropagation(); // Prevent triggering the parent onClick
     
     // Create a link element and trigger the download
     const link = document.createElement('a');
@@ -107,22 +108,19 @@ const Navbar = () => {
           <nav className="hidden md:flex space-x-0.5">
             {navLinks.map(link => (
               link.hasDropdown ? (
-                <DropdownMenu key={link.id}>
+                <DropdownMenu key={link.id} open={undefined}>
                   <DropdownMenuTrigger asChild>
-                    <button className={cn("mw-nav-link", activeSection === link.id && "active")}>
+                    <button 
+                      onClick={() => scrollToSection(link.id)} 
+                      className={cn("mw-nav-link group", activeSection === link.id && "active")}
+                    >
                       <span className="flex items-center">
                         {link.label}
+                        <ChevronDown className="ml-1 h-4 w-4" />
                       </span>
                     </button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-mw-darker border-mw-green/30 text-mw-light">
-                    <DropdownMenuItem 
-                      className="cursor-pointer hover:bg-mw-dark hover:text-white focus:bg-mw-dark focus:text-white" 
-                      onClick={() => scrollToSection('resume')}
-                    >
-                      <FileText className="mr-2 h-4 w-4" />
-                      <span>View CV</span>
-                    </DropdownMenuItem>
                     <DropdownMenuItem 
                       className="cursor-pointer hover:bg-mw-dark hover:text-white focus:bg-mw-dark focus:text-white" 
                       onClick={handleDownload}
@@ -160,6 +158,7 @@ const Navbar = () => {
                   >
                     {link.icon}
                     {link.label}
+                    <ChevronDown className="ml-1 h-4 w-4" />
                   </button>
                   <button 
                     onClick={handleDownload}

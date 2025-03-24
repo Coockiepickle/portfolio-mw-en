@@ -1,10 +1,40 @@
+
 import * as React from "react"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { Check, ChevronRight, Circle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const DropdownMenu = DropdownMenuPrimitive.Root
+const DropdownMenu = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> & {
+    open?: boolean;
+  }
+>(({ open, ...props }, ref) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const handleMouseEnter = React.useCallback(() => {
+    setIsOpen(true);
+  }, []);
+
+  const handleMouseLeave = React.useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  return (
+    <div 
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave} 
+      className="relative"
+    >
+      <DropdownMenuPrimitive.Root 
+        open={open !== undefined ? open : isOpen} 
+        {...props} 
+      />
+    </div>
+  );
+});
+DropdownMenu.displayName = "DropdownMenu";
 
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
 
