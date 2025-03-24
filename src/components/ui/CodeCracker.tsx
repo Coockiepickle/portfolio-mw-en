@@ -31,7 +31,7 @@ const CodeCracker = memo(({ text, className, isDecoding }: CodeCrackerProps) => 
     }
     
     const originalText = text;
-    const animationDuration = 1800;
+    const animationDuration = 700; // Changed from 1800 to 700 ms (0.7 seconds)
     
     const animate = (timestamp: number) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;

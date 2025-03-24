@@ -1,11 +1,20 @@
+
 import { useState, useEffect, useCallback } from 'react';
-import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock } from 'lucide-react';
+import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuItem, 
+  DropdownMenuTrigger 
+} from '@/components/ui/dropdown-menu';
+import { useToast } from '@/hooks/use-toast';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const { toast } = useToast();
 
   const handleScroll = useCallback(() => {
     requestAnimationFrame(() => {
@@ -40,6 +49,23 @@ const Navbar = () => {
     setIsMenuOpen(false);
   }, []);
 
+  const handleDownload = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    toast({
+      title: "Resume downloading",
+      description: "Download will start in a few moments",
+    });
+    
+    // Create a link element and trigger the download
+    const link = document.createElement('a');
+    link.href = '/CV_Reynaud_Damien.pdf';
+    link.download = 'CV_Reynaud_Damien.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const navLinks = [{
     id: 'home',
     label: 'Home',
@@ -65,31 +91,62 @@ const Navbar = () => {
     label: 'Experiences',
     icon: <Clock className="mr-2 h-4 w-4" />
   }, {
-    id: 'resume',
-    label: 'CV',
-    icon: <FileText className="mr-2 h-4 w-4" />
-  }, {
     id: 'contact',
     label: 'Contact',
     icon: <Send className="mr-2 h-4 w-4" />
   }];
 
   return <header className={cn("fixed top-0 left-0 w-full z-50 transition-all duration-300", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
-      <div className="mw-container py-4 md:py-5">
+      <div className="mw-container py-3 md:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            
             <a href="#" className="flex items-center">
               <span className="text-xl font-bold text-white tracking-wider">Damien<span className="text-mw-green">·</span>Reynaud</span>
             </a>
           </div>
           
-          <nav className="hidden md:flex space-x-1">
-            {navLinks.map(link => <button key={link.id} onClick={() => scrollToSection(link.id)} className={cn("mw-nav-link", activeSection === link.id && "active")}>
-                <span className="flex items-center">
-                  {link.label}
-                </span>
-              </button>)}
+          <nav className="hidden md:flex space-x-0.5">
+            {navLinks.map(link => {
+              if (link.id === 'resume') {
+                return null; // Skip the CV link as we'll handle it separately
+              }
+              return (
+                <button 
+                  key={link.id} 
+                  onClick={() => scrollToSection(link.id)} 
+                  className={cn("mw-nav-link text-sm px-3", activeSection === link.id && "active")}
+                >
+                  <span className="flex items-center">
+                    {link.label}
+                  </span>
+                </button>
+              );
+            })}
+            
+            {/* CV Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className={cn("mw-nav-link text-sm px-3 flex items-center", activeSection === 'resume' && "active")}>
+                  CV <ChevronDown className="h-3.5 w-3.5 ml-1" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="bg-mw-darker border-mw-green/30 text-white">
+                <DropdownMenuItem 
+                  className="hover:bg-mw-green/20 cursor-pointer flex items-center"
+                  onClick={() => scrollToSection('resume')}
+                >
+                  <FileText className="h-4 w-4 mr-2 text-mw-green" />
+                  View CV
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="hover:bg-mw-green/20 cursor-pointer flex items-center"
+                  onClick={handleDownload}
+                >
+                  <Download className="h-4 w-4 mr-2 text-mw-green" />
+                  Download PDF
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
           
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 text-mw-light hover:text-white focus:outline-none">
@@ -100,10 +157,30 @@ const Navbar = () => {
       
       <div className={cn("md:hidden fixed inset-0 z-40 bg-mw-darker bg-opacity-95 backdrop-blur-md transition-all duration-300 ease-in-out transform", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
         <div className="flex flex-col h-full pt-20 px-6 space-y-6">
-          {navLinks.map(link => <button key={link.id} onClick={() => scrollToSection(link.id)} className="flex items-center p-3 text-lg text-mw-light hover:text-white border-b border-mw-green border-opacity-20">
-              {link.icon}
-              {link.label}
-            </button>)}
+          {navLinks.map(link => <button 
+            key={link.id} 
+            onClick={() => scrollToSection(link.id)} 
+            className="flex items-center p-3 text-lg text-mw-light hover:text-white border-b border-mw-green border-opacity-20"
+          >
+            {link.icon}
+            {link.label}
+          </button>)}
+          
+          {/* CV Links for mobile */}
+          <button 
+            onClick={() => scrollToSection('resume')} 
+            className="flex items-center p-3 text-lg text-mw-light hover:text-white border-b border-mw-green border-opacity-20"
+          >
+            <FileText className="mr-2 h-4 w-4" />
+            View CV
+          </button>
+          <button 
+            onClick={handleDownload} 
+            className="flex items-center p-3 text-lg text-mw-light hover:text-white border-b border-mw-green border-opacity-20"
+          >
+            <Download className="mr-2 h-4 w-4" />
+            Download CV
+          </button>
         </div>
       </div>
     </header>;
