@@ -1,6 +1,13 @@
+
 import { useState, useEffect, useCallback } from 'react';
-import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock } from 'lucide-react';
+import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,6 +47,18 @@ const Navbar = () => {
     setIsMenuOpen(false);
   }, []);
 
+  const handleDownload = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Create a link element and trigger the download
+    const link = document.createElement('a');
+    link.href = '/CV_Reynaud_Damien.pdf';
+    link.download = 'CV_Reynaud_Damien.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const navLinks = [{
     id: 'home',
     label: 'Home',
@@ -67,7 +86,8 @@ const Navbar = () => {
   }, {
     id: 'resume',
     label: 'CV',
-    icon: <FileText className="mr-2 h-4 w-4" />
+    icon: <FileText className="mr-2 h-4 w-4" />,
+    hasDropdown: true
   }, {
     id: 'contact',
     label: 'Contact',
@@ -75,21 +95,51 @@ const Navbar = () => {
   }];
 
   return <header className={cn("fixed top-0 left-0 w-full z-50 transition-all duration-300", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
-      <div className="mw-container py-4 md:py-5">
+      <div className="mw-container py-3 md:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             
             <a href="#" className="flex items-center">
-              <span className="text-xl font-bold text-white tracking-wider">Damien<span className="text-mw-green">·</span>Reynaud</span>
+              <span className="text-lg font-bold text-white tracking-wider">Damien<span className="text-mw-green">·</span>Reynaud</span>
             </a>
           </div>
           
-          <nav className="hidden md:flex space-x-1">
-            {navLinks.map(link => <button key={link.id} onClick={() => scrollToSection(link.id)} className={cn("mw-nav-link", activeSection === link.id && "active")}>
-                <span className="flex items-center">
-                  {link.label}
-                </span>
-              </button>)}
+          <nav className="hidden md:flex space-x-0.5">
+            {navLinks.map(link => (
+              link.hasDropdown ? (
+                <DropdownMenu key={link.id}>
+                  <DropdownMenuTrigger asChild>
+                    <button className={cn("mw-nav-link", activeSection === link.id && "active")}>
+                      <span className="flex items-center">
+                        {link.label}
+                      </span>
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-mw-darker border-mw-green/30 text-mw-light">
+                    <DropdownMenuItem 
+                      className="cursor-pointer hover:bg-mw-dark hover:text-white focus:bg-mw-dark focus:text-white" 
+                      onClick={() => scrollToSection('resume')}
+                    >
+                      <FileText className="mr-2 h-4 w-4" />
+                      <span>View CV</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      className="cursor-pointer hover:bg-mw-dark hover:text-white focus:bg-mw-dark focus:text-white" 
+                      onClick={handleDownload}
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      <span>Download CV</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <button key={link.id} onClick={() => scrollToSection(link.id)} className={cn("mw-nav-link", activeSection === link.id && "active")}>
+                  <span className="flex items-center">
+                    {link.label}
+                  </span>
+                </button>
+              )
+            ))}
           </nav>
           
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 text-mw-light hover:text-white focus:outline-none">
@@ -100,10 +150,39 @@ const Navbar = () => {
       
       <div className={cn("md:hidden fixed inset-0 z-40 bg-mw-darker bg-opacity-95 backdrop-blur-md transition-all duration-300 ease-in-out transform", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
         <div className="flex flex-col h-full pt-20 px-6 space-y-6">
-          {navLinks.map(link => <button key={link.id} onClick={() => scrollToSection(link.id)} className="flex items-center p-3 text-lg text-mw-light hover:text-white border-b border-mw-green border-opacity-20">
-              {link.icon}
-              {link.label}
-            </button>)}
+          {navLinks.map(link => {
+            if (link.hasDropdown) {
+              return (
+                <div key={link.id} className="space-y-2">
+                  <button 
+                    onClick={() => scrollToSection(link.id)} 
+                    className="flex items-center p-3 text-lg text-mw-light hover:text-white border-b border-mw-green border-opacity-20 w-full"
+                  >
+                    {link.icon}
+                    {link.label}
+                  </button>
+                  <button 
+                    onClick={handleDownload}
+                    className="flex items-center p-3 text-lg text-mw-light hover:text-white ml-6 w-full"
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Download CV
+                  </button>
+                </div>
+              );
+            }
+            
+            return (
+              <button 
+                key={link.id} 
+                onClick={() => scrollToSection(link.id)} 
+                className="flex items-center p-3 text-lg text-mw-light hover:text-white border-b border-mw-green border-opacity-20"
+              >
+                {link.icon}
+                {link.label}
+              </button>
+            );
+          })}
         </div>
       </div>
     </header>;
