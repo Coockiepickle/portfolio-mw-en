@@ -58,7 +58,7 @@ const getSkillDescription = (skillName: string): string => {
 const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDetailsModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-[600px] bg-mw-darker border border-mw-green/30 text-white">
+      <DialogContent className="sm:max-w-[800px] bg-mw-darker border border-mw-green/30 text-white">
         <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
           <X className="h-4 w-4 text-mw-green" />
           <span className="sr-only">Close</span>
@@ -73,7 +73,7 @@ const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDet
           </DialogTitle>
         </DialogHeader>
         
-        <div className="space-y-5 py-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
           {skills.map((skill, index) => (
             <div key={index} className="border border-mw-green/20 rounded p-4 transition-all hover:border-mw-green/40 bg-black/30">
               <div className="flex justify-between mb-2">
