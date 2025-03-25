@@ -18,8 +18,8 @@ const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
     <div>
       <div className="flex justify-between items-center mb-1">
         <span className="text-sm font-tactical font-medium">{skill.name}</span>
-        <span className="text-xs text-mw-green font-tactical font-medium transition-all duration-300">
-          {level}%
+        <span className="text-xs text-mw-green font-tactical font-medium">
+          {skill.level}%
         </span>
       </div>
       <div className="progress-bar relative overflow-hidden">
@@ -27,7 +27,7 @@ const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
           ref={barRef}
           className="progress-bar-fill scanning-light-container relative" 
           style={{
-            width: `${level}%`
+            width: `${skill.level}%`
           }}
         >
           {/* Add a scanning light effect along the bar */}
