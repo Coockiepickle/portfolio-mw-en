@@ -1,6 +1,6 @@
 
 import { cn } from '@/lib/utils';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 interface SkillBarProps {
   skill: {
@@ -25,13 +25,13 @@ const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
       <div className="progress-bar relative overflow-hidden">
         <div 
           ref={barRef}
-          className="progress-bar-fill scanning-light-container transition-all duration-700 ease-out relative" 
+          className="progress-bar-fill scanning-light-container relative" 
           style={{
-            width: visible ? `${level}%` : '0%'
+            width: `${level}%`
           }}
         >
           {/* Add a scanning light effect along the bar */}
-          <div className="scanning-light absolute top-0 right-0 w-8 h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0"></div>
+          <div className="scanning-light absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0"></div>
         </div>
       </div>
       
@@ -45,6 +45,7 @@ const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
         
         .scanning-light {
           animation: scanning 2s ease-in-out infinite;
+          width: 100%;
         }
         `}
       </style>
