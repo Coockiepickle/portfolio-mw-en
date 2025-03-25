@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -127,6 +126,10 @@ export default {
 				'tactical-blink': {
 					'0%, 100%': { opacity: '0.7' },
 					'50%': { opacity: '0.9' }
+				},
+				'scan': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(100%)' }
 				}
 			},
 			animation: {
