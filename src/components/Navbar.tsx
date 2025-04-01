@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
-import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download, ChevronDown } from 'lucide-react';
+import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download, ChevronDown, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   DropdownMenu,
@@ -78,12 +78,8 @@ const Navbar = () => {
     icon: <Shield className="mr-2 h-4 w-4" />
   }, {
     id: 'achievements',
-    label: 'Achievements',
-    icon: <Award className="mr-2 h-4 w-4" />
-  }, {
-    id: 'experiences',
-    label: 'Experiences',
-    icon: <Clock className="mr-2 h-4 w-4" />
+    label: 'Formation',
+    icon: <GraduationCap className="mr-2 h-4 w-4" />
   }, {
     id: 'resume',
     label: 'CV',

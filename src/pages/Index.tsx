@@ -37,13 +37,13 @@ const Index = () => {
         <div className="relative h-16 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-8 -mb-8 z-10"></div>
         
         {/* Combined Achievements and Experiences section */}
-        <div className="relative bg-black">
+        <section id="achievements" className="relative bg-black">
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
           <div className="mw-container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
             <Achievements />
             <Experiences />
           </div>
-        </div>
+        </section>
         
         {/* Reduced fade transition height between sections */}
         <div className="relative h-16 bg-gradient-to-b from-transparent via-mw-dark to-transparent opacity-80 -mt-8 -mb-8 z-10"></div>

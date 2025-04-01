@@ -68,7 +68,7 @@ const Experiences = () => {
       </div>
       
       <div className="space-y-8">
-        <div className="relative border-l-2 border-mw-green border-opacity-30 pl-8 ml-4">
+        <div className="relative pl-8 ml-4">
           {experiences.map((exp, index) => (
             <div 
               key={index}
