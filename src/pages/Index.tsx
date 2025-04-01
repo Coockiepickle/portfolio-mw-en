@@ -39,7 +39,7 @@ const Index = () => {
         {/* Combined Achievements and Experiences section */}
         <section id="achievements" className="relative bg-black">
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
-          <div className="mw-container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="mw-container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4">
             <Achievements />
             <Experiences />
           </div>

@@ -58,7 +58,7 @@ const Experiences = () => {
   }, []);
 
   return (
-    <div id="experiences" className="relative py-16">
+    <div id="experiences" className="relative py-16 px-2">
       <div className={cn("text-center mb-12 transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
         <span className="mw-badge mb-4">
           <Briefcase className="w-3 h-3 mr-1" />
@@ -67,32 +67,31 @@ const Experiences = () => {
         <h2 className="mw-section-title text-white">Work experience</h2>
       </div>
       
-      <div className="space-y-8">
-        <div className="relative pl-8 ml-4">
+      <div className="space-y-6">
+        <div className="relative">
           {experiences.map((exp, index) => (
             <div 
               key={index}
               className={cn(
-                "mb-12 relative transition-all duration-700 transform",
+                "mb-8 relative transition-all duration-700 transform",
                 isVisible ? `opacity-100 translate-y-0 delay-[${index * 150}ms]` : "opacity-0 translate-y-8"
               )}
             >
-              <div className="absolute -left-[41px] top-0 w-5 h-5 bg-mw-darker border-2 border-mw-green rounded-full"></div>
-              <div className="mw-card p-6 hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
-                <div className="flex flex-col md:flex-row md:items-start justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-                  <div className="flex flex-col text-mw-lightgray text-sm mt-2 md:mt-0">
+              <div className="mw-card p-5 hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
+                <div className="flex flex-col md:flex-row md:items-start justify-between mb-3">
+                  <h3 className="text-lg font-bold text-white">{exp.title}</h3>
+                  <div className="flex flex-col text-mw-lightgray text-xs mt-2 md:mt-0">
                     <div className="flex items-center mb-1">
-                      <Calendar className="w-4 h-4 mr-1" />
+                      <Calendar className="w-3.5 h-3.5 mr-1" />
                       {exp.period}
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center mb-4 text-mw-green">
-                  <Building2 className="w-4 h-4 mr-2" />
+                <div className="flex items-center mb-3 text-mw-green text-sm">
+                  <Building2 className="w-3.5 h-3.5 mr-2" />
                   <span>{exp.company}</span>
                 </div>
-                <p className="text-mw-light">{exp.description}</p>
+                <p className="text-mw-light text-sm">{exp.description}</p>
               </div>
             </div>
           ))}
@@ -104,26 +103,26 @@ const Experiences = () => {
             isVisible ? "opacity-100 delay-300" : "opacity-0"
           )}
         >
-          <div className="mw-card p-6 border-mw-accent/30 hover:border-mw-accent/50 hover:shadow-mw-accent/30">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-white">{recurringExperience.title}</h3>
+          <div className="mw-card p-5 border-mw-accent/30 hover:border-mw-accent/50 hover:shadow-mw-accent/30">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-lg font-bold text-white">{recurringExperience.title}</h3>
               <div className="bg-mw-accent/20 p-1.5 rounded-full">
-                <RepeatIcon className="w-5 h-5 text-mw-accent" />
+                <RepeatIcon className="w-4 h-4 text-mw-accent" />
               </div>
             </div>
-            <div className="flex items-center mb-4 text-mw-accent">
-              <Building2 className="w-4 h-4 mr-2" />
+            <div className="flex items-center mb-3 text-mw-accent text-sm">
+              <Building2 className="w-3.5 h-3.5 mr-2" />
               <span>{recurringExperience.company}</span>
             </div>
-            <div className="mb-4">
+            <div className="mb-3">
               {recurringExperience.periods.map((period, idx) => (
-                <div key={idx} className="flex items-center text-mw-lightgray text-sm mb-1.5">
+                <div key={idx} className="flex items-center text-mw-lightgray text-xs mb-1.5">
                   <Calendar className="w-3.5 h-3.5 mr-1.5 text-mw-accent/70" />
                   {period}
                 </div>
               ))}
             </div>
-            <p className="text-mw-light">{recurringExperience.description}</p>
+            <p className="text-mw-light text-sm">{recurringExperience.description}</p>
           </div>
         </div>
       </div>
