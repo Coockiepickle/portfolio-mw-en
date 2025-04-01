@@ -76,7 +76,7 @@
 
   body {
     @apply bg-mw-dark text-mw-light font-tactical antialiased;
-    background-image: linear-gradient(to bottom, rgba(18, 19, 22, 0.8), 
+    background-image: linear-gradient(to bottom, rgba(18, 19, 22, 0.8), rgba(10, 11, 13, 0.8)), 
                      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
