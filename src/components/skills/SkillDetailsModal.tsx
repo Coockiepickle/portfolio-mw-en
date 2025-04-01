@@ -3,6 +3,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@
 import { X } from "lucide-react";
 import { Skill } from "./skillsData";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import CodeCracker from "../ui/CodeCracker";
 
 interface SkillDetailsModalProps {
   isOpen: boolean;
@@ -56,9 +58,20 @@ const getSkillDescription = (skillName: string): string => {
 };
 
 const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDetailsModalProps) => {
+  const [isDecoding, setIsDecoding] = useState(false);
+  
+  // Trigger the decoding animation when the modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setIsDecoding(true);
+    } else {
+      setIsDecoding(false);
+    }
+  }, [isOpen]);
+
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-[800px] bg-mw-darker border border-mw-green/30 text-white">
+      <DialogContent className="sm:max-w-[800px] bg-mw-darker border border-mw-green/30 text-white rounded-md">
         <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
           <X className="h-4 w-4 text-mw-green" />
           <span className="sr-only">Close</span>
@@ -75,16 +88,16 @@ const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDet
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
           {skills.map((skill, index) => (
-            <div key={index} className="border border-mw-green/20 rounded-none p-0 transition-all hover:border-mw-green/40 bg-black relative overflow-hidden">
+            <div key={index} className="border border-mw-green/20 rounded-md p-0 transition-all hover:border-mw-green/40 bg-black relative overflow-hidden">
               {/* Terminal header */}
-              <div className="bg-mw-dark border-b border-mw-green/20 py-1 px-3 flex justify-between items-center">
+              <div className="bg-mw-dark border-b border-mw-green/20 py-1 px-3 flex justify-between items-center rounded-t-md">
                 <div className="flex items-center space-x-2">
                   <span className="inline-block w-3 h-3 bg-red-500 rounded-full"></span>
                   <span className="inline-block w-3 h-3 bg-yellow-500 rounded-full"></span>
                   <span className="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
                 </div>
                 <div className="text-xs font-mono text-mw-lightgray">{skill.name}.skill</div>
-                <div className="text-xs text-mw-lightgray">LVL: {skill.level}%</div>
+                <div className="w-10"></div> {/* Spacer to balance the header */}
               </div>
               
               {/* Terminal content */}
@@ -96,18 +109,26 @@ const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDet
                   <span className="ml-1 text-mw-green animate-pulse-light">▌</span>
                 </div>
                 
-                <div className="mb-3 h-1 w-full bg-mw-dark overflow-hidden rounded-sm">
+                {/* LVL indicator above progress bar */}
+                <div className="flex justify-end mb-1">
+                  <div className="text-xs text-mw-lightgray">LVL: {skill.level}%</div>
+                </div>
+                
+                <div className="mb-3 h-1 w-full bg-mw-dark overflow-hidden rounded-full">
                   <div 
-                    className="h-full bg-gradient-to-r from-mw-green/80 to-mw-green" 
+                    className="h-full bg-gradient-to-r from-mw-green/80 to-mw-green rounded-full" 
                     style={{ width: `${skill.level}%` }}
                   ></div>
                 </div>
                 
                 <div className="mt-3">
                   <div className="text-mw-lightgray opacity-70">/* Description */</div>
-                  <p className="text-mw-light opacity-90 overflow-y-auto max-h-24 terminal-scrollbar">
-                    {getSkillDescription(skill.name)}
-                  </p>
+                  <div className="text-mw-light opacity-90 overflow-y-auto max-h-24 terminal-scrollbar">
+                    <CodeCracker 
+                      text={getSkillDescription(skill.name)}
+                      isDecoding={isDecoding}
+                    />
+                  </div>
                 </div>
               </div>
               

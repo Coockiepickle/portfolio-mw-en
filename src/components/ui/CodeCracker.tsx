@@ -31,7 +31,7 @@ const CodeCracker = memo(({ text, className, isDecoding }: CodeCrackerProps) => 
     }
     
     const originalText = text;
-    const animationDuration = 700; // Changed from 1800 to 700 milliseconds (0.7 seconds)
+    const animationDuration = 1000; // Animation duration in milliseconds (1000ms = 1 second)
     
     const animate = (timestamp: number) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
@@ -39,42 +39,25 @@ const CodeCracker = memo(({ text, className, isDecoding }: CodeCrackerProps) => 
       const progress = Math.min(elapsed / animationDuration, 1);
       
       // Improved ease-out cubic function for smoother deceleration
-      const easedProgress = 1 - Math.pow(1 - progress, 4);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
       
-      // Character settling with more realistic algorithm
-      setDisplayText(originalText
-        .split('')
-        .map((char, index) => {
-          // Already completed characters
-          if (index < Math.floor(easedProgress * originalText.length * 0.6)) return char;
-          
-          // For remaining characters, calculate probability of showing original vs random
-          // Characters closer to the "completion front" have higher chance of settling
-          const distanceFromFront = index - Math.floor(easedProgress * originalText.length * 0.6);
-          const settlingProbability = Math.max(0, 1 - (distanceFromFront * 0.1));
-          
-          // Random settling based on probability and progress
-          if (Math.random() < settlingProbability * (progress * 0.8)) return char;
-          
-          // Handle spaces
-          if (char === ' ') return ' ';
-          
-          // For characters that haven't settled yet, we'll have some occasionally flicker between
-          // the correct character and random ones for a more realistic "cracking" effect
-          if (progress > 0.7 && Math.random() < (progress - 0.7) * 0.8) {
-            return Math.random() < 0.7 ? char : getRandomChar();
-          }
-          
-          // Otherwise, show random character
-          return getRandomChar();
-        })
-        .join(''));
+      // Calculate how many characters to show based on progress
+      const charactersToShow = Math.floor(easedProgress * originalText.length);
+      
+      // Create display text with visible characters and cursor at the end
+      const visibleText = originalText.substring(0, charactersToShow);
+      
+      // Add cursor at the end of the visible text
+      setDisplayText(
+        visibleText + 
+        (progress < 1 ? "<span class='text-mw-green animate-pulse-light'>▌</span>" : "▌")
+      );
       
       // Continue animation until complete
       if (progress < 1) {
         animationRef.current = requestAnimationFrame(animate);
       } else {
-        setDisplayText(originalText);
+        setDisplayText(originalText + "<span class='text-mw-green animate-pulse-light'>▌</span>");
         startTimeRef.current = null;
       }
     };
@@ -90,9 +73,10 @@ const CodeCracker = memo(({ text, className, isDecoding }: CodeCrackerProps) => 
   }, [isDecoding, text]);
   
   return (
-    <div className={cn("font-mono", className)}>
-      {displayText}
-    </div>
+    <div 
+      className={cn("font-mono", className)}
+      dangerouslySetInnerHTML={{ __html: displayText }}
+    />
   );
 });
 
