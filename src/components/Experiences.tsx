@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Separator } from '@/components/ui/separator';
 
 const Experiences = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,11 +59,6 @@ const Experiences = () => {
 
   return (
     <div id="experiences" className="relative py-16 px-2">
-      {/* Add vertical separator to the left side */}
-      <div className="absolute top-0 bottom-0 left-0 flex items-center h-full pointer-events-none">
-        <Separator orientation="vertical" className="h-full bg-gradient-to-b from-transparent via-mw-green/30 to-transparent opacity-50" />
-      </div>
-      
       <div className={cn("text-center mb-12 transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
         <span className="mw-badge mb-4">
           <Briefcase className="w-3 h-3 mr-1" />
