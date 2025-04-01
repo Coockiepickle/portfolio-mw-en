@@ -10,6 +10,7 @@ import Experiences from "../components/Experiences";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import { Separator } from "@/components/ui/separator";
 
 const Index = () => {
   return (
@@ -41,6 +42,10 @@ const Index = () => {
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-mw-darker to-transparent"></div>
           <div className="mw-container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4">
             <Achievements />
+            {/* Vertical separator between achievements and experiences */}
+            <div className="hidden lg:block absolute left-1/2 top-16 bottom-16 -translate-x-1/2">
+              <Separator orientation="vertical" className="h-full bg-gradient-to-b from-transparent via-mw-green/30 to-transparent opacity-50" />
+            </div>
             <Experiences />
           </div>
         </section>
