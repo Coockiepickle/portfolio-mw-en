@@ -76,7 +76,7 @@
 
   body {
     @apply bg-mw-dark text-mw-light font-tactical antialiased;
-    background-image: linear-gradient(to bottom, rgba(18, 19, 22, 0.8), rgba(10, 11, 13, 1)), 
+    background-image: linear-gradient(to bottom, rgba(18, 19, 22, 0.8), 
                      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
@@ -219,6 +219,35 @@
   .tactical-border > span::after {
     content: '';
     @apply absolute w-3 h-3 bottom-0 right-0 border-b border-r border-mw-green;
+  }
+
+  .bg-scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(63, 153, 135, 0.15),
+      rgba(63, 153, 135, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
+
+  .terminal-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .terminal-scrollbar::-webkit-scrollbar-track {
+    background: rgba(10, 11, 13, 0.5);
+  }
+
+  .terminal-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(63, 153, 135, 0.5);
+  }
+
+  .terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(63, 153, 135, 0.8);
   }
 }
 

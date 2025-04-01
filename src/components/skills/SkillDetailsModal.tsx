@@ -75,18 +75,44 @@ const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDet
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
           {skills.map((skill, index) => (
-            <div key={index} className="border border-mw-green/20 rounded p-4 transition-all hover:border-mw-green/40 bg-black/30">
-              <div className="flex justify-between mb-2">
-                <h4 className="font-tactical font-semibold text-mw-green">{skill.name}</h4>
-                <span className="text-xs px-2 py-1 bg-mw-green/20 rounded font-mono">{skill.level}%</span>
+            <div key={index} className="border border-mw-green/20 rounded-none p-0 transition-all hover:border-mw-green/40 bg-black relative overflow-hidden">
+              {/* Terminal header */}
+              <div className="bg-mw-dark border-b border-mw-green/20 py-1 px-3 flex justify-between items-center">
+                <div className="flex items-center space-x-2">
+                  <span className="inline-block w-3 h-3 bg-red-500 rounded-full"></span>
+                  <span className="inline-block w-3 h-3 bg-yellow-500 rounded-full"></span>
+                  <span className="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
+                </div>
+                <div className="text-xs font-mono text-mw-lightgray">{skill.name}.skill</div>
+                <div className="text-xs text-mw-lightgray">LVL: {skill.level}%</div>
               </div>
-              <div className="mb-3 h-1 w-full bg-mw-dark overflow-hidden rounded-sm">
-                <div 
-                  className="h-full bg-gradient-to-r from-mw-green/80 to-mw-green" 
-                  style={{ width: `${skill.level}%` }}
-                ></div>
+              
+              {/* Terminal content */}
+              <div className="p-3 font-mono text-sm">
+                <div className="flex mb-2">
+                  <span className="text-mw-green mr-1">$</span>
+                  <span className="text-mw-lightgray mr-1">skill</span>
+                  <span className="text-mw-accent">--info</span>
+                  <span className="ml-1 text-mw-green animate-pulse-light">▌</span>
+                </div>
+                
+                <div className="mb-3 h-1 w-full bg-mw-dark overflow-hidden rounded-sm">
+                  <div 
+                    className="h-full bg-gradient-to-r from-mw-green/80 to-mw-green" 
+                    style={{ width: `${skill.level}%` }}
+                  ></div>
+                </div>
+                
+                <div className="mt-3">
+                  <div className="text-mw-lightgray opacity-70">/* Description */</div>
+                  <p className="text-mw-light opacity-90 overflow-y-auto max-h-24 terminal-scrollbar">
+                    {getSkillDescription(skill.name)}
+                  </p>
+                </div>
               </div>
-              <p className="text-sm opacity-90">{getSkillDescription(skill.name)}</p>
+              
+              {/* Terminal scanlines overlay */}
+              <div className="absolute inset-0 pointer-events-none bg-scanlines opacity-5"></div>
               
               {/* Add tactical scan line at bottom of each skill */}
               <div className="h-px w-full bg-gradient-to-r from-transparent via-mw-green/30 to-transparent mt-3 relative overflow-hidden">
