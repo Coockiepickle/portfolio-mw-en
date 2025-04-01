@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Separator } from "@/components/ui/separator";
 
 const Experiences = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -73,7 +72,7 @@ const Experiences = () => {
             <div 
               key={index}
               className={cn(
-                "relative transition-all duration-700 transform",
+                "mb-8 relative transition-all duration-700 transform",
                 isVisible ? `opacity-100 translate-y-0 delay-[${index * 150}ms]` : "opacity-0 translate-y-8"
               )}
             >
@@ -93,16 +92,11 @@ const Experiences = () => {
                 </div>
                 <p className="text-mw-light text-sm">{exp.description}</p>
               </div>
-              
-              {index < experiences.length - 1 && (
-                <Separator className="my-4 bg-mw-green/20 w-[80%] mx-auto h-[1px]" />
-              )}
             </div>
           ))}
         </div>
         
-        <Separator className="my-4 bg-mw-accent/20 w-[80%] mx-auto h-[1px]" />
-        
+        {/* Recurring experience without transform animation */}
         <div className={cn(
             "transition-all duration-700",
             isVisible ? "opacity-100 delay-300" : "opacity-0"
