@@ -58,7 +58,7 @@ const Experiences = () => {
   }, []);
 
   return (
-    <div id="experiences" className="relative py-16 px-2 mt-12">
+    <div id="experiences" className="relative py-16 px-2">
       <div className={cn("text-center mb-12 transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
         <span className="mw-badge mb-4">
           <Briefcase className="w-3 h-3 mr-1" />
@@ -67,7 +67,7 @@ const Experiences = () => {
         <h2 className="mw-section-title text-white">Work experience</h2>
       </div>
       
-      <div className="space-y-6">
+      <div className="space-y-6 mt-12">
         <div className="relative">
           {experiences.map((exp, index) => (
             <div 
