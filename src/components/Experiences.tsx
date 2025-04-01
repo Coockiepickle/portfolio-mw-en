@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -23,7 +22,7 @@ const Experiences = () => {
       title: "Trainee Network and Telecommunications Administrator",
       company: "D.S.I. C.H.U. de Limoges",
       period: "16 May - 24 June 2022, 2 Jan. - 10 Feb. 2023 / 6 weeks each",
-      description: "During these two internhips, I helped improving and maintain the hopital's information system. I also discovered new tools (software and hardware) needed to run and manage a computer network."
+      description: "During these two internships, I helped improving and maintain the hopital's information system. I also discovered new tools (software and hardware) needed to run and manage a computer network."
     },
     {
       title: "Observation internship",
@@ -67,7 +66,7 @@ const Experiences = () => {
         <h2 className="mw-section-title text-white">Work experience</h2>
       </div>
       
-      <div className="space-y-6 mt-16">
+      <div className="space-y-6 mt-20">
         <div className="relative">
           {experiences.map((exp, index) => (
             <div 
