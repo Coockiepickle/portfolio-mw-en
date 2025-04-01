@@ -67,7 +67,7 @@ const Experiences = () => {
         <h2 className="mw-section-title text-white">Work experience</h2>
       </div>
       
-      <div className="space-y-6 mt-12">
+      <div className="space-y-6 mt-16">
         <div className="relative">
           {experiences.map((exp, index) => (
             <div 
