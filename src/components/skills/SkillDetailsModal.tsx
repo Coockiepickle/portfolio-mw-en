@@ -1,4 +1,3 @@
-
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 import { Skill } from "./skillsData";
@@ -15,32 +14,39 @@ interface SkillDetailsModalProps {
 }
 
 const getSkillDescription = (skillName: string): string => {
+  // Map of skill names to their descriptions
   const descriptions: { [key: string]: string } = {
+    // OS Skills
     "Docker": "Containerization platform that enables applications to run consistently across different environments.",
     "Windows / Windows Server": "Microsoft operating systems for desktop and server environments with GUI and extensive application support.",
     "Linux": "Open-source operating system known for stability, security, and flexibility in server environments.",
     "Virtualization": "Technology that creates virtual instances of computing resources, allowing multiple OS environments on a single machine.",
     
+    // Networking Skills
     "Cisco": "Enterprise networking equipment and solutions including routers, switches, and security devices.",
     "Routing and Switching": "Directing network traffic between different networks and connecting devices within a network.",
     "VoIP - Learning in Progress...": "Voice over Internet Protocol - technology for delivering voice communications over IP networks.",
     "VLAN": "Virtual Local Area Network - method of creating independent logical networks within a physical network.",
     
+    // Cybersecurity Skills
     "Fire-Wall": "Network security system that monitors and controls incoming and outgoing network traffic.",
     "VPN": "Virtual Private Network - secure connection method extending a private network across a public network.",
     "Network Security - Learning in Progress...": "Protecting network infrastructure and data from unauthorized access and misuse.",
     "IDS/IPS - Learning in Progress...": "Intrusion Detection/Prevention Systems - monitoring network traffic for suspicious activity.",
     
+    // Development Skills
     "HTML / Tailwind CSS - Learning in Progress...": "Web markup language and utility-first CSS framework for rapidly building custom designs.",
     "TypeScript - Learning in Progress...": "JavaScript superset adding static types for improved developer experience and code quality.",
     "Python": "High-level programming language valued for readability and versatility across many domains.",
     "PowerShell": "Task automation and configuration management framework from Microsoft.",
     
+    // Soft Skills
     "Team Collaboration": "Ability to work effectively with others to achieve common goals through communication and cooperation.",
     "Punctuality": "Consistently arriving or completing tasks on time, demonstrating reliability and respect for others.",
     "Communication": "Clearly conveying information and ideas through various channels, ensuring understanding.",
     "Adaptability": "Adjusting effectively to changing environments, work requirements, and new challenges.",
     
+    // Languages
     "French": "Native language with full professional proficiency in speaking, reading, and writing.",
     "English": "Professional working proficiency in business communication and technical documentation.",
     "Japanese - Learning in Progress...": "Basic understanding of common phrases and fundamental language concepts.",
@@ -53,6 +59,7 @@ const getSkillDescription = (skillName: string): string => {
 const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDetailsModalProps) => {
   const [isDecoding, setIsDecoding] = useState(false);
   
+  // Trigger the decoding animation when the modal opens
   useEffect(() => {
     if (isOpen) {
       setIsDecoding(true);
@@ -81,6 +88,7 @@ const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDet
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
           {skills.map((skill, index) => (
             <div key={index} className="border border-mw-green/20 rounded-md p-0 transition-all hover:border-mw-green/40 bg-black relative overflow-hidden">
+              {/* Terminal header */}
               <div className="bg-mw-dark border-b border-mw-green/20 py-1 px-3 flex justify-between items-center rounded-t-md">
                 <div className="flex items-center space-x-2">
                   <span className="inline-block w-3 h-3 bg-red-500 rounded-full"></span>
@@ -88,9 +96,10 @@ const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDet
                   <span className="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
                 </div>
                 <div className="text-xs font-mono text-mw-lightgray">{skill.name}.skill</div>
-                <div className="w-10"></div>
+                <div className="w-10"></div> {/* Spacer to balance the header */}
               </div>
               
+              {/* Terminal content */}
               <div className="p-3 font-mono text-sm">
                 <div className="flex mb-2">
                   <span className="text-mw-green mr-1">$</span>
@@ -118,8 +127,10 @@ const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDet
                 </div>
               </div>
               
+              {/* Terminal scanlines overlay */}
               <div className="absolute inset-0 pointer-events-none bg-scanlines opacity-5"></div>
               
+              {/* Add tactical scan line at bottom of each skill */}
               <div className="h-px w-full bg-gradient-to-r from-transparent via-mw-green/30 to-transparent mt-3 relative overflow-hidden">
                 <div className={cn(
                   "absolute top-0 left-0 h-full w-20 bg-gradient-to-r from-transparent via-mw-green/60 to-transparent",
@@ -130,6 +141,7 @@ const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDet
           ))}
         </div>
         
+        {/* Add tactical scan effect at bottom of modal */}
         <div className="h-px w-full bg-gradient-to-r from-transparent via-mw-green/40 to-transparent">
           <div className="h-full w-full animate-pulse-light"></div>
         </div>
