@@ -10,6 +10,7 @@ const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
+  const [highlightFloatingButton, setHighlightFloatingButton] = useState(false);
 
   // Initial projects to show (first 4)
   const initialProjects = projectsData.slice(0, 4);
@@ -43,6 +44,14 @@ const Projects = () => {
       // When expanding, show the floating button after a delay
       setTimeout(() => {
         setShowFloatingButton(true);
+        // Add highlight animation after the button appears
+        setTimeout(() => {
+          setHighlightFloatingButton(true);
+          // Remove highlight after animation completes
+          setTimeout(() => {
+            setHighlightFloatingButton(false);
+          }, 1000);
+        }, 300);
       }, 600); // Delay to allow for animation
     } else {
       // When collapsing, hide the floating button immediately
@@ -96,16 +105,32 @@ const Projects = () => {
             </button>
           </div>
         )}
+        
+        {/* Additional button at the bottom of projects when they're expanded */}
+        {showAllProjects && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={toggleShowAllProjects}
+              className="mw-button-primary flex items-center gap-2 group transition-all duration-300"
+            >
+              HIDE ADDITIONAL PROJECTS
+              <ChevronUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
+            </button>
+          </div>
+        )}
       </div>
       
       {/* Floating hide button that appears at bottom right */}
       {showFloatingButton && (
         <button
           onClick={toggleShowAllProjects}
-          className="fixed bottom-6 right-24 z-50 flex items-center gap-2 px-3 py-2 
-            bg-mw-darker border border-mw-green border-opacity-30 rounded-sm
-            text-mw-light hover:text-white hover:bg-mw-green hover:bg-opacity-10
-            transition-all duration-200 shadow-md animate-fade-in"
+          className={cn(
+            "fixed bottom-6 right-24 z-50 flex items-center gap-2 px-3 py-2 ",
+            "bg-mw-darker border border-mw-green border-opacity-30 rounded-sm",
+            "text-mw-light hover:text-white hover:bg-mw-green hover:bg-opacity-10",
+            "transition-all duration-200 shadow-md animate-fade-in",
+            highlightFloatingButton && "animate-[scale_0.6s_ease-in-out]"
+          )}
         >
           <ChevronUp className="w-4 h-4" />
           <span className="text-sm font-medium">HIDE PROJECTS</span>

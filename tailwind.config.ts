@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -119,7 +120,7 @@ export default {
 					'0%, 100%': { opacity: '0.6' },
 					'50%': { opacity: '0.8' }
 				},
-				'pulse-slow': {  // Add new keyframe for slower pulse
+				'pulse-slow': {
 					'0%, 100%': { opacity: '0.6' },
 					'50%': { opacity: '0.8' }
 				},
@@ -130,6 +131,12 @@ export default {
 				'scan': {
 					'0%': { transform: 'translateX(-100%)' },
 					'100%': { transform: 'translateX(100%)' }
+				},
+				// New scale keyframe for the button attention animation
+				'scale': {
+					'0%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(1.15)' },
+					'100%': { transform: 'scale(1)' }
 				}
 			},
 			animation: {
@@ -142,7 +149,7 @@ export default {
 				'glitch': 'glitch 0.5s ease infinite',
 				'radar-scan': 'radar-scan 3s linear infinite',
 				'pulse-light': 'pulse-light 4s ease-in-out infinite',
-				'pulse-slow': 'pulse-slow 8s ease-in-out infinite',  // Add new slower animation
+				'pulse-slow': 'pulse-slow 8s ease-in-out infinite',
 				'tactical-blink': 'tactical-blink 2s ease-in-out infinite'
 			},
 			fontFamily: {
