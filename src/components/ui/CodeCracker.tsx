@@ -11,16 +11,18 @@ interface CodeCrackerProps {
   text: string;
   className?: string;
   isDecoding: boolean;
+  skipAnimation?: boolean; // Add prop to skip animation
 }
 
 // Use memo to prevent unnecessary re-renders
-const CodeCracker = memo(({ text, className, isDecoding }: CodeCrackerProps) => {
+const CodeCracker = memo(({ text, className, isDecoding, skipAnimation = false }: CodeCrackerProps) => {
   const [displayText, setDisplayText] = useState(text);
   const animationRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
   
   useEffect(() => {
-    if (!isDecoding) {
+    // If animation should be skipped or not decoding, just display the full text
+    if (skipAnimation || !isDecoding) {
       setDisplayText(text);
       return () => {
         if (animationRef.current) {
@@ -70,7 +72,7 @@ const CodeCracker = memo(({ text, className, isDecoding }: CodeCrackerProps) => 
         startTimeRef.current = null;
       }
     };
-  }, [isDecoding, text]);
+  }, [isDecoding, text, skipAnimation]);
   
   return (
     <div 
