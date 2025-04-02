@@ -7,9 +7,10 @@ import { ProjectData } from './ProjectCard';
 interface ProjectGridProps {
   projects: ProjectData[];
   isVisible: boolean;
+  startIndex?: number; // Optional prop for indexing additional projects
 }
 
-const ProjectGrid = ({ projects, isVisible }: ProjectGridProps) => {
+const ProjectGrid = ({ projects, isVisible, startIndex = 0 }: ProjectGridProps) => {
   const [decodingCardIndex, setDecodingCardIndex] = useState<number | null>(null);
 
   const handleCardClick = (project: ProjectData) => {
@@ -29,17 +30,17 @@ const ProjectGrid = ({ projects, isVisible }: ProjectGridProps) => {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {projects.map((project, index) => (
         <div 
-          key={index}
-          onMouseEnter={() => setDecodingCardIndex(index)}
+          key={startIndex + index}
+          onMouseEnter={() => setDecodingCardIndex(startIndex + index)}
           onMouseLeave={() => setDecodingCardIndex(null)}
           onClick={() => handleCardClick(project)}
           className="h-full cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
         >
           <ProjectCard 
             project={project}
-            index={index}
+            index={startIndex + index}
             isVisible={isVisible}
-            isDecoding={decodingCardIndex === index}
+            isDecoding={decodingCardIndex === (startIndex + index)}
           />
         </div>
       ))}

@@ -41,4 +41,46 @@ export const projectsData: ProjectData[] = [{
     demo: "##",
     github: "https://github.com/Coockiepickle/SerreConnectee"
   }
+}, 
+// Additional projects that will be shown when "Show more projects" is clicked
+{
+  title: "Tactical Portfolio",
+  description: "A Modern Warfare themed portfolio website built with React and Tailwind CSS.",
+  tags: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+  type: "personal",
+  date: "2024-05",
+  links: {
+    demo: "##",
+    github: "https://github.com/username/tactical-portfolio"
+  }
+}, {
+  title: "Network Monitoring System",
+  description: "A system for monitoring network traffic and detecting potential security threats.",
+  tags: ["Python", "Flask", "Wireshark", "Elasticsearch"],
+  type: "professional",
+  date: "2023-10",
+  links: {
+    demo: "##",
+    github: "https://github.com/username/network-monitoring"
+  }
+}, {
+  title: "Secure File Storage",
+  description: "A secure file storage solution with end-to-end encryption and access control.",
+  tags: ["Node.js", "React", "MongoDB", "Express"],
+  type: "personal",
+  date: "2023-08",
+  links: {
+    demo: "https://secure-files.example.com",
+    github: "https://github.com/username/secure-files"
+  }
+}, {
+  title: "Smart Home Automation",
+  description: "IoT system for home automation with voice control and mobile app integration.",
+  tags: ["IoT", "React Native", "MQTT", "Raspberry Pi"],
+  type: "personal",
+  date: "2023-06",
+  links: {
+    demo: "##",
+    github: "https://github.com/username/smart-home"
+  }
 }];
