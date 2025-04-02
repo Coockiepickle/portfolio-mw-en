@@ -54,13 +54,15 @@ const ProjectCard = ({ project, index, isVisible, isDecoding }: ProjectCardProps
   return (
     <div 
       className={cn(
-        "mw-card group transition-all duration-700 ease-out transform hover:scale-[1.02] hover:shadow-xl hover:shadow-mw-green/30 h-full flex flex-col", 
+        "mw-card group transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-xl hover:shadow-mw-green/30 h-full flex flex-col cursor-pointer", 
         styles.borderColor,
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", 
         isVisible && {
           'delay-150': index === 0 || index === 1,
           'delay-300': index === 2 || index === 3
-        }
+        },
+        "will-change-transform", // Optimize rendering performance for transform
+        "transition-[transform,box-shadow] duration-300" // Smoother transition
       )}
     >
       <ProjectCardBody 
