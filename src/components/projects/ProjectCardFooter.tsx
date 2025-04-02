@@ -57,7 +57,6 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
                   text={formatDate(project.date)}
                   isDecoding={isDecoding}
                   className="font-tactical font-semibold tracking-wider"
-                  termAnim={true} // Use termAnim instead of skipAnimation
                 />
               ) : (
                 <span>REDACTED</span>

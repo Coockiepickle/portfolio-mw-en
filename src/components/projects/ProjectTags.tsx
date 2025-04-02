@@ -24,7 +24,6 @@ const ProjectTags = ({ tags, projectType, isDecoding }: ProjectTagsProps) => {
           <CodeCracker 
             text={tag}
             isDecoding={isDecoding}
-            termAnim={true} // Use termAnim instead of skipAnimation
           />
         </span>
       ))}
