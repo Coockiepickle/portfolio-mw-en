@@ -1,4 +1,3 @@
-
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 import { Skill } from "./skillsData";
@@ -106,12 +105,8 @@ const SkillDetailsModal = ({ isOpen, onClose, category, icon, skills }: SkillDet
                   <span className="text-mw-green mr-1">$</span>
                   <span className="text-mw-lightgray mr-1">skill</span>
                   <span className="text-mw-accent">--info</span>
+                  <span className="text-mw-accent"> --progress='{skill.level}%'</span>
                   <span className="ml-1 text-mw-green animate-pulse-light">▌</span>
-                </div>
-                
-                {/* LVL indicator above progress bar */}
-                <div className="flex justify-end mb-1">
-                  <div className="text-xs text-mw-lightgray">LVL: {skill.level}%</div>
                 </div>
                 
                 <div className="mb-3 h-1 w-full bg-mw-dark overflow-hidden rounded-full">
