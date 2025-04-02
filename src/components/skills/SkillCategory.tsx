@@ -1,4 +1,3 @@
-
 import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
 import SkillBar from './SkillBar';
@@ -53,7 +52,7 @@ const SkillCategory = ({
     <>
       <div 
         className={cn(
-          "mw-card p-6 transition-all duration-500 ease-out transform hover:shadow-lg hover:shadow-mw-green/20 hover:-translate-y-2 hover:border-mw-green/50 relative overflow-hidden cursor-pointer",
+          "mw-card p-6 transition-all duration-300 ease-out transform hover:scale-[1.02] hover:shadow-lg hover:shadow-mw-green/20 cursor-pointer relative overflow-hidden",
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", 
           visible && {
             'delay-150': index === 0,
@@ -67,7 +66,6 @@ const SkillCategory = ({
         onMouseLeave={handleMouseLeave}
         onClick={handleCardClick}
       >
-        {/* Add pulsing tactical scan effect when hovering */}
         <div className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none",
           isHovering ? "opacity-10" : ""
