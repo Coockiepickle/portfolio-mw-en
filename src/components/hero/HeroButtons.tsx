@@ -30,7 +30,7 @@ const HeroButtons = ({ loaded, handleScrollToSection }: HeroButtonsProps) => {
         href="https://dreynaud-fr.netlify.app" 
         target="_blank" 
         rel="noopener noreferrer" 
-        className="mw-button bg-transparent border border-mw-green text-mw-green hover:bg-mw-green hover:bg-opacity-10"
+        className="mw-button-primary"
       >
         VERSION FRANÇAISE
       </a>
