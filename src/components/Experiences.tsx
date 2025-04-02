@@ -60,7 +60,7 @@ const Experiences = () => {
   return (
     <div id="experiences" className="relative py-16 px-2">
       <div className={cn("text-center mb-12 transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-        <span className="mw-badge mb-4">
+        <span className="mw-badge mb-2 inline-block">
           <Briefcase className="w-3 h-3 mr-1" />
           CAREER PATH
         </span>
