@@ -24,6 +24,7 @@ const ProjectTags = ({ tags, projectType, isDecoding }: ProjectTagsProps) => {
           <CodeCracker 
             text={tag}
             isDecoding={isDecoding}
+            skipAnimation={true} // Skip animation for tags
           />
         </span>
       ))}

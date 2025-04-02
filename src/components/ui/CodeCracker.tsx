@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef, memo } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -16,12 +15,11 @@ interface CodeCrackerProps {
   text: string;
   className?: string;
   isDecoding: boolean;
-  skipAnimation?: boolean; // Keep this property to skip animation when needed
-  termAnim?: boolean; // New property to specify terminal animation style
+  skipAnimation?: boolean; // Add prop to skip animation
 }
 
 // Use memo to prevent unnecessary re-renders
-const CodeCracker = memo(({ text, className, isDecoding, skipAnimation = false, termAnim = false }: CodeCrackerProps) => {
+const CodeCracker = memo(({ text, className, isDecoding, skipAnimation = false }: CodeCrackerProps) => {
   const [displayText, setDisplayText] = useState(text);
   const animationRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);

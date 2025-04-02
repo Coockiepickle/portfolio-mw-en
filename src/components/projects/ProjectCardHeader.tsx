@@ -26,7 +26,7 @@ const ProjectCardHeader = ({ project, styles, isDecoding, index }: ProjectCardHe
           text={`PROJECT_${index + 1}`} 
           className="text-xs text-mw-lightgray"
           isDecoding={isDecoding}
-          termAnim={true} // Use the new termAnim prop
+          skipAnimation={true} // Skip animation for project number
         />
       </div>
     </div>
