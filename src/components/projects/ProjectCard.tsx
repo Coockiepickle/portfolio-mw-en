@@ -11,7 +11,7 @@ export interface ProjectData {
   description: string;
   tags: string[];
   type: "professional" | "personal";
-  date: string; // Add date field
+  date: string;
   links: {
     demo: string;
     github: string;
@@ -54,7 +54,7 @@ const ProjectCard = ({ project, index, isVisible, isDecoding }: ProjectCardProps
   return (
     <div 
       className={cn(
-        "mw-card group transition-all duration-700 ease-out transform hover:scale-105 hover:shadow-xl hover:shadow-mw-green/30 h-full flex flex-col", 
+        "mw-card group transition-all duration-700 ease-out transform hover:scale-[1.02] hover:shadow-xl hover:shadow-mw-green/30 h-full flex flex-col", 
         styles.borderColor,
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16", 
         isVisible && {
