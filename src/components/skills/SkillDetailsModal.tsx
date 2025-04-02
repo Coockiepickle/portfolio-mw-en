@@ -1,3 +1,4 @@
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 import { Skill } from "./skillsData";
@@ -49,6 +50,12 @@ const getSkillDescription = (skillName: string): string => {
   };
   return descriptions[skillName] || "Detailed information about this skill will be added soon.";
 };
+
+// Function to clean skill name by removing "Learning in Progress..." for display in the modal
+const cleanSkillName = (name: string): string => {
+  return name.replace(" - Learning in Progress...", "");
+};
+
 const SkillDetailsModal = ({
   isOpen,
   onClose,
@@ -91,7 +98,7 @@ const SkillDetailsModal = ({
                   <span className="inline-block w-3 h-3 bg-yellow-500 rounded-full"></span>
                   <span className="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
                 </div>
-                <div className="text-xs font-mono text-mw-lightgray">{skill.name}.skill</div>
+                <div className="text-xs font-mono text-mw-lightgray">{cleanSkillName(skill.name)}.skill</div>
                 <div className="w-10"></div> {/* Spacer to balance the header */}
               </div>
               
