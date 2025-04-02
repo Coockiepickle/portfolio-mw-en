@@ -7,6 +7,11 @@ const getRandomChar = () => {
   return chars.charAt(Math.floor(Math.random() * chars.length));
 };
 
+// Function to get random animation duration between 1000ms and 1500ms
+const getRandomDuration = () => {
+  return Math.floor(Math.random() * 501) + 1000; // Random between 1000 and 1500
+};
+
 interface CodeCrackerProps {
   text: string;
   className?: string;
@@ -19,6 +24,7 @@ const CodeCracker = memo(({ text, className, isDecoding, skipAnimation = false }
   const [displayText, setDisplayText] = useState(text);
   const animationRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
+  const durationRef = useRef<number>(getRandomDuration()); // Store random duration
   
   useEffect(() => {
     // If animation should be skipped or not decoding, just display the full text
@@ -32,8 +38,11 @@ const CodeCracker = memo(({ text, className, isDecoding, skipAnimation = false }
       };
     }
     
+    // Generate a new random duration for each text change
+    durationRef.current = getRandomDuration();
+    
     const originalText = text;
-    const animationDuration = 1000; // Animation duration in milliseconds (1000ms = 1 second)
+    const animationDuration = durationRef.current; // Use the random duration
     
     const animate = (timestamp: number) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
