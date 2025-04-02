@@ -48,7 +48,7 @@ export const getSkillCategories = (): SkillCategory[] => [
       name: "Routing and Switching",
       level: 65
     }, {
-      name: "VoIP - Learning in Progress...",
+      name: "VoIP",
       level: 40
     }, {
       name: "VLAN",
@@ -64,20 +64,20 @@ export const getSkillCategories = (): SkillCategory[] => [
       name: "VPN",
       level: 50
     }, {
-      name: "Network Security - Learning in Progress...",
+      name: "Network Security",
       level: 60
     }, {
-      name: "IDS/IPS - Learning in Progress...",
+      name: "IDS/IPS",
       level: 50
     }]
   }, {
     icon: createCodeIcon(),
     title: "Development",
     skills: [{
-      name: "HTML / Tailwind CSS - Learning in Progress...",
+      name: "HTML / Tailwind CSS",
       level: 60
     }, {
-      name: "TypeScript - Learning in Progress...",
+      name: "TypeScript",
       level: 30
     }, {
       name: "Python",
@@ -112,10 +112,10 @@ export const getSkillCategories = (): SkillCategory[] => [
       name: "English",
       level: 90
     }, {
-      name: "Japanese - Learning in Progress...",
+      name: "Japanese",
       level: 15
     }, {
-      name: "Spanish - Learning in Progress...",
+      name: "Spanish",
       level: 20
     }]
   }
