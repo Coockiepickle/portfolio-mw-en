@@ -1,7 +1,6 @@
 
 import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
-import CodeCracker from '../ui/CodeCracker';
 import { MapPin, Calendar, Building, Book } from 'lucide-react';
 
 interface AchievementItemProps {
@@ -61,21 +60,14 @@ const AchievementItem = ({
       
       {/* Secret code that appears on hover */}
       <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-mw-green text-xs">
-        <CodeCracker
-          text={code}
-          isDecoding={isHovering}
-        />
+        {code}
       </div>
       
       <div className="p-3 bg-mw-green bg-opacity-10 rounded-sm self-start mr-4 group-hover:bg-opacity-30 transition-all duration-300 relative z-10">
-        {/* Apply CodeCracker to the icon element */}
-        {isHovering ? (
-          <div className="animate-tactical-blink">
-            {icon}
-          </div>
-        ) : (
-          icon
-        )}
+        {/* Simple icon animation instead of CodeCracker */}
+        <div className={isHovering ? "animate-tactical-blink" : ""}>
+          {icon}
+        </div>
       </div>
       <div className="relative z-10">
         <div className="flex items-center gap-3 text-xs text-mw-green font-medium uppercase tracking-wider mb-1">
@@ -85,42 +77,22 @@ const AchievementItem = ({
             ) : (
               <Calendar className="w-3 h-3 text-mw-green" />
             )}
-            <CodeCracker 
-              text={year}
-              isDecoding={isHovering}
-            />
+            {year}
           </div>
           <div className="flex items-center gap-1">
             <MapPin className="w-3 h-3 text-mw-green" />
-            <CodeCracker 
-              text={location}
-              isDecoding={isHovering}
-            />
+            {location}
           </div>
           <div className="flex items-center gap-1">
             <Building className="w-3 h-3 text-mw-green" />
-            <CodeCracker 
-              text={institution}
-              isDecoding={isHovering}
-            />
+            {institution}
           </div>
         </div>
         <h3 className="text-lg font-tactical font-medium text-white mb-2">
-          {isHovering ? (
-            <CodeCracker 
-              text={title}
-              isDecoding={true}
-            />
-          ) : title}
+          {title}
         </h3>
         <div className="text-sm text-mw-light mb-1">
-          {/* Apply CodeCracker to the description text */}
-          {isHovering ? (
-            <CodeCracker 
-              text={description}
-              isDecoding={true}
-            />
-          ) : description}
+          {description}
         </div>
       </div>
       
