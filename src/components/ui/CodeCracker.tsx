@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef, memo } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -7,9 +6,9 @@ const getRandomChar = () => {
   return chars.charAt(Math.floor(Math.random() * chars.length));
 };
 
-// Function to get random animation duration between 1000ms and 1500ms
+// Function to get random animation duration between 1000ms and 2000ms
 const getRandomDuration = () => {
-  return Math.floor(Math.random() * 501) + 1000; // Random between 1000 and 1500
+  return Math.floor(Math.random() * 1001) + 1000; // Random between 1000 and 2000
 };
 
 interface CodeCrackerProps {
