@@ -1,5 +1,6 @@
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { ExternalLink } from 'lucide-react';
 import SkillBar from './SkillBar';
 import SkillDetailsModal from './SkillDetailsModal';
 
@@ -85,7 +86,13 @@ const SkillCategory = ({
           )}>
             {icon}
           </div>
-          <h3 className="text-lg font-medium text-white">{title}</h3>
+          <h3 className="text-lg font-medium text-white flex items-center gap-2">
+            {title}
+            <ExternalLink 
+              className="w-4 h-4 text-mw-green/50 group-hover:text-mw-green transition-colors" 
+              strokeWidth={1.5} 
+            />
+          </h3>
         </div>
         
         <div className="space-y-4 relative z-10">
