@@ -29,20 +29,21 @@ const EasterEgg = () => {
         description: "You found a hidden secret! ⭐",
         variant: "default",
       });
-      
-      // Hide the image after 3 seconds
-      const timer = setTimeout(() => {
-        setImage(null);
-      }, 3000);
-      
-      return () => clearTimeout(timer);
     }
   }, [konamiTriggered]);
+
+  // Handler to close the modal when clicking anywhere
+  const handleCloseModal = () => {
+    setImage(null);
+  };
 
   if (!image) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/70 animate-fade-in">
+    <div 
+      className="fixed inset-0 flex items-center justify-center z-50 bg-black/70 animate-fade-in cursor-pointer" 
+      onClick={handleCloseModal}
+    >
       <div className="relative max-w-xl w-full p-4 transform transition-all scale-in-center">
         <img 
           src={image} 
