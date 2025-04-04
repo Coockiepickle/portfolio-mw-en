@@ -1,45 +1,35 @@
-
 import { useState, useEffect } from 'react';
 import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
 const Experiences = () => {
   const [isVisible, setIsVisible] = useState(false);
-  
-  const experiences = [
-    {
-      title: "Systems and network administration trainee",
-      company: "MH Industries",
-      period: "Sept. - Present",
-      description: "I helped improve and maintain the information system. I also upgraded the network infrastructure and participated in user technical support."
-    },
-    {
-      title: "Power Automate application development",
-      company: "Cégep de La Pocatière",
-      period: "March - May 2024",
-      description: "I took part in the implementation of an application to automate the completion of work placement agreements. I worked as part of a team in project mode."
-    },
-    {
-      title: "Trainee Network and Telecommunications Administrator",
-      company: "D.S.I. C.H.U. de Limoges",
-      period: "16 May - 24 June 2022, 2 Jan. - 10 Feb. 2023 / 6 weeks each",
-      description: "During these two internships, I helped improving and maintain the hopital's information system. I also discovered new tools (software and hardware) needed to run and manage a computer network."
-    },
-    {
-      title: "Observation internship",
-      company: "La Clinique Informatique",
-      period: "June - July 2019",
-      description: "I diagnosed faulty computers and replaced components according to problems encountered. This internship allowed me to practice customer contact."
-    }
-  ];
-
+  const experiences = [{
+    title: "Systems and network administration trainee",
+    company: "MH Industries",
+    period: "Sept. - Present",
+    description: "I helped improve and maintain the information system. I also upgraded the network infrastructure and participated in user technical support."
+  }, {
+    title: "Power Automate application development",
+    company: "Cégep de La Pocatière",
+    period: "March - May 2024",
+    description: "I took part in the implementation of an application to automate the completion of work placement agreements. I worked as part of a team in project mode."
+  }, {
+    title: "Trainee Network and Telecommunications Administrator",
+    company: "D.S.I. C.H.U. de Limoges",
+    period: "16 May - 24 June 2022, 2 Jan. - 10 Feb. 2023 / 6 weeks each",
+    description: "During these two internships, I helped improving and maintain the hopital's information system. I also discovered new tools (software and hardware) needed to run and manage a computer network."
+  }, {
+    title: "Observation internship",
+    company: "La Clinique Informatique",
+    period: "June - July 2019",
+    description: "I diagnosed faulty computers and replaced components according to problems encountered. This internship allowed me to practice customer contact."
+  }];
   const recurringExperience = {
     title: "Seasonal tree climbing park operator",
     company: "Tarz en arbre",
     periods: ["June - Sept. 2021", "June - Sept. 2022", "July - Aug. 2023", "July - Aug 2024"],
     description: "I was helping and monitoring customers in the activities. I was also explaining security rules to groups of people and selling tickets to the activity."
   };
-
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('experiences');
@@ -50,17 +40,13 @@ const Experiences = () => {
         }
       }
     };
-    
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  return (
-    <div id="experiences" className="relative py-16 px-2">
+  return <div id="experiences" className="relative py-16 px-2">
       <div className={cn("text-center mb-12 transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-        <span className="mw-badge mb-4 block inline-flex items-center px-2 py-0.5">
+        <span className="mw-badge mb-4 block inline-flex items-center py-px my-0 px-[10px] mx-[100px]">
           <Briefcase className="w-3 h-3 mr-1.5 inline-block" />
           CAREER PATH
         </span>
@@ -69,14 +55,7 @@ const Experiences = () => {
       
       <div className="space-y-6 mt-20">
         <div className="relative">
-          {experiences.map((exp, index) => (
-            <div 
-              key={index}
-              className={cn(
-                "mb-8 relative transition-all duration-700 transform",
-                isVisible ? `opacity-100 translate-y-0 delay-[${index * 150}ms]` : "opacity-0 translate-y-8"
-              )}
-            >
+          {experiences.map((exp, index) => <div key={index} className={cn("mb-8 relative transition-all duration-700 transform", isVisible ? `opacity-100 translate-y-0 delay-[${index * 150}ms]` : "opacity-0 translate-y-8")}>
               <div className="mw-card p-5 hover:shadow-lg hover:shadow-mw-green/30 hover:-translate-y-2 hover:border-mw-green/50 transition-all duration-500">
                 <div className="flex flex-col md:flex-row md:items-start justify-between mb-3">
                   <h3 className="text-lg font-bold text-white">{exp.title}</h3>
@@ -93,15 +72,10 @@ const Experiences = () => {
                 </div>
                 <p className="text-mw-light text-sm">{exp.description}</p>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
         
-        <div className={cn(
-            "transition-all duration-700",
-            isVisible ? "opacity-100 delay-300" : "opacity-0"
-          )}
-        >
+        <div className={cn("transition-all duration-700", isVisible ? "opacity-100 delay-300" : "opacity-0")}>
           <div className="mw-card p-5 border-mw-accent/30 hover:border-mw-accent/50 hover:shadow-mw-accent/30">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-lg font-bold text-white">{recurringExperience.title}</h3>
@@ -114,19 +88,15 @@ const Experiences = () => {
               <span>{recurringExperience.company}</span>
             </div>
             <div className="mb-3">
-              {recurringExperience.periods.map((period, idx) => (
-                <div key={idx} className="flex items-center text-mw-lightgray text-xs mb-1.5">
+              {recurringExperience.periods.map((period, idx) => <div key={idx} className="flex items-center text-mw-lightgray text-xs mb-1.5">
                   <Calendar className="w-3.5 h-3.5 mr-1.5 text-mw-accent/70" />
                   {period}
-                </div>
-              ))}
+                </div>)}
             </div>
             <p className="text-mw-light text-sm">{recurringExperience.description}</p>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Experiences;
