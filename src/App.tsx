@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LanguageSwitch from "./components/LanguageSwitch";
+import EasterEgg from "./components/EasterEgg";
 
 // Lazy load pages for better initial load performance
 const Index = lazy(() => import("./pages/Index"));
@@ -43,6 +44,7 @@ const App = () => (
         </Suspense>
       </BrowserRouter>
       <LanguageSwitch />
+      <EasterEgg />
     </TooltipProvider>
   </QueryClientProvider>
 );
