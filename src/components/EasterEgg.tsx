@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useKonamiCode } from '../hooks/useKonamiCode';
 import { toast } from '@/hooks/use-toast';
@@ -5,6 +6,7 @@ import { toast } from '@/hooks/use-toast';
 const EasterEgg = () => {
   const konamiTriggered = useKonamiCode();
   const [image, setImage] = useState<string | null>(null);
+  const [previousImage, setPreviousImage] = useState<string | null>(null);
 
   const memeImages = [
     '/easter/meme_1.webp',
@@ -35,9 +37,18 @@ const EasterEgg = () => {
 
   useEffect(() => {
     if (konamiTriggered) {
-      const randomIndex = Math.floor(Math.random() * randomizedImages.length);
-      const randomImage = randomizedImages[randomIndex];
+      // Filter out the previous image if it exists
+      const availableImages = previousImage 
+        ? randomizedImages.filter(img => img !== previousImage)
+        : randomizedImages;
+      
+      // Get a random image from the filtered array
+      const randomIndex = Math.floor(Math.random() * availableImages.length);
+      const randomImage = availableImages[randomIndex];
+      
+      // Set the current image and store it as the previous image for next time
       setImage(randomImage);
+      setPreviousImage(randomImage);
       
       toast({
         title: "Easter egg unlocked!",
@@ -45,7 +56,7 @@ const EasterEgg = () => {
         variant: "default",
       });
     }
-  }, [konamiTriggered, randomizedImages]);
+  }, [konamiTriggered, randomizedImages, previousImage]);
 
   const handleCloseModal = () => {
     setImage(null);
