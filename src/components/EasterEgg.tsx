@@ -7,13 +7,15 @@ const EasterEgg = () => {
   const konamiTriggered = useKonamiCode();
   const [image, setImage] = useState<string | null>(null);
 
-  // List of available meme images
+  // Updated list of available meme images to include 2 additional images
   const memeImages = [
     '/easter/meme_1.webp',
     '/easter/meme_2.webp',
     '/easter/meme_3.webp',
     '/easter/meme_4.webp',
-    '/easter/meme_5.webp'
+    '/easter/meme_5.webp',
+    '/easter/meme_6.webp',
+    '/easter/meme_7.webp',
   ];
 
   // Randomize the image order when the component mounts
@@ -73,3 +75,4 @@ const EasterEgg = () => {
 };
 
 export default EasterEgg;
+
