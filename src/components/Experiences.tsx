@@ -60,8 +60,8 @@ const Experiences = () => {
   return (
     <div id="experiences" className="relative py-16 px-2">
       <div className={cn("text-center mb-12 transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-        <span className="mw-badge mb-4">
-          <Briefcase className="w-3 h-3 mr-1" />
+        <span className="mw-badge mb-4 block">
+          <Briefcase className="w-3 h-3 mr-1 inline-block" />
           CAREER PATH
         </span>
         <h2 className="mw-section-title text-white">Work experience</h2>
@@ -131,3 +131,4 @@ const Experiences = () => {
 };
 
 export default Experiences;
+
