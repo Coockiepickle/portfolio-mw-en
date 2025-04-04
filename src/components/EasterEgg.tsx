@@ -7,6 +7,7 @@ const EasterEgg = () => {
   const konamiTriggered = useKonamiCode();
   const [image, setImage] = useState<string | null>(null);
   const [previousImage, setPreviousImage] = useState<string | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const memeImages = [
     '/easter/meme_1.webp',
@@ -36,7 +37,9 @@ const EasterEgg = () => {
   }, []);
 
   useEffect(() => {
-    if (konamiTriggered) {
+    if (konamiTriggered && !isProcessing) {
+      setIsProcessing(true);
+      
       // Filter out the previous image if it exists
       const availableImages = previousImage 
         ? randomizedImages.filter(img => img !== previousImage)
@@ -55,8 +58,13 @@ const EasterEgg = () => {
         description: "You found a hidden secret! ⭐",
         variant: "default",
       });
+      
+      // Reset processing flag after a short delay
+      setTimeout(() => {
+        setIsProcessing(false);
+      }, 3000); // Match this with the Konami code reset timing
     }
-  }, [konamiTriggered, randomizedImages, previousImage]);
+  }, [konamiTriggered, randomizedImages, previousImage, isProcessing]);
 
   const handleCloseModal = () => {
     setImage(null);
