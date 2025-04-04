@@ -34,21 +34,7 @@ const ProjectGrid = ({ projects, isVisible, startIndex = 0 }: ProjectGridProps) 
           onMouseEnter={() => setDecodingCardIndex(startIndex + index)}
           onMouseLeave={() => setDecodingCardIndex(null)}
           onClick={() => handleCardClick(project)}
-          className={cn(
-            "h-full cursor-pointer transition-all duration-500",
-            "hover:scale-[1.02]",
-            isVisible ? "opacity-100" : "opacity-0",
-            // Add staggered delay for fade-in based on card index
-            isVisible && {
-              'transition-delay-100': index % 4 === 0,
-              'transition-delay-200': index % 4 === 1,
-              'transition-delay-300': index % 4 === 2, 
-              'transition-delay-400': index % 4 === 3
-            }
-          )}
-          style={{
-            transitionDelay: isVisible ? `${(index % 4) * 100 + 100}ms` : '0ms'
-          }}
+          className="h-full cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
         >
           <ProjectCard 
             project={project}
