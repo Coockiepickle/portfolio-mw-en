@@ -1,8 +1,10 @@
+
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ExternalLink } from 'lucide-react';
 import SkillBar from './SkillBar';
 import SkillDetailsModal from './SkillDetailsModal';
+import { ReactNode } from 'react'; // Add this import for ReactNode
 
 interface Skill {
   name: string;
