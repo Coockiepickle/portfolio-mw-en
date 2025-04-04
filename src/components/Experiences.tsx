@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Briefcase, Calendar, Building2, RepeatIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -59,8 +60,8 @@ const Experiences = () => {
   return (
     <div id="experiences" className="relative py-16 px-2">
       <div className={cn("text-center mb-12 transition-all duration-700 transform", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")}>
-        <span className="mw-badge mb-4 block px-1.5 py-0.5">
-          <Briefcase className="w-3 h-3 mr-1 inline-block" />
+        <span className="mw-badge mb-4 block inline-flex items-center px-2 py-0.5">
+          <Briefcase className="w-3 h-3 mr-1.5 inline-block" />
           CAREER PATH
         </span>
         <h2 className="mw-section-title text-white">Work experience</h2>
