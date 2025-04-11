@@ -37,6 +37,28 @@ const EasterEgg = () => {
   }, []);
 
   useEffect(() => {
+    const handleDevTools = () => {
+      console.log("🕵️ Il n'y a rien à voir ici !");
+    };
+
+    const checkDevTools = () => {
+      const threshold = 160;
+      const widthDiff = window.outerWidth - window.innerWidth;
+      const heightDiff = window.outerHeight - window.innerHeight;
+
+      if (widthDiff > threshold || heightDiff > threshold) {
+        handleDevTools();
+      }
+    };
+
+    window.addEventListener('resize', checkDevTools);
+
+    return () => {
+      window.removeEventListener('resize', checkDevTools);
+    };
+  }, []);
+
+  useEffect(() => {
     if (konamiTriggered && !isProcessing) {
       setIsProcessing(true);
       
