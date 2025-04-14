@@ -117,14 +117,27 @@ const RadarVisualization = () => {
       <div className="absolute h-full w-[1px] bg-mw-green bg-opacity-30"></div>
       <div className="absolute w-full h-[1px] bg-mw-green bg-opacity-30"></div>
       
-      {/* Scan line with dynamic rotation */}
+      {/* Enhanced scan line with smoother animation and gradient */}
       <div 
-        className="h-1/2 w-0.5 bg-gradient-to-t from-mw-green to-transparent absolute top-0 right-1/2 transform origin-bottom"
+        className="h-1/2 w-0.5 absolute top-0 right-1/2 transform origin-bottom transition-transform duration-100 ease-linear"
         style={{ transform: `rotate(${scanAngle}deg)` }}
       >
-        {/* Scan glow effect */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-mw-green blur-md opacity-40"></div>
+        {/* Improved scan line with gradient */}
+        <div className="h-full w-full bg-gradient-to-t from-transparent via-mw-green to-mw-green/80"></div>
+        
+        {/* Enhanced scan glow effect */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-8 
+                        bg-gradient-to-r from-mw-green/10 via-mw-green/60 to-mw-green/10 
+                        rounded-full blur-md animate-pulse-light"></div>
+        
+        {/* Trailing effect for scan line */}
+        <div className="absolute top-0 h-full w-4 -left-2 
+                        bg-gradient-to-r from-transparent via-mw-green/30 to-transparent 
+                        blur-sm"></div>
       </div>
+      
+      {/* Radar ping effect at center */}
+      <div className="absolute w-4 h-4 rounded-full bg-mw-green/20 animate-radar-ping"></div>
       
       {/* Grid overlay */}
       <div className="absolute inset-0 opacity-20 mw-grid-pattern"></div>
