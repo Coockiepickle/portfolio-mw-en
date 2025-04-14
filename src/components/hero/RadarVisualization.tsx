@@ -88,10 +88,10 @@ const RadarVisualization = () => {
       );
     }, 800);
     
-    // Animate the radar scan line
+    // Animate the radar scan line - modified for smooth continuous rotation
     scanIntervalRef.current = window.setInterval(() => {
-      setScanAngle(prevAngle => (prevAngle + 5) % 360);
-    }, 100);
+      setScanAngle(prevAngle => (prevAngle + 1) % 360); // Reduced increment for smoother rotation
+    }, 20); // Faster interval for smoother animation
     
     return () => {
       clearInterval(pointsInterval);
@@ -119,8 +119,8 @@ const RadarVisualization = () => {
       
       {/* Enhanced scan line with smoother animation and gradient */}
       <div 
-        className="h-1/2 w-0.5 absolute top-0 right-1/2 transform origin-bottom transition-transform duration-100 ease-linear"
-        style={{ transform: `rotate(${scanAngle}deg)` }}
+        className="h-1/2 w-0.5 absolute top-0 right-1/2 transform origin-bottom"
+        style={{ transform: `rotate(${scanAngle}deg)`, transition: 'transform 20ms linear' }}
       >
         {/* Improved scan line with gradient */}
         <div className="h-full w-full bg-gradient-to-t from-transparent via-mw-green to-mw-green/80"></div>
