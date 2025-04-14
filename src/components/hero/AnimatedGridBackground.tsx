@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 
 const AnimatedGridBackground = () => {
@@ -20,12 +19,12 @@ const AnimatedGridBackground = () => {
     setCanvasDimensions();
     window.addEventListener('resize', setCanvasDimensions);
     
-    // Grid configuration
+    // Grid configuration with increased brightness and size
     const gridSize = 40;
-    const nodeSizeMin = 1;
-    const nodeSizeMax = 2;
+    const nodeSizeMin = 1.5;  // Increased from 1
+    const nodeSizeMax = 3;    // Increased from 2
     
-    // Create grid points with randomized properties
+    // Create grid points with enhanced brightness properties
     let gridPoints: { x: number; y: number; size: number; brightness: number; pulseSpeed: number; phase: number }[] = [];
     
     const initGrid = () => {
@@ -39,9 +38,9 @@ const AnimatedGridBackground = () => {
           const x = i * gridSize;
           const y = j * gridSize;
           const size = Math.random() * (nodeSizeMax - nodeSizeMin) + nodeSizeMin;
-          const brightness = Math.random() * 0.2 + 0.1; // Base brightness between 0.1 and 0.3
-          const pulseSpeed = Math.random() * 0.001 + 0.0005; // Random slow pulse speed
-          const phase = Math.random() * Math.PI * 2; // Random starting phase
+          const brightness = Math.random() * 0.3 + 0.2;  // Increased base brightness between 0.2 and 0.5
+          const pulseSpeed = Math.random() * 0.001 + 0.0005;
+          const phase = Math.random() * Math.PI * 2;
           
           gridPoints.push({ x, y, size, brightness, pulseSpeed, phase });
         }
@@ -73,7 +72,7 @@ const AnimatedGridBackground = () => {
       }
     };
     
-    // Draw and animate grid points
+    // Draw and animate grid points with enhanced brightness calculation
     let animationFrameId: number;
     const animateGrid = (timestamp: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -83,14 +82,14 @@ const AnimatedGridBackground = () => {
       
       // Draw pulsing nodes
       gridPoints.forEach(point => {
-        // Calculate pulsing effect
-        const pulse = Math.sin(timestamp * point.pulseSpeed + point.phase) * 0.1 + 0.9;
+        // More pronounced pulsing effect
+        const pulse = Math.sin(timestamp * point.pulseSpeed + point.phase) * 0.2 + 0.8;
         const currentBrightness = point.brightness * pulse;
         
         // Draw the point
         ctx.beginPath();
         ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${currentBrightness})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${currentBrightness * 1.2})`;  // Increased opacity
         ctx.fill();
       });
       
@@ -111,7 +110,10 @@ const AnimatedGridBackground = () => {
     <canvas 
       ref={canvasRef} 
       className="absolute inset-0 z-0" 
-      style={{ background: 'linear-gradient(to bottom, rgba(18, 19, 22, 1), rgba(10, 11, 13, 1))' }}
+      style={{ 
+        background: 'linear-gradient(to bottom, rgba(18, 19, 22, 0.9), rgba(10, 11, 13, 0.9))',
+        backdropFilter: 'brightness(110%) contrast(110%)'  // Added subtle brightness boost
+      }}
     />
   );
 };
