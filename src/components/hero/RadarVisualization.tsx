@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 interface RadarPoint {
   id: number;
@@ -8,22 +8,27 @@ interface RadarPoint {
   size: number;
   opacity: number;
   visible: boolean;
+  isTarget?: boolean; // New property to indicate high-priority targets
 }
 
 const RadarVisualization = () => {
   const [radarPoints, setRadarPoints] = useState<RadarPoint[]>([]);
+  const [scanAngle, setScanAngle] = useState(0);
+  const scanIntervalRef = useRef<number | null>(null);
   
+  // Create the initial static points and set up animations
   useEffect(() => {
     const staticPoints: RadarPoint[] = [];
     
-    for (let i = 0; i < 20; i++) {
+    // Generate regular radar points
+    for (let i = 0; i < 15; i++) {
       const angle = Math.random() * Math.PI * 2;
       const distance = Math.random() * 0.8;
       
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
       
-      const size = Math.random() * 5 + 2;
+      const size = Math.random() * 4 + 2;
       const opacity = Math.random() * 0.5 + 0.5;
       
       staticPoints.push({
@@ -36,24 +41,63 @@ const RadarVisualization = () => {
       });
     }
     
+    // Add a few high-priority "target" points
+    for (let i = 15; i < 18; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * 0.6 + 0.2; // Keep targets within central area
+      
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance;
+      
+      staticPoints.push({
+        id: i,
+        x,
+        y,
+        size: 6, // Larger size for targets
+        opacity: 0.9,
+        visible: true,
+        isTarget: true
+      });
+    }
+    
     setRadarPoints(staticPoints);
     
+    // Update point visibility at intervals to simulate signal noise
     const pointsInterval = setInterval(() => {
       setRadarPoints(prevPoints => 
         prevPoints.map(point => {
-          if (Math.random() < 0.2) {
-            return {
-              ...point,
-              visible: !point.visible
-            };
+          // Target points blink less frequently
+          if (point.isTarget) {
+            if (Math.random() < 0.1) {
+              return {
+                ...point,
+                visible: !point.visible
+              };
+            }
+          } else {
+            // Regular points blink more often
+            if (Math.random() < 0.2) {
+              return {
+                ...point,
+                visible: !point.visible
+              };
+            }
           }
           return point;
         })
       );
     }, 800);
     
+    // Animate the radar scan line
+    scanIntervalRef.current = window.setInterval(() => {
+      setScanAngle(prevAngle => (prevAngle + 5) % 360);
+    }, 100);
+    
     return () => {
       clearInterval(pointsInterval);
+      if (scanIntervalRef.current) {
+        clearInterval(scanIntervalRef.current);
+      }
     };
   }, []);
 
@@ -62,24 +106,54 @@ const RadarVisualization = () => {
       flex items-center justify-center opacity-80 
       bg-gradient-to-br from-mw-dark/30 to-mw-gray/20 
       backdrop-blur-sm border border-mw-green border-opacity-20 
-      shadow-lg shadow-mw-green/10">
+      shadow-lg shadow-mw-green/10 overflow-hidden">
+      
+      {/* Radar rings */}
       <div className="absolute w-3/4 h-3/4 rounded-full border border-mw-green border-opacity-50"></div>
       <div className="absolute w-1/2 h-1/2 rounded-full border border-mw-green border-opacity-60"></div>
-      <div className="h-1/2 w-0.5 bg-mw-green bg-opacity-60 absolute top-0 right-1/2 transform origin-bottom animate-radar-scan"></div>
+      <div className="absolute w-1/4 h-1/4 rounded-full border border-mw-green border-opacity-70"></div>
       
+      {/* Cross hairs */}
+      <div className="absolute h-full w-[1px] bg-mw-green bg-opacity-30"></div>
+      <div className="absolute w-full h-[1px] bg-mw-green bg-opacity-30"></div>
+      
+      {/* Scan line with dynamic rotation */}
+      <div 
+        className="h-1/2 w-0.5 bg-gradient-to-t from-mw-green to-transparent absolute top-0 right-1/2 transform origin-bottom"
+        style={{ transform: `rotate(${scanAngle}deg)` }}
+      >
+        {/* Scan glow effect */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-mw-green blur-md opacity-40"></div>
+      </div>
+      
+      {/* Grid overlay */}
+      <div className="absolute inset-0 opacity-20 mw-grid-pattern"></div>
+      
+      {/* Digital scanline effect */}
+      <div className="absolute inset-0 bg-scanlines opacity-10"></div>
+      
+      {/* Radar points */}
       {radarPoints.map(point => (
         <div
           key={point.id}
-          className="absolute bg-mw-green rounded-full transition-opacity duration-500 shadow-[0_0_8px_#3f9987] animate-pulse-light"
+          className={`absolute rounded-full transition-opacity duration-500 ${
+            point.isTarget 
+              ? "bg-mw-accent shadow-[0_0_10px_#db3a34] animate-tactical-blink" 
+              : "bg-mw-green shadow-[0_0_8px_#3f9987] animate-pulse-light"
+          }`}
           style={{
             width: `${point.size}px`,
             height: `${point.size}px`,
             top: `calc(50% + ${point.y * 50}%)`,
             left: `calc(50% + ${point.x * 50}%)`,
-            opacity: point.visible ? point.opacity : 0
+            opacity: point.visible ? point.opacity : 0,
+            zIndex: point.isTarget ? 10 : 5
           }}
         />
       ))}
+      
+      {/* Edge glow effect */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-mw-green/5 to-transparent pointer-events-none"></div>
     </div>
   );
 };

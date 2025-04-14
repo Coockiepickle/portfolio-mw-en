@@ -62,7 +62,6 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Modern Warfare theme colors
 				mw: {
 					dark: '#121316',
 					darker: '#0a0b0d',
@@ -119,17 +118,21 @@ export default {
 					'0%, 100%': { opacity: '0.6' },
 					'50%': { opacity: '0.8' }
 				},
-				'pulse-slow': {  // Add new keyframe for slower pulse
+				'pulse-slow': {
 					'0%, 100%': { opacity: '0.6' },
 					'50%': { opacity: '0.8' }
 				},
 				'tactical-blink': {
 					'0%, 100%': { opacity: '0.7' },
-					'50%': { opacity: '0.9' }
+					'50%': { opacity: '1' }
 				},
 				'scan': {
 					'0%': { transform: 'translateX(-100%)' },
 					'100%': { transform: 'translateX(100%)' }
+				},
+				'radar-ping': {
+					'0%': { transform: 'scale(0.2)', opacity: '1' },
+					'100%': { transform: 'scale(2)', opacity: '0' }
 				}
 			},
 			animation: {
@@ -142,8 +145,9 @@ export default {
 				'glitch': 'glitch 0.5s ease infinite',
 				'radar-scan': 'radar-scan 3s linear infinite',
 				'pulse-light': 'pulse-light 4s ease-in-out infinite',
-				'pulse-slow': 'pulse-slow 8s ease-in-out infinite',  // Add new slower animation
-				'tactical-blink': 'tactical-blink 2s ease-in-out infinite'
+				'pulse-slow': 'pulse-slow 8s ease-in-out infinite',
+				'tactical-blink': 'tactical-blink 1.5s ease-in-out infinite',
+				'radar-ping': 'radar-ping 2s ease-out infinite'
 			},
 			fontFamily: {
 				'tactical': ['Rajdhani', 'sans-serif'],
