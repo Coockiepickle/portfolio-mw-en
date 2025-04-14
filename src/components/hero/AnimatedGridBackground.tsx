@@ -1,8 +1,9 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const AnimatedGridBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [mousePosition, setMousePosition] = useState<{ x: number, y: number } | null>(null);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -20,10 +21,28 @@ const AnimatedGridBackground = () => {
     setCanvasDimensions();
     window.addEventListener('resize', setCanvasDimensions);
     
+    // Track mouse position
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      setMousePosition({ x, y });
+    };
+    
+    // Handle mouse leaving the canvas
+    const handleMouseLeave = () => {
+      setMousePosition(null);
+    };
+    
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
+    
     // Grid configuration
     const gridSize = 40;
     const nodeSizeMin = 1;
     const nodeSizeMax = 2;
+    const mouseInfluenceRadius = 150; // Radius of cursor influence
+    const maxBrightnessBoost = 0.7; // Maximum brightness boost from cursor
     
     // Create grid points with randomized properties
     let gridPoints: { x: number; y: number; size: number; brightness: number; pulseSpeed: number; phase: number }[] = [];
@@ -85,11 +104,30 @@ const AnimatedGridBackground = () => {
       gridPoints.forEach(point => {
         // Calculate pulsing effect
         const pulse = Math.sin(timestamp * point.pulseSpeed + point.phase) * 0.1 + 0.9;
-        const currentBrightness = point.brightness * pulse;
+        let currentBrightness = point.brightness * pulse;
         
-        // Draw the point
+        // Calculate distance to mouse cursor and apply brightness boost
+        if (mousePosition) {
+          const dx = mousePosition.x - point.x;
+          const dy = mousePosition.y - point.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < mouseInfluenceRadius) {
+            // Apply brightness boost based on proximity to cursor
+            // The closer to the cursor, the brighter the point becomes
+            const proximityFactor = 1 - (distance / mouseInfluenceRadius);
+            const brightnessBoost = maxBrightnessBoost * proximityFactor * proximityFactor; // Squared for more natural falloff
+            currentBrightness += brightnessBoost;
+          }
+        }
+        
+        // Cap brightness at 1.0
+        currentBrightness = Math.min(currentBrightness, 1.0);
+        
+        // Draw the point with varying size based on brightness
+        const sizeMultiplier = 1 + currentBrightness; // Points get slightly larger when brighter
         ctx.beginPath();
-        ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2);
+        ctx.arc(point.x, point.y, point.size * sizeMultiplier, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${currentBrightness})`;
         ctx.fill();
       });
@@ -103,6 +141,8 @@ const AnimatedGridBackground = () => {
     return () => {
       window.removeEventListener('resize', setCanvasDimensions);
       window.removeEventListener('resize', initGrid);
+      canvas.removeEventListener('mousemove', handleMouseMove);
+      canvas.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
