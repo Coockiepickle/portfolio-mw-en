@@ -3,12 +3,12 @@ import { useEffect, useState, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 import ContactHeader from './contact/ContactHeader';
 import ContactCard from './contact/ContactCard';
-import AnimatedGridBackground from './hero/AnimatedGridBackground';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = useCallback(() => {
+    // Use requestAnimationFrame for smoother scrolling
     requestAnimationFrame(() => {
       const element = document.getElementById('contact');
       if (element) {
@@ -21,6 +21,7 @@ const Contact = () => {
   }, []);
 
   useEffect(() => {
+    // Use passive event listener for better scroll performance
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Check on initial load
 
@@ -29,7 +30,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative py-16">
-      <AnimatedGridBackground />
+      <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
       
       <div className="mw-container relative z-10">
         <ContactHeader isVisible={isVisible} />
