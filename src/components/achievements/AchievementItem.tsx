@@ -58,8 +58,8 @@ const AchievementItem = ({
         }}>
       </div>
       
-      {/* Secret code that appears on hover */}
-      <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-mw-green text-xs">
+      {/* Secret code that appears on hover - MOVED FROM TOP-RIGHT TO BOTTOM-RIGHT */}
+      <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-mw-green text-xs">
         {code}
       </div>
       
