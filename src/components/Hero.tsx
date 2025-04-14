@@ -4,6 +4,7 @@ import SineWaveVisualization from './hero/SineWaveVisualization';
 import RadarVisualization from './hero/RadarVisualization';
 import HeroContent from './hero/HeroContent';
 import ScrollIndicator from './hero/ScrollIndicator';
+import AnimatedGridBackground from './hero/AnimatedGridBackground';
 
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
@@ -44,7 +45,8 @@ const Hero = () => {
   
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center">
-      <div className="absolute inset-0 mw-grid-pattern opacity-30"></div>
+      {/* New Animated Grid Background */}
+      <AnimatedGridBackground />
       
       {/* Visualizations */}
       <SineWaveVisualization />
