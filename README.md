@@ -10,7 +10,7 @@ This is a portfolio I did using lovable, it's heavily inspired by the UI of rece
 
 **Dev:** TypeScript, Tailwind CSS, Vite, React, shadcn-ui
 
-**Hosting:** Netlify, Github, Lovable
+**Hosting:** IPv64, Netlify, Github, Lovable
 
 
 ## Features
