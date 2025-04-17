@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from 'react';
 
 interface RadarPoint {
@@ -117,21 +116,21 @@ const RadarVisualization = () => {
       <div className="absolute h-full w-[1px] bg-mw-green bg-opacity-30"></div>
       <div className="absolute w-full h-[1px] bg-mw-green bg-opacity-30"></div>
       
-      {/* Enhanced scan line with smoother animation and gradient - Fixed visibility */}
+      {/* Enhanced scan line with stronger visibility */}
       <div 
-        className="absolute h-1/2 w-1 top-0 left-1/2 transform -translate-x-1/2 origin-bottom z-10"
+        className="absolute h-1/2 w-1.5 top-0 left-1/2 transform -translate-x-1/2 origin-bottom z-10"
         style={{ transform: `rotate(${scanAngle}deg)` }}
       >
-        {/* Improved scan line with stronger gradient */}
-        <div className="h-full w-full bg-gradient-to-t from-transparent via-mw-green to-mw-green opacity-80"></div>
+        {/* Scan line with bright green gradient */}
+        <div className="h-full w-full bg-gradient-to-t from-transparent via-mw-green to-mw-green opacity-90"></div>
         
-        {/* Enhanced scan glow effect */}
+        {/* Pronounced glow effect */}
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-8 
-                       bg-mw-green rounded-full blur-md opacity-50"></div>
+                       bg-mw-green rounded-full blur-md opacity-70"></div>
         
-        {/* Trailing effect for scan line */}
+        {/* Enhanced trailing effect */}
         <div className="absolute top-0 h-full w-8 -left-4 
-                       bg-gradient-to-r from-transparent via-mw-green/40 to-transparent 
+                       bg-gradient-to-r from-transparent via-mw-green/50 to-transparent 
                        blur-sm"></div>
       </div>
       
