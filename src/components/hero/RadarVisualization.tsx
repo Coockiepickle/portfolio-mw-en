@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from 'react';
 
 interface RadarPoint {
@@ -118,20 +119,20 @@ const RadarVisualization = () => {
       
       {/* Enhanced scan line with stronger visibility */}
       <div 
-        className="absolute h-1/2 w-1.5 top-0 left-1/2 transform -translate-x-1/2 origin-bottom z-10"
+        className="absolute h-1/2 w-2 top-0 left-1/2 transform -translate-x-1/2 origin-bottom z-10"
         style={{ transform: `rotate(${scanAngle}deg)` }}
       >
-        {/* Scan line with bright green gradient */}
-        <div className="h-full w-full bg-gradient-to-t from-transparent via-mw-green to-mw-green opacity-90"></div>
+        {/* Scan line with bright white-green gradient */}
+        <div className="h-full w-full bg-gradient-to-t from-transparent via-white/40 to-mw-green opacity-100"></div>
         
         {/* Pronounced glow effect */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-8 
-                       bg-mw-green rounded-full blur-md opacity-70"></div>
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-12 
+                       bg-white/30 rounded-full blur-xl opacity-90"></div>
         
         {/* Enhanced trailing effect */}
-        <div className="absolute top-0 h-full w-8 -left-4 
-                       bg-gradient-to-r from-transparent via-mw-green/50 to-transparent 
-                       blur-sm"></div>
+        <div className="absolute top-0 h-full w-12 -left-6 
+                       bg-gradient-to-r from-transparent via-white/50 to-transparent 
+                       blur-lg"></div>
       </div>
       
       {/* Radar ping effect at center */}
