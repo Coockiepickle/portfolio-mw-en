@@ -117,32 +117,31 @@ const RadarVisualization = () => {
       <div className="absolute h-full w-[1px] bg-mw-green bg-opacity-30"></div>
       <div className="absolute w-full h-[1px] bg-mw-green bg-opacity-30"></div>
       
-      {/* Enhanced visible scan line */}
+      {/* Significantly enhanced scan line with dramatically improved visibility */}
       <div 
-        className="absolute h-1/2 w-1.5 top-0 left-1/2 transform -translate-x-1/2 origin-bottom z-20"
+        className="absolute h-1/2 w-3 top-0 left-1/2 transform -translate-x-1/2 origin-bottom z-20"
         style={{ transform: `rotate(${scanAngle}deg)` }}
       >
-        {/* Brighter scan line with white-green gradient */}
-        <div className="h-full w-full bg-gradient-to-t from-transparent via-white to-mw-green opacity-80"></div>
+        {/* Brighter scan line with intense white-green gradient */}
+        <div className="h-full w-full bg-gradient-to-t from-transparent via-white/80 to-mw-green opacity-100"></div>
         
-        {/* Enhanced glow effect at the top of scan line */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-12 
-                        bg-gradient-to-r from-white/20 via-white/50 to-white/20 
-                        rounded-full blur-lg"></div>
+        {/* Larger, more intense glow effect */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-16 
+                       bg-white/70 rounded-full blur-xl opacity-90"></div>
         
-        {/* Wider trailing effect for better visibility */}
-        <div className="absolute top-0 h-full w-8 -left-3.5 
-                        bg-gradient-to-r from-transparent via-mw-green/50 to-transparent 
-                        blur-md"></div>
+        {/* Wider, more visible trailing effect */}
+        <div className="absolute top-0 h-full w-16 -left-8 
+                       bg-gradient-to-r from-transparent via-white/60 to-transparent 
+                       blur-lg"></div>
       </div>
       
-      {/* Bright dot at scan line tip for extra visibility */}
+      {/* Additional bright dot at scan line tip for extra visibility */}
       <div 
-        className="absolute w-2 h-2 rounded-full bg-white shadow-[0_0_8px_#ffffff] z-20"
+        className="absolute w-3 h-3 rounded-full bg-white shadow-[0_0_12px_#ffffff] z-30"
         style={{ 
-          top: '0%', 
+          top: `calc(50% - 32px)`, 
           left: '50%',
-          transform: `rotate(${scanAngle}deg) translateY(0px) translateX(-50%)`,
+          transform: `rotate(${scanAngle}deg) translateY(-16vh) translateX(-50%)`,
           transformOrigin: 'bottom center'
         }}
       ></div>
