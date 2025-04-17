@@ -117,23 +117,22 @@ const RadarVisualization = () => {
       <div className="absolute h-full w-[1px] bg-mw-green bg-opacity-30"></div>
       <div className="absolute w-full h-[1px] bg-mw-green bg-opacity-30"></div>
       
-      {/* Enhanced scan line with smoother animation and gradient */}
+      {/* Enhanced scan line with smoother animation and gradient - Fixed visibility */}
       <div 
-        className="h-1/2 w-0.5 absolute top-0 right-1/2 transform origin-bottom"
-        style={{ transform: `rotate(${scanAngle}deg)`, transition: 'transform 20ms linear' }}
+        className="absolute h-1/2 w-1 top-0 left-1/2 transform -translate-x-1/2 origin-bottom z-10"
+        style={{ transform: `rotate(${scanAngle}deg)` }}
       >
-        {/* Improved scan line with gradient */}
-        <div className="h-full w-full bg-gradient-to-t from-transparent via-mw-green to-mw-green/80"></div>
+        {/* Improved scan line with stronger gradient */}
+        <div className="h-full w-full bg-gradient-to-t from-transparent via-mw-green to-mw-green opacity-80"></div>
         
         {/* Enhanced scan glow effect */}
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-8 
-                        bg-gradient-to-r from-mw-green/10 via-mw-green/60 to-mw-green/10 
-                        rounded-full blur-md animate-pulse-light"></div>
+                       bg-mw-green rounded-full blur-md opacity-50"></div>
         
         {/* Trailing effect for scan line */}
-        <div className="absolute top-0 h-full w-4 -left-2 
-                        bg-gradient-to-r from-transparent via-mw-green/30 to-transparent 
-                        blur-sm"></div>
+        <div className="absolute top-0 h-full w-8 -left-4 
+                       bg-gradient-to-r from-transparent via-mw-green/40 to-transparent 
+                       blur-sm"></div>
       </div>
       
       {/* Radar ping effect at center */}
