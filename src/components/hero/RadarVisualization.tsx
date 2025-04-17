@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from 'react';
 
 interface RadarPoint {
@@ -81,9 +82,10 @@ const RadarVisualization = () => {
       );
     }, 800);
     
+    // Use a smaller increment for smoother rotation (0.5 -> 0.25 degrees)
     scanIntervalRef.current = window.setInterval(() => {
-      setScanAngle(prevAngle => (prevAngle + 0.5) % 360);
-    }, 10);
+      setScanAngle(prevAngle => (prevAngle + 0.25) % 360);
+    }, 5); // Faster interval for smoother animation
     
     return () => {
       clearInterval(pointsInterval);
@@ -107,10 +109,14 @@ const RadarVisualization = () => {
       <div className="absolute h-full w-[1px] bg-mw-green bg-opacity-30"></div>
       <div className="absolute w-full h-[1px] bg-mw-green bg-opacity-30"></div>
       
+      {/* Properly centered scan line with origin at center */}
       <div 
-        className="absolute h-1/2 w-3 top-0 left-1/2 transform -translate-x-1/2 origin-bottom z-20"
+        className="absolute h-1/2 w-1 origin-bottom z-20"
         style={{ 
-          transform: `rotate(${scanAngle}deg)`, 
+          transform: `rotate(${scanAngle}deg)`,
+          transformOrigin: 'center bottom',
+          bottom: '50%',
+          left: 'calc(50% - 0.5px)',
           transition: 'transform 0.05s linear'
         }}
       >
@@ -122,13 +128,12 @@ const RadarVisualization = () => {
                        blur-lg"></div>
       </div>
       
+      {/* Properly centered radar dot */}
       <div 
-        className="absolute w-3 h-3 rounded-full bg-white shadow-[0_0_12px_#ffffff] z-30"
+        className="absolute w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_12px_#ffffff] z-30"
         style={{ 
-          top: `calc(50% - 32px)`, 
-          left: '50%',
-          transform: `rotate(${scanAngle}deg) translateY(-16vh) translateX(-50%)`,
-          transformOrigin: 'bottom center'
+          top: `calc(50% - ${Math.sin(scanAngle * Math.PI/180) * 50}%)`,
+          left: `calc(50% + ${Math.cos(scanAngle * Math.PI/180) * 50}%)`,
         }}
       ></div>
       
