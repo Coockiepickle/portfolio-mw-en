@@ -30,15 +30,16 @@ const Contact = () => {
   }, [handleScroll]);
 
   return (
-    <section id="contact" className="relative py-16">
-      {/* Animated grid background */}
+    <section id="contact" className="relative py-8">
       <div className="absolute inset-0 opacity-50">
         <AnimatedGridBackground />
       </div>
       
       <div className="mw-container relative z-10">
         <ContactHeader isVisible={isVisible} />
-        <ContactCard isVisible={isVisible} />
+        <div className="-mt-8">
+          <ContactCard isVisible={isVisible} />
+        </div>
       </div>
     </section>
   );
