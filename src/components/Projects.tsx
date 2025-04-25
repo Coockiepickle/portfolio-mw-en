@@ -1,23 +1,17 @@
-
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { projectsData } from '../data/projects';
 import ProjectsHeader from './projects/ProjectsHeader';
 import ProjectGrid from './projects/ProjectGrid';
-import { ChevronDown, ChevronUp } from 'lucide-react'; // Import icons
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
 
-  // Initial projects to show (first 4)
   const initialProjects = projectsData.slice(0, 4);
-  
-  // Additional projects to show when expanded
   const additionalProjects = projectsData.slice(4);
-  
-  // Check if we have any additional projects to show
   const hasAdditionalProjects = additionalProjects.length > 0;
 
   useEffect(() => {
@@ -31,7 +25,7 @@ const Projects = () => {
       }
     };
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check on initial load
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -40,12 +34,10 @@ const Projects = () => {
     setShowAllProjects(!showAllProjects);
     
     if (!showAllProjects) {
-      // When expanding, show the floating button after a delay
       setTimeout(() => {
         setShowFloatingButton(true);
-      }, 600); // Delay to allow for animation
+      }, 600);
     } else {
-      // When collapsing, hide the floating button immediately
       setShowFloatingButton(false);
     }
   };
@@ -61,7 +53,6 @@ const Projects = () => {
           isVisible={isVisible} 
         />
         
-        {/* Conditional rendering for additional projects */}
         {showAllProjects && (
           <div className={cn(
             "mt-8 transition-all duration-700 ease-out transform",
@@ -75,8 +66,7 @@ const Projects = () => {
           </div>
         )}
         
-        {/* Show More/Less Projects Button - centered at the bottom */}
-        {hasAdditionalProjects && !showFloatingButton && (
+        {hasAdditionalProjects && (
           <div className="flex justify-center mt-10">
             <button
               onClick={toggleShowAllProjects}
@@ -96,9 +86,20 @@ const Projects = () => {
             </button>
           </div>
         )}
+        
+        {showAllProjects && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={toggleShowAllProjects}
+              className="mw-button-primary flex items-center gap-2 group transition-all duration-300"
+            >
+              HIDE PROJECTS
+              <ChevronUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
+            </button>
+          </div>
+        )}
       </div>
       
-      {/* Floating hide button that appears at bottom right */}
       {showFloatingButton && (
         <button
           onClick={toggleShowAllProjects}
