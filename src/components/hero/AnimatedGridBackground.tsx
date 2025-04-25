@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 
 const AnimatedGridBackground = () => {
@@ -20,8 +19,8 @@ const AnimatedGridBackground = () => {
     window.addEventListener('resize', setCanvasDimensions);
     
     const gridSize = 40;
-    const nodeSizeMin = 1.5;
-    const nodeSizeMax = 3;
+    const nodeSizeMin = 2;
+    const nodeSizeMax = 4;
     
     let gridPoints: { x: number; y: number; size: number; brightness: number; pulseSpeed: number; phase: number }[] = [];
     
@@ -36,8 +35,8 @@ const AnimatedGridBackground = () => {
           const x = i * gridSize;
           const y = j * gridSize;
           const size = Math.random() * (nodeSizeMax - nodeSizeMin) + nodeSizeMin;
-          const brightness = Math.random() * 0.3 + 0.2;
-          const pulseSpeed = Math.random() * 0.003 + 0.0015;
+          const brightness = Math.random() * 0.5 + 0.3;
+          const pulseSpeed = Math.random() * 0.004 + 0.002;
           const phase = Math.random() * Math.PI * 2;
           
           gridPoints.push({ x, y, size, brightness, pulseSpeed, phase });
@@ -49,7 +48,7 @@ const AnimatedGridBackground = () => {
     window.addEventListener('resize', initGrid);
     
     const drawGridLines = () => {
-      ctx.strokeStyle = 'rgba(63, 153, 135, 0.08)';
+      ctx.strokeStyle = 'rgba(63, 153, 135, 0.12)';
       ctx.lineWidth = 0.5;
       
       for (let y = 0; y < canvas.height; y += gridSize) {
@@ -74,12 +73,12 @@ const AnimatedGridBackground = () => {
       drawGridLines();
       
       gridPoints.forEach(point => {
-        const pulse = Math.sin(timestamp * point.pulseSpeed + point.phase) * 0.3 + 0.7;
+        const pulse = Math.sin(timestamp * point.pulseSpeed + point.phase) * 0.4 + 0.6;
         const currentBrightness = point.brightness * pulse;
         
         ctx.beginPath();
         ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${currentBrightness * 1.2})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${currentBrightness * 1.5})`;
         ctx.fill();
       });
       
@@ -98,9 +97,9 @@ const AnimatedGridBackground = () => {
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 z-0 blur-[2px]" 
+      className="absolute inset-0 z-0 blur-[1px]" 
       style={{ 
-        background: 'linear-gradient(to bottom, rgba(18, 19, 22, 0.95), rgba(10, 11, 13, 0.95))',
+        background: 'linear-gradient(to bottom, rgba(18, 19, 22, 0.85), rgba(10, 11, 13, 0.85))',
         backdropFilter: 'brightness(110%) contrast(110%)'
       }}
     />
