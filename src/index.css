@@ -114,9 +114,9 @@
   }
   
   .mw-badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-sm bg-mw-green bg-opacity-20 
-    text-mw-green text-xs uppercase tracking-wider font-medium border border-mw-green 
-    border-opacity-30;
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-sm bg-mw-green/20 backdrop-blur-sm
+    text-mw-green text-xs uppercase tracking-wider font-medium border border-mw-green/30
+    shadow-[0_2px_10px_rgba(63,153,135,0.1)];
   }
   
   .mw-section-title {
@@ -148,14 +148,14 @@
   }
 
   .mw-button {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-mw-green text-sm font-medium 
-    rounded-sm text-mw-green bg-transparent hover:bg-mw-green hover:bg-opacity-10 
-    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-mw-green focus:ring-opacity-50 
-    transition-all duration-200 transform hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center px-4 py-2 border border-mw-green/30 text-sm font-medium 
+    rounded-sm text-mw-green bg-mw-green/10 backdrop-blur-sm hover:bg-mw-green/20
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-mw-green/50 
+    transition-all duration-200 transform hover:-translate-y-0.5 shadow-[0_2px_10px_rgba(63,153,135,0.1)];
   }
 
   .mw-button-primary {
-    @apply mw-button bg-mw-green bg-opacity-20 hover:bg-opacity-30;
+    @apply mw-button bg-mw-green/20 hover:bg-mw-green/30;
   }
 
   .mw-nav-link {
