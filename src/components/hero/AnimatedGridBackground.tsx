@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 
 const AnimatedGridBackground = () => {
@@ -97,9 +98,9 @@ const AnimatedGridBackground = () => {
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 z-0" 
+      className="absolute inset-0 z-0 blur-[2px]" 
       style={{ 
-        background: 'linear-gradient(to bottom, rgba(18, 19, 22, 0.9), rgba(10, 11, 13, 0.9))',
+        background: 'linear-gradient(to bottom, rgba(18, 19, 22, 0.95), rgba(10, 11, 13, 0.95))',
         backdropFilter: 'brightness(110%) contrast(110%)'
       }}
     />
