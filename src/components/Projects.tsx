@@ -4,6 +4,7 @@ import { projectsData } from '../data/projects';
 import ProjectsHeader from './projects/ProjectsHeader';
 import ProjectGrid from './projects/ProjectGrid';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showAllProjects, setShowAllProjects] = useState(false);
@@ -11,6 +12,14 @@ const Projects = () => {
   const initialProjects = projectsData.slice(0, 4);
   const additionalProjects = projectsData.slice(4);
   const hasAdditionalProjects = additionalProjects.length > 0;
+
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('projects');
@@ -25,6 +34,7 @@ const Projects = () => {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const toggleShowAllProjects = () => {
     setShowAllProjects(!showAllProjects);
     if (!showAllProjects) {
@@ -33,8 +43,10 @@ const Projects = () => {
       }, 600);
     } else {
       setShowFloatingButton(false);
+      scrollToProjects();
     }
   };
+
   return <section id="projects" className="relative py-16 bg-mw-darker">
       <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
       
@@ -46,17 +58,26 @@ const Projects = () => {
             <ProjectGrid projects={additionalProjects} isVisible={showAllProjects} startIndex={initialProjects.length} />
           </div>}
         
-        {hasAdditionalProjects && <div className="flex justify-center mt-10">
-            <button onClick={toggleShowAllProjects} className="mw-button-primary flex items-center gap-2 group transition-all duration-300">
-              {showAllProjects ? <>
+        {hasAdditionalProjects && (
+          <div className="flex justify-center mt-10">
+            <button 
+              onClick={toggleShowAllProjects} 
+              className="mw-button-primary flex items-center gap-2 group transition-all duration-300"
+            >
+              {showAllProjects ? (
+                <>
                   HIDE ADDITIONAL PROJECTS
                   <ChevronUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
-                </> : <>
+                </>
+              ) : (
+                <>
                   SHOW MORE PROJECTS
                   <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-                </>}
+                </>
+              )}
             </button>
-          </div>}
+          </div>
+        )}
         
         {showAllProjects && <div className="flex justify-center mt-8">
             
@@ -72,4 +93,5 @@ const Projects = () => {
         </button>}
     </section>;
 };
+
 export default Projects;
