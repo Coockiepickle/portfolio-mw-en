@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
-
 const Footer = () => {
   const handleScrollToTop = () => {
     window.scrollTo({
@@ -9,19 +7,14 @@ const Footer = () => {
       behavior: 'smooth'
     });
   };
-
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="relative bg-mw-darker border-t border-mw-green border-opacity-10 py-0">
+  return <footer className="relative bg-mw-darker border-t border-mw-green border-opacity-10 py-0">
       <div className="mw-container">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-sm text-mw-light group relative">
               &copy; {currentYear}
-              <span className="absolute left-full ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-mw-green/50">
-                ↑↑↓↓←→←→ba
-              </span>
+              <span className="absolute left-full ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-mw-green/50 mx-[9px] px-0">↑ ↑ ↓ ↓ ← → ← → B A</span>
             </p>
           </div>
           
@@ -35,8 +28,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
