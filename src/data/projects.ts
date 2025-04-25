@@ -45,42 +45,42 @@ export const projectsData: ProjectData[] = [{
 // Additional projects that will be shown when "Show more projects" is clicked
 {
   title: "Tactical Portfolio",
-  description: "A Modern Warfare themed portfolio website built with React and Tailwind CSS.",
-  tags: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+  description: "A Modern Warfare themed portfolio website built with Lovable.",
+  tags: ["Lovable", "TypeScript", "Tailwind CSS", "Vite", "Shadcn-ui"],
   type: "personal",
-  date: "2024-05",
+  date: "ONGOING",
   links: {
     demo: "##",
-    github: "https://github.com/username/tactical-portfolio"
+    github: "https://github.com/coockiepickle/portfolio-mw-en"
   }
 }, {
-  title: "Network Monitoring System",
-  description: "A system for monitoring network traffic and detecting potential security threats.",
-  tags: ["Python", "Flask", "Wireshark", "Elasticsearch"],
-  type: "professional",
-  date: "2023-10",
+  title: "A.P.E.",
+  description: "An Evolutionary Personal Assistant that can send mails, write daily news, control connected equipements and answer questions.",
+  tags: ["n8n", "Ollama", "Llama 3", "Telegram"],
+  type: "personal",
+  date: "PLANNED",
   links: {
     demo: "##",
-    github: "https://github.com/username/network-monitoring"
+    github: "https://github.com/coockiepickle/APE"
   }
 }, {
   title: "Secure File Storage",
-  description: "A secure file storage solution with end-to-end encryption and access control.",
-  tags: ["Node.js", "React", "MongoDB", "Express"],
+  description: "A secure file storage solution using ZimaOS.",
+  tags: ["ZimaOS", "React", "MongoDB", "Express"],
   type: "personal",
-  date: "2023-08",
-  links: {
-    demo: "https://secure-files.example.com",
-    github: "https://github.com/username/secure-files"
-  }
-}, {
-  title: "Smart Home Automation",
-  description: "IoT system for home automation with voice control and mobile app integration.",
-  tags: ["IoT", "React Native", "MQTT", "Raspberry Pi"],
-  type: "personal",
-  date: "2023-06",
+  date: "2025-03",
   links: {
     demo: "##",
-    github: "https://github.com/username/smart-home"
+    github: "https://github.com/IceWhaleTech/zimaos"
+  }
+}, {
+  title: "Windows Print Server",
+  description: "A print server in Windows Server to easily connect to every printer in the company, manage their settings and their queue.",
+  tags: ["Windows Server", "Stormshield", "VMWare"],
+  type: "personal",
+  date: "2025-02",
+  links: {
+    demo: "##",
+    github: "##"
   }
 }];
