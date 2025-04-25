@@ -17,19 +17,21 @@ const Footer = () => {
       <div className="mw-container">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <p className="text-sm text-mw-light group relative">
-              &copy; {currentYear}
-              <span className="absolute left-full ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-mw-green/50 flex items-center space-x-1">
-                <span>↑</span>
-                <span>↑</span>
-                <span>↓</span>
-                <span>↓</span>
-                <span>←</span>
-                <span>→</span>
-                <span>←</span>
-                <span>→</span>
-                <span>B</span>
-                <span>A</span>
+            <p className="text-sm text-mw-light">
+              <span className="group inline-flex items-center">
+                &copy; {currentYear}
+                <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center space-x-1">
+                  <span className="text-[#1EAEDB]">↑</span>
+                  <span className="text-[#33C3F0]">↑</span>
+                  <span className="text-[#8B5CF6]">↓</span>
+                  <span className="text-[#D946EF]">↓</span>
+                  <span className="text-[#F97316]">←</span>
+                  <span className="text-white">→</span>
+                  <span className="text-[#1EAEDB]">←</span>
+                  <span className="text-[#33C3F0]">→</span>
+                  <span className="text-[#8B5CF6]">B</span>
+                  <span className="text-[#D946EF]">A</span>
+                </span>
               </span>
             </p>
           </div>
