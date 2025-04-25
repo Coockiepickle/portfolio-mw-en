@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+  
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -42,7 +45,7 @@ const Footer = () => {
               <ArrowUp className="w-5 h-5 text-mw-green" />
             </button>
             
-            <p className="text-sm text-mw-lightgray">Designed by Damien Reynaud using Lovable</p>
+            <p className="text-sm text-mw-lightgray">{t('footer.designedBy')}</p>
           </div>
         </div>
       </div>

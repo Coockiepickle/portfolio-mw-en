@@ -1,0 +1,92 @@
+
+{
+  "meta": {
+    "title": "Damien Reynaud | Portfolio",
+    "description": "Un portfolio d'inspiration Modern Warfare présentant mes compétences et projets"
+  },
+  "navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "skills": "Compétences",
+    "formation": "Formation",
+    "cv": "CV",
+    "contact": "Contact",
+    "downloadCV": "Télécharger CV"
+  },
+  "hero": {
+    "badge": "PROCESSUS DE PRÉSENTATION ACTIVÉ",
+    "title": "DAMIEN REYNAUD",
+    "typing": "JE SUIS UN ÉTUDIANT TACTIQUE...",
+    "description": "...avec précision et approche stratégique.<br />Je suis également une personne attentive avec une capacité d'adaptation et une forte curiosité intellectuelle.",
+    "viewProjects": "VOIR MES PROJETS",
+    "contactMe": "ME CONTACTER",
+    "scrollDown": "Défiler vers le bas"
+  },
+  "about": {
+    "badge": "À PROPOS DE MOI",
+    "title": "Profil Stratégique",
+    "paragraph1": "Étudiant en Réseaux et Cybersécurité. J'aime tous les aspects de l'informatique. Je suis travailleur et sérieux dans tout ce que je fais.",
+    "paragraph2": "Je vise à fournir des solutions numériques diverses avec efficacité, fiabilité et sécurité qui dépassent toutes les attentes.",
+    "paragraph3": "Quand je ne suis pas devant mon écran, vous me trouverez souvent plongé dans les jeux vidéo, me dépassant dans le sport ou explorant les dernières tendances technologiques. Mon objectif est de garder mes compétences affûtées et ma curiosité vivante.",
+    "stats": {
+      "years": "4+",
+      "yearsLabel": "Années d'études",
+      "projects": "10+",
+      "projectsLabel": "Projets réalisés",
+      "tech": "15+",
+      "techLabel": "Technologies maîtrisées"
+    },
+    "profileImage": "PHOTO_PROFIL.jpg",
+    "tacticalOperator": "OPÉRATEUR TACTIQUE"
+  },
+  "projects": {
+    "badge": "TRAVAUX",
+    "title": "Vitrine de Projets",
+    "description": "Une collection de mes projets les plus significatifs, démontrant mon expertise technique et mes capacités de résolution de problèmes",
+    "showMore": "AFFICHER PLUS DE PROJETS",
+    "hideProjects": "MASQUER LES PROJETS ADDITIONNELS",
+    "projectTypes": {
+      "professional": "Professionnel",
+      "personal": "Personnel"
+    }
+  },
+  "skills": {
+    "badge": "CAPACITÉS",
+    "title": "Arsenal de Compétences",
+    "description": "La large gamme de compétences que j'ai développées au cours de nombreuses années de projets personnels et professionnels"
+  },
+  "achievements": {
+    "badge": "RECONNAISSANCE",
+    "title": "Accomplissements de Formation",
+    "continuousImprovement": "Amélioration Continue"
+  },
+  "experiences": {
+    "badge": "PARCOURS PROFESSIONNEL",
+    "title": "Expérience professionnelle"
+  },
+  "resume": {
+    "badge": "CV",
+    "title": "Mon Curriculum Vitae",
+    "download": {
+      "title": "Télécharger mon CV",
+      "description": "Téléchargez mon CV pour voir toutes mes compétences et expériences.",
+      "button": "Télécharger mon CV (.PDF)"
+    },
+    "preview": "Mon CV"
+  },
+  "contact": {
+    "badge": "PRENDRE CONTACT",
+    "title": "Communication",
+    "getInTouch": "Me Contacter",
+    "description": "Vous avez un projet en tête ? Vous voulez que je fasse partie de votre entreprise ? <br />Envoyez-moi un e-mail et je vous répondrai le plus rapidement possible.",
+    "orConnect": "OU CONNECTEZ-VOUS AVEC MOI"
+  },
+  "footer": {
+    "designedBy": "Conçu par Damien Reynaud avec Lovable"
+  },
+  "language": {
+    "en": "EN",
+    "fr": "FR"
+  }
+}

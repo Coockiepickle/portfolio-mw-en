@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download, ChevronDown, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +14,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useTranslation();
 
   const handleScroll = useCallback(() => {
     requestAnimationFrame(() => {
@@ -62,32 +64,32 @@ const Navbar = () => {
 
   const navLinks = [{
     id: 'home',
-    label: 'Home',
+    label: t('navbar.home'),
     icon: <Target className="mr-2 h-4 w-4" />
   }, {
     id: 'about',
-    label: 'About',
+    label: t('navbar.about'),
     icon: <User className="mr-2 h-4 w-4" />
   }, {
     id: 'projects',
-    label: 'Projects',
+    label: t('navbar.projects'),
     icon: <Briefcase className="mr-2 h-4 w-4" />
   }, {
     id: 'skills',
-    label: 'Skills',
+    label: t('navbar.skills'),
     icon: <Shield className="mr-2 h-4 w-4" />
   }, {
     id: 'achievements',
-    label: 'Formation',
+    label: t('navbar.formation'),
     icon: <GraduationCap className="mr-2 h-4 w-4" />
   }, {
     id: 'resume',
-    label: 'CV',
+    label: t('navbar.cv'),
     icon: <FileText className="mr-2 h-4 w-4" />,
     hasDropdown: true
   }, {
     id: 'contact',
-    label: 'Contact',
+    label: t('navbar.contact'),
     icon: <Send className="mr-2 h-4 w-4" />
   }];
 
@@ -122,7 +124,7 @@ const Navbar = () => {
                       onClick={handleDownload}
                     >
                       <Download className="mr-2 h-4 w-4" />
-                      <span>Download CV</span>
+                      <span>{t('navbar.downloadCV')}</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -161,7 +163,7 @@ const Navbar = () => {
                     className="flex items-center p-3 text-lg text-mw-light hover:text-white ml-6 w-full"
                   >
                     <Download className="mr-2 h-4 w-4" />
-                    Download CV
+                    {t('navbar.downloadCV')}
                   </button>
                 </div>
               );

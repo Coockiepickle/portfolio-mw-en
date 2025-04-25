@@ -1,12 +1,15 @@
 
 import { cn } from '@/lib/utils';
 import { Target } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface HeroBadgeProps {
   loaded: boolean;
 }
 
 const HeroBadge = ({ loaded }: HeroBadgeProps) => {
+  const { t } = useTranslation();
+  
   return (
     <div 
       className={cn(
@@ -16,7 +19,7 @@ const HeroBadge = ({ loaded }: HeroBadgeProps) => {
     >
       <span className="mw-badge mb-4">
         <Target className="w-3 h-3 mr-1" />
-        PRESENTATION PROCESS ACTIVATED
+        {t('hero.badge')}
       </span>
     </div>
   );

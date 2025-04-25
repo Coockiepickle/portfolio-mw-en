@@ -1,0 +1,92 @@
+
+{
+  "meta": {
+    "title": "Damien Reynaud | Portfolio",
+    "description": "A modern warfare inspired portfolio showcasing skills and projects"
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "formation": "Formation",
+    "cv": "CV",
+    "contact": "Contact",
+    "downloadCV": "Download CV"
+  },
+  "hero": {
+    "badge": "PRESENTATION PROCESS ACTIVATED",
+    "title": "DAMIEN REYNAUD",
+    "typing": "I AM A TACTICAL STUDENT...",
+    "description": "...with both precision and strategic approach.<br />I'm also an attentive person with an ability to adapt and a strong intellectual curiosity.",
+    "viewProjects": "VIEW MY PROJECTS",
+    "contactMe": "CONTACT ME",
+    "scrollDown": "Scroll Down"
+  },
+  "about": {
+    "badge": "ABOUT ME",
+    "title": "Strategic Profile",
+    "paragraph1": "Networking and Cybersecurity student. I love every aspect of IT. I'm hardworking and serious about everything I do.",
+    "paragraph2": "I aim to providing diverse digital solutions with efficiency, reliability and security that exceed all expectations.",
+    "paragraph3": "When I'm away from my desk, you'll often find me immersed in gaming, pushing my limits through sport or exploring the latest tech trends. My goal is to keep my skills sharp and my curiosity alive.",
+    "stats": {
+      "years": "4+",
+      "yearsLabel": "Years Studied",
+      "projects": "10+",
+      "projectsLabel": "Projects Completed",
+      "tech": "15+",
+      "techLabel": "Tech I feel comfortable with"
+    },
+    "profileImage": "PROFILE_IMAGE.jpg",
+    "tacticalOperator": "TACTICAL OPERATOR"
+  },
+  "projects": {
+    "badge": "WORK",
+    "title": "Project Showcase",
+    "description": "A collection of my most significant projects, showcasing my technical expertise and problem-solving abilities",
+    "showMore": "SHOW MORE PROJECTS",
+    "hideProjects": "HIDE ADDITIONAL PROJECTS",
+    "projectTypes": {
+      "professional": "Professional",
+      "personal": "Personal"
+    }
+  },
+  "skills": {
+    "badge": "ABILITIES",
+    "title": "Skills Loadout",
+    "description": "The wide range of skills that I have developed over many years of personal and professional projects"
+  },
+  "achievements": {
+    "badge": "RECOGNITION",
+    "title": "Training Accomplishments",
+    "continuousImprovement": "Continuous Improvement"
+  },
+  "experiences": {
+    "badge": "CAREER PATH",
+    "title": "Work experience"
+  },
+  "resume": {
+    "badge": "RESUME",
+    "title": "My Curriculum Vitae",
+    "download": {
+      "title": "Download my resume",
+      "description": "Download my resume to see all my skills and experience.",
+      "button": "Download my resume (.PDF)"
+    },
+    "preview": "My resume"
+  },
+  "contact": {
+    "badge": "GETTING IN TOUCH",
+    "title": "Communication",
+    "getInTouch": "Get in Touch",
+    "description": "Have you got a project in mind? Do you want me to be a part of your company? <br />Send me an e-mail and I'll answer as fast as possible.",
+    "orConnect": "OR CONNECT WITH ME"
+  },
+  "footer": {
+    "designedBy": "Designed by Damien Reynaud using Lovable"
+  },
+  "language": {
+    "en": "EN",
+    "fr": "FR"
+  }
+}

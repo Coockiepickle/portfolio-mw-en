@@ -1,5 +1,6 @@
 
 import { useEffect, useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import SineWaveVisualization from './hero/SineWaveVisualization';
 import RadarVisualization from './hero/RadarVisualization';
 import HeroContent from './hero/HeroContent';
@@ -9,7 +10,8 @@ import AnimatedGridBackground from './hero/AnimatedGridBackground';
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
   const [typedText, setTypedText] = useState('');
-  const fullText = "I AM A TACTICAL STUDENT...";
+  const { t } = useTranslation();
+  const fullText = t('hero.typing');
   const typingSpeed = 90;
   
   useEffect(() => {
@@ -31,7 +33,7 @@ const Hero = () => {
       clearTimeout(timer);
       clearInterval(typingInterval);
     };
-  }, []);
+  }, [fullText]);
   
   const handleScrollToSection = useCallback((sectionId: string) => {
     const section = document.getElementById(sectionId);

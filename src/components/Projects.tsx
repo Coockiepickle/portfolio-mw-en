@@ -1,4 +1,6 @@
+
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { projectsData } from '../data/projects';
 import ProjectsHeader from './projects/ProjectsHeader';
@@ -12,6 +14,7 @@ const Projects = () => {
   const initialProjects = projectsData.slice(0, 4);
   const additionalProjects = projectsData.slice(4);
   const hasAdditionalProjects = additionalProjects.length > 0;
+  const { t } = useTranslation();
 
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
@@ -66,12 +69,12 @@ const Projects = () => {
             >
               {showAllProjects ? (
                 <>
-                  HIDE ADDITIONAL PROJECTS
+                  {t('projects.hideProjects')}
                   <ChevronUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
                 </>
               ) : (
                 <>
-                  SHOW MORE PROJECTS
+                  {t('projects.showMore')}
                   <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
                 </>
               )}
@@ -89,7 +92,7 @@ const Projects = () => {
             text-mw-light hover:text-white hover:bg-mw-green hover:bg-opacity-10
             transition-all duration-200 shadow-md animate-fade-in">
           <ChevronUp className="w-4 h-4" />
-          <span className="text-sm font-medium">HIDE PROJECTS</span>
+          <span className="text-sm font-medium">{t('projects.hideProjects')}</span>
         </button>}
     </section>;
 };

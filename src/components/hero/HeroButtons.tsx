@@ -1,5 +1,6 @@
 
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface HeroButtonsProps {
   loaded: boolean;
@@ -7,6 +8,8 @@ interface HeroButtonsProps {
 }
 
 const HeroButtons = ({ loaded, handleScrollToSection }: HeroButtonsProps) => {
+  const { t } = useTranslation();
+  
   return (
     <div 
       className={cn(
@@ -18,22 +21,14 @@ const HeroButtons = ({ loaded, handleScrollToSection }: HeroButtonsProps) => {
         onClick={() => handleScrollToSection('projects')} 
         className="mw-button-primary"
       >
-        VIEW MY PROJECTS
+        {t('hero.viewProjects')}
       </button>
       <button 
         onClick={() => handleScrollToSection('contact')} 
         className="mw-button"
       >
-        CONTACT ME
+        {t('hero.contactMe')}
       </button>
-      <a 
-        href="https://dreynaud-fr.netlify.app" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="mw-button-primary"
-      >
-        VERSION FRANÇAISE
-      </a>
     </div>
   );
 };

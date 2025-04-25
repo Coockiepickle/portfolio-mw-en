@@ -1,5 +1,6 @@
 
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 import HeroBadge from './HeroBadge';
 import HeroTitle from './HeroTitle';
 import HeroDescription from './HeroDescription';
@@ -12,6 +13,8 @@ interface HeroContentProps {
 }
 
 const HeroContent = ({ loaded, typedText, handleScrollToSection }: HeroContentProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className="mw-container relative z-10">
       <div className="max-w-3xl mx-auto text-center">

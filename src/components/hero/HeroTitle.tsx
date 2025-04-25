@@ -1,5 +1,6 @@
 
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface HeroTitleProps {
   loaded: boolean;
@@ -7,6 +8,8 @@ interface HeroTitleProps {
 }
 
 const HeroTitle = ({ loaded, typedText }: HeroTitleProps) => {
+  const { t } = useTranslation();
+  
   return (
     <h1 
       className={cn(
@@ -14,7 +17,7 @@ const HeroTitle = ({ loaded, typedText }: HeroTitleProps) => {
         loaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
       )}
     >
-      DAMIEN REYNAUD
+      {t('hero.title')}
       <div className="h-[2px] w-20 bg-mw-green mx-auto my-4"></div>
       <span className="font-code text-2xl sm:text-3xl font-light text-mw-green opacity-90">
         {typedText}
