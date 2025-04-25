@@ -5,6 +5,12 @@ import CodeCracker from '../ui/CodeCracker';
 import { ProjectData } from './ProjectCard';
 import ProjectTags from './ProjectTags';
 import { useState } from 'react';
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { useTranslation } from 'react-i18next';
 
 interface ProjectCardFooterProps {
   project: ProjectData;
@@ -14,9 +20,10 @@ interface ProjectCardFooterProps {
 const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
   const [showGithubMessage, setShowGithubMessage] = useState(false);
   const [showDemoMessage, setShowDemoMessage] = useState(false);
+  const { t } = useTranslation();
   
-  // Format the date from "2023-09" to "2023 / 09"
   const formatDate = (date: string) => {
+    if (date === "ONGOING" || date === "PLANNED") return date;
     const [year, month] = date.split('-');
     return `${year} / ${month}`;
   };
@@ -43,22 +50,38 @@ const ProjectCardFooter = ({ project, isDecoding }: ProjectCardFooterProps) => {
       
       <div className="flex justify-between items-center mt-4">
         <div className="flex items-center">
-          <span 
-            className={cn(
-              "inline-flex items-center px-2 py-1 text-xs rounded-sm transition-all duration-300 hover:shadow-sm relative overflow-hidden",
-              "bg-[#403E43] text-[#ea384c] hover:bg-[#403E43]/90 hover:shadow-mw-accent group-hover:border border-mw-accent"
-            )}
-          >
-            <div className="absolute inset-0 mw-grid-pattern opacity-30 transform rotate-30 bg-gray-pattern"></div>
-            <Calendar className="w-3 h-3 mr-1 opacity-70 relative z-10" />
-            <span className="relative z-10 font-tactical font-semibold tracking-wider">
-              <CodeCracker 
-                text={formatDate(project.date)}
-                isDecoding={isDecoding}
-                className="font-tactical font-semibold tracking-wider"
-              />
-            </span>
-          </span>
+          <HoverCard>
+            <HoverCardTrigger>
+              <span 
+                className={cn(
+                  "inline-flex items-center px-2 py-1 text-xs rounded-sm transition-all duration-300 hover:shadow-sm relative overflow-hidden",
+                  "bg-[#403E43] text-[#ea384c] hover:bg-[#403E43]/90 hover:shadow-mw-accent group-hover:border border-mw-accent cursor-help"
+                )}
+              >
+                <div className="absolute inset-0 mw-grid-pattern opacity-30 transform rotate-30 bg-gray-pattern"></div>
+                <Calendar className="w-3 h-3 mr-1 opacity-70 relative z-10" />
+                <span className="relative z-10 font-tactical font-semibold tracking-wider">
+                  <CodeCracker 
+                    text="REDACTED"
+                    isDecoding={isDecoding}
+                    className="font-tactical font-semibold tracking-wider"
+                  />
+                </span>
+              </span>
+            </HoverCardTrigger>
+            <HoverCardContent className="w-auto bg-mw-darker border border-mw-accent p-2">
+              <div className="relative">
+                <div className="absolute inset-0 mw-grid-pattern opacity-20"></div>
+                <span className="relative z-10 text-mw-accent font-tactical">
+                  <CodeCracker 
+                    text={formatDate(project.date)}
+                    isDecoding={true}
+                    className="font-tactical"
+                  />
+                </span>
+              </div>
+            </HoverCardContent>
+          </HoverCard>
         </div>
         
         <div className="flex space-x-3 relative">
