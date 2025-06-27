@@ -23,7 +23,7 @@ This is a portfolio I did using lovable, it's heavily inspired by the UI of rece
 
 ## 🔗 Links
 
-- [The portfolio](https://dreynaud-en.netlify.app)
+- [The portfolio](https://dreynaud.ipv64.net)
 
 - [Lovable Project](https://lovable.dev/projects/b5e03ae7-dd68-44ee-80f0-70d2630d6ba8)
    
