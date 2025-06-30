@@ -10,6 +10,9 @@
     <meta property="og:image" content="/og-image.png" />
     <link rel="icon" type="image/svg+xml" href="/Logo_DR.ico" />
     
+    <!-- Content Security Policy for basic XSS protection -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.hotjar.com https://script.hotjar.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://in.hotjar.com wss://*.hotjar.com; font-src 'self' data:;">
+    
     <!-- Hotjar Tracking Code for Site 6368653 (nom manquant) -->
     <script>
         (function(h,o,t,j,a,r){
@@ -25,8 +28,6 @@
 
   <body>
     <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
