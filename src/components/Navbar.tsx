@@ -144,7 +144,7 @@ const Navbar = () => {
         </div>
       </div>
       
-      <div className={cn("md:hidden fixed inset-0 z-40 bg-mw-darker bg-opacity-95 backdrop-blur-md transition-all duration-300 ease-in-out transform", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
+      <div className={cn("md:hidden fixed inset-0 z-40 bg-mw-darker backdrop-blur-lg transition-all duration-300 ease-in-out transform", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
         <div className="flex flex-col h-full pt-20 px-6 space-y-6">
           {navLinks.map(link => {
             if (link.hasDropdown) {
