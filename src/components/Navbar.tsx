@@ -93,7 +93,7 @@ const Navbar = () => {
     icon: <Send className="mr-2 h-4 w-4" />
   }];
 
-  return <header className={cn("fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-2xl", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
+  return <header className={cn("fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-3xl", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
       <div className="px-6 py-3 md:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -129,7 +129,7 @@ const Navbar = () => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <button key={link.id} onClick={() => scrollToSection(link.id)} className={cn("mw-nav-link", activeSection === link.id && "active")}>
+                <button key={link.id} onClick={() => scrollToSection(link.id)} className={cn("mw-nav-link", activeSection === link.id && "active", link.id === 'contact' && "bg-mw-green text-black rounded-full px-4 py-2 hover:bg-mw-green/80")}>
                   <span className="flex items-center">
                     {link.label}
                   </span>
