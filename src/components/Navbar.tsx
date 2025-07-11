@@ -93,8 +93,8 @@ const Navbar = () => {
     icon: <Send className="mr-2 h-4 w-4" />
   }];
 
-  return <header className={cn("fixed top-0 left-0 w-full z-50 transition-all duration-300", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
-      <div className="mw-container py-3 md:py-4">
+  return <header className={cn("fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-2xl", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
+      <div className="px-6 py-3 md:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             
