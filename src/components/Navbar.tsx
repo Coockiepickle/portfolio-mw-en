@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useCallback } from 'react';
 import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download, ChevronDown, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -92,7 +93,7 @@ const Navbar = () => {
     icon: <Send className="mr-2 h-4 w-4" />
   }];
 
-  return <header className={cn("fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-2xl", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
+  return <header className={cn("fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-full", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
       <div className="px-6 py-3 md:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -128,22 +129,7 @@ const Navbar = () => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <button 
-                  key={link.id} 
-                  onClick={() => scrollToSection(link.id)} 
-                  className={cn(
-                    "mw-nav-link relative",
-                    activeSection === link.id && "active",
-                    link.id === 'contact' 
-                      ? cn(
-                          "bg-white rounded-full px-4 py-2 transition-all duration-300 overflow-hidden",
-                          activeSection === 'contact' 
-                            ? "text-mw-green hover:bg-mw-green hover:text-black"
-                            : "text-black hover:bg-mw-green hover:text-black"
-                        )
-                      : "after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-mw-green after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
-                  )}
-                >
+                <button key={link.id} onClick={() => scrollToSection(link.id)} className={cn("mw-nav-link relative", activeSection === link.id && "active", link.id === 'contact' ? "bg-white text-black rounded-full px-4 py-2 hover:bg-mw-green transition-colors duration-300 overflow-hidden" : "after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-mw-green after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left")}>
                   <span className="flex items-center relative z-10">
                     {link.label}
                   </span>
