@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from 'react';
 import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download, ChevronDown, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -14,12 +13,21 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const { t } = useTranslation();
 
   const handleScroll = useCallback(() => {
     requestAnimationFrame(() => {
       const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
       setIsScrolled(scrollPosition > 10);
+      
+      // Calculate scroll progress (0 to 1)
+      const maxScroll = documentHeight - windowHeight;
+      const progress = Math.min(scrollPosition / Math.max(maxScroll * 0.3, 1), 1);
+      setScrollProgress(progress);
 
       const sections = document.querySelectorAll('section[id]');
       sections.forEach(section => {
@@ -51,9 +59,8 @@ const Navbar = () => {
 
   const handleDownload = (e: React.MouseEvent) => {
     e.preventDefault();
-    e.stopPropagation(); // Prevent triggering the parent onClick
+    e.stopPropagation();
     
-    // Create a link element and trigger the download
     const link = document.createElement('a');
     link.href = '/CV_Reynaud_Damien.pdf';
     link.download = 'CV_Reynaud_Damien.pdf';
@@ -62,48 +69,67 @@ const Navbar = () => {
     document.body.removeChild(link);
   };
 
-  const navLinks = [{
-    id: 'home',
-    label: t('navbar.home'),
-    icon: <Target className="mr-2 h-4 w-4" />
-  }, {
-    id: 'about',
-    label: t('navbar.about'),
-    icon: <User className="mr-2 h-4 w-4" />
-  }, {
-    id: 'projects',
-    label: t('navbar.projects'),
-    icon: <Briefcase className="mr-2 h-4 w-4" />
-  }, {
-    id: 'skills',
-    label: t('navbar.skills'),
-    icon: <Shield className="mr-2 h-4 w-4" />
-  }, {
-    id: 'achievements',
-    label: t('navbar.formation'),
-    icon: <GraduationCap className="mr-2 h-4 w-4" />
-  }, {
-    id: 'resume',
-    label: t('navbar.cv'),
-    icon: <FileText className="mr-2 h-4 w-4" />,
-    hasDropdown: true
-  }, {
-    id: 'contact',
-    label: t('navbar.contact'),
-    icon: <Send className="mr-2 h-4 w-4" />
-  }];
+  const navLinks = [
+    {
+      id: 'home',
+      label: t('navbar.home'),
+      icon: <Target className="mr-2 h-4 w-4" />
+    }, {
+      id: 'about',
+      label: t('navbar.about'),
+      icon: <User className="mr-2 h-4 w-4" />
+    }, {
+      id: 'projects',
+      label: t('navbar.projects'),
+      icon: <Briefcase className="mr-2 h-4 w-4" />
+    }, {
+      id: 'skills',
+      label: t('navbar.skills'),
+      icon: <Shield className="mr-2 h-4 w-4" />
+    }, {
+      id: 'achievements',
+      label: t('navbar.formation'),
+      icon: <GraduationCap className="mr-2 h-4 w-4" />
+    }, {
+      id: 'resume',
+      label: t('navbar.cv'),
+      icon: <FileText className="mr-2 h-4 w-4" />,
+      hasDropdown: true
+    }, {
+      id: 'contact',
+      label: t('navbar.contact'),
+      icon: <Send className="mr-2 h-4 w-4" />
+    }
+  ];
 
-  return <header className={cn("fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-full", isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent")}>
+  // Calculate dynamic spacing based on scroll progress
+  const dynamicSpacing = `space-x-${Math.max(0.5, 3 - scrollProgress * 2)}`;
+  const navSpacing = scrollProgress > 0 ? `space-x-${Math.max(1, 4 - Math.floor(scrollProgress * 3))}` : 'space-x-0.5';
+
+  return (
+    <header className={cn(
+      "fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-full",
+      isScrolled ? "bg-mw-darker bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent"
+    )}>
       <div className="px-6 py-3 md:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            
             <a href="#" className="flex items-center">
-              <span className="text-lg font-bold text-white tracking-wider">Damien<span className="text-mw-green">·</span>Reynaud</span>
+              <span className="text-lg font-bold text-white tracking-wider">
+                Damien<span className="text-mw-green">·</span>Reynaud
+              </span>
             </a>
           </div>
           
-          <nav className="hidden md:flex space-x-0.5">
+          <nav 
+            className={cn(
+              "hidden md:flex transition-all duration-500 ease-out",
+              navSpacing
+            )}
+            style={{
+              transform: `translateX(${scrollProgress * -20}px)`,
+            }}
+          >
             {navLinks.map(link => (
               link.hasDropdown ? (
                 <DropdownMenu key={link.id} open={undefined}>
@@ -129,7 +155,23 @@ const Navbar = () => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <button key={link.id} onClick={() => scrollToSection(link.id)} className={cn("mw-nav-link relative", activeSection === link.id && "active", link.id === 'contact' ? "bg-white text-black rounded-full px-4 py-2 hover:bg-mw-green transition-colors duration-300 overflow-hidden" : "after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-mw-green after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left")}>
+                <button 
+                  key={link.id} 
+                  onClick={() => scrollToSection(link.id)} 
+                  className={cn(
+                    "mw-nav-link relative transition-all duration-300",
+                    activeSection === link.id && "active",
+                    link.id === 'contact' 
+                      ? "bg-white text-black rounded-full px-4 py-2 hover:bg-mw-green transition-colors duration-300 overflow-hidden" 
+                      : "after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-mw-green after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
+                  )}
+                  style={{
+                    fontSize: `${1 - scrollProgress * 0.1}rem`,
+                    padding: link.id === 'contact' 
+                      ? `${0.5 - scrollProgress * 0.1}rem ${1 - scrollProgress * 0.2}rem`
+                      : undefined
+                  }}
+                >
                   <span className="flex items-center relative z-10">
                     {link.label}
                   </span>
@@ -138,13 +180,19 @@ const Navbar = () => {
             ))}
           </nav>
           
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 text-mw-light hover:text-white focus:outline-none">
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)} 
+            className="md:hidden p-2 text-mw-light hover:text-white focus:outline-none"
+          >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
       
-      <div className={cn("md:hidden fixed inset-0 z-40 bg-mw-darker bg-opacity-95 backdrop-blur-md transition-all duration-300 ease-in-out transform", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
+      <div className={cn(
+        "md:hidden fixed inset-0 z-40 bg-mw-darker bg-opacity-95 backdrop-blur-md transition-all duration-300 ease-in-out transform",
+        isMenuOpen ? "translate-x-0" : "translate-x-full"
+      )}>
         <div className="flex flex-col h-full pt-20 px-6 space-y-6">
           {navLinks.map(link => {
             if (link.hasDropdown) {
@@ -182,7 +230,8 @@ const Navbar = () => {
           })}
         </div>
       </div>
-    </header>;
+    </header>
+  );
 };
 
 export default Navbar;
