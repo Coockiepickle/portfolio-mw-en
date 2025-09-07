@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
-import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download, ChevronDown, GraduationCap } from 'lucide-react';
+import { User, Menu, X, Shield, Target, Briefcase, Send, FileText, Download, ChevronDown, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
 import { useActiveSection } from '@/hooks/useIntersectionObserver';
