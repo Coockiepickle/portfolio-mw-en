@@ -1,5 +1,5 @@
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, memo, useMemo } from 'react';
 
 interface RadarPoint {
   id: number;
@@ -11,10 +11,11 @@ interface RadarPoint {
   isTarget?: boolean; // New property to indicate high-priority targets
 }
 
-const RadarVisualization = () => {
+const RadarVisualization = memo(() => {
   const [radarPoints, setRadarPoints] = useState<RadarPoint[]>([]);
   const [scanAngle, setScanAngle] = useState(0);
   const scanIntervalRef = useRef<number | null>(null);
+  const animationFrameRef = useRef<number>();
   
   // Create the initial static points and set up animations
   useEffect(() => {
@@ -88,15 +89,24 @@ const RadarVisualization = () => {
       );
     }, 800);
     
-    // Animate the radar scan line - modified for smooth continuous rotation
-    scanIntervalRef.current = window.setInterval(() => {
-      setScanAngle(prevAngle => (prevAngle + 1) % 360); // Reduced increment for smoother rotation
-    }, 20); // Faster interval for smoother animation
+    // Use requestAnimationFrame for smoother radar scan animation
+    let lastScanUpdate = 0;
+    const animateScan = (timestamp: number) => {
+      if (timestamp - lastScanUpdate >= 33) { // ~30fps
+        setScanAngle(prevAngle => (prevAngle + 2) % 360);
+        lastScanUpdate = timestamp;
+      }
+      animationFrameRef.current = requestAnimationFrame(animateScan);
+    };
+    animationFrameRef.current = requestAnimationFrame(animateScan);
     
     return () => {
       clearInterval(pointsInterval);
       if (scanIntervalRef.current) {
         clearInterval(scanIntervalRef.current);
+      }
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
       }
     };
   }, []);
@@ -169,6 +179,6 @@ const RadarVisualization = () => {
       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-mw-green/5 to-transparent pointer-events-none"></div>
     </div>
   );
-};
+});
 
 export default RadarVisualization;

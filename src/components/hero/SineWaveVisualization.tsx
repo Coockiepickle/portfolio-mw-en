@@ -1,34 +1,49 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, memo, useMemo } from 'react';
 
 interface SineWavePoint {
   x: number;
   y: number;
 }
 
-const SineWaveVisualization = () => {
+const SineWaveVisualization = memo(() => {
   const [sineWavePoints, setSineWavePoints] = useState<SineWavePoint[]>([]);
+  const animationRef = useRef<number>();
+  const lastUpdateRef = useRef<number>(0);
   
+  // Pre-calculate x positions to avoid recalculation
+  const xPositions = useMemo(() => {
+    const totalPoints = 30; // Reduced from 50 for better performance
+    return Array.from({ length: totalPoints }, (_, i) => i * (100 / totalPoints));
+  }, []);
+
   useEffect(() => {
-    const generateSineWave = () => {
-      const points: SineWavePoint[] = [];
-      const totalPoints = 50;
-      
-      for (let i = 0; i < totalPoints; i++) {
-        const x = i * (100 / totalPoints);
-        const y = Math.sin((Date.now() / 500) + (i / 5)) * 10;
-        points.push({ x, y });
+    const generateSineWave = (timestamp: number) => {
+      // Throttle updates to ~30fps instead of 20fps for better performance
+      if (timestamp - lastUpdateRef.current < 33) {
+        animationRef.current = requestAnimationFrame(generateSineWave);
+        return;
       }
       
+      lastUpdateRef.current = timestamp;
+      
+      const points: SineWavePoint[] = xPositions.map((x, i) => ({
+        x,
+        y: Math.sin((timestamp / 500) + (i / 5)) * 10
+      }));
+      
       setSineWavePoints(points);
+      animationRef.current = requestAnimationFrame(generateSineWave);
     };
     
-    const sineWaveInterval = setInterval(generateSineWave, 50);
+    animationRef.current = requestAnimationFrame(generateSineWave);
     
     return () => {
-      clearInterval(sineWaveInterval);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
-  }, []);
+  }, [xPositions]);
 
   return (
     <div className="absolute top-[calc(1/3*100%+25px)] left-[15%] w-56 h-28 border border-mw-green border-opacity-40 bg-black bg-opacity-30 flex items-center justify-center overflow-hidden hidden md:flex">
@@ -49,6 +64,6 @@ const SineWaveVisualization = () => {
             }}></div>
     </div>
   );
-};
+});
 
 export default SineWaveVisualization;

@@ -1,14 +1,14 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo, useMemo } from 'react';
 import { Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import SkillCategory from './skills/SkillCategory';
 import { getSkillCategories } from './skills/skillsData.tsx';
 import useSkillAnimation from './skills/useSkillAnimation';
 
-const Skills = () => {
+const Skills = memo(() => {
   const [isVisible, setIsVisible] = useState(false);
-  const skillCategories = getSkillCategories();
+  const skillCategories = useMemo(() => getSkillCategories(), []);
   const {
     animationComplete,
     handleCategoryMouseEnter,
@@ -69,6 +69,6 @@ const Skills = () => {
         </div>
       </div>
     </section>;
-};
+});
 
 export default Skills;

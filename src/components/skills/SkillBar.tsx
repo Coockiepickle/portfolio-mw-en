@@ -1,6 +1,6 @@
 
+import { memo } from 'react';
 import { cn } from '@/lib/utils';
-import { useRef } from 'react';
 
 interface SkillBarProps {
   skill: {
@@ -11,8 +11,7 @@ interface SkillBarProps {
   level: number;
 }
 
-const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
-  const barRef = useRef<HTMLDivElement>(null);
+const SkillBar = memo(({ skill, visible, level }: SkillBarProps) => {
   
   return (
     <div>
@@ -24,7 +23,6 @@ const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
       </div>
       <div className="progress-bar relative overflow-hidden">
         <div 
-          ref={barRef}
           className="progress-bar-fill scanning-light-container relative" 
           style={{
             width: `${skill.level}%`
@@ -51,6 +49,6 @@ const SkillBar = ({ skill, visible, level }: SkillBarProps) => {
       </style>
     </div>
   );
-};
+});
 
 export default SkillBar;

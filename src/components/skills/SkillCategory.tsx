@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { cn } from '@/lib/utils';
 import { ExternalLink } from 'lucide-react';
 import SkillBar from './SkillBar';
@@ -23,7 +23,7 @@ interface SkillCategoryProps {
   getSkillLevel: (catIndex: number, skillIndex: number, skill: Skill) => number;
 }
 
-const SkillCategory = ({
+const SkillCategory = memo(({
   icon,
   title,
   skills,
@@ -142,6 +142,6 @@ const SkillCategory = ({
       />
     </>
   );
-};
+});
 
 export default SkillCategory;

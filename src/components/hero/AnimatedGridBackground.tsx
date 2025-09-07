@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 
-const AnimatedGridBackground = () => {
+const AnimatedGridBackground = memo(() => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const lastFrameRef = useRef<number>(0);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -68,11 +69,21 @@ const AnimatedGridBackground = () => {
     
     let animationFrameId: number;
     const animateGrid = (timestamp: number) => {
+      // Throttle animation to ~24fps for better performance
+      if (timestamp - lastFrameRef.current < 42) {
+        animationFrameId = requestAnimationFrame(animateGrid);
+        return;
+      }
+      
+      lastFrameRef.current = timestamp;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       drawGridLines();
       
-      gridPoints.forEach(point => {
+      // Reduce the number of points animated per frame for better performance
+      const pointsToAnimate = gridPoints.filter((_, index) => index % 2 === 0);
+      
+      pointsToAnimate.forEach(point => {
         const pulse = Math.sin(timestamp * point.pulseSpeed + point.phase) * 0.4 + 0.6;
         const currentBrightness = point.brightness * pulse;
         
@@ -104,6 +115,6 @@ const AnimatedGridBackground = () => {
       }}
     />
   );
-};
+});
 
 export default AnimatedGridBackground;
