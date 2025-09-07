@@ -69,7 +69,7 @@ const About = () => {
                   <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-mw-darker bg-opacity-80">
                     <div className="text-center relative">
                       <div className="relative">
-                        <img src={profileImage} alt="Profile Image" className="w-64 h-64 object-cover rounded-md mx-auto mb-4 border border-mw-green/30 z-10 relative" />
+                        <img src={profileImage} alt="Profile Image" className="w-64 h-64 object-cover rounded-md mx-auto mb-4 border border-mw-green/30 z-10 relative" loading="lazy" />
                         {/* Corner decorations that move on hover */}
                         <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-mw-green transition-all duration-300 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
                         <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-mw-green transition-all duration-300 group-hover:translate-x-2 group-hover:-translate-y-2"></div>
