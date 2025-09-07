@@ -1,36 +1,15 @@
 
-import { useEffect, useState, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 import ContactHeader from './contact/ContactHeader';
 import ContactCard from './contact/ContactCard';
 import AnimatedGridBackground from './hero/AnimatedGridBackground';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 const Contact = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const handleScroll = useCallback(() => {
-    // Use requestAnimationFrame for smoother scrolling
-    requestAnimationFrame(() => {
-      const element = document.getElementById('contact');
-      if (element) {
-        const position = element.getBoundingClientRect();
-        if (position.top < window.innerHeight * 0.75) {
-          setIsVisible(true);
-        }
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    // Use passive event listener for better scroll performance
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Check on initial load
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
+  const { isVisible, elementRef } = useIntersectionObserver();
 
   return (
-    <section id="contact" className="relative py-8">
+    <section id="contact" ref={elementRef} className="relative py-8">
       <div className="absolute inset-0 opacity-50">
         <AnimatedGridBackground />
       </div>

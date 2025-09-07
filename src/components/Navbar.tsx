@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { User, Menu, X, Shield, Target, Briefcase, Award, Send, FileText, Clock, Download, ChevronDown, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
+import { useActiveSection } from '@/hooks/useIntersectionObserver';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,25 +13,13 @@ import {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useTranslation();
+  const activeSection = useActiveSection();
 
   const handleScroll = useCallback(() => {
-    requestAnimationFrame(() => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 10);
-
-      const sections = document.querySelectorAll('section[id]');
-      sections.forEach(section => {
-        const sectionTop = (section as HTMLElement).offsetTop - 100;
-        const sectionHeight = (section as HTMLElement).offsetHeight;
-        const sectionId = section.getAttribute('id') || '';
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          setActiveSection(prev => prev !== sectionId ? sectionId : prev);
-        }
-      });
-    });
+    const scrollPosition = window.scrollY;
+    setIsScrolled(scrollPosition > 10);
   }, []);
 
   useEffect(() => {
