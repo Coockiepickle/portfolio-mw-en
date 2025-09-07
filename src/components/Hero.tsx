@@ -12,27 +12,13 @@ const Hero = () => {
   const [typedText, setTypedText] = useState('');
   const { t } = useTranslation();
   const fullText = t('hero.typing');
-  const typingSpeed = 90;
   
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoaded(true);
-    }, 500);
+    // Set loaded immediately for better LCP
+    setLoaded(true);
     
-    let currentIndex = 0;
-    const typingInterval = setInterval(() => {
-      if (currentIndex < fullText.length) {
-        setTypedText(fullText.substring(0, currentIndex + 1));
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, typingSpeed);
-    
-    return () => {
-      clearTimeout(timer);
-      clearInterval(typingInterval);
-    };
+    // Set full text immediately for LCP, animation handled by CSS
+    setTypedText(fullText);
   }, [fullText]);
   
   const handleScrollToSection = useCallback((sectionId: string) => {

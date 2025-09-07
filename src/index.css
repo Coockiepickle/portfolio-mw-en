@@ -248,6 +248,35 @@
   .terminal-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(63, 153, 135, 0.8);
   }
+
+  /* Typing animation for better LCP performance */
+  .typing-animation {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 3s steps(40, end);
+  }
+
+  .typing-cursor {
+    animation: blink 1s infinite;
+  }
+
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
 }
 
 /* Scrollbar styling */

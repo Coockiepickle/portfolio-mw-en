@@ -19,9 +19,9 @@ const HeroTitle = ({ loaded, typedText }: HeroTitleProps) => {
     >
       {t('hero.title')}
       <div className="h-[2px] w-20 bg-mw-green mx-auto my-4"></div>
-      <span className="font-code text-2xl sm:text-3xl font-light text-mw-green opacity-90">
+      <span className="font-code text-2xl sm:text-3xl font-light text-mw-green opacity-90 typing-animation">
         {typedText}
-        <span className="inline-block w-1 h-6 ml-1 bg-mw-green animate-pulse"></span>
+        <span className="inline-block w-1 h-6 ml-1 bg-mw-green animate-pulse typing-cursor"></span>
       </span>
     </h1>
   );
