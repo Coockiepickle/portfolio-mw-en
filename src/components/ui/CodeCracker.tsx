@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef, memo } from 'react';
 import { cn } from '@/lib/utils';
+import { sanitizeHtml } from '@/lib/security';
 
 const getRandomChar = () => {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,./<>?";
@@ -58,16 +59,16 @@ const CodeCracker = memo(({ text, className, isDecoding, skipAnimation = false }
       const visibleText = originalText.substring(0, charactersToShow);
       
       // Add cursor at the end of the visible text
-      setDisplayText(
-        visibleText + 
-        (progress < 1 ? "<span class='text-mw-green animate-pulse-light'>▌</span>" : "▌")
-      );
+      const cursorHtml = progress < 1 
+        ? "<span class='text-mw-green animate-pulse-light'>▌</span>" 
+        : "▌";
+      setDisplayText(sanitizeHtml(visibleText + cursorHtml));
       
       // Continue animation until complete
       if (progress < 1) {
         animationRef.current = requestAnimationFrame(animate);
       } else {
-        setDisplayText(originalText + "<span class='text-mw-green animate-pulse-light'>▌</span>");
+        setDisplayText(sanitizeHtml(originalText + "<span class='text-mw-green animate-pulse-light'>▌</span>"));
         startTimeRef.current = null;
       }
     };
