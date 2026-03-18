@@ -59,10 +59,10 @@ const CodeCracker = memo(({ text, className, isDecoding, skipAnimation = false }
       const visibleText = originalText.substring(0, charactersToShow);
       
       // Add cursor at the end of the visible text
-      setDisplayText(
-        visibleText + 
-        (progress < 1 ? "<span class='text-mw-green animate-pulse-light'>▌</span>" : "▌")
-      );
+      const cursorHtml = progress < 1 
+        ? "<span class='text-mw-green animate-pulse-light'>▌</span>" 
+        : "▌";
+      setDisplayText(sanitizeHtml(visibleText + cursorHtml));
       
       // Continue animation until complete
       if (progress < 1) {
