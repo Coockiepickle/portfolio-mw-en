@@ -68,7 +68,7 @@ const CodeCracker = memo(({ text, className, isDecoding, skipAnimation = false }
       if (progress < 1) {
         animationRef.current = requestAnimationFrame(animate);
       } else {
-        setDisplayText(originalText + "<span class='text-mw-green animate-pulse-light'>▌</span>");
+        setDisplayText(sanitizeHtml(originalText + "<span class='text-mw-green animate-pulse-light'>▌</span>"));
         startTimeRef.current = null;
       }
     };
