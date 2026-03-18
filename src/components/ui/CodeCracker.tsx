@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef, memo } from 'react';
 import { cn } from '@/lib/utils';
+import { sanitizeHtml } from '@/lib/security';
 
 const getRandomChar = () => {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,./<>?";
